@@ -1,0 +1,96 @@
+SHORTCOMMENT[comments.c:1:1] data = // this is a normal comment
+LONGCOMMENT[comments.c:3:1] data = /* this is a fucked up /* nested comment */
+WORD[comments.c:4:1] data = char
+CHAR[comments.c:4:5] data = *
+WORD[comments.c:4:7] data = contrary_to_popular_belief
+CHAR[comments.c:4:34] data = =
+LONGSTRING[comments.c:4:36] data = this is not a comment
+CHAR[comments.c:4:59] data = ;
+SHORTCOMMENT[comments.c:5:1] data = // this is a multiline comment
+WORD[comments.c:8:1] data = void
+WORD[comments.c:8:6] data = normal_function_header
+CHAR[comments.c:8:28] data = (
+WORD[comments.c:8:29] data = char
+WORD[comments.c:8:34] data = nothig_to_see_here
+CHAR[comments.c:8:52] data = )
+CHAR[comments.c:8:54] data = {
+CHAR[comments.c:8:55] data = }
+PREPROCESSOR[comments.c:9:1] data = #error surprise preprocessor directive "" aaaa
+SHORTCOMMENT[comments.c:12:1] data = // strings
+WORD[comments.c:13:1] data = char
+CHAR[comments.c:13:5] data = *
+WORD[comments.c:13:7] data = octal
+CHAR[comments.c:13:13] data = =
+LONGSTRING[comments.c:13:15] data = I1
+CHAR[comments.c:13:22] data = ;
+WORD[comments.c:14:1] data = char
+CHAR[comments.c:14:5] data = *
+WORD[comments.c:14:7] data = hex
+CHAR[comments.c:14:11] data = =
+LONGSTRING[comments.c:14:13] data = AAAA
+CHAR[comments.c:14:31] data = ;
+WORD[comments.c:15:1] data = char
+CHAR[comments.c:15:5] data = *
+WORD[comments.c:15:7] data = normal_escapes
+CHAR[comments.c:15:22] data = =
+LONGSTRING[comments.c:15:24] data = 	
+
+CHAR[comments.c:15:40] data = ;
+WORD[comments.c:16:1] data = char
+CHAR[comments.c:16:5] data = *
+WORD[comments.c:16:7] data = empty
+CHAR[comments.c:16:13] data = =
+LONGSTRING[comments.c:16:15] data = 
+CHAR[comments.c:16:17] data = ;
+WORD[comments.c:17:1] data = char
+CHAR[comments.c:17:5] data = *
+WORD[comments.c:17:7] data = backslash1
+CHAR[comments.c:17:18] data = =
+LONGSTRING[comments.c:17:20] data = "
+CHAR[comments.c:17:24] data = ;
+WORD[comments.c:18:1] data = char
+CHAR[comments.c:18:5] data = *
+WORD[comments.c:18:7] data = backslash2
+CHAR[comments.c:18:18] data = =
+LONGSTRING[comments.c:18:20] data = \
+CHAR[comments.c:18:24] data = ;
+WORD[comments.c:19:1] data = char
+CHAR[comments.c:19:5] data = *
+WORD[comments.c:19:7] data = backslash3
+CHAR[comments.c:19:18] data = =
+LONGSTRING[comments.c:19:20] data = \"
+CHAR[comments.c:19:26] data = ;
+WORD[comments.c:20:1] data = char
+CHAR[comments.c:20:5] data = *
+WORD[comments.c:20:7] data = backslash4
+CHAR[comments.c:20:18] data = =
+LONGSTRING[comments.c:20:20] data = \\
+CHAR[comments.c:20:26] data = ;
+WORD[comments.c:21:1] data = char
+CHAR[comments.c:21:5] data = *
+WORD[comments.c:21:7] data = multiline
+CHAR[comments.c:21:17] data = =
+LONGSTRING[comments.c:21:19] data = helloworld
+CHAR[comments.c:22:7] data = ;
+SHORTCOMMENT[comments.c:24:1] data = // numbers
+WORD[comments.c:25:1] data = float
+WORD[comments.c:25:7] data = floaty
+CHAR[comments.c:25:14] data = =
+NUMBER[comments.c:25:16] data = 1.1f
+CHAR[comments.c:25:20] data = ;
+WORD[comments.c:26:1] data = double
+WORD[comments.c:26:8] data = doubly
+CHAR[comments.c:26:15] data = =
+NUMBER[comments.c:26:17] data = 1.1
+CHAR[comments.c:26:20] data = ;
+WORD[comments.c:27:1] data = long
+WORD[comments.c:27:6] data = longish
+CHAR[comments.c:27:14] data = =
+NUMBER[comments.c:27:16] data = 122l
+CHAR[comments.c:27:20] data = ;
+WORD[comments.c:28:1] data = long
+WORD[comments.c:28:6] data = long
+WORD[comments.c:28:11] data = longest
+CHAR[comments.c:28:19] data = =
+NUMBER[comments.c:28:21] data = 122ll
+CHAR[comments.c:28:26] data = ;

@@ -10,12 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: CC=gcc make
-    - run: CC=clang make
+    - run: CC=gcc make -B
+    - run: CC=clang make -B
 
   build-windows:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
-    - run: CC=gcc make
-    - run: CC=clang make
+    - run: make -B
+      env:
+        CC: gcc
+    - run: make -B
+      env:
+        CC: clang

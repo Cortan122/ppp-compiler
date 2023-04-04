@@ -36,7 +36,7 @@ const char* TokenKind_names[] = {
 
 void token_print_debug(Token* tok) {
   const char* tmp = strrchr(tok->location.filename, '/');
-  const char* name = tmp ? tmp+1 : tok->location.filename;
+  const char* name = tmp ? tmp + 1 : tok->location.filename;
 
   int line = tok->location.line_num + 1;
   int col = tok->location.col_num + 1;

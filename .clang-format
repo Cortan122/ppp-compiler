@@ -1,0 +1,6 @@
+BasedOnStyle: Google
+IndentWidth: 2
+ColumnLimit: 0
+DerivePointerAlignment: false
+PointerAlignment: Left
+SpaceBeforeParens: Never

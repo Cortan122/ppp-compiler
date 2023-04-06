@@ -116,7 +116,7 @@ void token_emit(Token* tok, Emitter* emitter) {
       break;
 
     case TOKEN_LONGSTRING:
-    case TOKEN_SHORTSTRING:
+    case TOKEN_SHORTSTRING: {
       char quote = tok->kind == TOKEN_LONGSTRING ? '"' : '\'';
       fprintf(emitter->file, "%c", quote);
       for(size_t i = 0; i < tok->length; i++) {
@@ -131,7 +131,7 @@ void token_emit(Token* tok, Emitter* emitter) {
       }
       fprintf(emitter->file, "%c", quote);
       length_written += 2;
-      break;
+    } break;
   }
 
   emitter->cursor.col_num += length_written;

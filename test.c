@@ -50,9 +50,30 @@ void testfunc_declarations(const char* input_file) {
   parser_delete(&parser);
 }
 
+void testfunc_named_types(const char* input_file) {
+  Parser parser = {0};
+
+  lexer_open_file(&parser.lexer, input_file);
+  while(parser_parse_line(&parser)) {
+  }
+  for(int i = 0; i < shlen(parser.structs); i++) {
+    printf("struct %s;\n", parser.structs[i].key);
+  }
+  for(int i = 0; i < shlen(parser.typedefs); i++) {
+    if(parser.typedefs[i].value) {
+      printf("typedef struct %s %s;\n", parser.typedefs[i].value->name, parser.typedefs[i].key);
+    } else {
+      printf("typedef ... %s;\n", parser.typedefs[i].key);
+    }
+  }
+
+  parser_delete(&parser);
+}
+
 TestCase test_cases[] = {
     TESTCASE(debug_tokens),
     TESTCASE(declarations),
+    TESTCASE(named_types),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
 

@@ -1,0 +1,16 @@
+struct Declaration;
+struct Struct;
+struct Lexer;
+struct NamedType;
+struct Parser;
+struct Loc;
+struct Token;
+typedef struct Struct Struct;
+typedef struct Declaration Declaration;
+typedef struct Lexer Lexer;
+typedef struct NamedType NamedType;
+typedef struct Parser Parser;
+typedef ... LogLevel;
+typedef ... TokenKind;
+typedef struct Loc Loc;
+typedef struct Token Token;

@@ -1,0 +1,271 @@
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = Declaration) 
+    WORD[headers.c:5:1] data = struct
+    WORD[headers.c:5:8] data = Declaration
+  CHAR[headers.c:5:19] data = ;
+
+Declaration(tokens = 2, name = Struct)
+  Struct(tokens = 4, name = Struct) 
+    WORD[headers.c:6:9] data = struct
+    WORD[headers.c:6:16] data = Struct
+    CHAR[headers.c:6:23] data = {
+    Declaration(tokens = 4, name = tokens)
+      WORD[headers.c:7:3] data = Token
+      CHAR[headers.c:7:8] data = *
+      WORD[headers.c:7:10] data = tokens
+      CHAR[headers.c:7:16] data = ;
+    Declaration(tokens = 4, name = name)
+      WORD[headers.c:8:3] data = char
+      CHAR[headers.c:8:7] data = *
+      WORD[headers.c:8:9] data = name
+      CHAR[headers.c:8:13] data = ;
+    Declaration(tokens = 3, name = members)
+      Struct(tokens = 2, name = Declaration) 
+        WORD[headers.c:9:3] data = struct
+        WORD[headers.c:9:10] data = Declaration
+      CHAR[headers.c:9:21] data = *
+      WORD[headers.c:9:23] data = members
+      CHAR[headers.c:9:30] data = ;
+    CHAR[headers.c:10:1] data = }
+  WORD[headers.c:10:3] data = Struct
+  CHAR[headers.c:10:9] data = ;
+
+Declaration(tokens = 2, name = Declaration)
+  Struct(tokens = 4, name = Declaration) 
+    WORD[headers.c:12:9] data = struct
+    WORD[headers.c:12:16] data = Declaration
+    CHAR[headers.c:12:28] data = {
+    Declaration(tokens = 4, name = tokens)
+      WORD[headers.c:13:3] data = Token
+      CHAR[headers.c:13:8] data = *
+      WORD[headers.c:13:10] data = tokens
+      CHAR[headers.c:13:16] data = ;
+    Declaration(tokens = 4, name = name)
+      WORD[headers.c:14:3] data = char
+      CHAR[headers.c:14:7] data = *
+      WORD[headers.c:14:9] data = name
+      CHAR[headers.c:14:13] data = ;
+    Declaration(tokens = 4, name = type)
+      WORD[headers.c:15:3] data = Struct
+      CHAR[headers.c:15:9] data = *
+      WORD[headers.c:15:11] data = type
+      CHAR[headers.c:15:15] data = ;
+    CHAR[headers.c:16:1] data = }
+  WORD[headers.c:16:3] data = Declaration
+  CHAR[headers.c:16:14] data = ;
+
+Declaration(tokens = 2, name = Lexer)
+  Struct(tokens = 4, name = Lexer) 
+    WORD[headers.c:41:9] data = struct
+    WORD[headers.c:41:16] data = Lexer
+    CHAR[headers.c:41:22] data = {
+    Declaration(tokens = 3, name = peeked_char)
+      WORD[headers.c:42:3] data = char
+      WORD[headers.c:42:8] data = peeked_char
+      CHAR[headers.c:42:19] data = ;
+    Declaration(tokens = 3, name = exhausted)
+      WORD[headers.c:43:3] data = bool
+      WORD[headers.c:43:8] data = exhausted
+      CHAR[headers.c:43:17] data = ;
+    Declaration(tokens = 3, name = is_newline)
+      WORD[headers.c:44:3] data = bool
+      WORD[headers.c:44:8] data = is_newline
+      CHAR[headers.c:44:18] data = ;
+    Declaration(tokens = 3, name = current_location)
+      WORD[headers.c:45:3] data = Loc
+      WORD[headers.c:45:7] data = current_location
+      CHAR[headers.c:45:23] data = ;
+    Declaration(tokens = 4, name = file)
+      WORD[headers.c:47:3] data = FILE
+      CHAR[headers.c:47:7] data = *
+      WORD[headers.c:47:9] data = file
+      CHAR[headers.c:47:13] data = ;
+    Declaration(tokens = 5, name = memory)
+      WORD[headers.c:48:3] data = const
+      WORD[headers.c:48:9] data = char
+      CHAR[headers.c:48:13] data = *
+      WORD[headers.c:48:15] data = memory
+      CHAR[headers.c:48:21] data = ;
+    Declaration(tokens = 3, name = memory_length)
+      WORD[headers.c:49:3] data = size_t
+      WORD[headers.c:49:10] data = memory_length
+      CHAR[headers.c:49:23] data = ;
+    Declaration(tokens = 3, name = peeked_token)
+      WORD[headers.c:51:3] data = Token
+      WORD[headers.c:51:9] data = peeked_token
+      CHAR[headers.c:51:21] data = ;
+    Declaration(tokens = 2, name = allocated_strings)
+      Struct(tokens = 3, name = (null)) 
+        WORD[headers.c:53:3] data = struct
+        CHAR[headers.c:53:10] data = {
+        Declaration(tokens = 5, name = data)
+          WORD[headers.c:54:5] data = char
+          CHAR[headers.c:54:9] data = *
+          CHAR[headers.c:54:10] data = *
+          WORD[headers.c:54:12] data = data
+          CHAR[headers.c:54:16] data = ;
+        Declaration(tokens = 3, name = length)
+          WORD[headers.c:55:5] data = size_t
+          WORD[headers.c:55:12] data = length
+          CHAR[headers.c:55:18] data = ;
+        Declaration(tokens = 3, name = capacity)
+          WORD[headers.c:56:5] data = size_t
+          WORD[headers.c:56:12] data = capacity
+          CHAR[headers.c:56:20] data = ;
+        CHAR[headers.c:57:3] data = }
+      WORD[headers.c:57:5] data = allocated_strings
+      CHAR[headers.c:57:22] data = ;
+    CHAR[headers.c:58:1] data = }
+  WORD[headers.c:58:3] data = Lexer
+  CHAR[headers.c:58:8] data = ;
+
+Declaration(tokens = 2, name = NamedType)
+  Struct(tokens = 4, name = NamedType) 
+    WORD[headers.c:82:9] data = struct
+    WORD[headers.c:82:16] data = NamedType
+    CHAR[headers.c:82:26] data = {
+    Declaration(tokens = 4, name = key)
+      WORD[headers.c:83:3] data = char
+      CHAR[headers.c:83:7] data = *
+      WORD[headers.c:83:9] data = key
+      CHAR[headers.c:83:12] data = ;
+    Declaration(tokens = 4, name = value)
+      WORD[headers.c:84:3] data = Struct
+      CHAR[headers.c:84:9] data = *
+      WORD[headers.c:84:11] data = value
+      CHAR[headers.c:84:16] data = ;
+    CHAR[headers.c:85:1] data = }
+  WORD[headers.c:85:3] data = NamedType
+  CHAR[headers.c:85:12] data = ;
+
+Declaration(tokens = 2, name = Parser)
+  Struct(tokens = 4, name = Parser) 
+    WORD[headers.c:87:9] data = struct
+    WORD[headers.c:87:16] data = Parser
+    CHAR[headers.c:87:23] data = {
+    Declaration(tokens = 3, name = lexer)
+      WORD[headers.c:88:3] data = Lexer
+      WORD[headers.c:88:9] data = lexer
+      CHAR[headers.c:88:14] data = ;
+    Declaration(tokens = 4, name = top_level)
+      WORD[headers.c:89:3] data = Declaration
+      CHAR[headers.c:89:14] data = *
+      WORD[headers.c:89:16] data = top_level
+      CHAR[headers.c:89:25] data = ;
+    Declaration(tokens = 4, name = typedefs)
+      WORD[headers.c:90:3] data = NamedType
+      CHAR[headers.c:90:12] data = *
+      WORD[headers.c:90:14] data = typedefs
+      CHAR[headers.c:90:22] data = ;
+    Declaration(tokens = 4, name = structs)
+      WORD[headers.c:91:3] data = NamedType
+      CHAR[headers.c:91:12] data = *
+      WORD[headers.c:91:14] data = structs
+      CHAR[headers.c:91:21] data = ;
+    CHAR[headers.c:92:1] data = }
+  WORD[headers.c:92:3] data = Parser
+  CHAR[headers.c:92:9] data = ;
+
+Declaration(tokens = 14, name = LogLevel)
+  WORD[headers.c:107:9] data = enum
+  WORD[headers.c:107:14] data = LogLevel
+  CHAR[headers.c:107:23] data = {
+  WORD[headers.c:108:3] data = LOGLEVEL_ERROR
+  CHAR[headers.c:108:18] data = =
+  NUMBER[headers.c:108:20] data = 0
+  CHAR[headers.c:108:21] data = ,
+  WORD[headers.c:109:3] data = LOGLEVEL_WARNING
+  CHAR[headers.c:109:19] data = ,
+  WORD[headers.c:110:3] data = LOGLEVEL_INFO
+  CHAR[headers.c:110:16] data = ,
+  CHAR[headers.c:111:1] data = }
+  WORD[headers.c:111:3] data = LogLevel
+  CHAR[headers.c:111:11] data = ;
+
+Declaration(tokens = 28, name = TokenKind)
+  WORD[headers.c:113:9] data = enum
+  WORD[headers.c:113:14] data = TokenKind
+  CHAR[headers.c:113:24] data = {
+  WORD[headers.c:114:3] data = TOKEN_EOF
+  CHAR[headers.c:114:13] data = =
+  NUMBER[headers.c:114:15] data = 0
+  CHAR[headers.c:114:16] data = ,
+  WORD[headers.c:115:3] data = TOKEN_INVALID
+  CHAR[headers.c:115:16] data = ,
+  WORD[headers.c:116:3] data = TOKEN_CHAR
+  CHAR[headers.c:116:13] data = ,
+  WORD[headers.c:117:3] data = TOKEN_WORD
+  CHAR[headers.c:117:13] data = ,
+  WORD[headers.c:118:3] data = TOKEN_LONGCOMMENT
+  CHAR[headers.c:118:20] data = ,
+  WORD[headers.c:119:3] data = TOKEN_SHORTCOMMENT
+  CHAR[headers.c:119:21] data = ,
+  WORD[headers.c:120:3] data = TOKEN_PREPROCESSOR
+  CHAR[headers.c:120:21] data = ,
+  WORD[headers.c:121:3] data = TOKEN_LONGSTRING
+  CHAR[headers.c:121:19] data = ,
+  WORD[headers.c:122:3] data = TOKEN_SHORTSTRING
+  CHAR[headers.c:122:20] data = ,
+  WORD[headers.c:123:3] data = TOKEN_NUMBER
+  CHAR[headers.c:123:15] data = ,
+  CHAR[headers.c:124:1] data = }
+  WORD[headers.c:124:3] data = TokenKind
+  CHAR[headers.c:124:12] data = ;
+
+Declaration(tokens = 2, name = Loc)
+  Struct(tokens = 4, name = Loc) 
+    WORD[headers.c:126:9] data = struct
+    WORD[headers.c:126:16] data = Loc
+    CHAR[headers.c:126:20] data = {
+    Declaration(tokens = 5, name = filename)
+      WORD[headers.c:127:3] data = const
+      WORD[headers.c:127:9] data = char
+      CHAR[headers.c:127:13] data = *
+      WORD[headers.c:127:15] data = filename
+      CHAR[headers.c:127:23] data = ;
+    Declaration(tokens = 3, name = line_num)
+      WORD[headers.c:128:3] data = int
+      WORD[headers.c:128:7] data = line_num
+      CHAR[headers.c:128:15] data = ;
+    Declaration(tokens = 3, name = col_num)
+      WORD[headers.c:129:3] data = int
+      WORD[headers.c:129:7] data = col_num
+      CHAR[headers.c:129:14] data = ;
+    Declaration(tokens = 3, name = byte_num)
+      WORD[headers.c:130:3] data = int
+      WORD[headers.c:130:7] data = byte_num
+      CHAR[headers.c:130:15] data = ;
+    CHAR[headers.c:131:1] data = }
+  WORD[headers.c:131:3] data = Loc
+  CHAR[headers.c:131:6] data = ;
+
+Declaration(tokens = 2, name = Token)
+  Struct(tokens = 4, name = Token) 
+    WORD[headers.c:133:9] data = struct
+    WORD[headers.c:133:16] data = Token
+    CHAR[headers.c:133:22] data = {
+    Declaration(tokens = 4, name = data)
+      WORD[headers.c:134:3] data = char
+      CHAR[headers.c:134:7] data = *
+      WORD[headers.c:134:9] data = data
+      CHAR[headers.c:134:13] data = ;
+    Declaration(tokens = 3, name = length)
+      WORD[headers.c:135:3] data = size_t
+      WORD[headers.c:135:10] data = length
+      CHAR[headers.c:135:16] data = ;
+    Declaration(tokens = 3, name = capacity)
+      WORD[headers.c:136:3] data = size_t
+      WORD[headers.c:136:10] data = capacity
+      CHAR[headers.c:136:18] data = ;
+    Declaration(tokens = 3, name = kind)
+      WORD[headers.c:137:3] data = TokenKind
+      WORD[headers.c:137:13] data = kind
+      CHAR[headers.c:137:17] data = ;
+    Declaration(tokens = 3, name = location)
+      WORD[headers.c:138:3] data = Loc
+      WORD[headers.c:138:7] data = location
+      CHAR[headers.c:138:15] data = ;
+    CHAR[headers.c:139:1] data = }
+  WORD[headers.c:139:3] data = Token
+  CHAR[headers.c:139:8] data = ;
+

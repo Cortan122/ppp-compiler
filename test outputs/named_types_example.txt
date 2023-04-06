@@ -1,0 +1,4 @@
+struct Triangle;
+struct Rectangle;
+struct Circle;
+struct Figure;

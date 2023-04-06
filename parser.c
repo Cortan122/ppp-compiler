@@ -58,6 +58,7 @@ bool parser_parse_struct(Parser* p, Struct* res) {
   tok = parser_peek_token(p);
   if(tok.kind == TOKEN_WORD) {
     res->name = tok.data;
+    shput(p->structs, res->name, res);
     parser_transfer_token(p, &res->tokens);
 
     tok = parser_peek_token(p);
@@ -83,7 +84,10 @@ bool parser_parse_struct(Parser* p, Struct* res) {
 Declaration parser_parse_declaration(Parser* p) {
   Declaration res = {0};
   res.type = calloc(1, sizeof(Struct));
-  parser_parse_struct(p, res.type);
+  if(!parser_parse_struct(p, res.type)) {
+    free(res.type);
+    res.type = NULL;
+  }
   skip_bracket_block(p, &res.tokens, ';', '\0');
 
   if(arrlen(res.tokens) > 1) {
@@ -104,7 +108,11 @@ bool parser_parse_line(Parser* p) {
 
   if(token_eq_keyword(&tok, "typedef")) {
     parser_transfer_token(p, NULL);
-    arrpush(p->top_level, parser_parse_declaration(p));
+    Declaration d = parser_parse_declaration(p);
+    if(d.name) {
+      shput(p->typedefs, d.name, d.type);
+    }
+    arrpush(p->top_level, d);
   } else if(token_eq_keyword(&tok, "struct")) {
     arrpush(p->top_level, parser_parse_declaration(p));
   } else {
@@ -120,6 +128,7 @@ void parser_delete(Parser* p) {
   }
   arrfree(p->top_level);
 
-  shfree(p->named_types);
+  shfree(p->typedefs);
+  shfree(p->structs);
   lexer_delete(&p->lexer);
 }

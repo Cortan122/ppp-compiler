@@ -3,3 +3,4 @@ test outputs/tmp.*
 main
 test
 stb_ds.h
+depend.mk

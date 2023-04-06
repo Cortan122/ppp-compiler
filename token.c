@@ -54,3 +54,15 @@ void token_print_error(Token* tok, LogLevel level, const char* msg, const char* 
   fprintf(stderr, msg, printf_arg);
   fprintf(stderr, "\n");
 }
+
+bool token_eq_keyword(Token* tok, const char* keyword) {
+  if(tok->kind != TOKEN_WORD) return false;
+  size_t keyword_len = strlen(keyword);
+  if(keyword_len != tok->length) return false;
+  return memcmp(tok->data, keyword, tok->length) == 0;
+}
+
+bool token_eq_char(Token* tok, char val) {
+  if(tok->kind != TOKEN_CHAR) return false;
+  return *tok->data == val;
+}

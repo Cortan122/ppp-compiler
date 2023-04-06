@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdbool.h>
 #include <stddef.h>
 
 typedef enum LogLevel {
@@ -38,3 +39,5 @@ typedef struct Token {
 
 void token_print_debug(Token* tok);
 void token_print_error(Token* tok, LogLevel level, const char* msg, const char* printf_arg);
+bool token_eq_keyword(Token* tok, const char* keyword);
+bool token_eq_char(Token* tok, char val);

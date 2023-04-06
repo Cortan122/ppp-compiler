@@ -27,6 +27,8 @@ typedef struct Lexer {
   const char* memory;
   size_t memory_length;
 
+  Token peeked_token;
+
   struct {
     char** data;
     size_t length;
@@ -48,5 +50,5 @@ char lexer_peek_char(Lexer* l);
 char lexer_drop_char(Lexer* l);
 
 Token lexer_next_token(Lexer* l);
-// Token lexer_peek_token(Lexer* l);
-// Token lexer_drop_token(Lexer* l);
+Token lexer_peek_token(Lexer* l);
+Token lexer_drop_token(Lexer* l);

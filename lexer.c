@@ -293,4 +293,22 @@ void lexer_delete(Lexer* l) {
     free(l->allocated_strings.data[i]);
   }
   free(l->allocated_strings.data);
+  free(l->peeked_token.data);
+}
+
+Token lexer_peek_token(Lexer* l) {
+  if(l->exhausted) return (Token){0};
+  if(l->peeked_token.kind == TOKEN_EOF) {
+    l->peeked_token = lexer_next_token(l);
+    da_append(&l->peeked_token, '\0');
+    l->peeked_token.length--;
+  }
+  return l->peeked_token;
+}
+
+Token lexer_drop_token(Lexer* l) {
+  Token res = lexer_peek_token(l);
+  l->peeked_token.kind = TOKEN_EOF;
+  l->peeked_token.data = NULL;
+  return res;
 }

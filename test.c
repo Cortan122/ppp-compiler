@@ -5,6 +5,7 @@
 #include <string.h>
 
 #include "lexer.h"
+#include "parser.h"
 #include "token.h"
 
 #define return_defer(value) \
@@ -15,7 +16,7 @@
 
 #define OUTPUT_FOLDER "test outputs"
 #define TESTCASE(x) \
-  (TestCase) { .func = testfunc_##x, .name = #x }
+  { .func = testfunc_##x, .name = #x }
 
 typedef void (*TestFunc)(const char*);
 typedef struct TestCase {
@@ -36,8 +37,22 @@ void testfunc_debug_tokens(const char* input_file) {
   lexer_delete(&lexer);
 }
 
+void testfunc_declarations(const char* input_file) {
+  Parser parser = {0};
+
+  lexer_open_file(&parser.lexer, input_file);
+  while(parser_parse_line(&parser)) {
+  }
+  for(int i = 0; i < arrlen(parser.top_level); i++) {
+    declaration_print_debug(&parser.top_level[i], 0);
+  }
+
+  parser_delete(&parser);
+}
+
 TestCase test_cases[] = {
     TESTCASE(debug_tokens),
+    TESTCASE(declarations),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
 
@@ -90,7 +105,7 @@ bool run_testcase(const char* input_file, TestCase tc, bool rewrite) {
   char* extra = rewrite ? "" : "tmp.";
 
   snprintf(namebuf, sizeof(namebuf) - 1, "%s/%s%s_%.*s.txt", OUTPUT_FOLDER, extra, tc.name, input_name_len, input_name);
-  run_test(input_file, namebuf, testfunc_debug_tokens);
+  run_test(input_file, namebuf, tc.func);
 
   if(rewrite) return false;
 

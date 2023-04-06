@@ -4,6 +4,7 @@ repos:
     hooks:
       - id: check-yaml
       - id: end-of-file-fixer
+        exclude: ^test outputs/
       - id: trailing-whitespace
         exclude: ^test outputs/
       - id: mixed-line-ending

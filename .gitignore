@@ -2,3 +2,4 @@ test outputs/tmp.*
 *.o
 main
 test
+stb_ds.h

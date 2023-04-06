@@ -38,7 +38,7 @@ static char escaped_chararter_map(char letter) {
   // clang-format on
 }
 
-static void get_location_from_preprocessor_output(const Token* tok, Lexer* res) {
+static void get_location_from_preprocessor_output(Token* tok, Lexer* res) {
   assert(tok->kind == TOKEN_PREPROCESSOR);
   assert(tok->data[0] == '#');
 
@@ -68,6 +68,7 @@ static void get_location_from_preprocessor_output(const Token* tok, Lexer* res) 
   res->current_location.line_num = line - 1;
   res->current_location.filename = new_filename;
   da_append(&res->allocated_strings, new_filename);
+  tok->kind = TOKEN_PREPROCESSOR_LINENUM;
 
 defer:;
   free(first.data);

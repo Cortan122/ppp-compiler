@@ -43,9 +43,18 @@ void parser_transfer_token(Parser* p, Token** dest) {
 
 Token parser_peek_token(Parser* p) {
   Token res = lexer_peek_token(&p->lexer);
-  while(res.kind == TOKEN_LONGCOMMENT || res.kind == TOKEN_SHORTCOMMENT || res.kind == TOKEN_PREPROCESSOR) {
-    parser_transfer_token(p, NULL);
-    res = lexer_peek_token(&p->lexer);
+  while(1) {
+    switch(res.kind) {
+      case TOKEN_LONGCOMMENT:
+      case TOKEN_SHORTCOMMENT:
+      case TOKEN_PREPROCESSOR:
+      case TOKEN_PREPROCESSOR_LINENUM:
+        parser_transfer_token(p, NULL);
+        res = lexer_peek_token(&p->lexer);
+        break;
+      default:
+        return res;
+    }
   }
   return res;
 }

@@ -29,6 +29,7 @@ const char* TokenKind_names[] = {
     "LONGCOMMENT",
     "SHORTCOMMENT",
     "PREPROCESSOR",
+    "PREPROCESSOR_LINENUM",
     "LONGSTRING",
     "SHORTSTRING",
     "NUMBER",
@@ -53,6 +54,87 @@ void token_print_error(Token* tok, LogLevel level, const char* msg, const char* 
   fprintf(stderr, "%s%s: " RESET_COLOR, color, LogLevel_names[level]);
   fprintf(stderr, msg, printf_arg);
   fprintf(stderr, "\n");
+}
+
+static void emit_spaces(Emitter* emitter, Loc loc) {
+  if(emitter->cursor.filename == NULL) {
+    emitter->cursor = loc;
+    emitter->cursor.col_num = 0;
+  } else if(loc.filename == NULL) {
+    return;
+  }
+
+  if(strcmp(emitter->cursor.filename, loc.filename) != 0) {
+    fprintf(emitter->file, "\n");
+    emitter->cursor = loc;
+    emitter->cursor.col_num = 0;
+  }
+
+  int line_delta = loc.line_num - emitter->cursor.line_num;
+  for(int i = 0; i < line_delta; i++) {
+    fprintf(emitter->file, "\n");
+    emitter->cursor.col_num = 0;
+  }
+
+  int col_delta = loc.col_num - emitter->cursor.col_num;
+  if(col_delta > 0) {
+    fprintf(emitter->file, "%*s", col_delta, "");
+  }
+
+  emitter->cursor = loc;
+}
+
+void token_emit(Token* tok, Emitter* emitter) {
+  emit_spaces(emitter, tok->location);
+
+  int length_written = 0;
+  switch(tok->kind) {
+    case TOKEN_INVALID:
+      fprintf(emitter->file, "/* INVALID TOKEN %.*s */%n", (int)tok->length, tok->data, &length_written);
+      break;
+    case TOKEN_EOF:
+      if(emitter->cursor.col_num) {
+        fprintf(emitter->file, "\n");
+      }
+      break;
+
+    case TOKEN_CHAR:
+    case TOKEN_WORD:
+    case TOKEN_NUMBER:
+    case TOKEN_SHORTCOMMENT:
+      fprintf(emitter->file, "%.*s%n", (int)tok->length, tok->data, &length_written);
+      break;
+
+    case TOKEN_LONGCOMMENT:
+    case TOKEN_PREPROCESSOR:
+      fprintf(emitter->file, "%.*s\n", (int)tok->length, tok->data);
+      emitter->cursor.line_num++;
+      break;
+    case TOKEN_PREPROCESSOR_LINENUM:
+      fprintf(emitter->file, "%.*s\n", (int)tok->length, tok->data);
+      emitter->cursor.filename = NULL;
+      break;
+
+    case TOKEN_LONGSTRING:
+    case TOKEN_SHORTSTRING:
+      char quote = tok->kind == TOKEN_LONGSTRING ? '"' : '\'';
+      fprintf(emitter->file, "%c", quote);
+      for(size_t i = 0; i < tok->length; i++) {
+        char c = tok->data[i];
+        if(c < ' ' || c == '"' || c == '\'' || c == '\\') {
+          fprintf(emitter->file, "\\x%02x", c);
+          length_written += 4;
+        } else {
+          fprintf(emitter->file, "%c", c);
+          length_written++;
+        }
+      }
+      fprintf(emitter->file, "%c", quote);
+      length_written += 2;
+      break;
+  }
+
+  emitter->cursor.col_num += length_written;
 }
 
 bool token_eq_keyword(Token* tok, const char* keyword) {

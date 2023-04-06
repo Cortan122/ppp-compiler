@@ -2,6 +2,7 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdio.h>
 
 typedef enum LogLevel {
   LOGLEVEL_ERROR = 0,
@@ -17,6 +18,7 @@ typedef enum TokenKind {
   TOKEN_LONGCOMMENT,
   TOKEN_SHORTCOMMENT,
   TOKEN_PREPROCESSOR,
+  TOKEN_PREPROCESSOR_LINENUM,
   TOKEN_LONGSTRING,
   TOKEN_SHORTSTRING,
   TOKEN_NUMBER,
@@ -37,7 +39,13 @@ typedef struct Token {
   Loc location;
 } Token;
 
+typedef struct Emitter {
+  FILE* file;
+  Loc cursor;
+} Emitter;
+
 void token_print_debug(Token* tok);
 void token_print_error(Token* tok, LogLevel level, const char* msg, const char* printf_arg);
+void token_emit(Token* tok, Emitter* emitter);
 bool token_eq_keyword(Token* tok, const char* keyword);
 bool token_eq_char(Token* tok, char val);

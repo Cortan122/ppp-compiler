@@ -17,11 +17,14 @@
 #define OUTPUT_FOLDER "test outputs"
 #define TESTCASE(x) \
   { .func = testfunc_##x, .name = #x }
+#define TESTCASE_L(x) \
+  { .func = testfunc_##x, .name = #x, .loop_check = true }
 
 typedef void (*TestFunc)(const char*);
 typedef struct TestCase {
   TestFunc func;
   char* name;
+  bool loop_check;
 } TestCase;
 
 void testfunc_debug_tokens(const char* input_file) {
@@ -70,10 +73,25 @@ void testfunc_named_types(const char* input_file) {
   parser_delete(&parser);
 }
 
+void testfunc_emit_tokens(const char* input_file) {
+  Emitter em = {.file = stdout};
+  Lexer lexer = {0};
+  lexer_open_file(&lexer, input_file);
+  while(1) {
+    Token t = lexer_next_token(&lexer);
+    token_emit(&t, &em);
+    free(t.data);
+    if(t.kind == TOKEN_EOF) break;
+  }
+
+  lexer_delete(&lexer);
+}
+
 TestCase test_cases[] = {
     TESTCASE(debug_tokens),
     TESTCASE(declarations),
     TESTCASE(named_types),
+    TESTCASE_L(emit_tokens),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
 
@@ -113,7 +131,7 @@ void run_test(const char* input_file, const char* output_file, TestFunc func) {
   fclose(stdout);
 }
 
-bool run_testcase(const char* input_file, TestCase tc, bool rewrite) {
+bool run_testcase(const char* input_file, TestCase tc, bool rewrite, bool loop) {
   char namebuf[100];
   const char* tmp = strrchr(input_file, '/');
   const char* input_name = tmp ? tmp + 1 : input_file;
@@ -133,16 +151,21 @@ bool run_testcase(const char* input_file, TestCase tc, bool rewrite) {
   char namebuf2[100];
   snprintf(namebuf2, sizeof(namebuf2) - 1, "%s/%s_%.*s.txt", OUTPUT_FOLDER, tc.name, input_name_len, input_name);
 
-  if(diff_files(namebuf2, namebuf)) {
+  const char* correct_output = loop ? input_file : namebuf2;
+  if(diff_files(correct_output, namebuf)) {
     if(remove(namebuf)) {
       fprintf(stderr, "Error deleting file %s: %s\n", namebuf, strerror(errno));
     }
     fprintf(stderr, "Test %s(\x1b[36m'%s'\x1b[0m) succeeded!!\n", tc.name, input_name);
+
+    if(tc.loop_check && !loop) {
+      return run_testcase(correct_output, tc, false, true);
+    }
     return false;
   } else {
     fprintf(stderr, "Test %s(\x1b[31m'%s'\x1b[0m) failed!!\n", tc.name, input_name);
     fprintf(stderr, "\x1b[36mHINT:\x1b[0m Run this command, to see what's changed\n");
-    fprintf(stderr, "diff --color=always '%s' '%s'\n\n", namebuf2, namebuf);
+    fprintf(stderr, "diff --color=always '%s' '%s'\n\n", correct_output, namebuf);
     return true;
   }
 }
@@ -159,7 +182,7 @@ int main(int argc, char** argv) {
   for(int j = 0; j < test_cases_count; j++) {
     TestCase tc = test_cases[j];
     for(int i = 1; i < argc; i++) {
-      res |= run_testcase(argv[i], tc, rewrite_tests);
+      res |= run_testcase(argv[i], tc, rewrite_tests, false);
     }
   }
   return res;

@@ -92,7 +92,9 @@ bool parser_parse_struct(Parser* p, Struct* res) {
 
 Declaration parser_parse_declaration(Parser* p) {
   Declaration res = {0};
+  res.location = parser_peek_token(p).location;
   res.type = calloc(1, sizeof(Struct));
+
   if(!parser_parse_struct(p, res.type)) {
     free(res.type);
     res.type = NULL;
@@ -118,6 +120,8 @@ bool parser_parse_line(Parser* p) {
   if(token_eq_keyword(&tok, "typedef")) {
     parser_transfer_token(p, NULL);
     Declaration d = parser_parse_declaration(p);
+    d.location = tok.location;
+    d.is_typedef = true;
     if(d.name) {
       shput(p->typedefs, d.name, d.type);
     }
@@ -129,6 +133,31 @@ bool parser_parse_line(Parser* p) {
   }
 
   return true;
+}
+
+void parser_read_file(Parser* p, const char* filename) {
+  lexer_open_file(&p->lexer, filename);
+  while(parser_parse_line(p)) {
+  }
+}
+
+void parser_emit_declarations(Parser* p, Emitter* emitter) {
+  bool restore_drel = emitter->delete_repeted_empty_lines;
+  emitter->delete_repeted_empty_lines = true;
+
+  for(int i = 0; i < arrlen(p->top_level); i++) {
+    emitter->ignore_next_indent = true;
+    if(p->top_level[i].is_typedef) {
+      Token t = token_from_keyword("typedef");
+      t.location = p->top_level[i].location;
+      token_emit(&t, emitter);
+      free(t.data);
+    }
+    declaration_emit(&p->top_level[i], emitter);
+  }
+
+  token_emit(&(Token){.kind = TOKEN_EOF}, emitter);
+  emitter->delete_repeted_empty_lines = restore_drel;
 }
 
 void parser_delete(Parser* p) {

@@ -7,15 +7,10 @@ int main(int argc, char** argv) {
   (void)argc;
 
   Emitter em = {.file = stdout};
-  Lexer lexer = {0};
-  lexer_open_file(&lexer, argv[1] ? argv[1] : "main.c");
-  while(1) {
-    Token t = lexer_next_token(&lexer);
-    token_emit(&t, &em);
-    if(t.kind == TOKEN_EOF) break;
-    free(t.data);
-  }
+  Parser parser = {0};
+  parser_read_file(&parser, argv[1] ? argv[1] : "main.c");
+  parser_emit_declarations(&parser, &em);
 
-  lexer_delete(&lexer);
+  parser_delete(&parser);
   return 0;
 }

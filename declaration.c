@@ -9,7 +9,7 @@
 void declaration_print_struct(Struct* s, int rec_lvl) {
   Token last = s->tokens[arrlen(s->tokens) - 1];
   bool has_extra_bracket = token_eq_char(&last, '}');
-  printf("%*sStruct(tokens = %ld, name = %s) \n", rec_lvl * 2, "", arrlen(s->tokens), s->name);
+  printf("%*sStruct(tokens = %d, name = %s) \n", rec_lvl * 2, "", (int)arrlen(s->tokens), s->name);
   rec_lvl++;
   for(int i = 0; i < arrlen(s->tokens) - has_extra_bracket; i++) {
     printf("%*s", rec_lvl * 2, "");
@@ -27,7 +27,7 @@ void declaration_print_struct(Struct* s, int rec_lvl) {
 }
 
 void declaration_print_debug(Declaration* d, int rec_lvl) {
-  printf("%*sDeclaration(tokens = %ld, name = %s)\n", rec_lvl * 2, "", arrlen(d->tokens), d->name);
+  printf("%*sDeclaration(tokens = %d, name = %s)\n", rec_lvl * 2, "", (int)arrlen(d->tokens), d->name);
   rec_lvl++;
 
   if(d->type) {
@@ -42,6 +42,32 @@ void declaration_print_debug(Declaration* d, int rec_lvl) {
   rec_lvl--;
   if(rec_lvl == 0) {
     printf("\n");
+  }
+}
+
+void declaration_emit_struct(Struct* s, Emitter* emitter) {
+  Token* last = &s->tokens[arrlen(s->tokens) - 1];
+  bool has_extra_bracket = token_eq_char(last, '}');
+  for(int i = 0; i < arrlen(s->tokens) - has_extra_bracket; i++) {
+    token_emit(&s->tokens[i], emitter);
+  }
+
+  for(int i = 0; i < arrlen(s->members); i++) {
+    declaration_emit(&s->members[i], emitter);
+  }
+
+  if(has_extra_bracket) {
+    token_emit(last, emitter);
+  }
+}
+
+void declaration_emit(Declaration* d, Emitter* emitter) {
+  if(d->type) {
+    declaration_emit_struct(d->type, emitter);
+  }
+
+  for(int i = 0; i < arrlen(d->tokens); i++) {
+    token_emit(&d->tokens[i], emitter);
   }
 }
 

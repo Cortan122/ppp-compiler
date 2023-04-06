@@ -42,6 +42,8 @@ typedef struct Token {
 typedef struct Emitter {
   FILE* file;
   Loc cursor;
+  bool delete_repeted_empty_lines;
+  bool ignore_next_indent;
 } Emitter;
 
 void token_print_debug(Token* tok);
@@ -49,3 +51,4 @@ void token_print_error(Token* tok, LogLevel level, const char* msg, const char* 
 void token_emit(Token* tok, Emitter* emitter);
 bool token_eq_keyword(Token* tok, const char* keyword);
 bool token_eq_char(Token* tok, char val);
+Token token_from_keyword(const char* keyword);

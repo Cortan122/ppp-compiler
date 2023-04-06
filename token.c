@@ -60,7 +60,8 @@ static void emit_spaces(Emitter* emitter, Loc loc) {
   if(emitter->cursor.filename == NULL) {
     emitter->cursor = loc;
     emitter->cursor.col_num = 0;
-  } else if(loc.filename == NULL) {
+  }
+  if(loc.filename == NULL) {
     return;
   }
 
@@ -71,12 +72,17 @@ static void emit_spaces(Emitter* emitter, Loc loc) {
   }
 
   int line_delta = loc.line_num - emitter->cursor.line_num;
+  if(emitter->delete_repeted_empty_lines && line_delta > 2) line_delta = 2;
   for(int i = 0; i < line_delta; i++) {
     fprintf(emitter->file, "\n");
     emitter->cursor.col_num = 0;
   }
 
   int col_delta = loc.col_num - emitter->cursor.col_num;
+  if(emitter->ignore_next_indent) {
+    emitter->ignore_next_indent = false;
+    col_delta = 0;
+  }
   if(col_delta > 0) {
     fprintf(emitter->file, "%*s", col_delta, "");
   }
@@ -147,4 +153,12 @@ bool token_eq_keyword(Token* tok, const char* keyword) {
 bool token_eq_char(Token* tok, char val) {
   if(tok->kind != TOKEN_CHAR) return false;
   return *tok->data == val;
+}
+
+Token token_from_keyword(const char* keyword) {
+  Token res = {0};
+  res.kind = TOKEN_WORD;
+  res.data = strdup(keyword);
+  res.length = strlen(keyword);
+  return res;
 }

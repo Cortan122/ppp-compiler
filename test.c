@@ -112,6 +112,15 @@ void testfunc_emit_fancy_declarations(const char* input_file) {
   parser_delete(&parser);
 }
 
+void testfunc_convert_structs(const char* input_file) {
+  Emitter em = {.file = stdout, .convert_structs = true};
+  Parser parser = {.allow_fancy_structs = true};
+  parser_read_file(&parser, input_file);
+  parser_emit_declarations(&parser, &em);
+
+  parser_delete(&parser);
+}
+
 TestCase test_cases[] = {
     TESTCASE(debug_tokens),
     TESTCASE(declarations),
@@ -120,6 +129,7 @@ TestCase test_cases[] = {
     TESTCASE_L(emit_declarations),
     TESTCASE(fancy_declarations),
     TESTCASE_L(emit_fancy_declarations),
+    TESTCASE_L(convert_structs),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
 

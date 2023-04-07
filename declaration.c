@@ -47,7 +47,39 @@ void declaration_print_debug(Declaration* d, int rec_lvl) {
   }
 }
 
+void declaration_emit_fancy_struct(Struct* s, Emitter* emitter) {
+  for(int i = 0; i < arrlen(s->tokens) - 2; i++) {
+    token_emit(&s->tokens[i], emitter);
+    if(s->tokens_header_len == i + 1) {
+      token_emit_cstr(" int tag; ", emitter);
+      token_emit_cstr("struct {", emitter);
+      for(int i = 0; i < arrlen(s->members); i++) {
+        declaration_emit(&s->members[i], emitter);
+      }
+      token_emit(&s->tokens[++i], emitter);
+      token_emit_cstr(" head; ", emitter);
+
+      token_emit_cstr("union {", emitter);
+      for(int i = 0; i < arrlen(s->subtypes); i++) {
+        declaration_emit(&s->subtypes[i], emitter);
+        // TODO: add phony name token
+      }
+      token_emit_cstr(" } tail;", emitter);
+      token_emit_cstr("\n}", emitter);  // TODO: use location of '>'
+    }
+  }
+}
+
 void declaration_emit_struct(Struct* s, Emitter* emitter) {
+  if(emitter->convert_structs && s->subtypes) {
+    if(s->tokens_header_len) {
+      declaration_emit_fancy_struct(s, emitter);
+    } else {
+      // TODO
+    }
+    return;
+  }
+
   for(int i = 0; i < arrlen(s->tokens); i++) {
     token_emit(&s->tokens[i], emitter);
     if(s->tokens_header_len == i + 1) {

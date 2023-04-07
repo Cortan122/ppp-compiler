@@ -1,0 +1,77 @@
+struct Declaration;
+typedef struct Struct {
+  Token* tokens;
+  char* name;
+  struct Declaration* members;
+} Struct;
+
+typedef struct Declaration {
+  Token* tokens;
+  char* name;
+  Struct* type;
+} Declaration;
+
+typedef struct Lexer {
+  char peeked_char;
+  bool exhausted;
+  bool is_newline;
+  Loc current_location;
+
+  FILE* file;
+  const char* memory;
+  size_t memory_length;
+
+  Token peeked_token;
+
+  struct {
+    char** data;
+    size_t length;
+    size_t capacity;
+  } allocated_strings;
+} Lexer;
+
+typedef struct NamedType {
+  char* key;
+  Struct* value;
+} NamedType;
+
+typedef struct Parser {
+  Lexer lexer;
+  Declaration* top_level;
+  NamedType* typedefs;
+  NamedType* structs;
+} Parser;
+
+typedef enum LogLevel {
+  LOGLEVEL_ERROR = 0,
+  LOGLEVEL_WARNING,
+  LOGLEVEL_INFO,
+} LogLevel;
+
+typedef enum TokenKind {
+  TOKEN_EOF = 0,
+  TOKEN_INVALID,
+  TOKEN_CHAR,
+  TOKEN_WORD,
+  TOKEN_LONGCOMMENT,
+  TOKEN_SHORTCOMMENT,
+  TOKEN_PREPROCESSOR,
+  TOKEN_LONGSTRING,
+  TOKEN_SHORTSTRING,
+  TOKEN_NUMBER,
+} TokenKind;
+
+typedef struct Loc {
+  const char* filename;
+  int line_num;
+  int col_num;
+  int byte_num;
+} Loc;
+
+typedef struct Token {
+  char* data;
+  size_t length;
+  size_t capacity;
+  TokenKind kind;
+  Loc location;
+} Token;

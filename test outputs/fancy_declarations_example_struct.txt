@@ -1,0 +1,78 @@
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = Triangle) 
+    WORD[example_struct.c:1:1] data = struct
+    WORD[example_struct.c:1:8] data = Triangle
+    CHAR[example_struct.c:1:17] data = {
+    Declaration(tokens = 3, name = a)
+      WORD[example_struct.c:2:3] data = int
+      WORD[example_struct.c:2:7] data = a
+      CHAR[example_struct.c:2:8] data = ;
+    Declaration(tokens = 3, name = b)
+      WORD[example_struct.c:3:3] data = int
+      WORD[example_struct.c:3:7] data = b
+      CHAR[example_struct.c:3:8] data = ;
+    Declaration(tokens = 3, name = c)
+      WORD[example_struct.c:4:3] data = int
+      WORD[example_struct.c:4:7] data = c
+      CHAR[example_struct.c:4:8] data = ;
+    CHAR[example_struct.c:5:1] data = }
+  CHAR[example_struct.c:5:2] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = Rectangle) 
+    WORD[example_struct.c:7:1] data = struct
+    WORD[example_struct.c:7:8] data = Rectangle
+    CHAR[example_struct.c:7:18] data = {
+    Declaration(tokens = 3, name = x)
+      WORD[example_struct.c:8:3] data = int
+      WORD[example_struct.c:8:7] data = x
+      CHAR[example_struct.c:8:8] data = ;
+    Declaration(tokens = 3, name = y)
+      WORD[example_struct.c:9:3] data = int
+      WORD[example_struct.c:9:7] data = y
+      CHAR[example_struct.c:9:8] data = ;
+    CHAR[example_struct.c:10:1] data = }
+  CHAR[example_struct.c:10:2] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = Circle) 
+    WORD[example_struct.c:12:1] data = struct
+    WORD[example_struct.c:12:8] data = Circle
+    CHAR[example_struct.c:12:15] data = {
+    Declaration(tokens = 3, name = r)
+      WORD[example_struct.c:13:3] data = int
+      WORD[example_struct.c:13:7] data = r
+      CHAR[example_struct.c:13:8] data = ;
+    CHAR[example_struct.c:14:1] data = }
+  CHAR[example_struct.c:14:2] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 6, name = Figure) 
+    WORD[example_struct.c:16:1] data = struct
+    WORD[example_struct.c:16:8] data = Figure
+    CHAR[example_struct.c:16:15] data = {
+    Declaration(tokens = 4, name = color)
+      WORD[example_struct.c:17:3] data = char
+      CHAR[example_struct.c:17:7] data = *
+      WORD[example_struct.c:17:9] data = color
+      CHAR[example_struct.c:17:14] data = ;
+    CHAR[example_struct.c:18:1] data = }
+    CHAR[example_struct.c:18:3] data = <
+    Declaration(tokens = 1, name = (null))
+      Struct(tokens = 2, name = Triangle) 
+        WORD[example_struct.c:19:3] data = struct
+        WORD[example_struct.c:19:10] data = Triangle
+      CHAR[example_struct.c:19:18] data = ;
+    Declaration(tokens = 1, name = (null))
+      Struct(tokens = 2, name = Rectangle) 
+        WORD[example_struct.c:20:3] data = struct
+        WORD[example_struct.c:20:10] data = Rectangle
+      CHAR[example_struct.c:20:19] data = ;
+    Declaration(tokens = 1, name = (null))
+      Struct(tokens = 2, name = Circle) 
+        WORD[example_struct.c:21:3] data = struct
+        WORD[example_struct.c:21:10] data = Circle
+      CHAR[example_struct.c:21:16] data = ;
+    CHAR[example_struct.c:22:1] data = >
+  CHAR[example_struct.c:22:2] data = ;
+

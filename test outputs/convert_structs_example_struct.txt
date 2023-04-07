@@ -1,0 +1,22 @@
+struct Triangle {
+  int a;
+  int b;
+  int c;
+};
+
+struct Rectangle {
+  int x;
+  int y;
+};
+
+struct Circle {
+  int r;
+};
+
+struct Figure { int tag; struct {
+  char* color;
+} head; union {
+  struct Triangle;
+  struct Rectangle;
+  struct Circle; } tail;
+};

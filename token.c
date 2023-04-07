@@ -115,6 +115,7 @@ void token_emit(Token* tok, Emitter* emitter) {
     case TOKEN_PREPROCESSOR:
       fprintf(emitter->file, "%.*s\n", (int)tok->length, tok->data);
       emitter->cursor.line_num++;
+      emitter->cursor.col_num = 0;
       break;
     case TOKEN_PREPROCESSOR_LINENUM:
       fprintf(emitter->file, "%.*s\n", (int)tok->length, tok->data);
@@ -141,6 +142,17 @@ void token_emit(Token* tok, Emitter* emitter) {
   }
 
   emitter->cursor.col_num += length_written;
+}
+
+void token_emit_cstr(const char* keyword, Emitter* emitter) {
+  if(*keyword == '\n') {
+    fprintf(emitter->file, "\n");
+    emitter->cursor.line_num++;
+    emitter->cursor.col_num = 0;
+    keyword++;
+  }
+  fprintf(emitter->file, "%s", keyword);
+  emitter->cursor.col_num += strlen(keyword);
 }
 
 bool token_eq_keyword(Token* tok, const char* keyword) {

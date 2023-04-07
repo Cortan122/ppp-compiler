@@ -44,11 +44,15 @@ typedef struct Emitter {
   Loc cursor;
   bool delete_repeted_empty_lines;
   bool ignore_next_indent;
+  bool convert_structs;
 } Emitter;
 
 void token_print_debug(Token* tok);
 void token_print_error(Token* tok, LogLevel level, const char* msg, const char* printf_arg);
+
 void token_emit(Token* tok, Emitter* emitter);
+void token_emit_cstr(const char* keyword, Emitter* emitter);
+
 bool token_eq_keyword(Token* tok, const char* keyword);
 bool token_eq_char(Token* tok, char val);
 Token token_from_keyword(const char* keyword);

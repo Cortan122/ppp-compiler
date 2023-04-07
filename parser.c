@@ -123,7 +123,10 @@ bool parser_parse_struct(Parser* p, Struct* res) {
   tok = parser_peek_token(p);
   if(tok.kind == TOKEN_WORD) {
     res->name = tok.data;
-    shput(p->structs, res->name, res);
+    Struct* val = shget(p->structs, res->name);
+    if(val == NULL || val->tokens_members_pos == 0) {
+      shput(p->structs, res->name, res);
+    }
     parser_transfer_token(p, &res->tokens);
 
     tok = parser_peek_token(p);
@@ -144,7 +147,22 @@ no_body:;
     parser_transfer_token(p, &res->tokens);
     res->tokens_subtypes_pos = arrlen(res->tokens);
 
-    parse_declaration_list_until(p, &res->tokens, &res->subtypes, '>');
+    if(res->tokens_members_pos) {
+      parse_declaration_list_until(p, &res->tokens, &res->subtypes, '>');
+    } else {
+      res->parameter = calloc(1, sizeof(Struct));
+      if(!parser_parse_type(p, res->parameter)) {
+        token_print_error(&tok, LOGLEVEL_ERROR, "expected type name, but found '%s'", tok.data);
+        exit(1);
+      }
+
+      tok = parser_peek_token(p);
+      if(!token_eq_char(&tok, '>')) {
+        token_print_error(&tok, LOGLEVEL_ERROR, "expected '>', but found '%s'", tok.data);
+        exit(1);
+      }
+      parser_transfer_token(p, &res->tokens);
+    }
   }
 
   return true;
@@ -164,6 +182,29 @@ bool parser_parse_type(Parser* p, Struct* res) {
   consume_type_modifiers(p, &res->tokens, true);
   res->is_primitive = true;
   return true;
+}
+
+Declaration parser_force_declaration(Parser* p) {
+  Token tok = parser_peek_token(p);
+  Declaration res = {0};
+  res.location = tok.location;
+  res.type = calloc(1, sizeof(Struct));
+
+  if(!parser_parse_type(p, res.type)) {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected type name, but found '%s'", tok.data);
+    exit(1);
+  }
+
+  tok = parser_peek_token(p);
+  if(tok.kind == TOKEN_WORD) {
+    res.name = tok.data;
+    parser_transfer_token(p, &res.tokens);
+  } else {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected parameter name, but found '%s'", tok.data);
+    exit(1);
+  }
+
+  return res;
 }
 
 Declaration parser_parse_declaration(Parser* p) {
@@ -191,29 +232,67 @@ Declaration parser_parse_declaration(Parser* p) {
       if(name.data && !token_eq_char(&name, ';')) {
         token_print_error(&name, LOGLEVEL_WARNING, "expected declaration name, but found '%s'", name.data);
       }
-      token_print_error(&last, LOGLEVEL_WARNING, "extracting the names of long declarations is not implemented yet%s", "");
+      token_print_error(&last, LOGLEVEL_WARNING, "extracting the names of function pointers is not implemented yet%s", "");
     }
   }
 
   return res;
 }
 
-bool parser_potential_function(Parser* p) {
-  bool res = false;
+bool parser_parse_function(Parser* p, Function* func) {
   Struct* tmp = calloc(1, sizeof(Struct));
   if(!parser_parse_type(p, tmp)) goto defer;
 
-  Token name = parser_peek_token(p);
-  if(name.kind == TOKEN_WORD) {
-    printf("Found name = %s\n", name.data);
-    declaration_print_struct(tmp, 0);
-    //
-  } else
+  Token tok = parser_peek_token(p);
+  if(tok.kind == TOKEN_WORD) {
+    func->decl.name = tok.data;
+    parser_transfer_token(p, &func->decl.tokens);
+  } else {
+    token_print_error(&tok, LOGLEVEL_INFO, "expected function name, but found '%s'", tok.data);
     goto defer;
+  }
 
+  tok = parser_peek_token(p);
+  if(token_eq_char(&tok, '<') && p->allow_fancy_structs) {
+    parser_transfer_token(p, &func->decl.tokens);
+    while(1) {
+      arrpush(func->fancy_params, parser_force_declaration(p));
+
+      tok = parser_peek_token(p);
+      if(token_eq_char(&tok, '>')) {
+        parser_transfer_token(p, &func->decl.tokens);
+        break;
+      } else if(token_eq_char(&tok, ',')) {
+        parser_transfer_token(p, &func->decl.tokens);
+      } else {
+        token_print_error(&tok, LOGLEVEL_ERROR, "expected ',' or '>', but found '%s'", tok.data);
+        exit(1);
+      }
+    }
+  }
+
+  tok = parser_peek_token(p);
+  if(token_eq_char(&tok, '(')) {
+    skip_bracket_block(p, &func->decl.tokens, ')', '\0');
+  } else {
+    goto defer;
+  }
+
+  tok = parser_peek_token(p);
+  if(token_eq_char(&tok, '{')) {
+    // TODO: we have to go deeper
+    skip_bracket_block(p, NULL, '}', '\0');
+  } else if(token_eq_char(&tok, ';')) {
+    parser_transfer_token(p, &func->decl.tokens);
+    func->is_header = true;
+  }
+
+  func->decl.type = tmp;
+  return true;
 defer:;
+  declaration_delete_function(func);
   declaration_delete_struct(tmp);
-  return res;
+  return false;
 }
 
 bool parser_parse_line(Parser* p) {
@@ -232,9 +311,12 @@ bool parser_parse_line(Parser* p) {
   } else if(token_eq_keyword(&tok, "struct")) {
     arrpush(p->top_level, parser_parse_declaration(p));
   } else {
-    // if(!parser_potential_function(p)) {
-    // }
-    skip_bracket_block(p, NULL, ';', '}');
+    Function func = {0};
+    if(!parser_parse_function(p, &func)) {
+      skip_bracket_block(p, NULL, ';', '}');
+    } else {
+      arrpush(p->funcs, func);
+    }
   }
 
   return true;
@@ -270,6 +352,11 @@ void parser_delete(Parser* p) {
     declaration_delete(&p->top_level[i]);
   }
   arrfree(p->top_level);
+
+  for(int i = 0; i < arrlen(p->funcs); i++) {
+    declaration_delete_function(&p->funcs[i]);
+  }
+  arrfree(p->funcs);
 
   shfree(p->typedefs);
   shfree(p->structs);

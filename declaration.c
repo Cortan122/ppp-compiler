@@ -29,12 +29,30 @@ void declaration_print_struct(Struct* s, int rec_lvl) {
     }
 
     if(s->tokens_subtypes_pos == i + 1) {
+      if(s->parameter) {
+        declaration_print_struct(s->parameter, rec_lvl);
+      }
       for(int j = 0; j < arrlen(s->subtypes); j++) {
         declaration_print_debug(&s->subtypes[j], rec_lvl);
       }
     }
   }
   rec_lvl--;
+}
+
+void declaration_print_function(Function* func, int rec_lvl) {
+  printf("%*sFunction(is_header = %d, prams = %d)\n", rec_lvl * 2, "", func->is_header, (int)arrlen(func->fancy_params));
+  rec_lvl++;
+  declaration_print_debug(&func->decl, rec_lvl);
+
+  for(int i = 0; i < arrlen(func->fancy_params); i++) {
+    declaration_print_debug(&func->fancy_params[i], rec_lvl);
+  }
+
+  rec_lvl--;
+  if(rec_lvl == 0) {
+    printf("\n");
+  }
 }
 
 void declaration_print_debug(Declaration* d, int rec_lvl) {
@@ -126,6 +144,15 @@ void declaration_emit(Declaration* d, Emitter* emitter) {
   }
 }
 
+void declaration_delete_function(Function* func) {
+  declaration_delete(&func->decl);
+
+  for(int i = 0; i < arrlen(func->fancy_params); i++) {
+    declaration_delete(&func->fancy_params[i]);
+  }
+  arrfree(func->fancy_params);
+}
+
 void declaration_delete_struct(Struct* s) {
   for(int i = 0; i < arrlen(s->tokens); i++) {
     free(s->tokens[i].data);
@@ -141,12 +168,17 @@ void declaration_delete_struct(Struct* s) {
     declaration_delete(&s->subtypes[i]);
   }
   arrfree(s->subtypes);
+
+  if(s->parameter) {
+    declaration_delete_struct(s->parameter);
+  }
   free(s);
 }
 
 void declaration_delete(Declaration* d) {
   if(d->type) {
     declaration_delete_struct(d->type);
+    d->type = NULL;
   }
 
   for(int i = 0; i < arrlen(d->tokens); i++) {

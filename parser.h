@@ -14,11 +14,15 @@ typedef struct Parser {
   Declaration* top_level;
   NamedType* typedefs;
   NamedType* structs;
+  Function* funcs;
   bool allow_fancy_structs;
 } Parser;
 
 bool parser_parse_struct(Parser* p, Struct* res);
+bool parser_parse_type(Parser* p, Struct* res);
+Declaration parser_force_declaration(Parser* p);
 Declaration parser_parse_declaration(Parser* p);
+bool parser_parse_function(Parser* p, Function* func);
 bool parser_parse_line(Parser* p);
 
 Token parser_peek_token(Parser* p);

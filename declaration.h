@@ -12,6 +12,8 @@ typedef struct Struct {
   struct Declaration* subtypes;
   int tokens_subtypes_pos;
   bool is_primitive;
+
+  struct Struct* parameter;
 } Struct;
 
 typedef struct Declaration {
@@ -22,6 +24,14 @@ typedef struct Declaration {
   bool is_typedef;
 } Declaration;
 
+typedef struct Function {
+  Declaration decl;
+
+  Declaration* fancy_params;
+  bool is_header;
+} Function;
+
+void declaration_print_function(Function* func, int rec_lvl);
 void declaration_print_struct(Struct* s, int rec_lvl);
 void declaration_print_debug(Declaration* d, int rec_lvl);
 
@@ -29,5 +39,6 @@ void declaration_emit_fancy_struct(Struct* s, Emitter* emitter);
 void declaration_emit_struct(Struct* s, Emitter* emitter);
 void declaration_emit(Declaration* d, Emitter* emitter);
 
+void declaration_delete_function(Function* func);
 void declaration_delete_struct(Struct* s);
 void declaration_delete(Declaration* d);

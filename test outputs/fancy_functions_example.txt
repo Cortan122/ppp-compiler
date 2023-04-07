@@ -1,0 +1,60 @@
+Function(is_header = 0, prams = 1)
+  Declaration(tokens = 6, name = PrintFigure)
+    WORD[example.c:8:1] data = void
+    WORD[example.c:8:6] data = PrintFigure
+    CHAR[example.c:8:17] data = <
+    CHAR[example.c:8:52] data = >
+    CHAR[example.c:8:53] data = (
+    CHAR[example.c:8:54] data = )
+  Declaration(tokens = 1, name = r)
+    Struct(tokens = 5, name = Figure) 
+      WORD[example.c:8:18] data = struct
+      WORD[example.c:8:25] data = Figure
+      CHAR[example.c:8:31] data = <
+      Struct(tokens = 2, name = Rectangle) 
+        WORD[example.c:8:32] data = struct
+        WORD[example.c:8:39] data = Rectangle
+      CHAR[example.c:8:48] data = >
+      CHAR[example.c:8:50] data = *
+    WORD[example.c:8:51] data = r
+
+Function(is_header = 0, prams = 1)
+  Declaration(tokens = 6, name = PrintFigure)
+    WORD[example.c:12:1] data = void
+    WORD[example.c:12:6] data = PrintFigure
+    CHAR[example.c:12:17] data = <
+    CHAR[example.c:12:51] data = >
+    CHAR[example.c:12:52] data = (
+    CHAR[example.c:12:53] data = )
+  Declaration(tokens = 1, name = t)
+    Struct(tokens = 5, name = Figure) 
+      WORD[example.c:12:18] data = struct
+      WORD[example.c:12:25] data = Figure
+      CHAR[example.c:12:31] data = <
+      Struct(tokens = 2, name = Triangle) 
+        WORD[example.c:12:32] data = struct
+        WORD[example.c:12:39] data = Triangle
+      CHAR[example.c:12:47] data = >
+      CHAR[example.c:12:49] data = *
+    WORD[example.c:12:50] data = t
+
+Function(is_header = 0, prams = 1)
+  Declaration(tokens = 6, name = PrintFigure)
+    WORD[example.c:16:1] data = void
+    WORD[example.c:16:6] data = PrintFigure
+    CHAR[example.c:16:17] data = <
+    CHAR[example.c:16:49] data = >
+    CHAR[example.c:16:50] data = (
+    CHAR[example.c:16:51] data = )
+  Declaration(tokens = 1, name = c)
+    Struct(tokens = 5, name = Figure) 
+      WORD[example.c:16:18] data = struct
+      WORD[example.c:16:25] data = Figure
+      CHAR[example.c:16:31] data = <
+      Struct(tokens = 2, name = Circle) 
+        WORD[example.c:16:32] data = struct
+        WORD[example.c:16:39] data = Circle
+      CHAR[example.c:16:45] data = >
+      CHAR[example.c:16:47] data = *
+    WORD[example.c:16:48] data = c
+

@@ -1,0 +1,4627 @@
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = alloca)
+    WORD[stddef.h:37:1] data = void
+    CHAR[stddef.h:37:6] data = *
+    WORD[stddef.h:37:7] data = alloca
+    CHAR[stddef.h:37:13] data = (
+    WORD[stddef.h:37:14] data = size_t
+    WORD[stddef.h:37:21] data = size
+    CHAR[stddef.h:37:25] data = )
+    CHAR[stddef.h:37:26] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = __va_start)
+    WORD[stdarg.h:21:1] data = void
+    WORD[stdarg.h:21:6] data = __va_start
+    CHAR[stdarg.h:21:16] data = (
+    WORD[stdarg.h:21:17] data = __va_list_struct
+    CHAR[stdarg.h:21:34] data = *
+    WORD[stdarg.h:21:35] data = ap
+    CHAR[stdarg.h:21:37] data = ,
+    WORD[stdarg.h:21:39] data = void
+    CHAR[stdarg.h:21:44] data = *
+    WORD[stdarg.h:21:45] data = fp
+    CHAR[stdarg.h:21:47] data = )
+    CHAR[stdarg.h:21:48] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = __va_arg)
+    WORD[stdarg.h:22:1] data = void
+    CHAR[stdarg.h:22:6] data = *
+    WORD[stdarg.h:22:7] data = __va_arg
+    CHAR[stdarg.h:22:15] data = (
+    WORD[stdarg.h:22:16] data = __va_list_struct
+    CHAR[stdarg.h:22:33] data = *
+    WORD[stdarg.h:22:34] data = ap
+    CHAR[stdarg.h:22:36] data = ,
+    WORD[stdarg.h:22:38] data = int
+    WORD[stdarg.h:22:42] data = arg_type
+    CHAR[stdarg.h:22:50] data = ,
+    WORD[stdarg.h:22:52] data = int
+    WORD[stdarg.h:22:56] data = size
+    CHAR[stdarg.h:22:60] data = ,
+    WORD[stdarg.h:22:62] data = int
+    WORD[stdarg.h:22:66] data = align
+    CHAR[stdarg.h:22:71] data = )
+    CHAR[stdarg.h:22:72] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = remove)
+    WORD[stdio.h:152:1] data = extern
+    WORD[stdio.h:152:8] data = int
+    WORD[stdio.h:152:12] data = remove
+    CHAR[stdio.h:152:19] data = (
+    WORD[stdio.h:152:20] data = const
+    WORD[stdio.h:152:26] data = char
+    CHAR[stdio.h:152:31] data = *
+    WORD[stdio.h:152:32] data = __filename
+    CHAR[stdio.h:152:42] data = )
+    CHAR[stdio.h:152:44] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = rename)
+    WORD[stdio.h:154:1] data = extern
+    WORD[stdio.h:154:8] data = int
+    WORD[stdio.h:154:12] data = rename
+    CHAR[stdio.h:154:19] data = (
+    WORD[stdio.h:154:20] data = const
+    WORD[stdio.h:154:26] data = char
+    CHAR[stdio.h:154:31] data = *
+    WORD[stdio.h:154:32] data = __old
+    CHAR[stdio.h:154:37] data = ,
+    WORD[stdio.h:154:39] data = const
+    WORD[stdio.h:154:45] data = char
+    CHAR[stdio.h:154:50] data = *
+    WORD[stdio.h:154:51] data = __new
+    CHAR[stdio.h:154:56] data = )
+    CHAR[stdio.h:154:58] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 21, name = renameat)
+    WORD[stdio.h:158:1] data = extern
+    WORD[stdio.h:158:8] data = int
+    WORD[stdio.h:158:12] data = renameat
+    CHAR[stdio.h:158:21] data = (
+    WORD[stdio.h:158:22] data = int
+    WORD[stdio.h:158:26] data = __oldfd
+    CHAR[stdio.h:158:33] data = ,
+    WORD[stdio.h:158:35] data = const
+    WORD[stdio.h:158:41] data = char
+    CHAR[stdio.h:158:46] data = *
+    WORD[stdio.h:158:47] data = __old
+    CHAR[stdio.h:158:52] data = ,
+    WORD[stdio.h:158:54] data = int
+    WORD[stdio.h:158:58] data = __newfd
+    CHAR[stdio.h:158:65] data = ,
+    WORD[stdio.h:159:8] data = const
+    WORD[stdio.h:159:14] data = char
+    CHAR[stdio.h:159:19] data = *
+    WORD[stdio.h:159:20] data = __new
+    CHAR[stdio.h:159:25] data = )
+    CHAR[stdio.h:159:27] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = fclose)
+    WORD[stdio.h:178:1] data = extern
+    WORD[stdio.h:178:8] data = int
+    WORD[stdio.h:178:12] data = fclose
+    CHAR[stdio.h:178:19] data = (
+    WORD[stdio.h:178:20] data = FILE
+    CHAR[stdio.h:178:25] data = *
+    WORD[stdio.h:178:26] data = __stream
+    CHAR[stdio.h:178:34] data = )
+    CHAR[stdio.h:178:35] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = tmpfile)
+    WORD[stdio.h:188:1] data = extern
+    WORD[stdio.h:188:8] data = FILE
+    CHAR[stdio.h:188:13] data = *
+    WORD[stdio.h:188:14] data = tmpfile
+    CHAR[stdio.h:188:22] data = (
+    WORD[stdio.h:188:23] data = void
+    CHAR[stdio.h:188:27] data = )
+    CHAR[stdio.h:189:5] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 11, name = tmpnam)
+    WORD[stdio.h:205:1] data = extern
+    WORD[stdio.h:205:8] data = char
+    CHAR[stdio.h:205:13] data = *
+    WORD[stdio.h:205:14] data = tmpnam
+    CHAR[stdio.h:205:21] data = (
+    WORD[stdio.h:205:22] data = char
+    CHAR[stdio.h:205:26] data = [
+    NUMBER[stdio.h:205:27] data = 20
+    CHAR[stdio.h:205:29] data = ]
+    CHAR[stdio.h:205:30] data = )
+    CHAR[stdio.h:205:33] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = tmpnam_r)
+    WORD[stdio.h:210:1] data = extern
+    WORD[stdio.h:210:8] data = char
+    CHAR[stdio.h:210:13] data = *
+    WORD[stdio.h:210:14] data = tmpnam_r
+    CHAR[stdio.h:210:23] data = (
+    WORD[stdio.h:210:24] data = char
+    WORD[stdio.h:210:29] data = __s
+    CHAR[stdio.h:210:32] data = [
+    NUMBER[stdio.h:210:33] data = 20
+    CHAR[stdio.h:210:35] data = ]
+    CHAR[stdio.h:210:36] data = )
+    CHAR[stdio.h:210:39] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = tempnam)
+    WORD[stdio.h:222:1] data = extern
+    WORD[stdio.h:222:8] data = char
+    CHAR[stdio.h:222:13] data = *
+    WORD[stdio.h:222:14] data = tempnam
+    CHAR[stdio.h:222:22] data = (
+    WORD[stdio.h:222:23] data = const
+    WORD[stdio.h:222:29] data = char
+    CHAR[stdio.h:222:34] data = *
+    WORD[stdio.h:222:35] data = __dir
+    CHAR[stdio.h:222:40] data = ,
+    WORD[stdio.h:222:42] data = const
+    WORD[stdio.h:222:48] data = char
+    CHAR[stdio.h:222:53] data = *
+    WORD[stdio.h:222:54] data = __pfx
+    CHAR[stdio.h:222:59] data = )
+    CHAR[stdio.h:223:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = fflush)
+    WORD[stdio.h:230:1] data = extern
+    WORD[stdio.h:230:8] data = int
+    WORD[stdio.h:230:12] data = fflush
+    CHAR[stdio.h:230:19] data = (
+    WORD[stdio.h:230:20] data = FILE
+    CHAR[stdio.h:230:25] data = *
+    WORD[stdio.h:230:26] data = __stream
+    CHAR[stdio.h:230:34] data = )
+    CHAR[stdio.h:230:35] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = fflush_unlocked)
+    WORD[stdio.h:239:1] data = extern
+    WORD[stdio.h:239:8] data = int
+    WORD[stdio.h:239:12] data = fflush_unlocked
+    CHAR[stdio.h:239:28] data = (
+    WORD[stdio.h:239:29] data = FILE
+    CHAR[stdio.h:239:34] data = *
+    WORD[stdio.h:239:35] data = __stream
+    CHAR[stdio.h:239:43] data = )
+    CHAR[stdio.h:239:44] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = fopen)
+    WORD[stdio.h:258:1] data = extern
+    WORD[stdio.h:258:8] data = FILE
+    CHAR[stdio.h:258:13] data = *
+    WORD[stdio.h:258:14] data = fopen
+    CHAR[stdio.h:258:20] data = (
+    WORD[stdio.h:258:21] data = const
+    WORD[stdio.h:258:27] data = char
+    CHAR[stdio.h:258:32] data = *
+    WORD[stdio.h:258:33] data = restrict
+    WORD[stdio.h:258:42] data = __filename
+    CHAR[stdio.h:258:52] data = ,
+    WORD[stdio.h:259:7] data = const
+    WORD[stdio.h:259:13] data = char
+    CHAR[stdio.h:259:18] data = *
+    WORD[stdio.h:259:19] data = restrict
+    WORD[stdio.h:259:28] data = __modes
+    CHAR[stdio.h:259:35] data = )
+    CHAR[stdio.h:260:5] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = freopen)
+    WORD[stdio.h:265:1] data = extern
+    WORD[stdio.h:265:8] data = FILE
+    CHAR[stdio.h:265:13] data = *
+    WORD[stdio.h:265:14] data = freopen
+    CHAR[stdio.h:265:22] data = (
+    WORD[stdio.h:265:23] data = const
+    WORD[stdio.h:265:29] data = char
+    CHAR[stdio.h:265:34] data = *
+    WORD[stdio.h:265:35] data = restrict
+    WORD[stdio.h:265:44] data = __filename
+    CHAR[stdio.h:265:54] data = ,
+    WORD[stdio.h:266:9] data = const
+    WORD[stdio.h:266:15] data = char
+    CHAR[stdio.h:266:20] data = *
+    WORD[stdio.h:266:21] data = restrict
+    WORD[stdio.h:266:30] data = __modes
+    CHAR[stdio.h:266:37] data = ,
+    WORD[stdio.h:267:9] data = FILE
+    CHAR[stdio.h:267:14] data = *
+    WORD[stdio.h:267:15] data = restrict
+    WORD[stdio.h:267:24] data = __stream
+    CHAR[stdio.h:267:32] data = )
+    CHAR[stdio.h:267:34] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = fdopen)
+    WORD[stdio.h:293:1] data = extern
+    WORD[stdio.h:293:8] data = FILE
+    CHAR[stdio.h:293:13] data = *
+    WORD[stdio.h:293:14] data = fdopen
+    CHAR[stdio.h:293:21] data = (
+    WORD[stdio.h:293:22] data = int
+    WORD[stdio.h:293:26] data = __fd
+    CHAR[stdio.h:293:30] data = ,
+    WORD[stdio.h:293:32] data = const
+    WORD[stdio.h:293:38] data = char
+    CHAR[stdio.h:293:43] data = *
+    WORD[stdio.h:293:44] data = __modes
+    CHAR[stdio.h:293:51] data = )
+    CHAR[stdio.h:294:5] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = fmemopen)
+    WORD[stdio.h:308:1] data = extern
+    WORD[stdio.h:308:8] data = FILE
+    CHAR[stdio.h:308:13] data = *
+    WORD[stdio.h:308:14] data = fmemopen
+    CHAR[stdio.h:308:23] data = (
+    WORD[stdio.h:308:24] data = void
+    CHAR[stdio.h:308:29] data = *
+    WORD[stdio.h:308:30] data = __s
+    CHAR[stdio.h:308:33] data = ,
+    WORD[stdio.h:308:35] data = size_t
+    WORD[stdio.h:308:42] data = __len
+    CHAR[stdio.h:308:47] data = ,
+    WORD[stdio.h:308:49] data = const
+    WORD[stdio.h:308:55] data = char
+    CHAR[stdio.h:308:60] data = *
+    WORD[stdio.h:308:61] data = __modes
+    CHAR[stdio.h:308:68] data = )
+    CHAR[stdio.h:309:6] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = open_memstream)
+    WORD[stdio.h:314:1] data = extern
+    WORD[stdio.h:314:8] data = FILE
+    CHAR[stdio.h:314:13] data = *
+    WORD[stdio.h:314:14] data = open_memstream
+    CHAR[stdio.h:314:29] data = (
+    WORD[stdio.h:314:30] data = char
+    CHAR[stdio.h:314:35] data = *
+    CHAR[stdio.h:314:36] data = *
+    WORD[stdio.h:314:37] data = __bufloc
+    CHAR[stdio.h:314:45] data = ,
+    WORD[stdio.h:314:47] data = size_t
+    CHAR[stdio.h:314:54] data = *
+    WORD[stdio.h:314:55] data = __sizeloc
+    CHAR[stdio.h:314:64] data = )
+    CHAR[stdio.h:315:5] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = setbuf)
+    WORD[stdio.h:328:1] data = extern
+    WORD[stdio.h:328:8] data = void
+    WORD[stdio.h:328:13] data = setbuf
+    CHAR[stdio.h:328:20] data = (
+    WORD[stdio.h:328:21] data = FILE
+    CHAR[stdio.h:328:26] data = *
+    WORD[stdio.h:328:27] data = restrict
+    WORD[stdio.h:328:36] data = __stream
+    CHAR[stdio.h:328:44] data = ,
+    WORD[stdio.h:328:46] data = char
+    CHAR[stdio.h:328:51] data = *
+    WORD[stdio.h:328:52] data = restrict
+    WORD[stdio.h:328:61] data = __buf
+    CHAR[stdio.h:328:66] data = )
+    CHAR[stdio.h:328:68] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 21, name = setvbuf)
+    WORD[stdio.h:332:1] data = extern
+    WORD[stdio.h:332:8] data = int
+    WORD[stdio.h:332:12] data = setvbuf
+    CHAR[stdio.h:332:20] data = (
+    WORD[stdio.h:332:21] data = FILE
+    CHAR[stdio.h:332:26] data = *
+    WORD[stdio.h:332:27] data = restrict
+    WORD[stdio.h:332:36] data = __stream
+    CHAR[stdio.h:332:44] data = ,
+    WORD[stdio.h:332:46] data = char
+    CHAR[stdio.h:332:51] data = *
+    WORD[stdio.h:332:52] data = restrict
+    WORD[stdio.h:332:61] data = __buf
+    CHAR[stdio.h:332:66] data = ,
+    WORD[stdio.h:333:7] data = int
+    WORD[stdio.h:333:11] data = __modes
+    CHAR[stdio.h:333:18] data = ,
+    WORD[stdio.h:333:20] data = size_t
+    WORD[stdio.h:333:27] data = __n
+    CHAR[stdio.h:333:30] data = )
+    CHAR[stdio.h:333:32] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = setbuffer)
+    WORD[stdio.h:338:1] data = extern
+    WORD[stdio.h:338:8] data = void
+    WORD[stdio.h:338:13] data = setbuffer
+    CHAR[stdio.h:338:23] data = (
+    WORD[stdio.h:338:24] data = FILE
+    CHAR[stdio.h:338:29] data = *
+    WORD[stdio.h:338:30] data = restrict
+    WORD[stdio.h:338:39] data = __stream
+    CHAR[stdio.h:338:47] data = ,
+    WORD[stdio.h:338:49] data = char
+    CHAR[stdio.h:338:54] data = *
+    WORD[stdio.h:338:55] data = restrict
+    WORD[stdio.h:338:64] data = __buf
+    CHAR[stdio.h:338:69] data = ,
+    WORD[stdio.h:339:10] data = size_t
+    WORD[stdio.h:339:17] data = __size
+    CHAR[stdio.h:339:23] data = )
+    CHAR[stdio.h:339:25] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = setlinebuf)
+    WORD[stdio.h:342:1] data = extern
+    WORD[stdio.h:342:8] data = void
+    WORD[stdio.h:342:13] data = setlinebuf
+    CHAR[stdio.h:342:24] data = (
+    WORD[stdio.h:342:25] data = FILE
+    CHAR[stdio.h:342:30] data = *
+    WORD[stdio.h:342:31] data = __stream
+    CHAR[stdio.h:342:39] data = )
+    CHAR[stdio.h:342:41] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = fprintf)
+    WORD[stdio.h:350:1] data = extern
+    WORD[stdio.h:350:8] data = int
+    WORD[stdio.h:350:12] data = fprintf
+    CHAR[stdio.h:350:20] data = (
+    WORD[stdio.h:350:21] data = FILE
+    CHAR[stdio.h:350:26] data = *
+    WORD[stdio.h:350:27] data = restrict
+    WORD[stdio.h:350:36] data = __stream
+    CHAR[stdio.h:350:44] data = ,
+    WORD[stdio.h:351:7] data = const
+    WORD[stdio.h:351:13] data = char
+    CHAR[stdio.h:351:18] data = *
+    WORD[stdio.h:351:19] data = restrict
+    WORD[stdio.h:351:28] data = __format
+    CHAR[stdio.h:351:36] data = ,
+    CHAR[stdio.h:351:38] data = .
+    CHAR[stdio.h:351:39] data = .
+    CHAR[stdio.h:351:40] data = .
+    CHAR[stdio.h:351:41] data = )
+    CHAR[stdio.h:351:42] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = printf)
+    WORD[stdio.h:356:1] data = extern
+    WORD[stdio.h:356:8] data = int
+    WORD[stdio.h:356:12] data = printf
+    CHAR[stdio.h:356:19] data = (
+    WORD[stdio.h:356:20] data = const
+    WORD[stdio.h:356:26] data = char
+    CHAR[stdio.h:356:31] data = *
+    WORD[stdio.h:356:32] data = restrict
+    WORD[stdio.h:356:41] data = __format
+    CHAR[stdio.h:356:49] data = ,
+    CHAR[stdio.h:356:51] data = .
+    CHAR[stdio.h:356:52] data = .
+    CHAR[stdio.h:356:53] data = .
+    CHAR[stdio.h:356:54] data = )
+    CHAR[stdio.h:356:55] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = sprintf)
+    WORD[stdio.h:358:1] data = extern
+    WORD[stdio.h:358:8] data = int
+    WORD[stdio.h:358:12] data = sprintf
+    CHAR[stdio.h:358:20] data = (
+    WORD[stdio.h:358:21] data = char
+    CHAR[stdio.h:358:26] data = *
+    WORD[stdio.h:358:27] data = restrict
+    WORD[stdio.h:358:36] data = __s
+    CHAR[stdio.h:358:39] data = ,
+    WORD[stdio.h:359:7] data = const
+    WORD[stdio.h:359:13] data = char
+    CHAR[stdio.h:359:18] data = *
+    WORD[stdio.h:359:19] data = restrict
+    WORD[stdio.h:359:28] data = __format
+    CHAR[stdio.h:359:36] data = ,
+    CHAR[stdio.h:359:38] data = .
+    CHAR[stdio.h:359:39] data = .
+    CHAR[stdio.h:359:40] data = .
+    CHAR[stdio.h:359:41] data = )
+    CHAR[stdio.h:359:43] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 19, name = vfprintf)
+    WORD[stdio.h:365:1] data = extern
+    WORD[stdio.h:365:8] data = int
+    WORD[stdio.h:365:12] data = vfprintf
+    CHAR[stdio.h:365:21] data = (
+    WORD[stdio.h:365:22] data = FILE
+    CHAR[stdio.h:365:27] data = *
+    WORD[stdio.h:365:28] data = restrict
+    WORD[stdio.h:365:37] data = __s
+    CHAR[stdio.h:365:40] data = ,
+    WORD[stdio.h:365:42] data = const
+    WORD[stdio.h:365:48] data = char
+    CHAR[stdio.h:365:53] data = *
+    WORD[stdio.h:365:54] data = restrict
+    WORD[stdio.h:365:63] data = __format
+    CHAR[stdio.h:365:71] data = ,
+    WORD[stdio.h:366:8] data = __gnuc_va_list
+    WORD[stdio.h:366:23] data = __arg
+    CHAR[stdio.h:366:28] data = )
+    CHAR[stdio.h:366:29] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = vprintf)
+    WORD[stdio.h:371:1] data = extern
+    WORD[stdio.h:371:8] data = int
+    WORD[stdio.h:371:12] data = vprintf
+    CHAR[stdio.h:371:20] data = (
+    WORD[stdio.h:371:21] data = const
+    WORD[stdio.h:371:27] data = char
+    CHAR[stdio.h:371:32] data = *
+    WORD[stdio.h:371:33] data = restrict
+    WORD[stdio.h:371:42] data = __format
+    CHAR[stdio.h:371:50] data = ,
+    WORD[stdio.h:371:52] data = __gnuc_va_list
+    WORD[stdio.h:371:67] data = __arg
+    CHAR[stdio.h:371:72] data = )
+    CHAR[stdio.h:371:73] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 19, name = vsprintf)
+    WORD[stdio.h:373:1] data = extern
+    WORD[stdio.h:373:8] data = int
+    WORD[stdio.h:373:12] data = vsprintf
+    CHAR[stdio.h:373:21] data = (
+    WORD[stdio.h:373:22] data = char
+    CHAR[stdio.h:373:27] data = *
+    WORD[stdio.h:373:28] data = restrict
+    WORD[stdio.h:373:37] data = __s
+    CHAR[stdio.h:373:40] data = ,
+    WORD[stdio.h:373:42] data = const
+    WORD[stdio.h:373:48] data = char
+    CHAR[stdio.h:373:53] data = *
+    WORD[stdio.h:373:54] data = restrict
+    WORD[stdio.h:373:63] data = __format
+    CHAR[stdio.h:373:71] data = ,
+    WORD[stdio.h:374:8] data = __gnuc_va_list
+    WORD[stdio.h:374:23] data = __arg
+    CHAR[stdio.h:374:28] data = )
+    CHAR[stdio.h:374:30] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = snprintf)
+    WORD[stdio.h:378:1] data = extern
+    WORD[stdio.h:378:8] data = int
+    WORD[stdio.h:378:12] data = snprintf
+    CHAR[stdio.h:378:21] data = (
+    WORD[stdio.h:378:22] data = char
+    CHAR[stdio.h:378:27] data = *
+    WORD[stdio.h:378:28] data = restrict
+    WORD[stdio.h:378:37] data = __s
+    CHAR[stdio.h:378:40] data = ,
+    WORD[stdio.h:378:42] data = size_t
+    WORD[stdio.h:378:49] data = __maxlen
+    CHAR[stdio.h:378:57] data = ,
+    WORD[stdio.h:379:8] data = const
+    WORD[stdio.h:379:14] data = char
+    CHAR[stdio.h:379:19] data = *
+    WORD[stdio.h:379:20] data = restrict
+    WORD[stdio.h:379:29] data = __format
+    CHAR[stdio.h:379:37] data = ,
+    CHAR[stdio.h:379:39] data = .
+    CHAR[stdio.h:379:40] data = .
+    CHAR[stdio.h:379:41] data = .
+    CHAR[stdio.h:379:42] data = )
+    CHAR[stdio.h:380:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 22, name = vsnprintf)
+    WORD[stdio.h:382:1] data = extern
+    WORD[stdio.h:382:8] data = int
+    WORD[stdio.h:382:12] data = vsnprintf
+    CHAR[stdio.h:382:22] data = (
+    WORD[stdio.h:382:23] data = char
+    CHAR[stdio.h:382:28] data = *
+    WORD[stdio.h:382:29] data = restrict
+    WORD[stdio.h:382:38] data = __s
+    CHAR[stdio.h:382:41] data = ,
+    WORD[stdio.h:382:43] data = size_t
+    WORD[stdio.h:382:50] data = __maxlen
+    CHAR[stdio.h:382:58] data = ,
+    WORD[stdio.h:383:9] data = const
+    WORD[stdio.h:383:15] data = char
+    CHAR[stdio.h:383:20] data = *
+    WORD[stdio.h:383:21] data = restrict
+    WORD[stdio.h:383:30] data = __format
+    CHAR[stdio.h:383:38] data = ,
+    WORD[stdio.h:383:40] data = __gnuc_va_list
+    WORD[stdio.h:383:55] data = __arg
+    CHAR[stdio.h:383:60] data = )
+    CHAR[stdio.h:384:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = vdprintf)
+    WORD[stdio.h:403:1] data = extern
+    WORD[stdio.h:403:8] data = int
+    WORD[stdio.h:403:12] data = vdprintf
+    CHAR[stdio.h:403:21] data = (
+    WORD[stdio.h:403:22] data = int
+    WORD[stdio.h:403:26] data = __fd
+    CHAR[stdio.h:403:30] data = ,
+    WORD[stdio.h:403:32] data = const
+    WORD[stdio.h:403:38] data = char
+    CHAR[stdio.h:403:43] data = *
+    WORD[stdio.h:403:44] data = restrict
+    WORD[stdio.h:403:53] data = __fmt
+    CHAR[stdio.h:403:58] data = ,
+    WORD[stdio.h:404:8] data = __gnuc_va_list
+    WORD[stdio.h:404:23] data = __arg
+    CHAR[stdio.h:404:28] data = )
+    CHAR[stdio.h:405:6] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = dprintf)
+    WORD[stdio.h:406:1] data = extern
+    WORD[stdio.h:406:8] data = int
+    WORD[stdio.h:406:12] data = dprintf
+    CHAR[stdio.h:406:20] data = (
+    WORD[stdio.h:406:21] data = int
+    WORD[stdio.h:406:25] data = __fd
+    CHAR[stdio.h:406:29] data = ,
+    WORD[stdio.h:406:31] data = const
+    WORD[stdio.h:406:37] data = char
+    CHAR[stdio.h:406:42] data = *
+    WORD[stdio.h:406:43] data = restrict
+    WORD[stdio.h:406:52] data = __fmt
+    CHAR[stdio.h:406:57] data = ,
+    CHAR[stdio.h:406:59] data = .
+    CHAR[stdio.h:406:60] data = .
+    CHAR[stdio.h:406:61] data = .
+    CHAR[stdio.h:406:62] data = )
+    CHAR[stdio.h:407:6] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = fscanf)
+    WORD[stdio.h:415:1] data = extern
+    WORD[stdio.h:415:8] data = int
+    WORD[stdio.h:415:12] data = fscanf
+    CHAR[stdio.h:415:19] data = (
+    WORD[stdio.h:415:20] data = FILE
+    CHAR[stdio.h:415:25] data = *
+    WORD[stdio.h:415:26] data = restrict
+    WORD[stdio.h:415:35] data = __stream
+    CHAR[stdio.h:415:43] data = ,
+    WORD[stdio.h:416:6] data = const
+    WORD[stdio.h:416:12] data = char
+    CHAR[stdio.h:416:17] data = *
+    WORD[stdio.h:416:18] data = restrict
+    WORD[stdio.h:416:27] data = __format
+    CHAR[stdio.h:416:35] data = ,
+    CHAR[stdio.h:416:37] data = .
+    CHAR[stdio.h:416:38] data = .
+    CHAR[stdio.h:416:39] data = .
+    CHAR[stdio.h:416:40] data = )
+    CHAR[stdio.h:416:42] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = scanf)
+    WORD[stdio.h:421:1] data = extern
+    WORD[stdio.h:421:8] data = int
+    WORD[stdio.h:421:12] data = scanf
+    CHAR[stdio.h:421:18] data = (
+    WORD[stdio.h:421:19] data = const
+    WORD[stdio.h:421:25] data = char
+    CHAR[stdio.h:421:30] data = *
+    WORD[stdio.h:421:31] data = restrict
+    WORD[stdio.h:421:40] data = __format
+    CHAR[stdio.h:421:48] data = ,
+    CHAR[stdio.h:421:50] data = .
+    CHAR[stdio.h:421:51] data = .
+    CHAR[stdio.h:421:52] data = .
+    CHAR[stdio.h:421:53] data = )
+    CHAR[stdio.h:421:55] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 21, name = sscanf)
+    WORD[stdio.h:423:1] data = extern
+    WORD[stdio.h:423:8] data = int
+    WORD[stdio.h:423:12] data = sscanf
+    CHAR[stdio.h:423:19] data = (
+    WORD[stdio.h:423:20] data = const
+    WORD[stdio.h:423:26] data = char
+    CHAR[stdio.h:423:31] data = *
+    WORD[stdio.h:423:32] data = restrict
+    WORD[stdio.h:423:41] data = __s
+    CHAR[stdio.h:423:44] data = ,
+    WORD[stdio.h:424:6] data = const
+    WORD[stdio.h:424:12] data = char
+    CHAR[stdio.h:424:17] data = *
+    WORD[stdio.h:424:18] data = restrict
+    WORD[stdio.h:424:27] data = __format
+    CHAR[stdio.h:424:35] data = ,
+    CHAR[stdio.h:424:37] data = .
+    CHAR[stdio.h:424:38] data = .
+    CHAR[stdio.h:424:39] data = .
+    CHAR[stdio.h:424:40] data = )
+    CHAR[stdio.h:424:42] data = ;
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 19, name = fscanf)
+    WORD[stdio.h:434:1] data = extern
+    WORD[stdio.h:434:8] data = int
+    WORD[stdio.h:434:12] data = fscanf
+    CHAR[stdio.h:434:19] data = (
+    WORD[stdio.h:434:20] data = FILE
+    CHAR[stdio.h:434:25] data = *
+    WORD[stdio.h:434:26] data = restrict
+    WORD[stdio.h:434:35] data = __stream
+    CHAR[stdio.h:434:43] data = ,
+    WORD[stdio.h:434:45] data = const
+    WORD[stdio.h:434:51] data = char
+    CHAR[stdio.h:434:56] data = *
+    WORD[stdio.h:434:57] data = restrict
+    WORD[stdio.h:434:66] data = __format
+    CHAR[stdio.h:434:74] data = ,
+    CHAR[stdio.h:434:76] data = .
+    CHAR[stdio.h:434:77] data = .
+    CHAR[stdio.h:434:78] data = .
+    CHAR[stdio.h:434:79] data = )
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 14, name = scanf)
+    WORD[stdio.h:437:1] data = extern
+    WORD[stdio.h:437:8] data = int
+    WORD[stdio.h:437:12] data = scanf
+    CHAR[stdio.h:437:18] data = (
+    WORD[stdio.h:437:19] data = const
+    WORD[stdio.h:437:25] data = char
+    CHAR[stdio.h:437:30] data = *
+    WORD[stdio.h:437:31] data = restrict
+    WORD[stdio.h:437:40] data = __format
+    CHAR[stdio.h:437:48] data = ,
+    CHAR[stdio.h:437:50] data = .
+    CHAR[stdio.h:437:51] data = .
+    CHAR[stdio.h:437:52] data = .
+    CHAR[stdio.h:437:53] data = )
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 20, name = sscanf)
+    WORD[stdio.h:439:1] data = extern
+    WORD[stdio.h:439:8] data = int
+    WORD[stdio.h:439:12] data = sscanf
+    CHAR[stdio.h:439:19] data = (
+    WORD[stdio.h:439:20] data = const
+    WORD[stdio.h:439:26] data = char
+    CHAR[stdio.h:439:31] data = *
+    WORD[stdio.h:439:32] data = restrict
+    WORD[stdio.h:439:41] data = __s
+    CHAR[stdio.h:439:44] data = ,
+    WORD[stdio.h:439:46] data = const
+    WORD[stdio.h:439:52] data = char
+    CHAR[stdio.h:439:57] data = *
+    WORD[stdio.h:439:58] data = restrict
+    WORD[stdio.h:439:67] data = __format
+    CHAR[stdio.h:439:75] data = ,
+    CHAR[stdio.h:439:77] data = .
+    CHAR[stdio.h:439:78] data = .
+    CHAR[stdio.h:439:79] data = .
+    CHAR[stdio.h:439:80] data = )
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 19, name = vfscanf)
+    WORD[stdio.h:459:1] data = extern
+    WORD[stdio.h:459:8] data = int
+    WORD[stdio.h:459:12] data = vfscanf
+    CHAR[stdio.h:459:20] data = (
+    WORD[stdio.h:459:21] data = FILE
+    CHAR[stdio.h:459:26] data = *
+    WORD[stdio.h:459:27] data = restrict
+    WORD[stdio.h:459:36] data = __s
+    CHAR[stdio.h:459:39] data = ,
+    WORD[stdio.h:459:41] data = const
+    WORD[stdio.h:459:47] data = char
+    CHAR[stdio.h:459:52] data = *
+    WORD[stdio.h:459:53] data = restrict
+    WORD[stdio.h:459:62] data = __format
+    CHAR[stdio.h:459:70] data = ,
+    WORD[stdio.h:460:7] data = __gnuc_va_list
+    WORD[stdio.h:460:22] data = __arg
+    CHAR[stdio.h:460:27] data = )
+    CHAR[stdio.h:461:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = vscanf)
+    WORD[stdio.h:467:1] data = extern
+    WORD[stdio.h:467:8] data = int
+    WORD[stdio.h:467:12] data = vscanf
+    CHAR[stdio.h:467:19] data = (
+    WORD[stdio.h:467:20] data = const
+    WORD[stdio.h:467:26] data = char
+    CHAR[stdio.h:467:31] data = *
+    WORD[stdio.h:467:32] data = restrict
+    WORD[stdio.h:467:41] data = __format
+    CHAR[stdio.h:467:49] data = ,
+    WORD[stdio.h:467:51] data = __gnuc_va_list
+    WORD[stdio.h:467:66] data = __arg
+    CHAR[stdio.h:467:71] data = )
+    CHAR[stdio.h:468:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = vsscanf)
+    WORD[stdio.h:471:1] data = extern
+    WORD[stdio.h:471:8] data = int
+    WORD[stdio.h:471:12] data = vsscanf
+    CHAR[stdio.h:471:20] data = (
+    WORD[stdio.h:471:21] data = const
+    WORD[stdio.h:471:27] data = char
+    CHAR[stdio.h:471:32] data = *
+    WORD[stdio.h:471:33] data = restrict
+    WORD[stdio.h:471:42] data = __s
+    CHAR[stdio.h:471:45] data = ,
+    WORD[stdio.h:472:7] data = const
+    WORD[stdio.h:472:13] data = char
+    CHAR[stdio.h:472:18] data = *
+    WORD[stdio.h:472:19] data = restrict
+    WORD[stdio.h:472:28] data = __format
+    CHAR[stdio.h:472:36] data = ,
+    WORD[stdio.h:472:38] data = __gnuc_va_list
+    WORD[stdio.h:472:53] data = __arg
+    CHAR[stdio.h:472:58] data = )
+    CHAR[stdio.h:473:7] data = ;
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 18, name = vfscanf)
+    WORD[stdio.h:479:1] data = extern
+    WORD[stdio.h:479:8] data = int
+    WORD[stdio.h:479:12] data = vfscanf
+    CHAR[stdio.h:479:20] data = (
+    WORD[stdio.h:479:21] data = FILE
+    CHAR[stdio.h:479:26] data = *
+    WORD[stdio.h:479:27] data = restrict
+    WORD[stdio.h:479:36] data = __s
+    CHAR[stdio.h:479:39] data = ,
+    WORD[stdio.h:479:41] data = const
+    WORD[stdio.h:479:47] data = char
+    CHAR[stdio.h:479:52] data = *
+    WORD[stdio.h:479:53] data = restrict
+    WORD[stdio.h:479:62] data = __format
+    CHAR[stdio.h:479:70] data = ,
+    WORD[stdio.h:479:72] data = __gnuc_va_list
+    WORD[stdio.h:479:87] data = __arg
+    CHAR[stdio.h:479:92] data = )
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 13, name = vscanf)
+    WORD[stdio.h:484:1] data = extern
+    WORD[stdio.h:484:8] data = int
+    WORD[stdio.h:484:12] data = vscanf
+    CHAR[stdio.h:484:19] data = (
+    WORD[stdio.h:484:20] data = const
+    WORD[stdio.h:484:26] data = char
+    CHAR[stdio.h:484:31] data = *
+    WORD[stdio.h:484:32] data = restrict
+    WORD[stdio.h:484:41] data = __format
+    CHAR[stdio.h:484:49] data = ,
+    WORD[stdio.h:484:51] data = __gnuc_va_list
+    WORD[stdio.h:484:66] data = __arg
+    CHAR[stdio.h:484:71] data = )
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 19, name = vsscanf)
+    WORD[stdio.h:487:1] data = extern
+    WORD[stdio.h:487:8] data = int
+    WORD[stdio.h:487:12] data = vsscanf
+    CHAR[stdio.h:487:20] data = (
+    WORD[stdio.h:487:21] data = const
+    WORD[stdio.h:487:27] data = char
+    CHAR[stdio.h:487:32] data = *
+    WORD[stdio.h:487:33] data = restrict
+    WORD[stdio.h:487:42] data = __s
+    CHAR[stdio.h:487:45] data = ,
+    WORD[stdio.h:487:47] data = const
+    WORD[stdio.h:487:53] data = char
+    CHAR[stdio.h:487:58] data = *
+    WORD[stdio.h:487:59] data = restrict
+    WORD[stdio.h:487:68] data = __format
+    CHAR[stdio.h:487:76] data = ,
+    WORD[stdio.h:487:78] data = __gnuc_va_list
+    WORD[stdio.h:487:93] data = __arg
+    CHAR[stdio.h:487:98] data = )
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = fgetc)
+    WORD[stdio.h:513:1] data = extern
+    WORD[stdio.h:513:8] data = int
+    WORD[stdio.h:513:12] data = fgetc
+    CHAR[stdio.h:513:18] data = (
+    WORD[stdio.h:513:19] data = FILE
+    CHAR[stdio.h:513:24] data = *
+    WORD[stdio.h:513:25] data = __stream
+    CHAR[stdio.h:513:33] data = )
+    CHAR[stdio.h:513:34] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = getc)
+    WORD[stdio.h:514:1] data = extern
+    WORD[stdio.h:514:8] data = int
+    WORD[stdio.h:514:12] data = getc
+    CHAR[stdio.h:514:17] data = (
+    WORD[stdio.h:514:18] data = FILE
+    CHAR[stdio.h:514:23] data = *
+    WORD[stdio.h:514:24] data = __stream
+    CHAR[stdio.h:514:32] data = )
+    CHAR[stdio.h:514:33] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 7, name = getchar)
+    WORD[stdio.h:520:1] data = extern
+    WORD[stdio.h:520:8] data = int
+    WORD[stdio.h:520:12] data = getchar
+    CHAR[stdio.h:520:20] data = (
+    WORD[stdio.h:520:21] data = void
+    CHAR[stdio.h:520:25] data = )
+    CHAR[stdio.h:520:26] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = getc_unlocked)
+    WORD[stdio.h:527:1] data = extern
+    WORD[stdio.h:527:8] data = int
+    WORD[stdio.h:527:12] data = getc_unlocked
+    CHAR[stdio.h:527:26] data = (
+    WORD[stdio.h:527:27] data = FILE
+    CHAR[stdio.h:527:32] data = *
+    WORD[stdio.h:527:33] data = __stream
+    CHAR[stdio.h:527:41] data = )
+    CHAR[stdio.h:527:42] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 7, name = getchar_unlocked)
+    WORD[stdio.h:528:1] data = extern
+    WORD[stdio.h:528:8] data = int
+    WORD[stdio.h:528:12] data = getchar_unlocked
+    CHAR[stdio.h:528:29] data = (
+    WORD[stdio.h:528:30] data = void
+    CHAR[stdio.h:528:34] data = )
+    CHAR[stdio.h:528:35] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = fgetc_unlocked)
+    WORD[stdio.h:538:1] data = extern
+    WORD[stdio.h:538:8] data = int
+    WORD[stdio.h:538:12] data = fgetc_unlocked
+    CHAR[stdio.h:538:27] data = (
+    WORD[stdio.h:538:28] data = FILE
+    CHAR[stdio.h:538:33] data = *
+    WORD[stdio.h:538:34] data = __stream
+    CHAR[stdio.h:538:42] data = )
+    CHAR[stdio.h:538:43] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = fputc)
+    WORD[stdio.h:549:1] data = extern
+    WORD[stdio.h:549:8] data = int
+    WORD[stdio.h:549:12] data = fputc
+    CHAR[stdio.h:549:18] data = (
+    WORD[stdio.h:549:19] data = int
+    WORD[stdio.h:549:23] data = __c
+    CHAR[stdio.h:549:26] data = ,
+    WORD[stdio.h:549:28] data = FILE
+    CHAR[stdio.h:549:33] data = *
+    WORD[stdio.h:549:34] data = __stream
+    CHAR[stdio.h:549:42] data = )
+    CHAR[stdio.h:549:43] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = putc)
+    WORD[stdio.h:550:1] data = extern
+    WORD[stdio.h:550:8] data = int
+    WORD[stdio.h:550:12] data = putc
+    CHAR[stdio.h:550:17] data = (
+    WORD[stdio.h:550:18] data = int
+    WORD[stdio.h:550:22] data = __c
+    CHAR[stdio.h:550:25] data = ,
+    WORD[stdio.h:550:27] data = FILE
+    CHAR[stdio.h:550:32] data = *
+    WORD[stdio.h:550:33] data = __stream
+    CHAR[stdio.h:550:41] data = )
+    CHAR[stdio.h:550:42] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = putchar)
+    WORD[stdio.h:556:1] data = extern
+    WORD[stdio.h:556:8] data = int
+    WORD[stdio.h:556:12] data = putchar
+    CHAR[stdio.h:556:20] data = (
+    WORD[stdio.h:556:21] data = int
+    WORD[stdio.h:556:25] data = __c
+    CHAR[stdio.h:556:28] data = )
+    CHAR[stdio.h:556:29] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = fputc_unlocked)
+    WORD[stdio.h:565:1] data = extern
+    WORD[stdio.h:565:8] data = int
+    WORD[stdio.h:565:12] data = fputc_unlocked
+    CHAR[stdio.h:565:27] data = (
+    WORD[stdio.h:565:28] data = int
+    WORD[stdio.h:565:32] data = __c
+    CHAR[stdio.h:565:35] data = ,
+    WORD[stdio.h:565:37] data = FILE
+    CHAR[stdio.h:565:42] data = *
+    WORD[stdio.h:565:43] data = __stream
+    CHAR[stdio.h:565:51] data = )
+    CHAR[stdio.h:565:52] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = putc_unlocked)
+    WORD[stdio.h:573:1] data = extern
+    WORD[stdio.h:573:8] data = int
+    WORD[stdio.h:573:12] data = putc_unlocked
+    CHAR[stdio.h:573:26] data = (
+    WORD[stdio.h:573:27] data = int
+    WORD[stdio.h:573:31] data = __c
+    CHAR[stdio.h:573:34] data = ,
+    WORD[stdio.h:573:36] data = FILE
+    CHAR[stdio.h:573:41] data = *
+    WORD[stdio.h:573:42] data = __stream
+    CHAR[stdio.h:573:50] data = )
+    CHAR[stdio.h:573:51] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = putchar_unlocked)
+    WORD[stdio.h:574:1] data = extern
+    WORD[stdio.h:574:8] data = int
+    WORD[stdio.h:574:12] data = putchar_unlocked
+    CHAR[stdio.h:574:29] data = (
+    WORD[stdio.h:574:30] data = int
+    WORD[stdio.h:574:34] data = __c
+    CHAR[stdio.h:574:37] data = )
+    CHAR[stdio.h:574:38] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = getw)
+    WORD[stdio.h:581:1] data = extern
+    WORD[stdio.h:581:8] data = int
+    WORD[stdio.h:581:12] data = getw
+    CHAR[stdio.h:581:17] data = (
+    WORD[stdio.h:581:18] data = FILE
+    CHAR[stdio.h:581:23] data = *
+    WORD[stdio.h:581:24] data = __stream
+    CHAR[stdio.h:581:32] data = )
+    CHAR[stdio.h:581:33] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = putw)
+    WORD[stdio.h:584:1] data = extern
+    WORD[stdio.h:584:8] data = int
+    WORD[stdio.h:584:12] data = putw
+    CHAR[stdio.h:584:17] data = (
+    WORD[stdio.h:584:18] data = int
+    WORD[stdio.h:584:22] data = __w
+    CHAR[stdio.h:584:25] data = ,
+    WORD[stdio.h:584:27] data = FILE
+    CHAR[stdio.h:584:32] data = *
+    WORD[stdio.h:584:33] data = __stream
+    CHAR[stdio.h:584:41] data = )
+    CHAR[stdio.h:584:42] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 19, name = fgets)
+    WORD[stdio.h:592:1] data = extern
+    WORD[stdio.h:592:8] data = char
+    CHAR[stdio.h:592:13] data = *
+    WORD[stdio.h:592:14] data = fgets
+    CHAR[stdio.h:592:20] data = (
+    WORD[stdio.h:592:21] data = char
+    CHAR[stdio.h:592:26] data = *
+    WORD[stdio.h:592:27] data = restrict
+    WORD[stdio.h:592:36] data = __s
+    CHAR[stdio.h:592:39] data = ,
+    WORD[stdio.h:592:41] data = int
+    WORD[stdio.h:592:45] data = __n
+    CHAR[stdio.h:592:48] data = ,
+    WORD[stdio.h:592:50] data = FILE
+    CHAR[stdio.h:592:55] data = *
+    WORD[stdio.h:592:56] data = restrict
+    WORD[stdio.h:592:65] data = __stream
+    CHAR[stdio.h:592:73] data = )
+    CHAR[stdio.h:593:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = gets)
+    WORD[stdio.h:605:1] data = extern
+    WORD[stdio.h:605:8] data = char
+    CHAR[stdio.h:605:13] data = *
+    WORD[stdio.h:605:14] data = gets
+    CHAR[stdio.h:605:19] data = (
+    WORD[stdio.h:605:20] data = char
+    CHAR[stdio.h:605:25] data = *
+    WORD[stdio.h:605:26] data = __s
+    CHAR[stdio.h:605:29] data = )
+    CHAR[stdio.h:605:32] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 24, name = __getdelim)
+    WORD[stdio.h:632:1] data = extern
+    WORD[stdio.h:632:8] data = __ssize_t
+    WORD[stdio.h:632:18] data = __getdelim
+    CHAR[stdio.h:632:29] data = (
+    WORD[stdio.h:632:30] data = char
+    CHAR[stdio.h:632:35] data = *
+    CHAR[stdio.h:632:36] data = *
+    WORD[stdio.h:632:37] data = restrict
+    WORD[stdio.h:632:46] data = __lineptr
+    CHAR[stdio.h:632:55] data = ,
+    WORD[stdio.h:633:30] data = size_t
+    CHAR[stdio.h:633:37] data = *
+    WORD[stdio.h:633:38] data = restrict
+    WORD[stdio.h:633:47] data = __n
+    CHAR[stdio.h:633:50] data = ,
+    WORD[stdio.h:633:52] data = int
+    WORD[stdio.h:633:56] data = __delimiter
+    CHAR[stdio.h:633:67] data = ,
+    WORD[stdio.h:634:30] data = FILE
+    CHAR[stdio.h:634:35] data = *
+    WORD[stdio.h:634:36] data = restrict
+    WORD[stdio.h:634:45] data = __stream
+    CHAR[stdio.h:634:53] data = )
+    CHAR[stdio.h:634:55] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 24, name = getdelim)
+    WORD[stdio.h:635:1] data = extern
+    WORD[stdio.h:635:8] data = __ssize_t
+    WORD[stdio.h:635:18] data = getdelim
+    CHAR[stdio.h:635:27] data = (
+    WORD[stdio.h:635:28] data = char
+    CHAR[stdio.h:635:33] data = *
+    CHAR[stdio.h:635:34] data = *
+    WORD[stdio.h:635:35] data = restrict
+    WORD[stdio.h:635:44] data = __lineptr
+    CHAR[stdio.h:635:53] data = ,
+    WORD[stdio.h:636:28] data = size_t
+    CHAR[stdio.h:636:35] data = *
+    WORD[stdio.h:636:36] data = restrict
+    WORD[stdio.h:636:45] data = __n
+    CHAR[stdio.h:636:48] data = ,
+    WORD[stdio.h:636:50] data = int
+    WORD[stdio.h:636:54] data = __delimiter
+    CHAR[stdio.h:636:65] data = ,
+    WORD[stdio.h:637:28] data = FILE
+    CHAR[stdio.h:637:33] data = *
+    WORD[stdio.h:637:34] data = restrict
+    WORD[stdio.h:637:43] data = __stream
+    CHAR[stdio.h:637:51] data = )
+    CHAR[stdio.h:637:53] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 21, name = getline)
+    WORD[stdio.h:645:1] data = extern
+    WORD[stdio.h:645:8] data = __ssize_t
+    WORD[stdio.h:645:18] data = getline
+    CHAR[stdio.h:645:26] data = (
+    WORD[stdio.h:645:27] data = char
+    CHAR[stdio.h:645:32] data = *
+    CHAR[stdio.h:645:33] data = *
+    WORD[stdio.h:645:34] data = restrict
+    WORD[stdio.h:645:43] data = __lineptr
+    CHAR[stdio.h:645:52] data = ,
+    WORD[stdio.h:646:27] data = size_t
+    CHAR[stdio.h:646:34] data = *
+    WORD[stdio.h:646:35] data = restrict
+    WORD[stdio.h:646:44] data = __n
+    CHAR[stdio.h:646:47] data = ,
+    WORD[stdio.h:647:27] data = FILE
+    CHAR[stdio.h:647:32] data = *
+    WORD[stdio.h:647:33] data = restrict
+    WORD[stdio.h:647:42] data = __stream
+    CHAR[stdio.h:647:50] data = )
+    CHAR[stdio.h:647:52] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = fputs)
+    WORD[stdio.h:655:1] data = extern
+    WORD[stdio.h:655:8] data = int
+    WORD[stdio.h:655:12] data = fputs
+    CHAR[stdio.h:655:18] data = (
+    WORD[stdio.h:655:19] data = const
+    WORD[stdio.h:655:25] data = char
+    CHAR[stdio.h:655:30] data = *
+    WORD[stdio.h:655:31] data = restrict
+    WORD[stdio.h:655:40] data = __s
+    CHAR[stdio.h:655:43] data = ,
+    WORD[stdio.h:655:45] data = FILE
+    CHAR[stdio.h:655:50] data = *
+    WORD[stdio.h:655:51] data = restrict
+    WORD[stdio.h:655:60] data = __stream
+    CHAR[stdio.h:655:68] data = )
+    CHAR[stdio.h:655:69] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = puts)
+    WORD[stdio.h:661:1] data = extern
+    WORD[stdio.h:661:8] data = int
+    WORD[stdio.h:661:12] data = puts
+    CHAR[stdio.h:661:17] data = (
+    WORD[stdio.h:661:18] data = const
+    WORD[stdio.h:661:24] data = char
+    CHAR[stdio.h:661:29] data = *
+    WORD[stdio.h:661:30] data = __s
+    CHAR[stdio.h:661:33] data = )
+    CHAR[stdio.h:661:34] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = ungetc)
+    WORD[stdio.h:668:1] data = extern
+    WORD[stdio.h:668:8] data = int
+    WORD[stdio.h:668:12] data = ungetc
+    CHAR[stdio.h:668:19] data = (
+    WORD[stdio.h:668:20] data = int
+    WORD[stdio.h:668:24] data = __c
+    CHAR[stdio.h:668:27] data = ,
+    WORD[stdio.h:668:29] data = FILE
+    CHAR[stdio.h:668:34] data = *
+    WORD[stdio.h:668:35] data = __stream
+    CHAR[stdio.h:668:43] data = )
+    CHAR[stdio.h:668:44] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 21, name = fread)
+    WORD[stdio.h:675:1] data = extern
+    WORD[stdio.h:675:8] data = size_t
+    WORD[stdio.h:675:15] data = fread
+    CHAR[stdio.h:675:21] data = (
+    WORD[stdio.h:675:22] data = void
+    CHAR[stdio.h:675:27] data = *
+    WORD[stdio.h:675:28] data = restrict
+    WORD[stdio.h:675:37] data = __ptr
+    CHAR[stdio.h:675:42] data = ,
+    WORD[stdio.h:675:44] data = size_t
+    WORD[stdio.h:675:51] data = __size
+    CHAR[stdio.h:675:57] data = ,
+    WORD[stdio.h:676:8] data = size_t
+    WORD[stdio.h:676:15] data = __n
+    CHAR[stdio.h:676:18] data = ,
+    WORD[stdio.h:676:20] data = FILE
+    CHAR[stdio.h:676:25] data = *
+    WORD[stdio.h:676:26] data = restrict
+    WORD[stdio.h:676:35] data = __stream
+    CHAR[stdio.h:676:43] data = )
+    CHAR[stdio.h:676:45] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 22, name = fwrite)
+    WORD[stdio.h:681:1] data = extern
+    WORD[stdio.h:681:8] data = size_t
+    WORD[stdio.h:681:15] data = fwrite
+    CHAR[stdio.h:681:22] data = (
+    WORD[stdio.h:681:23] data = const
+    WORD[stdio.h:681:29] data = void
+    CHAR[stdio.h:681:34] data = *
+    WORD[stdio.h:681:35] data = restrict
+    WORD[stdio.h:681:44] data = __ptr
+    CHAR[stdio.h:681:49] data = ,
+    WORD[stdio.h:681:51] data = size_t
+    WORD[stdio.h:681:58] data = __size
+    CHAR[stdio.h:681:64] data = ,
+    WORD[stdio.h:682:9] data = size_t
+    WORD[stdio.h:682:16] data = __n
+    CHAR[stdio.h:682:19] data = ,
+    WORD[stdio.h:682:21] data = FILE
+    CHAR[stdio.h:682:26] data = *
+    WORD[stdio.h:682:27] data = restrict
+    WORD[stdio.h:682:36] data = __s
+    CHAR[stdio.h:682:39] data = )
+    CHAR[stdio.h:682:40] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 21, name = fread_unlocked)
+    WORD[stdio.h:702:1] data = extern
+    WORD[stdio.h:702:8] data = size_t
+    WORD[stdio.h:702:15] data = fread_unlocked
+    CHAR[stdio.h:702:30] data = (
+    WORD[stdio.h:702:31] data = void
+    CHAR[stdio.h:702:36] data = *
+    WORD[stdio.h:702:37] data = restrict
+    WORD[stdio.h:702:46] data = __ptr
+    CHAR[stdio.h:702:51] data = ,
+    WORD[stdio.h:702:53] data = size_t
+    WORD[stdio.h:702:60] data = __size
+    CHAR[stdio.h:702:66] data = ,
+    WORD[stdio.h:703:10] data = size_t
+    WORD[stdio.h:703:17] data = __n
+    CHAR[stdio.h:703:20] data = ,
+    WORD[stdio.h:703:22] data = FILE
+    CHAR[stdio.h:703:27] data = *
+    WORD[stdio.h:703:28] data = restrict
+    WORD[stdio.h:703:37] data = __stream
+    CHAR[stdio.h:703:45] data = )
+    CHAR[stdio.h:703:47] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 22, name = fwrite_unlocked)
+    WORD[stdio.h:704:1] data = extern
+    WORD[stdio.h:704:8] data = size_t
+    WORD[stdio.h:704:15] data = fwrite_unlocked
+    CHAR[stdio.h:704:31] data = (
+    WORD[stdio.h:704:32] data = const
+    WORD[stdio.h:704:38] data = void
+    CHAR[stdio.h:704:43] data = *
+    WORD[stdio.h:704:44] data = restrict
+    WORD[stdio.h:704:53] data = __ptr
+    CHAR[stdio.h:704:58] data = ,
+    WORD[stdio.h:704:60] data = size_t
+    WORD[stdio.h:704:67] data = __size
+    CHAR[stdio.h:704:73] data = ,
+    WORD[stdio.h:705:11] data = size_t
+    WORD[stdio.h:705:18] data = __n
+    CHAR[stdio.h:705:21] data = ,
+    WORD[stdio.h:705:23] data = FILE
+    CHAR[stdio.h:705:28] data = *
+    WORD[stdio.h:705:29] data = restrict
+    WORD[stdio.h:705:38] data = __stream
+    CHAR[stdio.h:705:46] data = )
+    CHAR[stdio.h:705:47] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = fseek)
+    WORD[stdio.h:713:1] data = extern
+    WORD[stdio.h:713:8] data = int
+    WORD[stdio.h:713:12] data = fseek
+    CHAR[stdio.h:713:18] data = (
+    WORD[stdio.h:713:19] data = FILE
+    CHAR[stdio.h:713:24] data = *
+    WORD[stdio.h:713:25] data = __stream
+    CHAR[stdio.h:713:33] data = ,
+    WORD[stdio.h:713:35] data = long
+    WORD[stdio.h:713:40] data = int
+    WORD[stdio.h:713:44] data = __off
+    CHAR[stdio.h:713:49] data = ,
+    WORD[stdio.h:713:51] data = int
+    WORD[stdio.h:713:55] data = __whence
+    CHAR[stdio.h:713:63] data = )
+    CHAR[stdio.h:713:64] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = ftell)
+    WORD[stdio.h:718:1] data = extern
+    WORD[stdio.h:718:8] data = long
+    WORD[stdio.h:718:13] data = int
+    WORD[stdio.h:718:17] data = ftell
+    CHAR[stdio.h:718:23] data = (
+    WORD[stdio.h:718:24] data = FILE
+    CHAR[stdio.h:718:29] data = *
+    WORD[stdio.h:718:30] data = __stream
+    CHAR[stdio.h:718:38] data = )
+    CHAR[stdio.h:718:40] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = rewind)
+    WORD[stdio.h:723:1] data = extern
+    WORD[stdio.h:723:8] data = void
+    WORD[stdio.h:723:13] data = rewind
+    CHAR[stdio.h:723:20] data = (
+    WORD[stdio.h:723:21] data = FILE
+    CHAR[stdio.h:723:26] data = *
+    WORD[stdio.h:723:27] data = __stream
+    CHAR[stdio.h:723:35] data = )
+    CHAR[stdio.h:723:36] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = fseeko)
+    WORD[stdio.h:736:1] data = extern
+    WORD[stdio.h:736:8] data = int
+    WORD[stdio.h:736:12] data = fseeko
+    CHAR[stdio.h:736:19] data = (
+    WORD[stdio.h:736:20] data = FILE
+    CHAR[stdio.h:736:25] data = *
+    WORD[stdio.h:736:26] data = __stream
+    CHAR[stdio.h:736:34] data = ,
+    WORD[stdio.h:736:36] data = __off_t
+    WORD[stdio.h:736:44] data = __off
+    CHAR[stdio.h:736:49] data = ,
+    WORD[stdio.h:736:51] data = int
+    WORD[stdio.h:736:55] data = __whence
+    CHAR[stdio.h:736:63] data = )
+    CHAR[stdio.h:736:64] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = ftello)
+    WORD[stdio.h:741:1] data = extern
+    WORD[stdio.h:741:8] data = __off_t
+    WORD[stdio.h:741:16] data = ftello
+    CHAR[stdio.h:741:23] data = (
+    WORD[stdio.h:741:24] data = FILE
+    CHAR[stdio.h:741:29] data = *
+    WORD[stdio.h:741:30] data = __stream
+    CHAR[stdio.h:741:38] data = )
+    CHAR[stdio.h:741:40] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = fgetpos)
+    WORD[stdio.h:760:1] data = extern
+    WORD[stdio.h:760:8] data = int
+    WORD[stdio.h:760:12] data = fgetpos
+    CHAR[stdio.h:760:20] data = (
+    WORD[stdio.h:760:21] data = FILE
+    CHAR[stdio.h:760:26] data = *
+    WORD[stdio.h:760:27] data = restrict
+    WORD[stdio.h:760:36] data = __stream
+    CHAR[stdio.h:760:44] data = ,
+    WORD[stdio.h:760:46] data = fpos_t
+    CHAR[stdio.h:760:53] data = *
+    WORD[stdio.h:760:54] data = restrict
+    WORD[stdio.h:760:63] data = __pos
+    CHAR[stdio.h:760:68] data = )
+    CHAR[stdio.h:760:69] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = fsetpos)
+    WORD[stdio.h:765:1] data = extern
+    WORD[stdio.h:765:8] data = int
+    WORD[stdio.h:765:12] data = fsetpos
+    CHAR[stdio.h:765:20] data = (
+    WORD[stdio.h:765:21] data = FILE
+    CHAR[stdio.h:765:26] data = *
+    WORD[stdio.h:765:27] data = __stream
+    CHAR[stdio.h:765:35] data = ,
+    WORD[stdio.h:765:37] data = const
+    WORD[stdio.h:765:43] data = fpos_t
+    CHAR[stdio.h:765:50] data = *
+    WORD[stdio.h:765:51] data = __pos
+    CHAR[stdio.h:765:56] data = )
+    CHAR[stdio.h:765:57] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = clearerr)
+    WORD[stdio.h:786:1] data = extern
+    WORD[stdio.h:786:8] data = void
+    WORD[stdio.h:786:13] data = clearerr
+    CHAR[stdio.h:786:22] data = (
+    WORD[stdio.h:786:23] data = FILE
+    CHAR[stdio.h:786:28] data = *
+    WORD[stdio.h:786:29] data = __stream
+    CHAR[stdio.h:786:37] data = )
+    CHAR[stdio.h:786:39] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = feof)
+    WORD[stdio.h:788:1] data = extern
+    WORD[stdio.h:788:8] data = int
+    WORD[stdio.h:788:12] data = feof
+    CHAR[stdio.h:788:17] data = (
+    WORD[stdio.h:788:18] data = FILE
+    CHAR[stdio.h:788:23] data = *
+    WORD[stdio.h:788:24] data = __stream
+    CHAR[stdio.h:788:32] data = )
+    CHAR[stdio.h:788:35] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = ferror)
+    WORD[stdio.h:790:1] data = extern
+    WORD[stdio.h:790:8] data = int
+    WORD[stdio.h:790:12] data = ferror
+    CHAR[stdio.h:790:19] data = (
+    WORD[stdio.h:790:20] data = FILE
+    CHAR[stdio.h:790:25] data = *
+    WORD[stdio.h:790:26] data = __stream
+    CHAR[stdio.h:790:34] data = )
+    CHAR[stdio.h:790:37] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = clearerr_unlocked)
+    WORD[stdio.h:794:1] data = extern
+    WORD[stdio.h:794:8] data = void
+    WORD[stdio.h:794:13] data = clearerr_unlocked
+    CHAR[stdio.h:794:31] data = (
+    WORD[stdio.h:794:32] data = FILE
+    CHAR[stdio.h:794:37] data = *
+    WORD[stdio.h:794:38] data = __stream
+    CHAR[stdio.h:794:46] data = )
+    CHAR[stdio.h:794:48] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = feof_unlocked)
+    WORD[stdio.h:795:1] data = extern
+    WORD[stdio.h:795:8] data = int
+    WORD[stdio.h:795:12] data = feof_unlocked
+    CHAR[stdio.h:795:26] data = (
+    WORD[stdio.h:795:27] data = FILE
+    CHAR[stdio.h:795:32] data = *
+    WORD[stdio.h:795:33] data = __stream
+    CHAR[stdio.h:795:41] data = )
+    CHAR[stdio.h:795:44] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = ferror_unlocked)
+    WORD[stdio.h:796:1] data = extern
+    WORD[stdio.h:796:8] data = int
+    WORD[stdio.h:796:12] data = ferror_unlocked
+    CHAR[stdio.h:796:28] data = (
+    WORD[stdio.h:796:29] data = FILE
+    CHAR[stdio.h:796:34] data = *
+    WORD[stdio.h:796:35] data = __stream
+    CHAR[stdio.h:796:43] data = )
+    CHAR[stdio.h:796:46] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = perror)
+    WORD[stdio.h:804:1] data = extern
+    WORD[stdio.h:804:8] data = void
+    WORD[stdio.h:804:13] data = perror
+    CHAR[stdio.h:804:20] data = (
+    WORD[stdio.h:804:21] data = const
+    WORD[stdio.h:804:27] data = char
+    CHAR[stdio.h:804:32] data = *
+    WORD[stdio.h:804:33] data = __s
+    CHAR[stdio.h:804:36] data = )
+    CHAR[stdio.h:804:37] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = fileno)
+    WORD[stdio.h:809:1] data = extern
+    WORD[stdio.h:809:8] data = int
+    WORD[stdio.h:809:12] data = fileno
+    CHAR[stdio.h:809:19] data = (
+    WORD[stdio.h:809:20] data = FILE
+    CHAR[stdio.h:809:25] data = *
+    WORD[stdio.h:809:26] data = __stream
+    CHAR[stdio.h:809:34] data = )
+    CHAR[stdio.h:809:37] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = fileno_unlocked)
+    WORD[stdio.h:814:1] data = extern
+    WORD[stdio.h:814:8] data = int
+    WORD[stdio.h:814:12] data = fileno_unlocked
+    CHAR[stdio.h:814:28] data = (
+    WORD[stdio.h:814:29] data = FILE
+    CHAR[stdio.h:814:34] data = *
+    WORD[stdio.h:814:35] data = __stream
+    CHAR[stdio.h:814:43] data = )
+    CHAR[stdio.h:814:46] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = pclose)
+    WORD[stdio.h:823:1] data = extern
+    WORD[stdio.h:823:8] data = int
+    WORD[stdio.h:823:12] data = pclose
+    CHAR[stdio.h:823:19] data = (
+    WORD[stdio.h:823:20] data = FILE
+    CHAR[stdio.h:823:25] data = *
+    WORD[stdio.h:823:26] data = __stream
+    CHAR[stdio.h:823:34] data = )
+    CHAR[stdio.h:823:35] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = popen)
+    WORD[stdio.h:829:1] data = extern
+    WORD[stdio.h:829:8] data = FILE
+    CHAR[stdio.h:829:13] data = *
+    WORD[stdio.h:829:14] data = popen
+    CHAR[stdio.h:829:20] data = (
+    WORD[stdio.h:829:21] data = const
+    WORD[stdio.h:829:27] data = char
+    CHAR[stdio.h:829:32] data = *
+    WORD[stdio.h:829:33] data = __command
+    CHAR[stdio.h:829:42] data = ,
+    WORD[stdio.h:829:44] data = const
+    WORD[stdio.h:829:50] data = char
+    CHAR[stdio.h:829:55] data = *
+    WORD[stdio.h:829:56] data = __modes
+    CHAR[stdio.h:829:63] data = )
+    CHAR[stdio.h:830:5] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = ctermid)
+    WORD[stdio.h:837:1] data = extern
+    WORD[stdio.h:837:8] data = char
+    CHAR[stdio.h:837:13] data = *
+    WORD[stdio.h:837:14] data = ctermid
+    CHAR[stdio.h:837:22] data = (
+    WORD[stdio.h:837:23] data = char
+    CHAR[stdio.h:837:28] data = *
+    WORD[stdio.h:837:29] data = __s
+    CHAR[stdio.h:837:32] data = )
+    CHAR[stdio.h:838:3] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = flockfile)
+    WORD[stdio.h:867:1] data = extern
+    WORD[stdio.h:867:8] data = void
+    WORD[stdio.h:867:13] data = flockfile
+    CHAR[stdio.h:867:23] data = (
+    WORD[stdio.h:867:24] data = FILE
+    CHAR[stdio.h:867:29] data = *
+    WORD[stdio.h:867:30] data = __stream
+    CHAR[stdio.h:867:38] data = )
+    CHAR[stdio.h:867:40] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = ftrylockfile)
+    WORD[stdio.h:871:1] data = extern
+    WORD[stdio.h:871:8] data = int
+    WORD[stdio.h:871:12] data = ftrylockfile
+    CHAR[stdio.h:871:25] data = (
+    WORD[stdio.h:871:26] data = FILE
+    CHAR[stdio.h:871:31] data = *
+    WORD[stdio.h:871:32] data = __stream
+    CHAR[stdio.h:871:40] data = )
+    CHAR[stdio.h:871:43] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = funlockfile)
+    WORD[stdio.h:874:1] data = extern
+    WORD[stdio.h:874:8] data = void
+    WORD[stdio.h:874:13] data = funlockfile
+    CHAR[stdio.h:874:25] data = (
+    WORD[stdio.h:874:26] data = FILE
+    CHAR[stdio.h:874:31] data = *
+    WORD[stdio.h:874:32] data = __stream
+    CHAR[stdio.h:874:40] data = )
+    CHAR[stdio.h:874:42] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = __uflow)
+    WORD[stdio.h:885:1] data = extern
+    WORD[stdio.h:885:8] data = int
+    WORD[stdio.h:885:12] data = __uflow
+    CHAR[stdio.h:885:20] data = (
+    WORD[stdio.h:885:21] data = FILE
+    CHAR[stdio.h:885:26] data = *
+    CHAR[stdio.h:885:27] data = )
+    CHAR[stdio.h:885:28] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = __overflow)
+    WORD[stdio.h:886:1] data = extern
+    WORD[stdio.h:886:8] data = int
+    WORD[stdio.h:886:12] data = __overflow
+    CHAR[stdio.h:886:23] data = (
+    WORD[stdio.h:886:24] data = FILE
+    CHAR[stdio.h:886:29] data = *
+    CHAR[stdio.h:886:30] data = ,
+    WORD[stdio.h:886:32] data = int
+    CHAR[stdio.h:886:35] data = )
+    CHAR[stdio.h:886:36] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 7, name = __ctype_get_mb_cur_max)
+    WORD[stdlib.h:98:1] data = extern
+    WORD[stdlib.h:98:8] data = size_t
+    WORD[stdlib.h:98:15] data = __ctype_get_mb_cur_max
+    CHAR[stdlib.h:98:38] data = (
+    WORD[stdlib.h:98:39] data = void
+    CHAR[stdlib.h:98:43] data = )
+    CHAR[stdlib.h:98:46] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = atof)
+    WORD[stdlib.h:102:1] data = extern
+    WORD[stdlib.h:102:8] data = double
+    WORD[stdlib.h:102:15] data = atof
+    CHAR[stdlib.h:102:20] data = (
+    WORD[stdlib.h:102:21] data = const
+    WORD[stdlib.h:102:27] data = char
+    CHAR[stdlib.h:102:32] data = *
+    WORD[stdlib.h:102:33] data = __nptr
+    CHAR[stdlib.h:102:39] data = )
+    CHAR[stdlib.h:103:9] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = atoi)
+    WORD[stdlib.h:105:1] data = extern
+    WORD[stdlib.h:105:8] data = int
+    WORD[stdlib.h:105:12] data = atoi
+    CHAR[stdlib.h:105:17] data = (
+    WORD[stdlib.h:105:18] data = const
+    WORD[stdlib.h:105:24] data = char
+    CHAR[stdlib.h:105:29] data = *
+    WORD[stdlib.h:105:30] data = __nptr
+    CHAR[stdlib.h:105:36] data = )
+    CHAR[stdlib.h:106:9] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 11, name = atol)
+    WORD[stdlib.h:108:1] data = extern
+    WORD[stdlib.h:108:8] data = long
+    WORD[stdlib.h:108:13] data = int
+    WORD[stdlib.h:108:17] data = atol
+    CHAR[stdlib.h:108:22] data = (
+    WORD[stdlib.h:108:23] data = const
+    WORD[stdlib.h:108:29] data = char
+    CHAR[stdlib.h:108:34] data = *
+    WORD[stdlib.h:108:35] data = __nptr
+    CHAR[stdlib.h:108:41] data = )
+    CHAR[stdlib.h:109:9] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = atoll)
+    WORD[stdlib.h:113:2] data = extern
+    WORD[stdlib.h:113:9] data = long
+    WORD[stdlib.h:113:14] data = long
+    WORD[stdlib.h:113:19] data = int
+    WORD[stdlib.h:113:23] data = atoll
+    CHAR[stdlib.h:113:29] data = (
+    WORD[stdlib.h:113:30] data = const
+    WORD[stdlib.h:113:36] data = char
+    CHAR[stdlib.h:113:41] data = *
+    WORD[stdlib.h:113:42] data = __nptr
+    CHAR[stdlib.h:113:48] data = )
+    CHAR[stdlib.h:114:9] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = strtod)
+    WORD[stdlib.h:118:1] data = extern
+    WORD[stdlib.h:118:8] data = double
+    WORD[stdlib.h:118:15] data = strtod
+    CHAR[stdlib.h:118:22] data = (
+    WORD[stdlib.h:118:23] data = const
+    WORD[stdlib.h:118:29] data = char
+    CHAR[stdlib.h:118:34] data = *
+    WORD[stdlib.h:118:35] data = restrict
+    WORD[stdlib.h:118:44] data = __nptr
+    CHAR[stdlib.h:118:50] data = ,
+    WORD[stdlib.h:119:9] data = char
+    CHAR[stdlib.h:119:14] data = *
+    CHAR[stdlib.h:119:15] data = *
+    WORD[stdlib.h:119:16] data = restrict
+    WORD[stdlib.h:119:25] data = __endptr
+    CHAR[stdlib.h:119:33] data = )
+    CHAR[stdlib.h:120:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = strtof)
+    WORD[stdlib.h:124:1] data = extern
+    WORD[stdlib.h:124:8] data = float
+    WORD[stdlib.h:124:14] data = strtof
+    CHAR[stdlib.h:124:21] data = (
+    WORD[stdlib.h:124:22] data = const
+    WORD[stdlib.h:124:28] data = char
+    CHAR[stdlib.h:124:33] data = *
+    WORD[stdlib.h:124:34] data = restrict
+    WORD[stdlib.h:124:43] data = __nptr
+    CHAR[stdlib.h:124:49] data = ,
+    WORD[stdlib.h:125:8] data = char
+    CHAR[stdlib.h:125:13] data = *
+    CHAR[stdlib.h:125:14] data = *
+    WORD[stdlib.h:125:15] data = restrict
+    WORD[stdlib.h:125:24] data = __endptr
+    CHAR[stdlib.h:125:32] data = )
+    CHAR[stdlib.h:125:35] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = strtold)
+    WORD[stdlib.h:127:1] data = extern
+    WORD[stdlib.h:127:8] data = long
+    WORD[stdlib.h:127:13] data = double
+    WORD[stdlib.h:127:20] data = strtold
+    CHAR[stdlib.h:127:28] data = (
+    WORD[stdlib.h:127:29] data = const
+    WORD[stdlib.h:127:35] data = char
+    CHAR[stdlib.h:127:40] data = *
+    WORD[stdlib.h:127:41] data = restrict
+    WORD[stdlib.h:127:50] data = __nptr
+    CHAR[stdlib.h:127:56] data = ,
+    WORD[stdlib.h:128:8] data = char
+    CHAR[stdlib.h:128:13] data = *
+    CHAR[stdlib.h:128:14] data = *
+    WORD[stdlib.h:128:15] data = restrict
+    WORD[stdlib.h:128:24] data = __endptr
+    CHAR[stdlib.h:128:32] data = )
+    CHAR[stdlib.h:129:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 21, name = strtol)
+    WORD[stdlib.h:177:1] data = extern
+    WORD[stdlib.h:177:8] data = long
+    WORD[stdlib.h:177:13] data = int
+    WORD[stdlib.h:177:17] data = strtol
+    CHAR[stdlib.h:177:24] data = (
+    WORD[stdlib.h:177:25] data = const
+    WORD[stdlib.h:177:31] data = char
+    CHAR[stdlib.h:177:36] data = *
+    WORD[stdlib.h:177:37] data = restrict
+    WORD[stdlib.h:177:46] data = __nptr
+    CHAR[stdlib.h:177:52] data = ,
+    WORD[stdlib.h:178:4] data = char
+    CHAR[stdlib.h:178:9] data = *
+    CHAR[stdlib.h:178:10] data = *
+    WORD[stdlib.h:178:11] data = restrict
+    WORD[stdlib.h:178:20] data = __endptr
+    CHAR[stdlib.h:178:28] data = ,
+    WORD[stdlib.h:178:30] data = int
+    WORD[stdlib.h:178:34] data = __base
+    CHAR[stdlib.h:178:40] data = )
+    CHAR[stdlib.h:179:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 22, name = strtoul)
+    WORD[stdlib.h:181:1] data = extern
+    WORD[stdlib.h:181:8] data = unsigned
+    WORD[stdlib.h:181:17] data = long
+    WORD[stdlib.h:181:22] data = int
+    WORD[stdlib.h:181:26] data = strtoul
+    CHAR[stdlib.h:181:34] data = (
+    WORD[stdlib.h:181:35] data = const
+    WORD[stdlib.h:181:41] data = char
+    CHAR[stdlib.h:181:46] data = *
+    WORD[stdlib.h:181:47] data = restrict
+    WORD[stdlib.h:181:56] data = __nptr
+    CHAR[stdlib.h:181:62] data = ,
+    WORD[stdlib.h:182:7] data = char
+    CHAR[stdlib.h:182:12] data = *
+    CHAR[stdlib.h:182:13] data = *
+    WORD[stdlib.h:182:14] data = restrict
+    WORD[stdlib.h:182:23] data = __endptr
+    CHAR[stdlib.h:182:31] data = ,
+    WORD[stdlib.h:182:33] data = int
+    WORD[stdlib.h:182:37] data = __base
+    CHAR[stdlib.h:182:43] data = )
+    CHAR[stdlib.h:183:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 22, name = strtoq)
+    WORD[stdlib.h:188:1] data = extern
+    WORD[stdlib.h:188:8] data = long
+    WORD[stdlib.h:188:13] data = long
+    WORD[stdlib.h:188:18] data = int
+    WORD[stdlib.h:188:22] data = strtoq
+    CHAR[stdlib.h:188:29] data = (
+    WORD[stdlib.h:188:30] data = const
+    WORD[stdlib.h:188:36] data = char
+    CHAR[stdlib.h:188:41] data = *
+    WORD[stdlib.h:188:42] data = restrict
+    WORD[stdlib.h:188:51] data = __nptr
+    CHAR[stdlib.h:188:57] data = ,
+    WORD[stdlib.h:189:9] data = char
+    CHAR[stdlib.h:189:14] data = *
+    CHAR[stdlib.h:189:15] data = *
+    WORD[stdlib.h:189:16] data = restrict
+    WORD[stdlib.h:189:25] data = __endptr
+    CHAR[stdlib.h:189:33] data = ,
+    WORD[stdlib.h:189:35] data = int
+    WORD[stdlib.h:189:39] data = __base
+    CHAR[stdlib.h:189:45] data = )
+    CHAR[stdlib.h:190:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = strtouq)
+    WORD[stdlib.h:193:1] data = extern
+    WORD[stdlib.h:193:8] data = unsigned
+    WORD[stdlib.h:193:17] data = long
+    WORD[stdlib.h:193:22] data = long
+    WORD[stdlib.h:193:27] data = int
+    WORD[stdlib.h:193:31] data = strtouq
+    CHAR[stdlib.h:193:39] data = (
+    WORD[stdlib.h:193:40] data = const
+    WORD[stdlib.h:193:46] data = char
+    CHAR[stdlib.h:193:51] data = *
+    WORD[stdlib.h:193:52] data = restrict
+    WORD[stdlib.h:193:61] data = __nptr
+    CHAR[stdlib.h:193:67] data = ,
+    WORD[stdlib.h:194:12] data = char
+    CHAR[stdlib.h:194:17] data = *
+    CHAR[stdlib.h:194:18] data = *
+    WORD[stdlib.h:194:19] data = restrict
+    WORD[stdlib.h:194:28] data = __endptr
+    CHAR[stdlib.h:194:36] data = ,
+    WORD[stdlib.h:194:38] data = int
+    WORD[stdlib.h:194:42] data = __base
+    CHAR[stdlib.h:194:48] data = )
+    CHAR[stdlib.h:195:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 22, name = strtoll)
+    WORD[stdlib.h:201:1] data = extern
+    WORD[stdlib.h:201:8] data = long
+    WORD[stdlib.h:201:13] data = long
+    WORD[stdlib.h:201:18] data = int
+    WORD[stdlib.h:201:22] data = strtoll
+    CHAR[stdlib.h:201:30] data = (
+    WORD[stdlib.h:201:31] data = const
+    WORD[stdlib.h:201:37] data = char
+    CHAR[stdlib.h:201:42] data = *
+    WORD[stdlib.h:201:43] data = restrict
+    WORD[stdlib.h:201:52] data = __nptr
+    CHAR[stdlib.h:201:58] data = ,
+    WORD[stdlib.h:202:10] data = char
+    CHAR[stdlib.h:202:15] data = *
+    CHAR[stdlib.h:202:16] data = *
+    WORD[stdlib.h:202:17] data = restrict
+    WORD[stdlib.h:202:26] data = __endptr
+    CHAR[stdlib.h:202:34] data = ,
+    WORD[stdlib.h:202:36] data = int
+    WORD[stdlib.h:202:40] data = __base
+    CHAR[stdlib.h:202:46] data = )
+    CHAR[stdlib.h:203:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = strtoull)
+    WORD[stdlib.h:206:1] data = extern
+    WORD[stdlib.h:206:8] data = unsigned
+    WORD[stdlib.h:206:17] data = long
+    WORD[stdlib.h:206:22] data = long
+    WORD[stdlib.h:206:27] data = int
+    WORD[stdlib.h:206:31] data = strtoull
+    CHAR[stdlib.h:206:40] data = (
+    WORD[stdlib.h:206:41] data = const
+    WORD[stdlib.h:206:47] data = char
+    CHAR[stdlib.h:206:52] data = *
+    WORD[stdlib.h:206:53] data = restrict
+    WORD[stdlib.h:206:62] data = __nptr
+    CHAR[stdlib.h:206:68] data = ,
+    WORD[stdlib.h:207:6] data = char
+    CHAR[stdlib.h:207:11] data = *
+    CHAR[stdlib.h:207:12] data = *
+    WORD[stdlib.h:207:13] data = restrict
+    WORD[stdlib.h:207:22] data = __endptr
+    CHAR[stdlib.h:207:30] data = ,
+    WORD[stdlib.h:207:32] data = int
+    WORD[stdlib.h:207:36] data = __base
+    CHAR[stdlib.h:207:42] data = )
+    CHAR[stdlib.h:208:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = l64a)
+    WORD[stdlib.h:386:1] data = extern
+    WORD[stdlib.h:386:8] data = char
+    CHAR[stdlib.h:386:13] data = *
+    WORD[stdlib.h:386:14] data = l64a
+    CHAR[stdlib.h:386:19] data = (
+    WORD[stdlib.h:386:20] data = long
+    WORD[stdlib.h:386:25] data = int
+    WORD[stdlib.h:386:29] data = __n
+    CHAR[stdlib.h:386:32] data = )
+    CHAR[stdlib.h:386:35] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 11, name = a64l)
+    WORD[stdlib.h:389:1] data = extern
+    WORD[stdlib.h:389:8] data = long
+    WORD[stdlib.h:389:13] data = int
+    WORD[stdlib.h:389:17] data = a64l
+    CHAR[stdlib.h:389:22] data = (
+    WORD[stdlib.h:389:23] data = const
+    WORD[stdlib.h:389:29] data = char
+    CHAR[stdlib.h:389:34] data = *
+    WORD[stdlib.h:389:35] data = __s
+    CHAR[stdlib.h:389:38] data = )
+    CHAR[stdlib.h:390:9] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 29, name = select)
+    WORD[select.h:102:1] data = extern
+    WORD[select.h:102:8] data = int
+    WORD[select.h:102:12] data = select
+    CHAR[select.h:102:19] data = (
+    WORD[select.h:102:20] data = int
+    WORD[select.h:102:24] data = __nfds
+    CHAR[select.h:102:30] data = ,
+    WORD[select.h:102:32] data = fd_set
+    CHAR[select.h:102:39] data = *
+    WORD[select.h:102:40] data = restrict
+    WORD[select.h:102:49] data = __readfds
+    CHAR[select.h:102:58] data = ,
+    WORD[select.h:103:6] data = fd_set
+    CHAR[select.h:103:13] data = *
+    WORD[select.h:103:14] data = restrict
+    WORD[select.h:103:23] data = __writefds
+    CHAR[select.h:103:33] data = ,
+    WORD[select.h:104:6] data = fd_set
+    CHAR[select.h:104:13] data = *
+    WORD[select.h:104:14] data = restrict
+    WORD[select.h:104:23] data = __exceptfds
+    CHAR[select.h:104:34] data = ,
+    WORD[select.h:105:6] data = struct
+    WORD[select.h:105:13] data = timeval
+    CHAR[select.h:105:21] data = *
+    WORD[select.h:105:22] data = restrict
+    WORD[select.h:105:31] data = __timeout
+    CHAR[select.h:105:40] data = )
+    CHAR[select.h:105:41] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 36, name = pselect)
+    WORD[select.h:127:1] data = extern
+    WORD[select.h:127:8] data = int
+    WORD[select.h:127:12] data = pselect
+    CHAR[select.h:127:20] data = (
+    WORD[select.h:127:21] data = int
+    WORD[select.h:127:25] data = __nfds
+    CHAR[select.h:127:31] data = ,
+    WORD[select.h:127:33] data = fd_set
+    CHAR[select.h:127:40] data = *
+    WORD[select.h:127:41] data = restrict
+    WORD[select.h:127:50] data = __readfds
+    CHAR[select.h:127:59] data = ,
+    WORD[select.h:128:7] data = fd_set
+    CHAR[select.h:128:14] data = *
+    WORD[select.h:128:15] data = restrict
+    WORD[select.h:128:24] data = __writefds
+    CHAR[select.h:128:34] data = ,
+    WORD[select.h:129:7] data = fd_set
+    CHAR[select.h:129:14] data = *
+    WORD[select.h:129:15] data = restrict
+    WORD[select.h:129:24] data = __exceptfds
+    CHAR[select.h:129:35] data = ,
+    WORD[select.h:130:7] data = const
+    WORD[select.h:130:13] data = struct
+    WORD[select.h:130:20] data = timespec
+    CHAR[select.h:130:29] data = *
+    WORD[select.h:130:30] data = restrict
+    WORD[select.h:130:39] data = __timeout
+    CHAR[select.h:130:48] data = ,
+    WORD[select.h:131:7] data = const
+    WORD[select.h:131:13] data = __sigset_t
+    CHAR[select.h:131:24] data = *
+    WORD[select.h:131:25] data = restrict
+    WORD[select.h:131:34] data = __sigmask
+    CHAR[select.h:131:43] data = )
+    CHAR[select.h:131:44] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = random)
+    WORD[stdlib.h:402:1] data = extern
+    WORD[stdlib.h:402:8] data = long
+    WORD[stdlib.h:402:13] data = int
+    WORD[stdlib.h:402:17] data = random
+    CHAR[stdlib.h:402:24] data = (
+    WORD[stdlib.h:402:25] data = void
+    CHAR[stdlib.h:402:29] data = )
+    CHAR[stdlib.h:402:31] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = srandom)
+    WORD[stdlib.h:405:1] data = extern
+    WORD[stdlib.h:405:8] data = void
+    WORD[stdlib.h:405:13] data = srandom
+    CHAR[stdlib.h:405:21] data = (
+    WORD[stdlib.h:405:22] data = unsigned
+    WORD[stdlib.h:405:31] data = int
+    WORD[stdlib.h:405:35] data = __seed
+    CHAR[stdlib.h:405:41] data = )
+    CHAR[stdlib.h:405:43] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = initstate)
+    WORD[stdlib.h:411:1] data = extern
+    WORD[stdlib.h:411:8] data = char
+    CHAR[stdlib.h:411:13] data = *
+    WORD[stdlib.h:411:14] data = initstate
+    CHAR[stdlib.h:411:24] data = (
+    WORD[stdlib.h:411:25] data = unsigned
+    WORD[stdlib.h:411:34] data = int
+    WORD[stdlib.h:411:38] data = __seed
+    CHAR[stdlib.h:411:44] data = ,
+    WORD[stdlib.h:411:46] data = char
+    CHAR[stdlib.h:411:51] data = *
+    WORD[stdlib.h:411:52] data = __statebuf
+    CHAR[stdlib.h:411:62] data = ,
+    WORD[stdlib.h:412:4] data = size_t
+    WORD[stdlib.h:412:11] data = __statelen
+    CHAR[stdlib.h:412:21] data = )
+    CHAR[stdlib.h:412:24] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = setstate)
+    WORD[stdlib.h:416:1] data = extern
+    WORD[stdlib.h:416:8] data = char
+    CHAR[stdlib.h:416:13] data = *
+    WORD[stdlib.h:416:14] data = setstate
+    CHAR[stdlib.h:416:23] data = (
+    WORD[stdlib.h:416:24] data = char
+    CHAR[stdlib.h:416:29] data = *
+    WORD[stdlib.h:416:30] data = __statebuf
+    CHAR[stdlib.h:416:40] data = )
+    CHAR[stdlib.h:416:43] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = random_r)
+    WORD[stdlib.h:435:1] data = extern
+    WORD[stdlib.h:435:8] data = int
+    WORD[stdlib.h:435:12] data = random_r
+    CHAR[stdlib.h:435:21] data = (
+    WORD[stdlib.h:435:22] data = struct
+    WORD[stdlib.h:435:29] data = random_data
+    CHAR[stdlib.h:435:41] data = *
+    WORD[stdlib.h:435:42] data = restrict
+    WORD[stdlib.h:435:51] data = __buf
+    CHAR[stdlib.h:435:56] data = ,
+    WORD[stdlib.h:436:8] data = int32_t
+    CHAR[stdlib.h:436:16] data = *
+    WORD[stdlib.h:436:17] data = restrict
+    WORD[stdlib.h:436:26] data = __result
+    CHAR[stdlib.h:436:34] data = )
+    CHAR[stdlib.h:436:37] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = srandom_r)
+    WORD[stdlib.h:438:1] data = extern
+    WORD[stdlib.h:438:8] data = int
+    WORD[stdlib.h:438:12] data = srandom_r
+    CHAR[stdlib.h:438:22] data = (
+    WORD[stdlib.h:438:23] data = unsigned
+    WORD[stdlib.h:438:32] data = int
+    WORD[stdlib.h:438:36] data = __seed
+    CHAR[stdlib.h:438:42] data = ,
+    WORD[stdlib.h:438:44] data = struct
+    WORD[stdlib.h:438:51] data = random_data
+    CHAR[stdlib.h:438:63] data = *
+    WORD[stdlib.h:438:64] data = __buf
+    CHAR[stdlib.h:438:69] data = )
+    CHAR[stdlib.h:439:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = initstate_r)
+    WORD[stdlib.h:441:1] data = extern
+    WORD[stdlib.h:441:8] data = int
+    WORD[stdlib.h:441:12] data = initstate_r
+    CHAR[stdlib.h:441:24] data = (
+    WORD[stdlib.h:441:25] data = unsigned
+    WORD[stdlib.h:441:34] data = int
+    WORD[stdlib.h:441:38] data = __seed
+    CHAR[stdlib.h:441:44] data = ,
+    WORD[stdlib.h:441:46] data = char
+    CHAR[stdlib.h:441:51] data = *
+    WORD[stdlib.h:441:52] data = restrict
+    WORD[stdlib.h:441:61] data = __statebuf
+    CHAR[stdlib.h:441:71] data = ,
+    WORD[stdlib.h:442:4] data = size_t
+    WORD[stdlib.h:442:11] data = __statelen
+    CHAR[stdlib.h:442:21] data = ,
+    WORD[stdlib.h:443:4] data = struct
+    WORD[stdlib.h:443:11] data = random_data
+    CHAR[stdlib.h:443:23] data = *
+    WORD[stdlib.h:443:24] data = restrict
+    WORD[stdlib.h:443:33] data = __buf
+    CHAR[stdlib.h:443:38] data = )
+    CHAR[stdlib.h:444:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = setstate_r)
+    WORD[stdlib.h:446:1] data = extern
+    WORD[stdlib.h:446:8] data = int
+    WORD[stdlib.h:446:12] data = setstate_r
+    CHAR[stdlib.h:446:23] data = (
+    WORD[stdlib.h:446:24] data = char
+    CHAR[stdlib.h:446:29] data = *
+    WORD[stdlib.h:446:30] data = restrict
+    WORD[stdlib.h:446:39] data = __statebuf
+    CHAR[stdlib.h:446:49] data = ,
+    WORD[stdlib.h:447:10] data = struct
+    WORD[stdlib.h:447:17] data = random_data
+    CHAR[stdlib.h:447:29] data = *
+    WORD[stdlib.h:447:30] data = restrict
+    WORD[stdlib.h:447:39] data = __buf
+    CHAR[stdlib.h:447:44] data = )
+    CHAR[stdlib.h:448:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 7, name = rand)
+    WORD[stdlib.h:454:1] data = extern
+    WORD[stdlib.h:454:8] data = int
+    WORD[stdlib.h:454:12] data = rand
+    CHAR[stdlib.h:454:17] data = (
+    WORD[stdlib.h:454:18] data = void
+    CHAR[stdlib.h:454:22] data = )
+    CHAR[stdlib.h:454:24] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = srand)
+    WORD[stdlib.h:456:1] data = extern
+    WORD[stdlib.h:456:8] data = void
+    WORD[stdlib.h:456:13] data = srand
+    CHAR[stdlib.h:456:19] data = (
+    WORD[stdlib.h:456:20] data = unsigned
+    WORD[stdlib.h:456:29] data = int
+    WORD[stdlib.h:456:33] data = __seed
+    CHAR[stdlib.h:456:39] data = )
+    CHAR[stdlib.h:456:41] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = rand_r)
+    WORD[stdlib.h:460:1] data = extern
+    WORD[stdlib.h:460:8] data = int
+    WORD[stdlib.h:460:12] data = rand_r
+    CHAR[stdlib.h:460:19] data = (
+    WORD[stdlib.h:460:20] data = unsigned
+    WORD[stdlib.h:460:29] data = int
+    CHAR[stdlib.h:460:33] data = *
+    WORD[stdlib.h:460:34] data = __seed
+    CHAR[stdlib.h:460:40] data = )
+    CHAR[stdlib.h:460:42] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 7, name = drand48)
+    WORD[stdlib.h:468:1] data = extern
+    WORD[stdlib.h:468:8] data = double
+    WORD[stdlib.h:468:15] data = drand48
+    CHAR[stdlib.h:468:23] data = (
+    WORD[stdlib.h:468:24] data = void
+    CHAR[stdlib.h:468:28] data = )
+    CHAR[stdlib.h:468:30] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = erand48)
+    WORD[stdlib.h:469:1] data = extern
+    WORD[stdlib.h:469:8] data = double
+    WORD[stdlib.h:469:15] data = erand48
+    CHAR[stdlib.h:469:23] data = (
+    WORD[stdlib.h:469:24] data = unsigned
+    WORD[stdlib.h:469:33] data = short
+    WORD[stdlib.h:469:39] data = int
+    WORD[stdlib.h:469:43] data = __xsubi
+    CHAR[stdlib.h:469:50] data = [
+    NUMBER[stdlib.h:469:51] data = 3
+    CHAR[stdlib.h:469:52] data = ]
+    CHAR[stdlib.h:469:53] data = )
+    CHAR[stdlib.h:469:56] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = lrand48)
+    WORD[stdlib.h:472:1] data = extern
+    WORD[stdlib.h:472:8] data = long
+    WORD[stdlib.h:472:13] data = int
+    WORD[stdlib.h:472:17] data = lrand48
+    CHAR[stdlib.h:472:25] data = (
+    WORD[stdlib.h:472:26] data = void
+    CHAR[stdlib.h:472:30] data = )
+    CHAR[stdlib.h:472:32] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = nrand48)
+    WORD[stdlib.h:473:1] data = extern
+    WORD[stdlib.h:473:8] data = long
+    WORD[stdlib.h:473:13] data = int
+    WORD[stdlib.h:473:17] data = nrand48
+    CHAR[stdlib.h:473:25] data = (
+    WORD[stdlib.h:473:26] data = unsigned
+    WORD[stdlib.h:473:35] data = short
+    WORD[stdlib.h:473:41] data = int
+    WORD[stdlib.h:473:45] data = __xsubi
+    CHAR[stdlib.h:473:52] data = [
+    NUMBER[stdlib.h:473:53] data = 3
+    CHAR[stdlib.h:473:54] data = ]
+    CHAR[stdlib.h:473:55] data = )
+    CHAR[stdlib.h:474:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = mrand48)
+    WORD[stdlib.h:477:1] data = extern
+    WORD[stdlib.h:477:8] data = long
+    WORD[stdlib.h:477:13] data = int
+    WORD[stdlib.h:477:17] data = mrand48
+    CHAR[stdlib.h:477:25] data = (
+    WORD[stdlib.h:477:26] data = void
+    CHAR[stdlib.h:477:30] data = )
+    CHAR[stdlib.h:477:32] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = jrand48)
+    WORD[stdlib.h:478:1] data = extern
+    WORD[stdlib.h:478:8] data = long
+    WORD[stdlib.h:478:13] data = int
+    WORD[stdlib.h:478:17] data = jrand48
+    CHAR[stdlib.h:478:25] data = (
+    WORD[stdlib.h:478:26] data = unsigned
+    WORD[stdlib.h:478:35] data = short
+    WORD[stdlib.h:478:41] data = int
+    WORD[stdlib.h:478:45] data = __xsubi
+    CHAR[stdlib.h:478:52] data = [
+    NUMBER[stdlib.h:478:53] data = 3
+    CHAR[stdlib.h:478:54] data = ]
+    CHAR[stdlib.h:478:55] data = )
+    CHAR[stdlib.h:479:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = srand48)
+    WORD[stdlib.h:482:1] data = extern
+    WORD[stdlib.h:482:8] data = void
+    WORD[stdlib.h:482:13] data = srand48
+    CHAR[stdlib.h:482:21] data = (
+    WORD[stdlib.h:482:22] data = long
+    WORD[stdlib.h:482:27] data = int
+    WORD[stdlib.h:482:31] data = __seedval
+    CHAR[stdlib.h:482:40] data = )
+    CHAR[stdlib.h:482:42] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = seed48)
+    WORD[stdlib.h:483:1] data = extern
+    WORD[stdlib.h:483:8] data = unsigned
+    WORD[stdlib.h:483:17] data = short
+    WORD[stdlib.h:483:23] data = int
+    CHAR[stdlib.h:483:27] data = *
+    WORD[stdlib.h:483:28] data = seed48
+    CHAR[stdlib.h:483:35] data = (
+    WORD[stdlib.h:483:36] data = unsigned
+    WORD[stdlib.h:483:45] data = short
+    WORD[stdlib.h:483:51] data = int
+    WORD[stdlib.h:483:55] data = __seed16v
+    CHAR[stdlib.h:483:64] data = [
+    NUMBER[stdlib.h:483:65] data = 3
+    CHAR[stdlib.h:483:66] data = ]
+    CHAR[stdlib.h:483:67] data = )
+    CHAR[stdlib.h:484:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = lcong48)
+    WORD[stdlib.h:485:1] data = extern
+    WORD[stdlib.h:485:8] data = void
+    WORD[stdlib.h:485:13] data = lcong48
+    CHAR[stdlib.h:485:21] data = (
+    WORD[stdlib.h:485:22] data = unsigned
+    WORD[stdlib.h:485:31] data = short
+    WORD[stdlib.h:485:37] data = int
+    WORD[stdlib.h:485:41] data = __param
+    CHAR[stdlib.h:485:48] data = [
+    NUMBER[stdlib.h:485:49] data = 7
+    CHAR[stdlib.h:485:50] data = ]
+    CHAR[stdlib.h:485:51] data = )
+    CHAR[stdlib.h:485:54] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = drand48_r)
+    WORD[stdlib.h:502:1] data = extern
+    WORD[stdlib.h:502:8] data = int
+    WORD[stdlib.h:502:12] data = drand48_r
+    CHAR[stdlib.h:502:22] data = (
+    WORD[stdlib.h:502:23] data = struct
+    WORD[stdlib.h:502:30] data = drand48_data
+    CHAR[stdlib.h:502:43] data = *
+    WORD[stdlib.h:502:44] data = restrict
+    WORD[stdlib.h:502:53] data = __buffer
+    CHAR[stdlib.h:502:61] data = ,
+    WORD[stdlib.h:503:9] data = double
+    CHAR[stdlib.h:503:16] data = *
+    WORD[stdlib.h:503:17] data = restrict
+    WORD[stdlib.h:503:26] data = __result
+    CHAR[stdlib.h:503:34] data = )
+    CHAR[stdlib.h:503:37] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 24, name = erand48_r)
+    WORD[stdlib.h:504:1] data = extern
+    WORD[stdlib.h:504:8] data = int
+    WORD[stdlib.h:504:12] data = erand48_r
+    CHAR[stdlib.h:504:22] data = (
+    WORD[stdlib.h:504:23] data = unsigned
+    WORD[stdlib.h:504:32] data = short
+    WORD[stdlib.h:504:38] data = int
+    WORD[stdlib.h:504:42] data = __xsubi
+    CHAR[stdlib.h:504:49] data = [
+    NUMBER[stdlib.h:504:50] data = 3
+    CHAR[stdlib.h:504:51] data = ]
+    CHAR[stdlib.h:504:52] data = ,
+    WORD[stdlib.h:505:9] data = struct
+    WORD[stdlib.h:505:16] data = drand48_data
+    CHAR[stdlib.h:505:29] data = *
+    WORD[stdlib.h:505:30] data = restrict
+    WORD[stdlib.h:505:39] data = __buffer
+    CHAR[stdlib.h:505:47] data = ,
+    WORD[stdlib.h:506:9] data = double
+    CHAR[stdlib.h:506:16] data = *
+    WORD[stdlib.h:506:17] data = restrict
+    WORD[stdlib.h:506:26] data = __result
+    CHAR[stdlib.h:506:34] data = )
+    CHAR[stdlib.h:506:37] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = lrand48_r)
+    WORD[stdlib.h:509:1] data = extern
+    WORD[stdlib.h:509:8] data = int
+    WORD[stdlib.h:509:12] data = lrand48_r
+    CHAR[stdlib.h:509:22] data = (
+    WORD[stdlib.h:509:23] data = struct
+    WORD[stdlib.h:509:30] data = drand48_data
+    CHAR[stdlib.h:509:43] data = *
+    WORD[stdlib.h:509:44] data = restrict
+    WORD[stdlib.h:509:53] data = __buffer
+    CHAR[stdlib.h:509:61] data = ,
+    WORD[stdlib.h:510:9] data = long
+    WORD[stdlib.h:510:14] data = int
+    CHAR[stdlib.h:510:18] data = *
+    WORD[stdlib.h:510:19] data = restrict
+    WORD[stdlib.h:510:28] data = __result
+    CHAR[stdlib.h:510:36] data = )
+    CHAR[stdlib.h:511:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 25, name = nrand48_r)
+    WORD[stdlib.h:512:1] data = extern
+    WORD[stdlib.h:512:8] data = int
+    WORD[stdlib.h:512:12] data = nrand48_r
+    CHAR[stdlib.h:512:22] data = (
+    WORD[stdlib.h:512:23] data = unsigned
+    WORD[stdlib.h:512:32] data = short
+    WORD[stdlib.h:512:38] data = int
+    WORD[stdlib.h:512:42] data = __xsubi
+    CHAR[stdlib.h:512:49] data = [
+    NUMBER[stdlib.h:512:50] data = 3
+    CHAR[stdlib.h:512:51] data = ]
+    CHAR[stdlib.h:512:52] data = ,
+    WORD[stdlib.h:513:9] data = struct
+    WORD[stdlib.h:513:16] data = drand48_data
+    CHAR[stdlib.h:513:29] data = *
+    WORD[stdlib.h:513:30] data = restrict
+    WORD[stdlib.h:513:39] data = __buffer
+    CHAR[stdlib.h:513:47] data = ,
+    WORD[stdlib.h:514:9] data = long
+    WORD[stdlib.h:514:14] data = int
+    CHAR[stdlib.h:514:18] data = *
+    WORD[stdlib.h:514:19] data = restrict
+    WORD[stdlib.h:514:28] data = __result
+    CHAR[stdlib.h:514:36] data = )
+    CHAR[stdlib.h:515:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = mrand48_r)
+    WORD[stdlib.h:518:1] data = extern
+    WORD[stdlib.h:518:8] data = int
+    WORD[stdlib.h:518:12] data = mrand48_r
+    CHAR[stdlib.h:518:22] data = (
+    WORD[stdlib.h:518:23] data = struct
+    WORD[stdlib.h:518:30] data = drand48_data
+    CHAR[stdlib.h:518:43] data = *
+    WORD[stdlib.h:518:44] data = restrict
+    WORD[stdlib.h:518:53] data = __buffer
+    CHAR[stdlib.h:518:61] data = ,
+    WORD[stdlib.h:519:9] data = long
+    WORD[stdlib.h:519:14] data = int
+    CHAR[stdlib.h:519:18] data = *
+    WORD[stdlib.h:519:19] data = restrict
+    WORD[stdlib.h:519:28] data = __result
+    CHAR[stdlib.h:519:36] data = )
+    CHAR[stdlib.h:520:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 25, name = jrand48_r)
+    WORD[stdlib.h:521:1] data = extern
+    WORD[stdlib.h:521:8] data = int
+    WORD[stdlib.h:521:12] data = jrand48_r
+    CHAR[stdlib.h:521:22] data = (
+    WORD[stdlib.h:521:23] data = unsigned
+    WORD[stdlib.h:521:32] data = short
+    WORD[stdlib.h:521:38] data = int
+    WORD[stdlib.h:521:42] data = __xsubi
+    CHAR[stdlib.h:521:49] data = [
+    NUMBER[stdlib.h:521:50] data = 3
+    CHAR[stdlib.h:521:51] data = ]
+    CHAR[stdlib.h:521:52] data = ,
+    WORD[stdlib.h:522:9] data = struct
+    WORD[stdlib.h:522:16] data = drand48_data
+    CHAR[stdlib.h:522:29] data = *
+    WORD[stdlib.h:522:30] data = restrict
+    WORD[stdlib.h:522:39] data = __buffer
+    CHAR[stdlib.h:522:47] data = ,
+    WORD[stdlib.h:523:9] data = long
+    WORD[stdlib.h:523:14] data = int
+    CHAR[stdlib.h:523:18] data = *
+    WORD[stdlib.h:523:19] data = restrict
+    WORD[stdlib.h:523:28] data = __result
+    CHAR[stdlib.h:523:36] data = )
+    CHAR[stdlib.h:524:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = srand48_r)
+    WORD[stdlib.h:527:1] data = extern
+    WORD[stdlib.h:527:8] data = int
+    WORD[stdlib.h:527:12] data = srand48_r
+    CHAR[stdlib.h:527:22] data = (
+    WORD[stdlib.h:527:23] data = long
+    WORD[stdlib.h:527:28] data = int
+    WORD[stdlib.h:527:32] data = __seedval
+    CHAR[stdlib.h:527:41] data = ,
+    WORD[stdlib.h:527:43] data = struct
+    WORD[stdlib.h:527:50] data = drand48_data
+    CHAR[stdlib.h:527:63] data = *
+    WORD[stdlib.h:527:64] data = __buffer
+    CHAR[stdlib.h:527:72] data = )
+    CHAR[stdlib.h:528:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = seed48_r)
+    WORD[stdlib.h:530:1] data = extern
+    WORD[stdlib.h:530:8] data = int
+    WORD[stdlib.h:530:12] data = seed48_r
+    CHAR[stdlib.h:530:21] data = (
+    WORD[stdlib.h:530:22] data = unsigned
+    WORD[stdlib.h:530:31] data = short
+    WORD[stdlib.h:530:37] data = int
+    WORD[stdlib.h:530:41] data = __seed16v
+    CHAR[stdlib.h:530:50] data = [
+    NUMBER[stdlib.h:530:51] data = 3
+    CHAR[stdlib.h:530:52] data = ]
+    CHAR[stdlib.h:530:53] data = ,
+    WORD[stdlib.h:531:8] data = struct
+    WORD[stdlib.h:531:15] data = drand48_data
+    CHAR[stdlib.h:531:28] data = *
+    WORD[stdlib.h:531:29] data = __buffer
+    CHAR[stdlib.h:531:37] data = )
+    CHAR[stdlib.h:531:40] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = lcong48_r)
+    WORD[stdlib.h:533:1] data = extern
+    WORD[stdlib.h:533:8] data = int
+    WORD[stdlib.h:533:12] data = lcong48_r
+    CHAR[stdlib.h:533:22] data = (
+    WORD[stdlib.h:533:23] data = unsigned
+    WORD[stdlib.h:533:32] data = short
+    WORD[stdlib.h:533:38] data = int
+    WORD[stdlib.h:533:42] data = __param
+    CHAR[stdlib.h:533:49] data = [
+    NUMBER[stdlib.h:533:50] data = 7
+    CHAR[stdlib.h:533:51] data = ]
+    CHAR[stdlib.h:533:52] data = ,
+    WORD[stdlib.h:534:9] data = struct
+    WORD[stdlib.h:534:16] data = drand48_data
+    CHAR[stdlib.h:534:29] data = *
+    WORD[stdlib.h:534:30] data = __buffer
+    CHAR[stdlib.h:534:38] data = )
+    CHAR[stdlib.h:535:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 7, name = arc4random)
+    WORD[stdlib.h:538:1] data = extern
+    WORD[stdlib.h:538:8] data = __uint32_t
+    WORD[stdlib.h:538:19] data = arc4random
+    CHAR[stdlib.h:538:30] data = (
+    WORD[stdlib.h:538:31] data = void
+    CHAR[stdlib.h:538:35] data = )
+    CHAR[stdlib.h:539:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = arc4random_buf)
+    WORD[stdlib.h:542:1] data = extern
+    WORD[stdlib.h:542:8] data = void
+    WORD[stdlib.h:542:13] data = arc4random_buf
+    CHAR[stdlib.h:542:28] data = (
+    WORD[stdlib.h:542:29] data = void
+    CHAR[stdlib.h:542:34] data = *
+    WORD[stdlib.h:542:35] data = __buf
+    CHAR[stdlib.h:542:40] data = ,
+    WORD[stdlib.h:542:42] data = size_t
+    WORD[stdlib.h:542:49] data = __size
+    CHAR[stdlib.h:542:55] data = )
+    CHAR[stdlib.h:543:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = arc4random_uniform)
+    WORD[stdlib.h:547:1] data = extern
+    WORD[stdlib.h:547:8] data = __uint32_t
+    WORD[stdlib.h:547:19] data = arc4random_uniform
+    CHAR[stdlib.h:547:38] data = (
+    WORD[stdlib.h:547:39] data = __uint32_t
+    WORD[stdlib.h:547:50] data = __upper_bound
+    CHAR[stdlib.h:547:63] data = )
+    CHAR[stdlib.h:548:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = malloc)
+    WORD[stdlib.h:553:1] data = extern
+    WORD[stdlib.h:553:8] data = void
+    CHAR[stdlib.h:553:13] data = *
+    WORD[stdlib.h:553:14] data = malloc
+    CHAR[stdlib.h:553:21] data = (
+    WORD[stdlib.h:553:22] data = size_t
+    WORD[stdlib.h:553:29] data = __size
+    CHAR[stdlib.h:553:35] data = )
+    CHAR[stdlib.h:554:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = calloc)
+    WORD[stdlib.h:556:1] data = extern
+    WORD[stdlib.h:556:8] data = void
+    CHAR[stdlib.h:556:13] data = *
+    WORD[stdlib.h:556:14] data = calloc
+    CHAR[stdlib.h:556:21] data = (
+    WORD[stdlib.h:556:22] data = size_t
+    WORD[stdlib.h:556:29] data = __nmemb
+    CHAR[stdlib.h:556:36] data = ,
+    WORD[stdlib.h:556:38] data = size_t
+    WORD[stdlib.h:556:45] data = __size
+    CHAR[stdlib.h:556:51] data = )
+    CHAR[stdlib.h:557:9] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = realloc)
+    WORD[stdlib.h:564:1] data = extern
+    WORD[stdlib.h:564:8] data = void
+    CHAR[stdlib.h:564:13] data = *
+    WORD[stdlib.h:564:14] data = realloc
+    CHAR[stdlib.h:564:22] data = (
+    WORD[stdlib.h:564:23] data = void
+    CHAR[stdlib.h:564:28] data = *
+    WORD[stdlib.h:564:29] data = __ptr
+    CHAR[stdlib.h:564:34] data = ,
+    WORD[stdlib.h:564:36] data = size_t
+    WORD[stdlib.h:564:43] data = __size
+    CHAR[stdlib.h:564:49] data = )
+    CHAR[stdlib.h:565:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = free)
+    WORD[stdlib.h:568:1] data = extern
+    WORD[stdlib.h:568:8] data = void
+    WORD[stdlib.h:568:13] data = free
+    CHAR[stdlib.h:568:18] data = (
+    WORD[stdlib.h:568:19] data = void
+    CHAR[stdlib.h:568:24] data = *
+    WORD[stdlib.h:568:25] data = __ptr
+    CHAR[stdlib.h:568:30] data = )
+    CHAR[stdlib.h:568:32] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = reallocarray)
+    WORD[stdlib.h:576:1] data = extern
+    WORD[stdlib.h:576:8] data = void
+    CHAR[stdlib.h:576:13] data = *
+    WORD[stdlib.h:576:14] data = reallocarray
+    CHAR[stdlib.h:576:27] data = (
+    WORD[stdlib.h:576:28] data = void
+    CHAR[stdlib.h:576:33] data = *
+    WORD[stdlib.h:576:34] data = __ptr
+    CHAR[stdlib.h:576:39] data = ,
+    WORD[stdlib.h:576:41] data = size_t
+    WORD[stdlib.h:576:48] data = __nmemb
+    CHAR[stdlib.h:576:55] data = ,
+    WORD[stdlib.h:576:57] data = size_t
+    WORD[stdlib.h:576:64] data = __size
+    CHAR[stdlib.h:576:70] data = )
+    CHAR[stdlib.h:579:5] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = reallocarray)
+    WORD[stdlib.h:582:1] data = extern
+    WORD[stdlib.h:582:8] data = void
+    CHAR[stdlib.h:582:13] data = *
+    WORD[stdlib.h:582:14] data = reallocarray
+    CHAR[stdlib.h:582:27] data = (
+    WORD[stdlib.h:582:28] data = void
+    CHAR[stdlib.h:582:33] data = *
+    WORD[stdlib.h:582:34] data = __ptr
+    CHAR[stdlib.h:582:39] data = ,
+    WORD[stdlib.h:582:41] data = size_t
+    WORD[stdlib.h:582:48] data = __nmemb
+    CHAR[stdlib.h:582:55] data = ,
+    WORD[stdlib.h:582:57] data = size_t
+    WORD[stdlib.h:582:64] data = __size
+    CHAR[stdlib.h:582:70] data = )
+    CHAR[stdlib.h:583:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = alloca)
+    WORD[alloca.h:32:1] data = extern
+    WORD[alloca.h:32:8] data = void
+    CHAR[alloca.h:32:13] data = *
+    WORD[alloca.h:32:14] data = alloca
+    CHAR[alloca.h:32:21] data = (
+    WORD[alloca.h:32:22] data = size_t
+    WORD[alloca.h:32:29] data = __size
+    CHAR[alloca.h:32:35] data = )
+    CHAR[alloca.h:32:37] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = valloc)
+    WORD[stdlib.h:593:1] data = extern
+    WORD[stdlib.h:593:8] data = void
+    CHAR[stdlib.h:593:13] data = *
+    WORD[stdlib.h:593:14] data = valloc
+    CHAR[stdlib.h:593:21] data = (
+    WORD[stdlib.h:593:22] data = size_t
+    WORD[stdlib.h:593:29] data = __size
+    CHAR[stdlib.h:593:35] data = )
+    CHAR[stdlib.h:594:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = posix_memalign)
+    WORD[stdlib.h:599:1] data = extern
+    WORD[stdlib.h:599:8] data = int
+    WORD[stdlib.h:599:12] data = posix_memalign
+    CHAR[stdlib.h:599:27] data = (
+    WORD[stdlib.h:599:28] data = void
+    CHAR[stdlib.h:599:33] data = *
+    CHAR[stdlib.h:599:34] data = *
+    WORD[stdlib.h:599:35] data = __memptr
+    CHAR[stdlib.h:599:43] data = ,
+    WORD[stdlib.h:599:45] data = size_t
+    WORD[stdlib.h:599:52] data = __alignment
+    CHAR[stdlib.h:599:63] data = ,
+    WORD[stdlib.h:599:65] data = size_t
+    WORD[stdlib.h:599:72] data = __size
+    CHAR[stdlib.h:599:78] data = )
+    CHAR[stdlib.h:600:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 7, name = abort)
+    WORD[stdlib.h:611:1] data = extern
+    WORD[stdlib.h:611:8] data = void
+    WORD[stdlib.h:611:13] data = abort
+    CHAR[stdlib.h:611:19] data = (
+    WORD[stdlib.h:611:20] data = void
+    CHAR[stdlib.h:611:24] data = )
+    CHAR[stdlib.h:611:27] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = atexit)
+    WORD[stdlib.h:615:1] data = extern
+    WORD[stdlib.h:615:8] data = int
+    WORD[stdlib.h:615:12] data = atexit
+    CHAR[stdlib.h:615:19] data = (
+    WORD[stdlib.h:615:20] data = void
+    CHAR[stdlib.h:615:25] data = (
+    CHAR[stdlib.h:615:26] data = *
+    WORD[stdlib.h:615:27] data = __func
+    CHAR[stdlib.h:615:33] data = )
+    CHAR[stdlib.h:615:35] data = (
+    WORD[stdlib.h:615:36] data = void
+    CHAR[stdlib.h:615:40] data = )
+    CHAR[stdlib.h:615:41] data = )
+    CHAR[stdlib.h:615:44] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = on_exit)
+    WORD[stdlib.h:630:1] data = extern
+    WORD[stdlib.h:630:8] data = int
+    WORD[stdlib.h:630:12] data = on_exit
+    CHAR[stdlib.h:630:20] data = (
+    WORD[stdlib.h:630:21] data = void
+    CHAR[stdlib.h:630:26] data = (
+    CHAR[stdlib.h:630:27] data = *
+    WORD[stdlib.h:630:28] data = __func
+    CHAR[stdlib.h:630:34] data = )
+    CHAR[stdlib.h:630:36] data = (
+    WORD[stdlib.h:630:37] data = int
+    WORD[stdlib.h:630:41] data = __status
+    CHAR[stdlib.h:630:49] data = ,
+    WORD[stdlib.h:630:51] data = void
+    CHAR[stdlib.h:630:56] data = *
+    WORD[stdlib.h:630:57] data = __arg
+    CHAR[stdlib.h:630:62] data = )
+    CHAR[stdlib.h:630:63] data = ,
+    WORD[stdlib.h:630:65] data = void
+    CHAR[stdlib.h:630:70] data = *
+    WORD[stdlib.h:630:71] data = __arg
+    CHAR[stdlib.h:630:76] data = )
+    CHAR[stdlib.h:631:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = exit)
+    WORD[stdlib.h:637:1] data = extern
+    WORD[stdlib.h:637:8] data = void
+    WORD[stdlib.h:637:13] data = exit
+    CHAR[stdlib.h:637:18] data = (
+    WORD[stdlib.h:637:19] data = int
+    WORD[stdlib.h:637:23] data = __status
+    CHAR[stdlib.h:637:31] data = )
+    CHAR[stdlib.h:637:34] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = _Exit)
+    WORD[stdlib.h:649:1] data = extern
+    WORD[stdlib.h:649:8] data = void
+    WORD[stdlib.h:649:13] data = _Exit
+    CHAR[stdlib.h:649:19] data = (
+    WORD[stdlib.h:649:20] data = int
+    WORD[stdlib.h:649:24] data = __status
+    CHAR[stdlib.h:649:32] data = )
+    CHAR[stdlib.h:649:35] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 11, name = getenv)
+    WORD[stdlib.h:654:1] data = extern
+    WORD[stdlib.h:654:8] data = char
+    CHAR[stdlib.h:654:13] data = *
+    WORD[stdlib.h:654:14] data = getenv
+    CHAR[stdlib.h:654:21] data = (
+    WORD[stdlib.h:654:22] data = const
+    WORD[stdlib.h:654:28] data = char
+    CHAR[stdlib.h:654:33] data = *
+    WORD[stdlib.h:654:34] data = __name
+    CHAR[stdlib.h:654:40] data = )
+    CHAR[stdlib.h:654:44] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = putenv)
+    WORD[stdlib.h:667:1] data = extern
+    WORD[stdlib.h:667:8] data = int
+    WORD[stdlib.h:667:12] data = putenv
+    CHAR[stdlib.h:667:19] data = (
+    WORD[stdlib.h:667:20] data = char
+    CHAR[stdlib.h:667:25] data = *
+    WORD[stdlib.h:667:26] data = __string
+    CHAR[stdlib.h:667:34] data = )
+    CHAR[stdlib.h:667:37] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = setenv)
+    WORD[stdlib.h:673:1] data = extern
+    WORD[stdlib.h:673:8] data = int
+    WORD[stdlib.h:673:12] data = setenv
+    CHAR[stdlib.h:673:19] data = (
+    WORD[stdlib.h:673:20] data = const
+    WORD[stdlib.h:673:26] data = char
+    CHAR[stdlib.h:673:31] data = *
+    WORD[stdlib.h:673:32] data = __name
+    CHAR[stdlib.h:673:38] data = ,
+    WORD[stdlib.h:673:40] data = const
+    WORD[stdlib.h:673:46] data = char
+    CHAR[stdlib.h:673:51] data = *
+    WORD[stdlib.h:673:52] data = __value
+    CHAR[stdlib.h:673:59] data = ,
+    WORD[stdlib.h:673:61] data = int
+    WORD[stdlib.h:673:65] data = __replace
+    CHAR[stdlib.h:673:74] data = )
+    CHAR[stdlib.h:674:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = unsetenv)
+    WORD[stdlib.h:677:1] data = extern
+    WORD[stdlib.h:677:8] data = int
+    WORD[stdlib.h:677:12] data = unsetenv
+    CHAR[stdlib.h:677:21] data = (
+    WORD[stdlib.h:677:22] data = const
+    WORD[stdlib.h:677:28] data = char
+    CHAR[stdlib.h:677:33] data = *
+    WORD[stdlib.h:677:34] data = __name
+    CHAR[stdlib.h:677:40] data = )
+    CHAR[stdlib.h:677:43] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 7, name = clearenv)
+    WORD[stdlib.h:684:1] data = extern
+    WORD[stdlib.h:684:8] data = int
+    WORD[stdlib.h:684:12] data = clearenv
+    CHAR[stdlib.h:684:21] data = (
+    WORD[stdlib.h:684:22] data = void
+    CHAR[stdlib.h:684:26] data = )
+    CHAR[stdlib.h:684:28] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = mktemp)
+    WORD[stdlib.h:695:1] data = extern
+    WORD[stdlib.h:695:8] data = char
+    CHAR[stdlib.h:695:13] data = *
+    WORD[stdlib.h:695:14] data = mktemp
+    CHAR[stdlib.h:695:21] data = (
+    WORD[stdlib.h:695:22] data = char
+    CHAR[stdlib.h:695:27] data = *
+    WORD[stdlib.h:695:28] data = __template
+    CHAR[stdlib.h:695:38] data = )
+    CHAR[stdlib.h:695:41] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = mkstemp)
+    WORD[stdlib.h:708:1] data = extern
+    WORD[stdlib.h:708:8] data = int
+    WORD[stdlib.h:708:12] data = mkstemp
+    CHAR[stdlib.h:708:20] data = (
+    WORD[stdlib.h:708:21] data = char
+    CHAR[stdlib.h:708:26] data = *
+    WORD[stdlib.h:708:27] data = __template
+    CHAR[stdlib.h:708:37] data = )
+    CHAR[stdlib.h:708:40] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = mkstemps)
+    WORD[stdlib.h:730:1] data = extern
+    WORD[stdlib.h:730:8] data = int
+    WORD[stdlib.h:730:12] data = mkstemps
+    CHAR[stdlib.h:730:21] data = (
+    WORD[stdlib.h:730:22] data = char
+    CHAR[stdlib.h:730:27] data = *
+    WORD[stdlib.h:730:28] data = __template
+    CHAR[stdlib.h:730:38] data = ,
+    WORD[stdlib.h:730:40] data = int
+    WORD[stdlib.h:730:44] data = __suffixlen
+    CHAR[stdlib.h:730:55] data = )
+    CHAR[stdlib.h:730:58] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = mkdtemp)
+    WORD[stdlib.h:751:1] data = extern
+    WORD[stdlib.h:751:8] data = char
+    CHAR[stdlib.h:751:13] data = *
+    WORD[stdlib.h:751:14] data = mkdtemp
+    CHAR[stdlib.h:751:22] data = (
+    WORD[stdlib.h:751:23] data = char
+    CHAR[stdlib.h:751:28] data = *
+    WORD[stdlib.h:751:29] data = __template
+    CHAR[stdlib.h:751:39] data = )
+    CHAR[stdlib.h:751:43] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = system)
+    WORD[stdlib.h:804:1] data = extern
+    WORD[stdlib.h:804:8] data = int
+    WORD[stdlib.h:804:12] data = system
+    CHAR[stdlib.h:804:19] data = (
+    WORD[stdlib.h:804:20] data = const
+    WORD[stdlib.h:804:26] data = char
+    CHAR[stdlib.h:804:31] data = *
+    WORD[stdlib.h:804:32] data = __command
+    CHAR[stdlib.h:804:41] data = )
+    CHAR[stdlib.h:804:43] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = realpath)
+    WORD[stdlib.h:821:1] data = extern
+    WORD[stdlib.h:821:8] data = char
+    CHAR[stdlib.h:821:13] data = *
+    WORD[stdlib.h:821:14] data = realpath
+    CHAR[stdlib.h:821:23] data = (
+    WORD[stdlib.h:821:24] data = const
+    WORD[stdlib.h:821:30] data = char
+    CHAR[stdlib.h:821:35] data = *
+    WORD[stdlib.h:821:36] data = restrict
+    WORD[stdlib.h:821:45] data = __name
+    CHAR[stdlib.h:821:51] data = ,
+    WORD[stdlib.h:822:10] data = char
+    CHAR[stdlib.h:822:15] data = *
+    WORD[stdlib.h:822:16] data = restrict
+    WORD[stdlib.h:822:25] data = __resolved
+    CHAR[stdlib.h:822:35] data = )
+    CHAR[stdlib.h:822:38] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 25, name = bsearch)
+    WORD[stdlib.h:841:1] data = extern
+    WORD[stdlib.h:841:8] data = void
+    CHAR[stdlib.h:841:13] data = *
+    WORD[stdlib.h:841:14] data = bsearch
+    CHAR[stdlib.h:841:22] data = (
+    WORD[stdlib.h:841:23] data = const
+    WORD[stdlib.h:841:29] data = void
+    CHAR[stdlib.h:841:34] data = *
+    WORD[stdlib.h:841:35] data = __key
+    CHAR[stdlib.h:841:40] data = ,
+    WORD[stdlib.h:841:42] data = const
+    WORD[stdlib.h:841:48] data = void
+    CHAR[stdlib.h:841:53] data = *
+    WORD[stdlib.h:841:54] data = __base
+    CHAR[stdlib.h:841:60] data = ,
+    WORD[stdlib.h:842:9] data = size_t
+    WORD[stdlib.h:842:16] data = __nmemb
+    CHAR[stdlib.h:842:23] data = ,
+    WORD[stdlib.h:842:25] data = size_t
+    WORD[stdlib.h:842:32] data = __size
+    CHAR[stdlib.h:842:38] data = ,
+    WORD[stdlib.h:842:40] data = __compar_fn_t
+    WORD[stdlib.h:842:54] data = __compar
+    CHAR[stdlib.h:842:62] data = )
+    CHAR[stdlib.h:843:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = qsort)
+    WORD[stdlib.h:851:1] data = extern
+    WORD[stdlib.h:851:8] data = void
+    WORD[stdlib.h:851:13] data = qsort
+    CHAR[stdlib.h:851:19] data = (
+    WORD[stdlib.h:851:20] data = void
+    CHAR[stdlib.h:851:25] data = *
+    WORD[stdlib.h:851:26] data = __base
+    CHAR[stdlib.h:851:32] data = ,
+    WORD[stdlib.h:851:34] data = size_t
+    WORD[stdlib.h:851:41] data = __nmemb
+    CHAR[stdlib.h:851:48] data = ,
+    WORD[stdlib.h:851:50] data = size_t
+    WORD[stdlib.h:851:57] data = __size
+    CHAR[stdlib.h:851:63] data = ,
+    WORD[stdlib.h:852:6] data = __compar_fn_t
+    WORD[stdlib.h:852:20] data = __compar
+    CHAR[stdlib.h:852:28] data = )
+    CHAR[stdlib.h:852:30] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = abs)
+    WORD[stdlib.h:861:1] data = extern
+    WORD[stdlib.h:861:8] data = int
+    WORD[stdlib.h:861:12] data = abs
+    CHAR[stdlib.h:861:16] data = (
+    WORD[stdlib.h:861:17] data = int
+    WORD[stdlib.h:861:21] data = __x
+    CHAR[stdlib.h:861:24] data = )
+    CHAR[stdlib.h:861:28] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = labs)
+    WORD[stdlib.h:862:1] data = extern
+    WORD[stdlib.h:862:8] data = long
+    WORD[stdlib.h:862:13] data = int
+    WORD[stdlib.h:862:17] data = labs
+    CHAR[stdlib.h:862:22] data = (
+    WORD[stdlib.h:862:23] data = long
+    WORD[stdlib.h:862:28] data = int
+    WORD[stdlib.h:862:32] data = __x
+    CHAR[stdlib.h:862:35] data = )
+    CHAR[stdlib.h:862:39] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = llabs)
+    WORD[stdlib.h:865:2] data = extern
+    WORD[stdlib.h:865:9] data = long
+    WORD[stdlib.h:865:14] data = long
+    WORD[stdlib.h:865:19] data = int
+    WORD[stdlib.h:865:23] data = llabs
+    CHAR[stdlib.h:865:29] data = (
+    WORD[stdlib.h:865:30] data = long
+    WORD[stdlib.h:865:35] data = long
+    WORD[stdlib.h:865:40] data = int
+    WORD[stdlib.h:865:44] data = __x
+    CHAR[stdlib.h:865:47] data = )
+    CHAR[stdlib.h:866:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 11, name = div)
+    WORD[stdlib.h:873:1] data = extern
+    WORD[stdlib.h:873:8] data = div_t
+    WORD[stdlib.h:873:14] data = div
+    CHAR[stdlib.h:873:18] data = (
+    WORD[stdlib.h:873:19] data = int
+    WORD[stdlib.h:873:23] data = __numer
+    CHAR[stdlib.h:873:30] data = ,
+    WORD[stdlib.h:873:32] data = int
+    WORD[stdlib.h:873:36] data = __denom
+    CHAR[stdlib.h:873:43] data = )
+    CHAR[stdlib.h:874:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = ldiv)
+    WORD[stdlib.h:875:1] data = extern
+    WORD[stdlib.h:875:8] data = ldiv_t
+    WORD[stdlib.h:875:15] data = ldiv
+    CHAR[stdlib.h:875:20] data = (
+    WORD[stdlib.h:875:21] data = long
+    WORD[stdlib.h:875:26] data = int
+    WORD[stdlib.h:875:30] data = __numer
+    CHAR[stdlib.h:875:37] data = ,
+    WORD[stdlib.h:875:39] data = long
+    WORD[stdlib.h:875:44] data = int
+    WORD[stdlib.h:875:48] data = __denom
+    CHAR[stdlib.h:875:55] data = )
+    CHAR[stdlib.h:876:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = lldiv)
+    WORD[stdlib.h:879:2] data = extern
+    WORD[stdlib.h:879:9] data = lldiv_t
+    WORD[stdlib.h:879:17] data = lldiv
+    CHAR[stdlib.h:879:23] data = (
+    WORD[stdlib.h:879:24] data = long
+    WORD[stdlib.h:879:29] data = long
+    WORD[stdlib.h:879:34] data = int
+    WORD[stdlib.h:879:38] data = __numer
+    CHAR[stdlib.h:879:45] data = ,
+    WORD[stdlib.h:880:9] data = long
+    WORD[stdlib.h:880:14] data = long
+    WORD[stdlib.h:880:19] data = int
+    WORD[stdlib.h:880:23] data = __denom
+    CHAR[stdlib.h:880:30] data = )
+    CHAR[stdlib.h:881:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 22, name = ecvt)
+    WORD[stdlib.h:893:1] data = extern
+    WORD[stdlib.h:893:8] data = char
+    CHAR[stdlib.h:893:13] data = *
+    WORD[stdlib.h:893:14] data = ecvt
+    CHAR[stdlib.h:893:19] data = (
+    WORD[stdlib.h:893:20] data = double
+    WORD[stdlib.h:893:27] data = __value
+    CHAR[stdlib.h:893:34] data = ,
+    WORD[stdlib.h:893:36] data = int
+    WORD[stdlib.h:893:40] data = __ndigit
+    CHAR[stdlib.h:893:48] data = ,
+    WORD[stdlib.h:893:50] data = int
+    CHAR[stdlib.h:893:54] data = *
+    WORD[stdlib.h:893:55] data = restrict
+    WORD[stdlib.h:893:64] data = __decpt
+    CHAR[stdlib.h:893:71] data = ,
+    WORD[stdlib.h:894:6] data = int
+    CHAR[stdlib.h:894:10] data = *
+    WORD[stdlib.h:894:11] data = restrict
+    WORD[stdlib.h:894:20] data = __sign
+    CHAR[stdlib.h:894:26] data = )
+    CHAR[stdlib.h:894:30] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 22, name = fcvt)
+    WORD[stdlib.h:899:1] data = extern
+    WORD[stdlib.h:899:8] data = char
+    CHAR[stdlib.h:899:13] data = *
+    WORD[stdlib.h:899:14] data = fcvt
+    CHAR[stdlib.h:899:19] data = (
+    WORD[stdlib.h:899:20] data = double
+    WORD[stdlib.h:899:27] data = __value
+    CHAR[stdlib.h:899:34] data = ,
+    WORD[stdlib.h:899:36] data = int
+    WORD[stdlib.h:899:40] data = __ndigit
+    CHAR[stdlib.h:899:48] data = ,
+    WORD[stdlib.h:899:50] data = int
+    CHAR[stdlib.h:899:54] data = *
+    WORD[stdlib.h:899:55] data = restrict
+    WORD[stdlib.h:899:64] data = __decpt
+    CHAR[stdlib.h:899:71] data = ,
+    WORD[stdlib.h:900:6] data = int
+    CHAR[stdlib.h:900:10] data = *
+    WORD[stdlib.h:900:11] data = restrict
+    WORD[stdlib.h:900:20] data = __sign
+    CHAR[stdlib.h:900:26] data = )
+    CHAR[stdlib.h:900:30] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = gcvt)
+    WORD[stdlib.h:905:1] data = extern
+    WORD[stdlib.h:905:8] data = char
+    CHAR[stdlib.h:905:13] data = *
+    WORD[stdlib.h:905:14] data = gcvt
+    CHAR[stdlib.h:905:19] data = (
+    WORD[stdlib.h:905:20] data = double
+    WORD[stdlib.h:905:27] data = __value
+    CHAR[stdlib.h:905:34] data = ,
+    WORD[stdlib.h:905:36] data = int
+    WORD[stdlib.h:905:40] data = __ndigit
+    CHAR[stdlib.h:905:48] data = ,
+    WORD[stdlib.h:905:50] data = char
+    CHAR[stdlib.h:905:55] data = *
+    WORD[stdlib.h:905:56] data = __buf
+    CHAR[stdlib.h:905:61] data = )
+    CHAR[stdlib.h:906:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = qecvt)
+    WORD[stdlib.h:911:1] data = extern
+    WORD[stdlib.h:911:8] data = char
+    CHAR[stdlib.h:911:13] data = *
+    WORD[stdlib.h:911:14] data = qecvt
+    CHAR[stdlib.h:911:20] data = (
+    WORD[stdlib.h:911:21] data = long
+    WORD[stdlib.h:911:26] data = double
+    WORD[stdlib.h:911:33] data = __value
+    CHAR[stdlib.h:911:40] data = ,
+    WORD[stdlib.h:911:42] data = int
+    WORD[stdlib.h:911:46] data = __ndigit
+    CHAR[stdlib.h:911:54] data = ,
+    WORD[stdlib.h:912:7] data = int
+    CHAR[stdlib.h:912:11] data = *
+    WORD[stdlib.h:912:12] data = restrict
+    WORD[stdlib.h:912:21] data = __decpt
+    CHAR[stdlib.h:912:28] data = ,
+    WORD[stdlib.h:912:30] data = int
+    CHAR[stdlib.h:912:34] data = *
+    WORD[stdlib.h:912:35] data = restrict
+    WORD[stdlib.h:912:44] data = __sign
+    CHAR[stdlib.h:912:50] data = )
+    CHAR[stdlib.h:913:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = qfcvt)
+    WORD[stdlib.h:914:1] data = extern
+    WORD[stdlib.h:914:8] data = char
+    CHAR[stdlib.h:914:13] data = *
+    WORD[stdlib.h:914:14] data = qfcvt
+    CHAR[stdlib.h:914:20] data = (
+    WORD[stdlib.h:914:21] data = long
+    WORD[stdlib.h:914:26] data = double
+    WORD[stdlib.h:914:33] data = __value
+    CHAR[stdlib.h:914:40] data = ,
+    WORD[stdlib.h:914:42] data = int
+    WORD[stdlib.h:914:46] data = __ndigit
+    CHAR[stdlib.h:914:54] data = ,
+    WORD[stdlib.h:915:7] data = int
+    CHAR[stdlib.h:915:11] data = *
+    WORD[stdlib.h:915:12] data = restrict
+    WORD[stdlib.h:915:21] data = __decpt
+    CHAR[stdlib.h:915:28] data = ,
+    WORD[stdlib.h:915:30] data = int
+    CHAR[stdlib.h:915:34] data = *
+    WORD[stdlib.h:915:35] data = restrict
+    WORD[stdlib.h:915:44] data = __sign
+    CHAR[stdlib.h:915:50] data = )
+    CHAR[stdlib.h:916:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = qgcvt)
+    WORD[stdlib.h:917:1] data = extern
+    WORD[stdlib.h:917:8] data = char
+    CHAR[stdlib.h:917:13] data = *
+    WORD[stdlib.h:917:14] data = qgcvt
+    CHAR[stdlib.h:917:20] data = (
+    WORD[stdlib.h:917:21] data = long
+    WORD[stdlib.h:917:26] data = double
+    WORD[stdlib.h:917:33] data = __value
+    CHAR[stdlib.h:917:40] data = ,
+    WORD[stdlib.h:917:42] data = int
+    WORD[stdlib.h:917:46] data = __ndigit
+    CHAR[stdlib.h:917:54] data = ,
+    WORD[stdlib.h:917:56] data = char
+    CHAR[stdlib.h:917:61] data = *
+    WORD[stdlib.h:917:62] data = __buf
+    CHAR[stdlib.h:917:67] data = )
+    CHAR[stdlib.h:918:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 29, name = ecvt_r)
+    WORD[stdlib.h:923:1] data = extern
+    WORD[stdlib.h:923:8] data = int
+    WORD[stdlib.h:923:12] data = ecvt_r
+    CHAR[stdlib.h:923:19] data = (
+    WORD[stdlib.h:923:20] data = double
+    WORD[stdlib.h:923:27] data = __value
+    CHAR[stdlib.h:923:34] data = ,
+    WORD[stdlib.h:923:36] data = int
+    WORD[stdlib.h:923:40] data = __ndigit
+    CHAR[stdlib.h:923:48] data = ,
+    WORD[stdlib.h:923:50] data = int
+    CHAR[stdlib.h:923:54] data = *
+    WORD[stdlib.h:923:55] data = restrict
+    WORD[stdlib.h:923:64] data = __decpt
+    CHAR[stdlib.h:923:71] data = ,
+    WORD[stdlib.h:924:6] data = int
+    CHAR[stdlib.h:924:10] data = *
+    WORD[stdlib.h:924:11] data = restrict
+    WORD[stdlib.h:924:20] data = __sign
+    CHAR[stdlib.h:924:26] data = ,
+    WORD[stdlib.h:924:28] data = char
+    CHAR[stdlib.h:924:33] data = *
+    WORD[stdlib.h:924:34] data = restrict
+    WORD[stdlib.h:924:43] data = __buf
+    CHAR[stdlib.h:924:48] data = ,
+    WORD[stdlib.h:925:6] data = size_t
+    WORD[stdlib.h:925:13] data = __len
+    CHAR[stdlib.h:925:18] data = )
+    CHAR[stdlib.h:925:21] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 29, name = fcvt_r)
+    WORD[stdlib.h:926:1] data = extern
+    WORD[stdlib.h:926:8] data = int
+    WORD[stdlib.h:926:12] data = fcvt_r
+    CHAR[stdlib.h:926:19] data = (
+    WORD[stdlib.h:926:20] data = double
+    WORD[stdlib.h:926:27] data = __value
+    CHAR[stdlib.h:926:34] data = ,
+    WORD[stdlib.h:926:36] data = int
+    WORD[stdlib.h:926:40] data = __ndigit
+    CHAR[stdlib.h:926:48] data = ,
+    WORD[stdlib.h:926:50] data = int
+    CHAR[stdlib.h:926:54] data = *
+    WORD[stdlib.h:926:55] data = restrict
+    WORD[stdlib.h:926:64] data = __decpt
+    CHAR[stdlib.h:926:71] data = ,
+    WORD[stdlib.h:927:6] data = int
+    CHAR[stdlib.h:927:10] data = *
+    WORD[stdlib.h:927:11] data = restrict
+    WORD[stdlib.h:927:20] data = __sign
+    CHAR[stdlib.h:927:26] data = ,
+    WORD[stdlib.h:927:28] data = char
+    CHAR[stdlib.h:927:33] data = *
+    WORD[stdlib.h:927:34] data = restrict
+    WORD[stdlib.h:927:43] data = __buf
+    CHAR[stdlib.h:927:48] data = ,
+    WORD[stdlib.h:928:6] data = size_t
+    WORD[stdlib.h:928:13] data = __len
+    CHAR[stdlib.h:928:18] data = )
+    CHAR[stdlib.h:928:21] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 30, name = qecvt_r)
+    WORD[stdlib.h:930:1] data = extern
+    WORD[stdlib.h:930:8] data = int
+    WORD[stdlib.h:930:12] data = qecvt_r
+    CHAR[stdlib.h:930:20] data = (
+    WORD[stdlib.h:930:21] data = long
+    WORD[stdlib.h:930:26] data = double
+    WORD[stdlib.h:930:33] data = __value
+    CHAR[stdlib.h:930:40] data = ,
+    WORD[stdlib.h:930:42] data = int
+    WORD[stdlib.h:930:46] data = __ndigit
+    CHAR[stdlib.h:930:54] data = ,
+    WORD[stdlib.h:931:7] data = int
+    CHAR[stdlib.h:931:11] data = *
+    WORD[stdlib.h:931:12] data = restrict
+    WORD[stdlib.h:931:21] data = __decpt
+    CHAR[stdlib.h:931:28] data = ,
+    WORD[stdlib.h:931:30] data = int
+    CHAR[stdlib.h:931:34] data = *
+    WORD[stdlib.h:931:35] data = restrict
+    WORD[stdlib.h:931:44] data = __sign
+    CHAR[stdlib.h:931:50] data = ,
+    WORD[stdlib.h:932:7] data = char
+    CHAR[stdlib.h:932:12] data = *
+    WORD[stdlib.h:932:13] data = restrict
+    WORD[stdlib.h:932:22] data = __buf
+    CHAR[stdlib.h:932:27] data = ,
+    WORD[stdlib.h:932:29] data = size_t
+    WORD[stdlib.h:932:36] data = __len
+    CHAR[stdlib.h:932:41] data = )
+    CHAR[stdlib.h:933:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 30, name = qfcvt_r)
+    WORD[stdlib.h:934:1] data = extern
+    WORD[stdlib.h:934:8] data = int
+    WORD[stdlib.h:934:12] data = qfcvt_r
+    CHAR[stdlib.h:934:20] data = (
+    WORD[stdlib.h:934:21] data = long
+    WORD[stdlib.h:934:26] data = double
+    WORD[stdlib.h:934:33] data = __value
+    CHAR[stdlib.h:934:40] data = ,
+    WORD[stdlib.h:934:42] data = int
+    WORD[stdlib.h:934:46] data = __ndigit
+    CHAR[stdlib.h:934:54] data = ,
+    WORD[stdlib.h:935:7] data = int
+    CHAR[stdlib.h:935:11] data = *
+    WORD[stdlib.h:935:12] data = restrict
+    WORD[stdlib.h:935:21] data = __decpt
+    CHAR[stdlib.h:935:28] data = ,
+    WORD[stdlib.h:935:30] data = int
+    CHAR[stdlib.h:935:34] data = *
+    WORD[stdlib.h:935:35] data = restrict
+    WORD[stdlib.h:935:44] data = __sign
+    CHAR[stdlib.h:935:50] data = ,
+    WORD[stdlib.h:936:7] data = char
+    CHAR[stdlib.h:936:12] data = *
+    WORD[stdlib.h:936:13] data = restrict
+    WORD[stdlib.h:936:22] data = __buf
+    CHAR[stdlib.h:936:27] data = ,
+    WORD[stdlib.h:936:29] data = size_t
+    WORD[stdlib.h:936:36] data = __len
+    CHAR[stdlib.h:936:41] data = )
+    CHAR[stdlib.h:937:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = mblen)
+    WORD[stdlib.h:943:1] data = extern
+    WORD[stdlib.h:943:8] data = int
+    WORD[stdlib.h:943:12] data = mblen
+    CHAR[stdlib.h:943:18] data = (
+    WORD[stdlib.h:943:19] data = const
+    WORD[stdlib.h:943:25] data = char
+    CHAR[stdlib.h:943:30] data = *
+    WORD[stdlib.h:943:31] data = __s
+    CHAR[stdlib.h:943:34] data = ,
+    WORD[stdlib.h:943:36] data = size_t
+    WORD[stdlib.h:943:43] data = __n
+    CHAR[stdlib.h:943:46] data = )
+    CHAR[stdlib.h:943:48] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 19, name = mbtowc)
+    WORD[stdlib.h:946:1] data = extern
+    WORD[stdlib.h:946:8] data = int
+    WORD[stdlib.h:946:12] data = mbtowc
+    CHAR[stdlib.h:946:19] data = (
+    WORD[stdlib.h:946:20] data = wchar_t
+    CHAR[stdlib.h:946:28] data = *
+    WORD[stdlib.h:946:29] data = restrict
+    WORD[stdlib.h:946:38] data = __pwc
+    CHAR[stdlib.h:946:43] data = ,
+    WORD[stdlib.h:947:6] data = const
+    WORD[stdlib.h:947:12] data = char
+    CHAR[stdlib.h:947:17] data = *
+    WORD[stdlib.h:947:18] data = restrict
+    WORD[stdlib.h:947:27] data = __s
+    CHAR[stdlib.h:947:30] data = ,
+    WORD[stdlib.h:947:32] data = size_t
+    WORD[stdlib.h:947:39] data = __n
+    CHAR[stdlib.h:947:42] data = )
+    CHAR[stdlib.h:947:44] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = wctomb)
+    WORD[stdlib.h:950:1] data = extern
+    WORD[stdlib.h:950:8] data = int
+    WORD[stdlib.h:950:12] data = wctomb
+    CHAR[stdlib.h:950:19] data = (
+    WORD[stdlib.h:950:20] data = char
+    CHAR[stdlib.h:950:25] data = *
+    WORD[stdlib.h:950:26] data = __s
+    CHAR[stdlib.h:950:29] data = ,
+    WORD[stdlib.h:950:31] data = wchar_t
+    WORD[stdlib.h:950:39] data = __wchar
+    CHAR[stdlib.h:950:46] data = )
+    CHAR[stdlib.h:950:48] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 19, name = mbstowcs)
+    WORD[stdlib.h:954:1] data = extern
+    WORD[stdlib.h:954:8] data = size_t
+    WORD[stdlib.h:954:15] data = mbstowcs
+    CHAR[stdlib.h:954:24] data = (
+    WORD[stdlib.h:954:25] data = wchar_t
+    CHAR[stdlib.h:954:33] data = *
+    WORD[stdlib.h:954:34] data = restrict
+    WORD[stdlib.h:954:44] data = __pwcs
+    CHAR[stdlib.h:954:50] data = ,
+    WORD[stdlib.h:955:4] data = const
+    WORD[stdlib.h:955:10] data = char
+    CHAR[stdlib.h:955:15] data = *
+    WORD[stdlib.h:955:16] data = restrict
+    WORD[stdlib.h:955:25] data = __s
+    CHAR[stdlib.h:955:28] data = ,
+    WORD[stdlib.h:955:30] data = size_t
+    WORD[stdlib.h:955:37] data = __n
+    CHAR[stdlib.h:955:40] data = )
+    CHAR[stdlib.h:956:5] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 19, name = wcstombs)
+    WORD[stdlib.h:958:1] data = extern
+    WORD[stdlib.h:958:8] data = size_t
+    WORD[stdlib.h:958:15] data = wcstombs
+    CHAR[stdlib.h:958:24] data = (
+    WORD[stdlib.h:958:25] data = char
+    CHAR[stdlib.h:958:30] data = *
+    WORD[stdlib.h:958:31] data = restrict
+    WORD[stdlib.h:958:40] data = __s
+    CHAR[stdlib.h:958:43] data = ,
+    WORD[stdlib.h:959:4] data = const
+    WORD[stdlib.h:959:10] data = wchar_t
+    CHAR[stdlib.h:959:18] data = *
+    WORD[stdlib.h:959:19] data = restrict
+    WORD[stdlib.h:959:28] data = __pwcs
+    CHAR[stdlib.h:959:34] data = ,
+    WORD[stdlib.h:959:36] data = size_t
+    WORD[stdlib.h:959:43] data = __n
+    CHAR[stdlib.h:959:46] data = )
+    CHAR[stdlib.h:962:3] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = rpmatch)
+    WORD[stdlib.h:969:1] data = extern
+    WORD[stdlib.h:969:8] data = int
+    WORD[stdlib.h:969:12] data = rpmatch
+    CHAR[stdlib.h:969:20] data = (
+    WORD[stdlib.h:969:21] data = const
+    WORD[stdlib.h:969:27] data = char
+    CHAR[stdlib.h:969:32] data = *
+    WORD[stdlib.h:969:33] data = __response
+    CHAR[stdlib.h:969:43] data = )
+    CHAR[stdlib.h:969:47] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 24, name = getsubopt)
+    WORD[stdlib.h:980:1] data = extern
+    WORD[stdlib.h:980:8] data = int
+    WORD[stdlib.h:980:12] data = getsubopt
+    CHAR[stdlib.h:980:22] data = (
+    WORD[stdlib.h:980:23] data = char
+    CHAR[stdlib.h:980:28] data = *
+    CHAR[stdlib.h:980:29] data = *
+    WORD[stdlib.h:980:30] data = restrict
+    WORD[stdlib.h:980:39] data = __optionp
+    CHAR[stdlib.h:980:48] data = ,
+    WORD[stdlib.h:981:9] data = char
+    CHAR[stdlib.h:981:14] data = *
+    WORD[stdlib.h:981:15] data = const
+    CHAR[stdlib.h:981:21] data = *
+    WORD[stdlib.h:981:22] data = restrict
+    WORD[stdlib.h:981:31] data = __tokens
+    CHAR[stdlib.h:981:39] data = ,
+    WORD[stdlib.h:982:9] data = char
+    CHAR[stdlib.h:982:14] data = *
+    CHAR[stdlib.h:982:15] data = *
+    WORD[stdlib.h:982:16] data = restrict
+    WORD[stdlib.h:982:25] data = __valuep
+    CHAR[stdlib.h:982:33] data = )
+    CHAR[stdlib.h:983:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = getloadavg)
+    WORD[stdlib.h:1026:1] data = extern
+    WORD[stdlib.h:1026:8] data = int
+    WORD[stdlib.h:1026:12] data = getloadavg
+    CHAR[stdlib.h:1026:23] data = (
+    WORD[stdlib.h:1026:24] data = double
+    WORD[stdlib.h:1026:31] data = __loadavg
+    CHAR[stdlib.h:1026:40] data = [
+    CHAR[stdlib.h:1026:41] data = ]
+    CHAR[stdlib.h:1026:42] data = ,
+    WORD[stdlib.h:1026:44] data = int
+    WORD[stdlib.h:1026:48] data = __nelem
+    CHAR[stdlib.h:1026:55] data = )
+    CHAR[stdlib.h:1027:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = memcpy)
+    WORD[string.h:43:1] data = extern
+    WORD[string.h:43:8] data = void
+    CHAR[string.h:43:13] data = *
+    WORD[string.h:43:14] data = memcpy
+    CHAR[string.h:43:21] data = (
+    WORD[string.h:43:22] data = void
+    CHAR[string.h:43:27] data = *
+    WORD[string.h:43:28] data = restrict
+    WORD[string.h:43:37] data = __dest
+    CHAR[string.h:43:43] data = ,
+    WORD[string.h:43:45] data = const
+    WORD[string.h:43:51] data = void
+    CHAR[string.h:43:56] data = *
+    WORD[string.h:43:57] data = restrict
+    WORD[string.h:43:66] data = __src
+    CHAR[string.h:43:71] data = ,
+    WORD[string.h:44:8] data = size_t
+    WORD[string.h:44:15] data = __n
+    CHAR[string.h:44:18] data = )
+    CHAR[string.h:44:21] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = memmove)
+    WORD[string.h:47:1] data = extern
+    WORD[string.h:47:8] data = void
+    CHAR[string.h:47:13] data = *
+    WORD[string.h:47:14] data = memmove
+    CHAR[string.h:47:22] data = (
+    WORD[string.h:47:23] data = void
+    CHAR[string.h:47:28] data = *
+    WORD[string.h:47:29] data = __dest
+    CHAR[string.h:47:35] data = ,
+    WORD[string.h:47:37] data = const
+    WORD[string.h:47:43] data = void
+    CHAR[string.h:47:48] data = *
+    WORD[string.h:47:49] data = __src
+    CHAR[string.h:47:54] data = ,
+    WORD[string.h:47:56] data = size_t
+    WORD[string.h:47:63] data = __n
+    CHAR[string.h:47:66] data = )
+    CHAR[string.h:48:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = memccpy)
+    WORD[string.h:54:1] data = extern
+    WORD[string.h:54:8] data = void
+    CHAR[string.h:54:13] data = *
+    WORD[string.h:54:14] data = memccpy
+    CHAR[string.h:54:22] data = (
+    WORD[string.h:54:23] data = void
+    CHAR[string.h:54:28] data = *
+    WORD[string.h:54:29] data = restrict
+    WORD[string.h:54:38] data = __dest
+    CHAR[string.h:54:44] data = ,
+    WORD[string.h:54:46] data = const
+    WORD[string.h:54:52] data = void
+    CHAR[string.h:54:57] data = *
+    WORD[string.h:54:58] data = restrict
+    WORD[string.h:54:67] data = __src
+    CHAR[string.h:54:72] data = ,
+    WORD[string.h:55:9] data = int
+    WORD[string.h:55:13] data = __c
+    CHAR[string.h:55:16] data = ,
+    WORD[string.h:55:18] data = size_t
+    WORD[string.h:55:25] data = __n
+    CHAR[string.h:55:28] data = )
+    CHAR[string.h:56:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = memset)
+    WORD[string.h:61:1] data = extern
+    WORD[string.h:61:8] data = void
+    CHAR[string.h:61:13] data = *
+    WORD[string.h:61:14] data = memset
+    CHAR[string.h:61:21] data = (
+    WORD[string.h:61:22] data = void
+    CHAR[string.h:61:27] data = *
+    WORD[string.h:61:28] data = __s
+    CHAR[string.h:61:31] data = ,
+    WORD[string.h:61:33] data = int
+    WORD[string.h:61:37] data = __c
+    CHAR[string.h:61:40] data = ,
+    WORD[string.h:61:42] data = size_t
+    WORD[string.h:61:49] data = __n
+    CHAR[string.h:61:52] data = )
+    CHAR[string.h:61:55] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = memcmp)
+    WORD[string.h:64:1] data = extern
+    WORD[string.h:64:8] data = int
+    WORD[string.h:64:12] data = memcmp
+    CHAR[string.h:64:19] data = (
+    WORD[string.h:64:20] data = const
+    WORD[string.h:64:26] data = void
+    CHAR[string.h:64:31] data = *
+    WORD[string.h:64:32] data = __s1
+    CHAR[string.h:64:36] data = ,
+    WORD[string.h:64:38] data = const
+    WORD[string.h:64:44] data = void
+    CHAR[string.h:64:49] data = *
+    WORD[string.h:64:50] data = __s2
+    CHAR[string.h:64:54] data = ,
+    WORD[string.h:64:56] data = size_t
+    WORD[string.h:64:63] data = __n
+    CHAR[string.h:64:66] data = )
+    CHAR[string.h:65:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = __memcmpeq)
+    WORD[string.h:80:1] data = extern
+    WORD[string.h:80:8] data = int
+    WORD[string.h:80:12] data = __memcmpeq
+    CHAR[string.h:80:23] data = (
+    WORD[string.h:80:24] data = const
+    WORD[string.h:80:30] data = void
+    CHAR[string.h:80:35] data = *
+    WORD[string.h:80:36] data = __s1
+    CHAR[string.h:80:40] data = ,
+    WORD[string.h:80:42] data = const
+    WORD[string.h:80:48] data = void
+    CHAR[string.h:80:53] data = *
+    WORD[string.h:80:54] data = __s2
+    CHAR[string.h:80:58] data = ,
+    WORD[string.h:80:60] data = size_t
+    WORD[string.h:80:67] data = __n
+    CHAR[string.h:80:70] data = )
+    CHAR[string.h:81:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = memchr)
+    WORD[string.h:107:1] data = extern
+    WORD[string.h:107:8] data = void
+    CHAR[string.h:107:13] data = *
+    WORD[string.h:107:14] data = memchr
+    CHAR[string.h:107:21] data = (
+    WORD[string.h:107:22] data = const
+    WORD[string.h:107:28] data = void
+    CHAR[string.h:107:33] data = *
+    WORD[string.h:107:34] data = __s
+    CHAR[string.h:107:37] data = ,
+    WORD[string.h:107:39] data = int
+    WORD[string.h:107:43] data = __c
+    CHAR[string.h:107:46] data = ,
+    WORD[string.h:107:48] data = size_t
+    WORD[string.h:107:55] data = __n
+    CHAR[string.h:107:58] data = )
+    CHAR[string.h:108:9] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = strcpy)
+    WORD[string.h:141:1] data = extern
+    WORD[string.h:141:8] data = char
+    CHAR[string.h:141:13] data = *
+    WORD[string.h:141:14] data = strcpy
+    CHAR[string.h:141:21] data = (
+    WORD[string.h:141:22] data = char
+    CHAR[string.h:141:27] data = *
+    WORD[string.h:141:28] data = restrict
+    WORD[string.h:141:37] data = __dest
+    CHAR[string.h:141:43] data = ,
+    WORD[string.h:141:45] data = const
+    WORD[string.h:141:51] data = char
+    CHAR[string.h:141:56] data = *
+    WORD[string.h:141:57] data = restrict
+    WORD[string.h:141:66] data = __src
+    CHAR[string.h:141:71] data = )
+    CHAR[string.h:142:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = strncpy)
+    WORD[string.h:144:1] data = extern
+    WORD[string.h:144:8] data = char
+    CHAR[string.h:144:13] data = *
+    WORD[string.h:144:14] data = strncpy
+    CHAR[string.h:144:22] data = (
+    WORD[string.h:144:23] data = char
+    CHAR[string.h:144:28] data = *
+    WORD[string.h:144:29] data = restrict
+    WORD[string.h:144:38] data = __dest
+    CHAR[string.h:144:44] data = ,
+    WORD[string.h:145:9] data = const
+    WORD[string.h:145:15] data = char
+    CHAR[string.h:145:20] data = *
+    WORD[string.h:145:21] data = restrict
+    WORD[string.h:145:30] data = __src
+    CHAR[string.h:145:35] data = ,
+    WORD[string.h:145:37] data = size_t
+    WORD[string.h:145:44] data = __n
+    CHAR[string.h:145:47] data = )
+    CHAR[string.h:146:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = strcat)
+    WORD[string.h:149:1] data = extern
+    WORD[string.h:149:8] data = char
+    CHAR[string.h:149:13] data = *
+    WORD[string.h:149:14] data = strcat
+    CHAR[string.h:149:21] data = (
+    WORD[string.h:149:22] data = char
+    CHAR[string.h:149:27] data = *
+    WORD[string.h:149:28] data = restrict
+    WORD[string.h:149:37] data = __dest
+    CHAR[string.h:149:43] data = ,
+    WORD[string.h:149:45] data = const
+    WORD[string.h:149:51] data = char
+    CHAR[string.h:149:56] data = *
+    WORD[string.h:149:57] data = restrict
+    WORD[string.h:149:66] data = __src
+    CHAR[string.h:149:71] data = )
+    CHAR[string.h:150:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = strncat)
+    WORD[string.h:152:1] data = extern
+    WORD[string.h:152:8] data = char
+    CHAR[string.h:152:13] data = *
+    WORD[string.h:152:14] data = strncat
+    CHAR[string.h:152:22] data = (
+    WORD[string.h:152:23] data = char
+    CHAR[string.h:152:28] data = *
+    WORD[string.h:152:29] data = restrict
+    WORD[string.h:152:38] data = __dest
+    CHAR[string.h:152:44] data = ,
+    WORD[string.h:152:46] data = const
+    WORD[string.h:152:52] data = char
+    CHAR[string.h:152:57] data = *
+    WORD[string.h:152:58] data = restrict
+    WORD[string.h:152:67] data = __src
+    CHAR[string.h:152:72] data = ,
+    WORD[string.h:153:9] data = size_t
+    WORD[string.h:153:16] data = __n
+    CHAR[string.h:153:19] data = )
+    CHAR[string.h:153:22] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = strcmp)
+    WORD[string.h:156:1] data = extern
+    WORD[string.h:156:8] data = int
+    WORD[string.h:156:12] data = strcmp
+    CHAR[string.h:156:19] data = (
+    WORD[string.h:156:20] data = const
+    WORD[string.h:156:26] data = char
+    CHAR[string.h:156:31] data = *
+    WORD[string.h:156:32] data = __s1
+    CHAR[string.h:156:36] data = ,
+    WORD[string.h:156:38] data = const
+    WORD[string.h:156:44] data = char
+    CHAR[string.h:156:49] data = *
+    WORD[string.h:156:50] data = __s2
+    CHAR[string.h:156:54] data = )
+    CHAR[string.h:157:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = strncmp)
+    WORD[string.h:159:1] data = extern
+    WORD[string.h:159:8] data = int
+    WORD[string.h:159:12] data = strncmp
+    CHAR[string.h:159:20] data = (
+    WORD[string.h:159:21] data = const
+    WORD[string.h:159:27] data = char
+    CHAR[string.h:159:32] data = *
+    WORD[string.h:159:33] data = __s1
+    CHAR[string.h:159:37] data = ,
+    WORD[string.h:159:39] data = const
+    WORD[string.h:159:45] data = char
+    CHAR[string.h:159:50] data = *
+    WORD[string.h:159:51] data = __s2
+    CHAR[string.h:159:55] data = ,
+    WORD[string.h:159:57] data = size_t
+    WORD[string.h:159:64] data = __n
+    CHAR[string.h:159:67] data = )
+    CHAR[string.h:160:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = strcoll)
+    WORD[string.h:163:1] data = extern
+    WORD[string.h:163:8] data = int
+    WORD[string.h:163:12] data = strcoll
+    CHAR[string.h:163:20] data = (
+    WORD[string.h:163:21] data = const
+    WORD[string.h:163:27] data = char
+    CHAR[string.h:163:32] data = *
+    WORD[string.h:163:33] data = __s1
+    CHAR[string.h:163:37] data = ,
+    WORD[string.h:163:39] data = const
+    WORD[string.h:163:45] data = char
+    CHAR[string.h:163:50] data = *
+    WORD[string.h:163:51] data = __s2
+    CHAR[string.h:163:55] data = )
+    CHAR[string.h:164:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 19, name = strxfrm)
+    WORD[string.h:166:1] data = extern
+    WORD[string.h:166:8] data = size_t
+    WORD[string.h:166:15] data = strxfrm
+    CHAR[string.h:166:23] data = (
+    WORD[string.h:166:24] data = char
+    CHAR[string.h:166:29] data = *
+    WORD[string.h:166:30] data = restrict
+    WORD[string.h:166:39] data = __dest
+    CHAR[string.h:166:45] data = ,
+    WORD[string.h:167:10] data = const
+    WORD[string.h:167:16] data = char
+    CHAR[string.h:167:21] data = *
+    WORD[string.h:167:22] data = restrict
+    WORD[string.h:167:31] data = __src
+    CHAR[string.h:167:36] data = ,
+    WORD[string.h:167:38] data = size_t
+    WORD[string.h:167:45] data = __n
+    CHAR[string.h:167:48] data = )
+    CHAR[string.h:168:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = strcoll_l)
+    WORD[string.h:175:1] data = extern
+    WORD[string.h:175:8] data = int
+    WORD[string.h:175:12] data = strcoll_l
+    CHAR[string.h:175:22] data = (
+    WORD[string.h:175:23] data = const
+    WORD[string.h:175:29] data = char
+    CHAR[string.h:175:34] data = *
+    WORD[string.h:175:35] data = __s1
+    CHAR[string.h:175:39] data = ,
+    WORD[string.h:175:41] data = const
+    WORD[string.h:175:47] data = char
+    CHAR[string.h:175:52] data = *
+    WORD[string.h:175:53] data = __s2
+    CHAR[string.h:175:57] data = ,
+    WORD[string.h:175:59] data = locale_t
+    WORD[string.h:175:68] data = __l
+    CHAR[string.h:175:71] data = )
+    CHAR[string.h:176:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = strxfrm_l)
+    WORD[string.h:179:1] data = extern
+    WORD[string.h:179:8] data = size_t
+    WORD[string.h:179:15] data = strxfrm_l
+    CHAR[string.h:179:25] data = (
+    WORD[string.h:179:26] data = char
+    CHAR[string.h:179:31] data = *
+    WORD[string.h:179:32] data = __dest
+    CHAR[string.h:179:38] data = ,
+    WORD[string.h:179:40] data = const
+    WORD[string.h:179:46] data = char
+    CHAR[string.h:179:51] data = *
+    WORD[string.h:179:52] data = __src
+    CHAR[string.h:179:57] data = ,
+    WORD[string.h:179:59] data = size_t
+    WORD[string.h:179:66] data = __n
+    CHAR[string.h:179:69] data = ,
+    WORD[string.h:180:5] data = locale_t
+    WORD[string.h:180:14] data = __l
+    CHAR[string.h:180:17] data = )
+    CHAR[string.h:181:6] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 11, name = strdup)
+    WORD[string.h:187:1] data = extern
+    WORD[string.h:187:8] data = char
+    CHAR[string.h:187:13] data = *
+    WORD[string.h:187:14] data = strdup
+    CHAR[string.h:187:21] data = (
+    WORD[string.h:187:22] data = const
+    WORD[string.h:187:28] data = char
+    CHAR[string.h:187:33] data = *
+    WORD[string.h:187:34] data = __s
+    CHAR[string.h:187:37] data = )
+    CHAR[string.h:188:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = strndup)
+    WORD[string.h:195:1] data = extern
+    WORD[string.h:195:8] data = char
+    CHAR[string.h:195:13] data = *
+    WORD[string.h:195:14] data = strndup
+    CHAR[string.h:195:22] data = (
+    WORD[string.h:195:23] data = const
+    WORD[string.h:195:29] data = char
+    CHAR[string.h:195:34] data = *
+    WORD[string.h:195:35] data = __string
+    CHAR[string.h:195:43] data = ,
+    WORD[string.h:195:45] data = size_t
+    WORD[string.h:195:52] data = __n
+    CHAR[string.h:195:55] data = )
+    CHAR[string.h:196:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = strchr)
+    WORD[string.h:246:1] data = extern
+    WORD[string.h:246:8] data = char
+    CHAR[string.h:246:13] data = *
+    WORD[string.h:246:14] data = strchr
+    CHAR[string.h:246:21] data = (
+    WORD[string.h:246:22] data = const
+    WORD[string.h:246:28] data = char
+    CHAR[string.h:246:33] data = *
+    WORD[string.h:246:34] data = __s
+    CHAR[string.h:246:37] data = ,
+    WORD[string.h:246:39] data = int
+    WORD[string.h:246:43] data = __c
+    CHAR[string.h:246:46] data = )
+    CHAR[string.h:247:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = strrchr)
+    WORD[string.h:273:1] data = extern
+    WORD[string.h:273:8] data = char
+    CHAR[string.h:273:13] data = *
+    WORD[string.h:273:14] data = strrchr
+    CHAR[string.h:273:22] data = (
+    WORD[string.h:273:23] data = const
+    WORD[string.h:273:29] data = char
+    CHAR[string.h:273:34] data = *
+    WORD[string.h:273:35] data = __s
+    CHAR[string.h:273:38] data = ,
+    WORD[string.h:273:40] data = int
+    WORD[string.h:273:44] data = __c
+    CHAR[string.h:273:47] data = )
+    CHAR[string.h:274:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = strcspn)
+    WORD[string.h:293:1] data = extern
+    WORD[string.h:293:8] data = size_t
+    WORD[string.h:293:15] data = strcspn
+    CHAR[string.h:293:23] data = (
+    WORD[string.h:293:24] data = const
+    WORD[string.h:293:30] data = char
+    CHAR[string.h:293:35] data = *
+    WORD[string.h:293:36] data = __s
+    CHAR[string.h:293:39] data = ,
+    WORD[string.h:293:41] data = const
+    WORD[string.h:293:47] data = char
+    CHAR[string.h:293:52] data = *
+    WORD[string.h:293:53] data = __reject
+    CHAR[string.h:293:61] data = )
+    CHAR[string.h:294:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = strspn)
+    WORD[string.h:297:1] data = extern
+    WORD[string.h:297:8] data = size_t
+    WORD[string.h:297:15] data = strspn
+    CHAR[string.h:297:22] data = (
+    WORD[string.h:297:23] data = const
+    WORD[string.h:297:29] data = char
+    CHAR[string.h:297:34] data = *
+    WORD[string.h:297:35] data = __s
+    CHAR[string.h:297:38] data = ,
+    WORD[string.h:297:40] data = const
+    WORD[string.h:297:46] data = char
+    CHAR[string.h:297:51] data = *
+    WORD[string.h:297:52] data = __accept
+    CHAR[string.h:297:60] data = )
+    CHAR[string.h:298:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = strpbrk)
+    WORD[string.h:323:1] data = extern
+    WORD[string.h:323:8] data = char
+    CHAR[string.h:323:13] data = *
+    WORD[string.h:323:14] data = strpbrk
+    CHAR[string.h:323:22] data = (
+    WORD[string.h:323:23] data = const
+    WORD[string.h:323:29] data = char
+    CHAR[string.h:323:34] data = *
+    WORD[string.h:323:35] data = __s
+    CHAR[string.h:323:38] data = ,
+    WORD[string.h:323:40] data = const
+    WORD[string.h:323:46] data = char
+    CHAR[string.h:323:51] data = *
+    WORD[string.h:323:52] data = __accept
+    CHAR[string.h:323:60] data = )
+    CHAR[string.h:324:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = strstr)
+    WORD[string.h:350:1] data = extern
+    WORD[string.h:350:8] data = char
+    CHAR[string.h:350:13] data = *
+    WORD[string.h:350:14] data = strstr
+    CHAR[string.h:350:21] data = (
+    WORD[string.h:350:22] data = const
+    WORD[string.h:350:28] data = char
+    CHAR[string.h:350:33] data = *
+    WORD[string.h:350:34] data = __haystack
+    CHAR[string.h:350:44] data = ,
+    WORD[string.h:350:46] data = const
+    WORD[string.h:350:52] data = char
+    CHAR[string.h:350:57] data = *
+    WORD[string.h:350:58] data = __needle
+    CHAR[string.h:350:66] data = )
+    CHAR[string.h:351:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = strtok)
+    WORD[string.h:356:1] data = extern
+    WORD[string.h:356:8] data = char
+    CHAR[string.h:356:13] data = *
+    WORD[string.h:356:14] data = strtok
+    CHAR[string.h:356:21] data = (
+    WORD[string.h:356:22] data = char
+    CHAR[string.h:356:27] data = *
+    WORD[string.h:356:28] data = restrict
+    WORD[string.h:356:37] data = __s
+    CHAR[string.h:356:40] data = ,
+    WORD[string.h:356:42] data = const
+    WORD[string.h:356:48] data = char
+    CHAR[string.h:356:53] data = *
+    WORD[string.h:356:54] data = restrict
+    WORD[string.h:356:63] data = __delim
+    CHAR[string.h:356:70] data = )
+    CHAR[string.h:357:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = __strtok_r)
+    WORD[string.h:361:1] data = extern
+    WORD[string.h:361:8] data = char
+    CHAR[string.h:361:13] data = *
+    WORD[string.h:361:14] data = __strtok_r
+    CHAR[string.h:361:25] data = (
+    WORD[string.h:361:26] data = char
+    CHAR[string.h:361:31] data = *
+    WORD[string.h:361:32] data = restrict
+    WORD[string.h:361:41] data = __s
+    CHAR[string.h:361:44] data = ,
+    WORD[string.h:362:5] data = const
+    WORD[string.h:362:11] data = char
+    CHAR[string.h:362:16] data = *
+    WORD[string.h:362:17] data = restrict
+    WORD[string.h:362:26] data = __delim
+    CHAR[string.h:362:33] data = ,
+    WORD[string.h:363:5] data = char
+    CHAR[string.h:363:10] data = *
+    CHAR[string.h:363:11] data = *
+    WORD[string.h:363:12] data = restrict
+    WORD[string.h:363:21] data = __save_ptr
+    CHAR[string.h:363:31] data = )
+    CHAR[string.h:364:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 23, name = strtok_r)
+    WORD[string.h:366:1] data = extern
+    WORD[string.h:366:8] data = char
+    CHAR[string.h:366:13] data = *
+    WORD[string.h:366:14] data = strtok_r
+    CHAR[string.h:366:23] data = (
+    WORD[string.h:366:24] data = char
+    CHAR[string.h:366:29] data = *
+    WORD[string.h:366:30] data = restrict
+    WORD[string.h:366:39] data = __s
+    CHAR[string.h:366:42] data = ,
+    WORD[string.h:366:44] data = const
+    WORD[string.h:366:50] data = char
+    CHAR[string.h:366:55] data = *
+    WORD[string.h:366:56] data = restrict
+    WORD[string.h:366:65] data = __delim
+    CHAR[string.h:366:72] data = ,
+    WORD[string.h:367:10] data = char
+    CHAR[string.h:367:15] data = *
+    CHAR[string.h:367:16] data = *
+    WORD[string.h:367:17] data = restrict
+    WORD[string.h:367:26] data = __save_ptr
+    CHAR[string.h:367:36] data = )
+    CHAR[string.h:368:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = strlen)
+    WORD[string.h:407:1] data = extern
+    WORD[string.h:407:8] data = size_t
+    WORD[string.h:407:15] data = strlen
+    CHAR[string.h:407:22] data = (
+    WORD[string.h:407:23] data = const
+    WORD[string.h:407:29] data = char
+    CHAR[string.h:407:34] data = *
+    WORD[string.h:407:35] data = __s
+    CHAR[string.h:407:38] data = )
+    CHAR[string.h:408:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = strnlen)
+    WORD[string.h:413:1] data = extern
+    WORD[string.h:413:8] data = size_t
+    WORD[string.h:413:15] data = strnlen
+    CHAR[string.h:413:23] data = (
+    WORD[string.h:413:24] data = const
+    WORD[string.h:413:30] data = char
+    CHAR[string.h:413:35] data = *
+    WORD[string.h:413:36] data = __string
+    CHAR[string.h:413:44] data = ,
+    WORD[string.h:413:46] data = size_t
+    WORD[string.h:413:53] data = __maxlen
+    CHAR[string.h:413:61] data = )
+    CHAR[string.h:414:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = strerror)
+    WORD[string.h:419:1] data = extern
+    WORD[string.h:419:8] data = char
+    CHAR[string.h:419:13] data = *
+    WORD[string.h:419:14] data = strerror
+    CHAR[string.h:419:23] data = (
+    WORD[string.h:419:24] data = int
+    WORD[string.h:419:28] data = __errnum
+    CHAR[string.h:419:36] data = )
+    CHAR[string.h:419:38] data = ;
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 14, name = strerror_r)
+    WORD[string.h:432:1] data = extern
+    WORD[string.h:432:8] data = int
+    WORD[string.h:432:12] data = strerror_r
+    CHAR[string.h:432:23] data = (
+    WORD[string.h:432:24] data = int
+    WORD[string.h:432:28] data = __errnum
+    CHAR[string.h:432:36] data = ,
+    WORD[string.h:432:38] data = char
+    CHAR[string.h:432:43] data = *
+    WORD[string.h:432:44] data = __buf
+    CHAR[string.h:432:49] data = ,
+    WORD[string.h:432:51] data = size_t
+    WORD[string.h:432:58] data = __buflen
+    CHAR[string.h:432:66] data = )
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = strerror_l)
+    WORD[string.h:458:1] data = extern
+    WORD[string.h:458:8] data = char
+    CHAR[string.h:458:13] data = *
+    WORD[string.h:458:14] data = strerror_l
+    CHAR[string.h:458:25] data = (
+    WORD[string.h:458:26] data = int
+    WORD[string.h:458:30] data = __errnum
+    CHAR[string.h:458:38] data = ,
+    WORD[string.h:458:40] data = locale_t
+    WORD[string.h:458:49] data = __l
+    CHAR[string.h:458:52] data = )
+    CHAR[string.h:458:54] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = bcmp)
+    WORD[strings.h:34:1] data = extern
+    WORD[strings.h:34:8] data = int
+    WORD[strings.h:34:12] data = bcmp
+    CHAR[strings.h:34:17] data = (
+    WORD[strings.h:34:18] data = const
+    WORD[strings.h:34:24] data = void
+    CHAR[strings.h:34:29] data = *
+    WORD[strings.h:34:30] data = __s1
+    CHAR[strings.h:34:34] data = ,
+    WORD[strings.h:34:36] data = const
+    WORD[strings.h:34:42] data = void
+    CHAR[strings.h:34:47] data = *
+    WORD[strings.h:34:48] data = __s2
+    CHAR[strings.h:34:52] data = ,
+    WORD[strings.h:34:54] data = size_t
+    WORD[strings.h:34:61] data = __n
+    CHAR[strings.h:34:64] data = )
+    CHAR[strings.h:35:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = bcopy)
+    WORD[strings.h:38:1] data = extern
+    WORD[strings.h:38:8] data = void
+    WORD[strings.h:38:13] data = bcopy
+    CHAR[strings.h:38:19] data = (
+    WORD[strings.h:38:20] data = const
+    WORD[strings.h:38:26] data = void
+    CHAR[strings.h:38:31] data = *
+    WORD[strings.h:38:32] data = __src
+    CHAR[strings.h:38:37] data = ,
+    WORD[strings.h:38:39] data = void
+    CHAR[strings.h:38:44] data = *
+    WORD[strings.h:38:45] data = __dest
+    CHAR[strings.h:38:51] data = ,
+    WORD[strings.h:38:53] data = size_t
+    WORD[strings.h:38:60] data = __n
+    CHAR[strings.h:38:63] data = )
+    CHAR[strings.h:39:4] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = bzero)
+    WORD[strings.h:42:1] data = extern
+    WORD[strings.h:42:8] data = void
+    WORD[strings.h:42:13] data = bzero
+    CHAR[strings.h:42:19] data = (
+    WORD[strings.h:42:20] data = void
+    CHAR[strings.h:42:25] data = *
+    WORD[strings.h:42:26] data = __s
+    CHAR[strings.h:42:29] data = ,
+    WORD[strings.h:42:31] data = size_t
+    WORD[strings.h:42:38] data = __n
+    CHAR[strings.h:42:41] data = )
+    CHAR[strings.h:42:44] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = index)
+    WORD[strings.h:68:1] data = extern
+    WORD[strings.h:68:8] data = char
+    CHAR[strings.h:68:13] data = *
+    WORD[strings.h:68:14] data = index
+    CHAR[strings.h:68:20] data = (
+    WORD[strings.h:68:21] data = const
+    WORD[strings.h:68:27] data = char
+    CHAR[strings.h:68:32] data = *
+    WORD[strings.h:68:33] data = __s
+    CHAR[strings.h:68:36] data = ,
+    WORD[strings.h:68:38] data = int
+    WORD[strings.h:68:42] data = __c
+    CHAR[strings.h:68:45] data = )
+    CHAR[strings.h:69:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 14, name = rindex)
+    WORD[strings.h:96:1] data = extern
+    WORD[strings.h:96:8] data = char
+    CHAR[strings.h:96:13] data = *
+    WORD[strings.h:96:14] data = rindex
+    CHAR[strings.h:96:21] data = (
+    WORD[strings.h:96:22] data = const
+    WORD[strings.h:96:28] data = char
+    CHAR[strings.h:96:33] data = *
+    WORD[strings.h:96:34] data = __s
+    CHAR[strings.h:96:37] data = ,
+    WORD[strings.h:96:39] data = int
+    WORD[strings.h:96:43] data = __c
+    CHAR[strings.h:96:46] data = )
+    CHAR[strings.h:97:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = ffs)
+    WORD[strings.h:104:1] data = extern
+    WORD[strings.h:104:8] data = int
+    WORD[strings.h:104:12] data = ffs
+    CHAR[strings.h:104:16] data = (
+    WORD[strings.h:104:17] data = int
+    WORD[strings.h:104:21] data = __i
+    CHAR[strings.h:104:24] data = )
+    CHAR[strings.h:104:27] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = ffsl)
+    WORD[strings.h:110:1] data = extern
+    WORD[strings.h:110:8] data = int
+    WORD[strings.h:110:12] data = ffsl
+    CHAR[strings.h:110:17] data = (
+    WORD[strings.h:110:18] data = long
+    WORD[strings.h:110:23] data = int
+    WORD[strings.h:110:27] data = __l
+    CHAR[strings.h:110:30] data = )
+    CHAR[strings.h:110:33] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 10, name = ffsll)
+    WORD[strings.h:111:2] data = extern
+    WORD[strings.h:111:9] data = int
+    WORD[strings.h:111:13] data = ffsll
+    CHAR[strings.h:111:19] data = (
+    WORD[strings.h:111:20] data = long
+    WORD[strings.h:111:25] data = long
+    WORD[strings.h:111:30] data = int
+    WORD[strings.h:111:34] data = __ll
+    CHAR[strings.h:111:38] data = )
+    CHAR[strings.h:112:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = strcasecmp)
+    WORD[strings.h:116:1] data = extern
+    WORD[strings.h:116:8] data = int
+    WORD[strings.h:116:12] data = strcasecmp
+    CHAR[strings.h:116:23] data = (
+    WORD[strings.h:116:24] data = const
+    WORD[strings.h:116:30] data = char
+    CHAR[strings.h:116:35] data = *
+    WORD[strings.h:116:36] data = __s1
+    CHAR[strings.h:116:40] data = ,
+    WORD[strings.h:116:42] data = const
+    WORD[strings.h:116:48] data = char
+    CHAR[strings.h:116:53] data = *
+    WORD[strings.h:116:54] data = __s2
+    CHAR[strings.h:116:58] data = )
+    CHAR[strings.h:117:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = strncasecmp)
+    WORD[strings.h:120:1] data = extern
+    WORD[strings.h:120:8] data = int
+    WORD[strings.h:120:12] data = strncasecmp
+    CHAR[strings.h:120:24] data = (
+    WORD[strings.h:120:25] data = const
+    WORD[strings.h:120:31] data = char
+    CHAR[strings.h:120:36] data = *
+    WORD[strings.h:120:37] data = __s1
+    CHAR[strings.h:120:41] data = ,
+    WORD[strings.h:120:43] data = const
+    WORD[strings.h:120:49] data = char
+    CHAR[strings.h:120:54] data = *
+    WORD[strings.h:120:55] data = __s2
+    CHAR[strings.h:120:59] data = ,
+    WORD[strings.h:120:61] data = size_t
+    WORD[strings.h:120:68] data = __n
+    CHAR[strings.h:120:71] data = )
+    CHAR[strings.h:121:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = strcasecmp_l)
+    WORD[strings.h:128:1] data = extern
+    WORD[strings.h:128:8] data = int
+    WORD[strings.h:128:12] data = strcasecmp_l
+    CHAR[strings.h:128:25] data = (
+    WORD[strings.h:128:26] data = const
+    WORD[strings.h:128:32] data = char
+    CHAR[strings.h:128:37] data = *
+    WORD[strings.h:128:38] data = __s1
+    CHAR[strings.h:128:42] data = ,
+    WORD[strings.h:128:44] data = const
+    WORD[strings.h:128:50] data = char
+    CHAR[strings.h:128:55] data = *
+    WORD[strings.h:128:56] data = __s2
+    CHAR[strings.h:128:60] data = ,
+    WORD[strings.h:128:62] data = locale_t
+    WORD[strings.h:128:71] data = __loc
+    CHAR[strings.h:128:76] data = )
+    CHAR[strings.h:129:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 21, name = strncasecmp_l)
+    WORD[strings.h:133:1] data = extern
+    WORD[strings.h:133:8] data = int
+    WORD[strings.h:133:12] data = strncasecmp_l
+    CHAR[strings.h:133:26] data = (
+    WORD[strings.h:133:27] data = const
+    WORD[strings.h:133:33] data = char
+    CHAR[strings.h:133:38] data = *
+    WORD[strings.h:133:39] data = __s1
+    CHAR[strings.h:133:43] data = ,
+    WORD[strings.h:133:45] data = const
+    WORD[strings.h:133:51] data = char
+    CHAR[strings.h:133:56] data = *
+    WORD[strings.h:133:57] data = __s2
+    CHAR[strings.h:133:61] data = ,
+    WORD[strings.h:134:6] data = size_t
+    WORD[strings.h:134:13] data = __n
+    CHAR[strings.h:134:16] data = ,
+    WORD[strings.h:134:18] data = locale_t
+    WORD[strings.h:134:27] data = __loc
+    CHAR[strings.h:134:32] data = )
+    CHAR[strings.h:135:8] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = explicit_bzero)
+    WORD[string.h:466:1] data = extern
+    WORD[string.h:466:8] data = void
+    WORD[string.h:466:13] data = explicit_bzero
+    CHAR[string.h:466:28] data = (
+    WORD[string.h:466:29] data = void
+    CHAR[string.h:466:34] data = *
+    WORD[string.h:466:35] data = __s
+    CHAR[string.h:466:38] data = ,
+    WORD[string.h:466:40] data = size_t
+    WORD[string.h:466:47] data = __n
+    CHAR[string.h:466:50] data = )
+    CHAR[string.h:467:5] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 18, name = strsep)
+    WORD[string.h:471:1] data = extern
+    WORD[string.h:471:8] data = char
+    CHAR[string.h:471:13] data = *
+    WORD[string.h:471:14] data = strsep
+    CHAR[string.h:471:21] data = (
+    WORD[string.h:471:22] data = char
+    CHAR[string.h:471:27] data = *
+    CHAR[string.h:471:28] data = *
+    WORD[string.h:471:29] data = restrict
+    WORD[string.h:471:38] data = __stringp
+    CHAR[string.h:471:47] data = ,
+    WORD[string.h:472:8] data = const
+    WORD[string.h:472:14] data = char
+    CHAR[string.h:472:19] data = *
+    WORD[string.h:472:20] data = restrict
+    WORD[string.h:472:29] data = __delim
+    CHAR[string.h:472:36] data = )
+    CHAR[string.h:473:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 9, name = strsignal)
+    WORD[string.h:478:1] data = extern
+    WORD[string.h:478:8] data = char
+    CHAR[string.h:478:13] data = *
+    WORD[string.h:478:14] data = strsignal
+    CHAR[string.h:478:24] data = (
+    WORD[string.h:478:25] data = int
+    WORD[string.h:478:29] data = __sig
+    CHAR[string.h:478:34] data = )
+    CHAR[string.h:478:36] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = __stpcpy)
+    WORD[string.h:489:1] data = extern
+    WORD[string.h:489:8] data = char
+    CHAR[string.h:489:13] data = *
+    WORD[string.h:489:14] data = __stpcpy
+    CHAR[string.h:489:23] data = (
+    WORD[string.h:489:24] data = char
+    CHAR[string.h:489:29] data = *
+    WORD[string.h:489:30] data = restrict
+    WORD[string.h:489:39] data = __dest
+    CHAR[string.h:489:45] data = ,
+    WORD[string.h:489:47] data = const
+    WORD[string.h:489:53] data = char
+    CHAR[string.h:489:58] data = *
+    WORD[string.h:489:59] data = restrict
+    WORD[string.h:489:68] data = __src
+    CHAR[string.h:489:73] data = )
+    CHAR[string.h:490:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 17, name = stpcpy)
+    WORD[string.h:491:1] data = extern
+    WORD[string.h:491:8] data = char
+    CHAR[string.h:491:13] data = *
+    WORD[string.h:491:14] data = stpcpy
+    CHAR[string.h:491:21] data = (
+    WORD[string.h:491:22] data = char
+    CHAR[string.h:491:27] data = *
+    WORD[string.h:491:28] data = restrict
+    WORD[string.h:491:37] data = __dest
+    CHAR[string.h:491:43] data = ,
+    WORD[string.h:491:45] data = const
+    WORD[string.h:491:51] data = char
+    CHAR[string.h:491:56] data = *
+    WORD[string.h:491:57] data = restrict
+    WORD[string.h:491:66] data = __src
+    CHAR[string.h:491:71] data = )
+    CHAR[string.h:492:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = __stpncpy)
+    WORD[string.h:496:1] data = extern
+    WORD[string.h:496:8] data = char
+    CHAR[string.h:496:13] data = *
+    WORD[string.h:496:14] data = __stpncpy
+    CHAR[string.h:496:24] data = (
+    WORD[string.h:496:25] data = char
+    CHAR[string.h:496:30] data = *
+    WORD[string.h:496:31] data = restrict
+    WORD[string.h:496:40] data = __dest
+    CHAR[string.h:496:46] data = ,
+    WORD[string.h:497:4] data = const
+    WORD[string.h:497:10] data = char
+    CHAR[string.h:497:15] data = *
+    WORD[string.h:497:16] data = restrict
+    WORD[string.h:497:25] data = __src
+    CHAR[string.h:497:30] data = ,
+    WORD[string.h:497:32] data = size_t
+    WORD[string.h:497:39] data = __n
+    CHAR[string.h:497:42] data = )
+    CHAR[string.h:498:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 20, name = stpncpy)
+    WORD[string.h:499:1] data = extern
+    WORD[string.h:499:8] data = char
+    CHAR[string.h:499:13] data = *
+    WORD[string.h:499:14] data = stpncpy
+    CHAR[string.h:499:22] data = (
+    WORD[string.h:499:23] data = char
+    CHAR[string.h:499:28] data = *
+    WORD[string.h:499:29] data = restrict
+    WORD[string.h:499:38] data = __dest
+    CHAR[string.h:499:44] data = ,
+    WORD[string.h:500:9] data = const
+    WORD[string.h:500:15] data = char
+    CHAR[string.h:500:20] data = *
+    WORD[string.h:500:21] data = restrict
+    WORD[string.h:500:30] data = __src
+    CHAR[string.h:500:35] data = ,
+    WORD[string.h:500:37] data = size_t
+    WORD[string.h:500:44] data = __n
+    CHAR[string.h:500:47] data = )
+    CHAR[string.h:501:7] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = token_print_debug)
+    WORD[token.h:39:1] data = void
+    WORD[token.h:39:6] data = token_print_debug
+    CHAR[token.h:39:23] data = (
+    WORD[token.h:39:24] data = Token
+    CHAR[token.h:39:29] data = *
+    WORD[token.h:39:31] data = tok
+    CHAR[token.h:39:34] data = )
+    CHAR[token.h:39:35] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 21, name = token_print_error)
+    WORD[token.h:40:1] data = void
+    WORD[token.h:40:6] data = token_print_error
+    CHAR[token.h:40:23] data = (
+    WORD[token.h:40:24] data = Token
+    CHAR[token.h:40:29] data = *
+    WORD[token.h:40:31] data = tok
+    CHAR[token.h:40:34] data = ,
+    WORD[token.h:40:36] data = LogLevel
+    WORD[token.h:40:45] data = level
+    CHAR[token.h:40:50] data = ,
+    WORD[token.h:40:52] data = const
+    WORD[token.h:40:58] data = char
+    CHAR[token.h:40:62] data = *
+    WORD[token.h:40:64] data = msg
+    CHAR[token.h:40:67] data = ,
+    WORD[token.h:40:69] data = const
+    WORD[token.h:40:75] data = char
+    CHAR[token.h:40:79] data = *
+    WORD[token.h:40:81] data = printf_arg
+    CHAR[token.h:40:91] data = )
+    CHAR[token.h:40:92] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = lexer_parse_escape_sequence)
+    WORD[lexer.h:37:1] data = void
+    WORD[lexer.h:37:6] data = lexer_parse_escape_sequence
+    CHAR[lexer.h:37:33] data = (
+    WORD[lexer.h:37:34] data = Lexer
+    CHAR[lexer.h:37:39] data = *
+    WORD[lexer.h:37:41] data = l
+    CHAR[lexer.h:37:42] data = ,
+    WORD[lexer.h:37:44] data = Token
+    CHAR[lexer.h:37:49] data = *
+    WORD[lexer.h:37:51] data = res
+    CHAR[lexer.h:37:54] data = )
+    CHAR[lexer.h:37:55] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 15, name = lexer_lex_string)
+    WORD[lexer.h:38:1] data = void
+    WORD[lexer.h:38:6] data = lexer_lex_string
+    CHAR[lexer.h:38:22] data = (
+    WORD[lexer.h:38:23] data = Lexer
+    CHAR[lexer.h:38:28] data = *
+    WORD[lexer.h:38:30] data = l
+    CHAR[lexer.h:38:31] data = ,
+    WORD[lexer.h:38:33] data = Token
+    CHAR[lexer.h:38:38] data = *
+    WORD[lexer.h:38:40] data = res
+    CHAR[lexer.h:38:43] data = ,
+    WORD[lexer.h:38:45] data = char
+    WORD[lexer.h:38:50] data = end
+    CHAR[lexer.h:38:53] data = )
+    CHAR[lexer.h:38:54] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = lexer_lex_line)
+    WORD[lexer.h:39:1] data = void
+    WORD[lexer.h:39:6] data = lexer_lex_line
+    CHAR[lexer.h:39:20] data = (
+    WORD[lexer.h:39:21] data = Lexer
+    CHAR[lexer.h:39:26] data = *
+    WORD[lexer.h:39:28] data = l
+    CHAR[lexer.h:39:29] data = ,
+    WORD[lexer.h:39:31] data = Token
+    CHAR[lexer.h:39:36] data = *
+    WORD[lexer.h:39:38] data = res
+    CHAR[lexer.h:39:41] data = )
+    CHAR[lexer.h:39:42] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = lexer_lex_comment)
+    WORD[lexer.h:40:1] data = void
+    WORD[lexer.h:40:6] data = lexer_lex_comment
+    CHAR[lexer.h:40:23] data = (
+    WORD[lexer.h:40:24] data = Lexer
+    CHAR[lexer.h:40:29] data = *
+    WORD[lexer.h:40:31] data = l
+    CHAR[lexer.h:40:32] data = ,
+    WORD[lexer.h:40:34] data = Token
+    CHAR[lexer.h:40:39] data = *
+    WORD[lexer.h:40:41] data = res
+    CHAR[lexer.h:40:44] data = )
+    CHAR[lexer.h:40:45] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = lexer_open_file)
+    WORD[lexer.h:42:1] data = void
+    WORD[lexer.h:42:6] data = lexer_open_file
+    CHAR[lexer.h:42:21] data = (
+    WORD[lexer.h:42:22] data = Lexer
+    CHAR[lexer.h:42:27] data = *
+    WORD[lexer.h:42:29] data = l
+    CHAR[lexer.h:42:30] data = ,
+    WORD[lexer.h:42:32] data = const
+    WORD[lexer.h:42:38] data = char
+    CHAR[lexer.h:42:42] data = *
+    WORD[lexer.h:42:44] data = filename
+    CHAR[lexer.h:42:52] data = )
+    CHAR[lexer.h:42:53] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 16, name = lexer_open_memory)
+    WORD[lexer.h:43:1] data = void
+    WORD[lexer.h:43:6] data = lexer_open_memory
+    CHAR[lexer.h:43:23] data = (
+    WORD[lexer.h:43:24] data = Lexer
+    CHAR[lexer.h:43:29] data = *
+    WORD[lexer.h:43:31] data = l
+    CHAR[lexer.h:43:32] data = ,
+    WORD[lexer.h:43:34] data = const
+    WORD[lexer.h:43:40] data = char
+    CHAR[lexer.h:43:44] data = *
+    WORD[lexer.h:43:46] data = text
+    CHAR[lexer.h:43:50] data = ,
+    WORD[lexer.h:43:52] data = size_t
+    WORD[lexer.h:43:59] data = length
+    CHAR[lexer.h:43:65] data = )
+    CHAR[lexer.h:43:66] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = lexer_delete)
+    WORD[lexer.h:44:1] data = void
+    WORD[lexer.h:44:6] data = lexer_delete
+    CHAR[lexer.h:44:18] data = (
+    WORD[lexer.h:44:19] data = Lexer
+    CHAR[lexer.h:44:24] data = *
+    WORD[lexer.h:44:26] data = l
+    CHAR[lexer.h:44:27] data = )
+    CHAR[lexer.h:44:28] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = lexer_next_char)
+    WORD[lexer.h:46:1] data = char
+    WORD[lexer.h:46:6] data = lexer_next_char
+    CHAR[lexer.h:46:21] data = (
+    WORD[lexer.h:46:22] data = Lexer
+    CHAR[lexer.h:46:27] data = *
+    WORD[lexer.h:46:29] data = l
+    CHAR[lexer.h:46:30] data = )
+    CHAR[lexer.h:46:31] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = lexer_peek_char)
+    WORD[lexer.h:47:1] data = char
+    WORD[lexer.h:47:6] data = lexer_peek_char
+    CHAR[lexer.h:47:21] data = (
+    WORD[lexer.h:47:22] data = Lexer
+    CHAR[lexer.h:47:27] data = *
+    WORD[lexer.h:47:29] data = l
+    CHAR[lexer.h:47:30] data = )
+    CHAR[lexer.h:47:31] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = lexer_drop_char)
+    WORD[lexer.h:48:1] data = char
+    WORD[lexer.h:48:6] data = lexer_drop_char
+    CHAR[lexer.h:48:21] data = (
+    WORD[lexer.h:48:22] data = Lexer
+    CHAR[lexer.h:48:27] data = *
+    WORD[lexer.h:48:29] data = l
+    CHAR[lexer.h:48:30] data = )
+    CHAR[lexer.h:48:31] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = lexer_next_token)
+    WORD[lexer.h:50:1] data = Token
+    WORD[lexer.h:50:7] data = lexer_next_token
+    CHAR[lexer.h:50:23] data = (
+    WORD[lexer.h:50:24] data = Lexer
+    CHAR[lexer.h:50:29] data = *
+    WORD[lexer.h:50:31] data = l
+    CHAR[lexer.h:50:32] data = )
+    CHAR[lexer.h:50:33] data = ;
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 11, name = main)
+    WORD[main.c:9:1] data = int
+    WORD[main.c:9:5] data = main
+    CHAR[main.c:9:9] data = (
+    WORD[main.c:9:10] data = int
+    WORD[main.c:9:14] data = argc
+    CHAR[main.c:9:18] data = ,
+    WORD[main.c:9:20] data = char
+    CHAR[main.c:9:24] data = *
+    CHAR[main.c:9:25] data = *
+    WORD[main.c:9:27] data = argv
+    CHAR[main.c:9:31] data = )
+

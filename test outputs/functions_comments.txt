@@ -1,0 +1,9 @@
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 6, name = normal_function_header)
+    WORD[comments.c:8:1] data = void
+    WORD[comments.c:8:6] data = normal_function_header
+    CHAR[comments.c:8:28] data = (
+    WORD[comments.c:8:29] data = char
+    WORD[comments.c:8:34] data = nothig_to_see_here
+    CHAR[comments.c:8:52] data = )
+

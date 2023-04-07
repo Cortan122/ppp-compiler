@@ -1,0 +1,7 @@
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 4, name = main)
+    WORD[ambiguous_decl.c:3:1] data = int
+    WORD[ambiguous_decl.c:3:5] data = main
+    CHAR[ambiguous_decl.c:3:9] data = (
+    CHAR[ambiguous_decl.c:3:10] data = )
+

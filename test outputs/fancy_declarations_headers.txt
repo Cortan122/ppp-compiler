@@ -19,11 +19,11 @@ Declaration(tokens = 2, name = Struct)
       CHAR[headers.c:8:7] data = *
       WORD[headers.c:8:9] data = name
       CHAR[headers.c:8:13] data = ;
-    Declaration(tokens = 3, name = members)
-      Struct(tokens = 2, name = Declaration) 
+    Declaration(tokens = 2, name = members)
+      Struct(tokens = 3, name = Declaration) 
         WORD[headers.c:9:3] data = struct
         WORD[headers.c:9:10] data = Declaration
-      CHAR[headers.c:9:21] data = *
+        CHAR[headers.c:9:21] data = *
       WORD[headers.c:9:23] data = members
       CHAR[headers.c:9:30] data = ;
     CHAR[headers.c:10:1] data = }

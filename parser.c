@@ -148,8 +148,8 @@ no_body:;
 
 bool parser_parse_type(Parser* p, Struct* res) {
   if(parser_parse_struct(p, res)) {
-    return true;
     consume_type_modifiers(p, &res->tokens, false);
+    return true;
   }
 
   Token tok = parser_peek_token(p);

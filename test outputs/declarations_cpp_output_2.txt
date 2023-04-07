@@ -583,18 +583,18 @@ Declaration(tokens = 1, name = (null))
       CHAR[struct_FILE.h:66:8] data = *
       WORD[struct_FILE.h:66:9] data = _IO_save_end
       CHAR[struct_FILE.h:66:21] data = ;
-    Declaration(tokens = 3, name = _markers)
-      Struct(tokens = 2, name = _IO_marker) 
+    Declaration(tokens = 2, name = _markers)
+      Struct(tokens = 3, name = _IO_marker) 
         WORD[struct_FILE.h:68:3] data = struct
         WORD[struct_FILE.h:68:10] data = _IO_marker
-      CHAR[struct_FILE.h:68:21] data = *
+        CHAR[struct_FILE.h:68:21] data = *
       WORD[struct_FILE.h:68:22] data = _markers
       CHAR[struct_FILE.h:68:30] data = ;
-    Declaration(tokens = 3, name = _chain)
-      Struct(tokens = 2, name = _IO_FILE) 
+    Declaration(tokens = 2, name = _chain)
+      Struct(tokens = 3, name = _IO_FILE) 
         WORD[struct_FILE.h:70:3] data = struct
         WORD[struct_FILE.h:70:10] data = _IO_FILE
-      CHAR[struct_FILE.h:70:19] data = *
+        CHAR[struct_FILE.h:70:19] data = *
       WORD[struct_FILE.h:70:20] data = _chain
       CHAR[struct_FILE.h:70:26] data = ;
     Declaration(tokens = 3, name = _fileno)
@@ -635,25 +635,25 @@ Declaration(tokens = 1, name = (null))
       WORD[struct_FILE.h:89:3] data = __off64_t
       WORD[struct_FILE.h:89:13] data = _offset
       CHAR[struct_FILE.h:89:20] data = ;
-    Declaration(tokens = 3, name = _codecvt)
-      Struct(tokens = 2, name = _IO_codecvt) 
+    Declaration(tokens = 2, name = _codecvt)
+      Struct(tokens = 3, name = _IO_codecvt) 
         WORD[struct_FILE.h:91:3] data = struct
         WORD[struct_FILE.h:91:10] data = _IO_codecvt
-      CHAR[struct_FILE.h:91:22] data = *
+        CHAR[struct_FILE.h:91:22] data = *
       WORD[struct_FILE.h:91:23] data = _codecvt
       CHAR[struct_FILE.h:91:31] data = ;
-    Declaration(tokens = 3, name = _wide_data)
-      Struct(tokens = 2, name = _IO_wide_data) 
+    Declaration(tokens = 2, name = _wide_data)
+      Struct(tokens = 3, name = _IO_wide_data) 
         WORD[struct_FILE.h:92:3] data = struct
         WORD[struct_FILE.h:92:10] data = _IO_wide_data
-      CHAR[struct_FILE.h:92:24] data = *
+        CHAR[struct_FILE.h:92:24] data = *
       WORD[struct_FILE.h:92:25] data = _wide_data
       CHAR[struct_FILE.h:92:35] data = ;
-    Declaration(tokens = 3, name = _freeres_list)
-      Struct(tokens = 2, name = _IO_FILE) 
+    Declaration(tokens = 2, name = _freeres_list)
+      Struct(tokens = 3, name = _IO_FILE) 
         WORD[struct_FILE.h:93:3] data = struct
         WORD[struct_FILE.h:93:10] data = _IO_FILE
-      CHAR[struct_FILE.h:93:19] data = *
+        CHAR[struct_FILE.h:93:19] data = *
       WORD[struct_FILE.h:93:20] data = _freeres_list
       CHAR[struct_FILE.h:93:33] data = ;
     Declaration(tokens = 4, name = _freeres_buf)
@@ -1107,18 +1107,18 @@ Declaration(tokens = 2, name = __pthread_list_t)
     WORD[thread-shared-types.h:51:9] data = struct
     WORD[thread-shared-types.h:51:16] data = __pthread_internal_list
     CHAR[thread-shared-types.h:52:1] data = {
-    Declaration(tokens = 3, name = __prev)
-      Struct(tokens = 2, name = __pthread_internal_list) 
+    Declaration(tokens = 2, name = __prev)
+      Struct(tokens = 3, name = __pthread_internal_list) 
         WORD[thread-shared-types.h:53:3] data = struct
         WORD[thread-shared-types.h:53:10] data = __pthread_internal_list
-      CHAR[thread-shared-types.h:53:34] data = *
+        CHAR[thread-shared-types.h:53:34] data = *
       WORD[thread-shared-types.h:53:35] data = __prev
       CHAR[thread-shared-types.h:53:41] data = ;
-    Declaration(tokens = 3, name = __next)
-      Struct(tokens = 2, name = __pthread_internal_list) 
+    Declaration(tokens = 2, name = __next)
+      Struct(tokens = 3, name = __pthread_internal_list) 
         WORD[thread-shared-types.h:54:3] data = struct
         WORD[thread-shared-types.h:54:10] data = __pthread_internal_list
-      CHAR[thread-shared-types.h:54:34] data = *
+        CHAR[thread-shared-types.h:54:34] data = *
       WORD[thread-shared-types.h:54:35] data = __next
       CHAR[thread-shared-types.h:54:41] data = ;
     CHAR[thread-shared-types.h:55:1] data = }
@@ -1130,11 +1130,11 @@ Declaration(tokens = 2, name = __pthread_slist_t)
     WORD[thread-shared-types.h:57:9] data = struct
     WORD[thread-shared-types.h:57:16] data = __pthread_internal_slist
     CHAR[thread-shared-types.h:58:1] data = {
-    Declaration(tokens = 3, name = __next)
-      Struct(tokens = 2, name = __pthread_internal_slist) 
+    Declaration(tokens = 2, name = __next)
+      Struct(tokens = 3, name = __pthread_internal_slist) 
         WORD[thread-shared-types.h:59:3] data = struct
         WORD[thread-shared-types.h:59:10] data = __pthread_internal_slist
-      CHAR[thread-shared-types.h:59:35] data = *
+        CHAR[thread-shared-types.h:59:35] data = *
       WORD[thread-shared-types.h:59:36] data = __next
       CHAR[thread-shared-types.h:59:42] data = ;
     CHAR[thread-shared-types.h:60:1] data = }
@@ -1782,11 +1782,11 @@ Declaration(tokens = 2, name = Struct)
       CHAR[declaration.h:8:7] data = *
       WORD[declaration.h:8:9] data = name
       CHAR[declaration.h:8:13] data = ;
-    Declaration(tokens = 3, name = members)
-      Struct(tokens = 2, name = Declaration) 
+    Declaration(tokens = 2, name = members)
+      Struct(tokens = 3, name = Declaration) 
         WORD[declaration.h:9:3] data = struct
         WORD[declaration.h:9:10] data = Declaration
-      CHAR[declaration.h:9:21] data = *
+        CHAR[declaration.h:9:21] data = *
       WORD[declaration.h:9:23] data = members
       CHAR[declaration.h:9:30] data = ;
     CHAR[declaration.h:10:1] data = }
@@ -1887,11 +1887,11 @@ Declaration(tokens = 1, name = (null))
     WORD[__locale_t.h:27:1] data = struct
     WORD[__locale_t.h:27:8] data = __locale_struct
     CHAR[__locale_t.h:28:1] data = {
-    Declaration(tokens = 6, name = (null))
-      Struct(tokens = 2, name = __locale_data) 
+    Declaration(tokens = 5, name = __locales)
+      Struct(tokens = 3, name = __locale_data) 
         WORD[__locale_t.h:30:3] data = struct
         WORD[__locale_t.h:30:10] data = __locale_data
-      CHAR[__locale_t.h:30:24] data = *
+        CHAR[__locale_t.h:30:24] data = *
       WORD[__locale_t.h:30:25] data = __locales
       CHAR[__locale_t.h:30:34] data = [
       NUMBER[__locale_t.h:30:35] data = 13
@@ -1929,11 +1929,11 @@ Declaration(tokens = 1, name = (null))
     CHAR[__locale_t.h:39:1] data = }
   CHAR[__locale_t.h:39:2] data = ;
 
-Declaration(tokens = 3, name = __locale_t)
-  Struct(tokens = 2, name = __locale_struct) 
+Declaration(tokens = 2, name = __locale_t)
+  Struct(tokens = 3, name = __locale_struct) 
     WORD[__locale_t.h:41:9] data = struct
     WORD[__locale_t.h:41:16] data = __locale_struct
-  CHAR[__locale_t.h:41:32] data = *
+    CHAR[__locale_t.h:41:32] data = *
   WORD[__locale_t.h:41:33] data = __locale_t
   CHAR[__locale_t.h:41:43] data = ;
 
@@ -1979,11 +1979,11 @@ Declaration(tokens = 2, name = stbds_string_block)
     WORD[stb_ds.h:665:9] data = struct
     WORD[stb_ds.h:665:16] data = stbds_string_block
     CHAR[stb_ds.h:666:1] data = {
-    Declaration(tokens = 3, name = next)
-      Struct(tokens = 2, name = stbds_string_block) 
+    Declaration(tokens = 2, name = next)
+      Struct(tokens = 3, name = stbds_string_block) 
         WORD[stb_ds.h:667:3] data = struct
         WORD[stb_ds.h:667:10] data = stbds_string_block
-      CHAR[stb_ds.h:667:29] data = *
+        CHAR[stb_ds.h:667:29] data = *
       WORD[stb_ds.h:667:30] data = next
       CHAR[stb_ds.h:667:34] data = ;
     Declaration(tokens = 6, name = storage)
@@ -2038,8 +2038,8 @@ Declaration(tokens = 2, name = Parser)
       CHAR[parser.h:9:14] data = *
       WORD[parser.h:9:16] data = top_level
       CHAR[parser.h:9:25] data = ;
-    Declaration(tokens = 3, name = named_types)
-      Struct(tokens = 3, name = (null)) 
+    Declaration(tokens = 2, name = named_types)
+      Struct(tokens = 4, name = (null)) 
         WORD[parser.h:10:3] data = struct
         CHAR[parser.h:10:10] data = {
         Declaration(tokens = 4, name = key)
@@ -2053,7 +2053,7 @@ Declaration(tokens = 2, name = Parser)
           WORD[parser.h:12:13] data = value
           CHAR[parser.h:12:18] data = ;
         CHAR[parser.h:13:3] data = }
-      CHAR[parser.h:13:4] data = *
+        CHAR[parser.h:13:4] data = *
       WORD[parser.h:13:6] data = named_types
       CHAR[parser.h:13:17] data = ;
     CHAR[parser.h:14:1] data = }

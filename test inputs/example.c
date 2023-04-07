@@ -13,6 +13,6 @@ void PrintFigure<struct Figure<struct Triangle> *t>() {
   printf("Triangle: a = %d, b = %d, c = %d", t->!a, t->!b, t->!c);
 }
 // Вывод параметров круга
-void PrintFigure<struct Figure<struct Circle> *r>() {
+void PrintFigure<struct Figure<struct Circle> *c>() {
   printf("Circle: r = %d", c->!r);
 }

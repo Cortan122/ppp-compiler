@@ -43,6 +43,7 @@ static void parse_declaration_list_until(Parser* p, Token** tok_dest, Declaratio
 }
 
 static bool is_typename(Parser* p, const char* word, bool* has_used_typedef) {
+  if(strcmp(word, "void") == 0) return true;
   if(strcmp(word, "char") == 0) return true;
   if(strcmp(word, "short") == 0) return true;
   if(strcmp(word, "int") == 0) return true;
@@ -51,6 +52,9 @@ static bool is_typename(Parser* p, const char* word, bool* has_used_typedef) {
   if(strcmp(word, "double") == 0) return true;
   if(strcmp(word, "signed") == 0) return true;
   if(strcmp(word, "unsigned") == 0) return true;
+
+  if(strcmp(word, "extern") == 0) return true;
+  if(strcmp(word, "const") == 0) return true;
 
   if(has_used_typedef && *has_used_typedef) return false;
 
@@ -66,7 +70,7 @@ static int consume_type_modifiers(Parser* p, Token** tok_dest, bool allow_words)
   bool has_used_typedef = false;
   while(1) {
     Token tok = parser_peek_token(p);
-    if(token_eq_char(&tok, '*') || token_eq_keyword(&tok, "const")) {
+    if(token_eq_char(&tok, '*') || token_eq_keyword(&tok, "const") || token_eq_keyword(&tok, "extern")) {
       parser_transfer_token(p, tok_dest);
       res++;
     } else if(allow_words && tok.kind == TOKEN_WORD) {
@@ -194,6 +198,24 @@ Declaration parser_parse_declaration(Parser* p) {
   return res;
 }
 
+bool parser_potential_function(Parser* p) {
+  bool res = false;
+  Struct* tmp = calloc(1, sizeof(Struct));
+  if(!parser_parse_type(p, tmp)) goto defer;
+
+  Token name = parser_peek_token(p);
+  if(name.kind == TOKEN_WORD) {
+    printf("Found name = %s\n", name.data);
+    declaration_print_struct(tmp, 0);
+    //
+  } else
+    goto defer;
+
+defer:;
+  declaration_delete_struct(tmp);
+  return res;
+}
+
 bool parser_parse_line(Parser* p) {
   Token tok = parser_peek_token(p);
   if(tok.kind == TOKEN_EOF) return false;
@@ -210,6 +232,8 @@ bool parser_parse_line(Parser* p) {
   } else if(token_eq_keyword(&tok, "struct")) {
     arrpush(p->top_level, parser_parse_declaration(p));
   } else {
+    // if(!parser_potential_function(p)) {
+    // }
     skip_bracket_block(p, NULL, ';', '}');
   }
 

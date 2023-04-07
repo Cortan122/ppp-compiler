@@ -1783,7 +1783,7 @@ Declaration(tokens = 1, name = (null))
       CHAR[__locale_t.h:35:13] data = *
       WORD[__locale_t.h:35:14] data = __ctype_toupper
       CHAR[__locale_t.h:35:29] data = ;
-    Declaration(tokens = 8, name = (null))
+    Declaration(tokens = 8, name = __names)
       WORD[__locale_t.h:38:3] data = const
       WORD[__locale_t.h:38:9] data = char
       CHAR[__locale_t.h:38:14] data = *

@@ -7,6 +7,9 @@ typedef struct Struct {
   Token* tokens;
   char* name;
   struct Declaration* members;
+  int tokens_header_len;
+
+  struct Declaration* subtypes;
 } Struct;
 
 typedef struct Declaration {

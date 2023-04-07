@@ -31,6 +31,17 @@ static void skip_bracket_block(Parser* p, Token** res, char end, char end2) {
   }
 }
 
+static void parse_declaration_list_until(Parser* p, Token** tok_dest, Declaration** decl_dest, char end) {
+  while(1) {
+    Token tok = parser_peek_token(p);
+    if(token_eq_char(&tok, end)) {
+      parser_transfer_token(p, tok_dest);
+      break;
+    }
+    arrpush(*decl_dest, parser_parse_declaration(p));
+  }
+}
+
 void parser_transfer_token(Parser* p, Token** dest) {
   Token tok = lexer_drop_token(&p->lexer);
   // TODO: default emitter?
@@ -71,20 +82,23 @@ bool parser_parse_struct(Parser* p, Struct* res) {
     parser_transfer_token(p, &res->tokens);
 
     tok = parser_peek_token(p);
-    if(!token_eq_char(&tok, '{')) return true;
+    if(!token_eq_char(&tok, '{')) goto no_body;
   } else if(!token_eq_char(&tok, '{')) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected '{' but found '%s'", tok.data);
     exit(1);
   }
   parser_transfer_token(p, &res->tokens);
+  res->tokens_header_len = arrlen(res->tokens);
 
-  while(1) {
+  parse_declaration_list_until(p, &res->tokens, &res->members, '}');
+
+no_body:;
+  if(p->allow_fancy_structs) {
     tok = parser_peek_token(p);
-    if(token_eq_char(&tok, '}')) {
-      parser_transfer_token(p, &res->tokens);
-      break;
-    }
-    arrpush(res->members, parser_parse_declaration(p));
+    if(!token_eq_char(&tok, '<')) return true;
+    parser_transfer_token(p, &res->tokens);
+
+    parse_declaration_list_until(p, &res->tokens, &res->subtypes, '>');
   }
 
   return true;

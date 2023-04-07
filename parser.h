@@ -14,6 +14,7 @@ typedef struct Parser {
   Declaration* top_level;
   NamedType* typedefs;
   NamedType* structs;
+  bool allow_fancy_structs;
 } Parser;
 
 bool parser_parse_struct(Parser* p, Struct* res);

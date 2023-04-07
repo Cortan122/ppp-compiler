@@ -92,12 +92,34 @@ void testfunc_emit_declarations(const char* input_file) {
   parser_delete(&parser);
 }
 
+void testfunc_fancy_declarations(const char* input_file) {
+  Parser parser = {.allow_fancy_structs = true};
+  parser_read_file(&parser, input_file);
+
+  for(int i = 0; i < arrlen(parser.top_level); i++) {
+    declaration_print_debug(&parser.top_level[i], 0);
+  }
+
+  parser_delete(&parser);
+}
+
+void testfunc_emit_fancy_declarations(const char* input_file) {
+  Emitter em = {.file = stdout};
+  Parser parser = {.allow_fancy_structs = true};
+  parser_read_file(&parser, input_file);
+  parser_emit_declarations(&parser, &em);
+
+  parser_delete(&parser);
+}
+
 TestCase test_cases[] = {
     TESTCASE(debug_tokens),
     TESTCASE(declarations),
     TESTCASE(named_types),
     TESTCASE_L(emit_tokens),
     TESTCASE_L(emit_declarations),
+    TESTCASE(fancy_declarations),
+    TESTCASE_L(emit_fancy_declarations),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
 

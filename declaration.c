@@ -7,21 +7,23 @@
 #include "stb_ds.h"
 
 void declaration_print_struct(Struct* s, int rec_lvl) {
-  Token last = s->tokens[arrlen(s->tokens) - 1];
-  bool has_extra_bracket = token_eq_char(&last, '}');
   printf("%*sStruct(tokens = %d, name = %s) \n", rec_lvl * 2, "", (int)arrlen(s->tokens), s->name);
   rec_lvl++;
-  for(int i = 0; i < arrlen(s->tokens) - has_extra_bracket; i++) {
+  for(int i = 0; i < arrlen(s->tokens); i++) {
     printf("%*s", rec_lvl * 2, "");
     token_print_debug(&s->tokens[i]);
-  }
 
-  for(int i = 0; i < arrlen(s->members); i++) {
-    declaration_print_debug(&s->members[i], rec_lvl);
-  }
-  if(has_extra_bracket) {
-    printf("%*s", rec_lvl * 2, "");
-    token_print_debug(&last);
+    if(s->tokens_header_len == i + 1) {
+      for(int j = 0; j < arrlen(s->members); j++) {
+        declaration_print_debug(&s->members[j], rec_lvl);
+      }
+    }
+
+    if(i == arrlen(s->tokens) - 2) {
+      for(int j = 0; j < arrlen(s->subtypes); j++) {
+        declaration_print_debug(&s->subtypes[j], rec_lvl);
+      }
+    }
   }
   rec_lvl--;
 }
@@ -46,18 +48,19 @@ void declaration_print_debug(Declaration* d, int rec_lvl) {
 }
 
 void declaration_emit_struct(Struct* s, Emitter* emitter) {
-  Token* last = &s->tokens[arrlen(s->tokens) - 1];
-  bool has_extra_bracket = token_eq_char(last, '}');
-  for(int i = 0; i < arrlen(s->tokens) - has_extra_bracket; i++) {
+  for(int i = 0; i < arrlen(s->tokens); i++) {
     token_emit(&s->tokens[i], emitter);
-  }
+    if(s->tokens_header_len == i + 1) {
+      for(int i = 0; i < arrlen(s->members); i++) {
+        declaration_emit(&s->members[i], emitter);
+      }
+    }
 
-  for(int i = 0; i < arrlen(s->members); i++) {
-    declaration_emit(&s->members[i], emitter);
-  }
-
-  if(has_extra_bracket) {
-    token_emit(last, emitter);
+    if(i == arrlen(s->tokens) - 2) {
+      for(int j = 0; j < arrlen(s->subtypes); j++) {
+        declaration_emit(&s->subtypes[j], emitter);
+      }
+    }
   }
 }
 
@@ -81,6 +84,11 @@ void declaration_delete_struct(Struct* s) {
     declaration_delete(&s->members[i]);
   }
   arrfree(s->members);
+
+  for(int i = 0; i < arrlen(s->subtypes); i++) {
+    declaration_delete(&s->subtypes[i]);
+  }
+  arrfree(s->subtypes);
   free(s);
 }
 

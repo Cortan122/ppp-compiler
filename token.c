@@ -56,12 +56,37 @@ void token_print_error(Token* tok, LogLevel level, const char* msg, const char* 
   fprintf(stderr, "\n");
 }
 
-static void emit_spaces(Emitter* emitter, Loc loc) {
+static bool is_sticky_token(TokenKind kind) {
+  switch(kind) {
+    case TOKEN_EOF:
+    case TOKEN_INVALID:
+    case TOKEN_CHAR:
+    case TOKEN_LONGCOMMENT:
+    case TOKEN_SHORTCOMMENT:
+    case TOKEN_PREPROCESSOR:
+    case TOKEN_PREPROCESSOR_LINENUM:
+    case TOKEN_LONGSTRING:
+    case TOKEN_SHORTSTRING:
+      return false;
+
+    case TOKEN_WORD:
+    case TOKEN_NUMBER:
+      return true;
+  }
+  // unreachable
+  return true;
+}
+
+static void emit_spaces(Emitter* emitter, Loc loc, bool force_space) {
   if(emitter->cursor.filename == NULL) {
     emitter->cursor = loc;
     emitter->cursor.col_num = 0;
   }
   if(loc.filename == NULL) {
+    if(force_space) {
+      fprintf(emitter->file, " ");
+      emitter->cursor.col_num++;
+    }
     return;
   }
 
@@ -87,11 +112,16 @@ static void emit_spaces(Emitter* emitter, Loc loc) {
     fprintf(emitter->file, "%*s", col_delta, "");
   }
 
+  if(col_delta <= 0 && line_delta <= 0 && force_space) {
+    fprintf(emitter->file, " ");
+    loc.col_num++;
+  }
+
   emitter->cursor = loc;
 }
 
 void token_emit(Token* tok, Emitter* emitter) {
-  emit_spaces(emitter, tok->location);
+  emit_spaces(emitter, tok->location, is_sticky_token(tok->kind) && is_sticky_token(emitter->last_token_kind));
 
   int length_written = 0;
   switch(tok->kind) {
@@ -142,6 +172,7 @@ void token_emit(Token* tok, Emitter* emitter) {
   }
 
   emitter->cursor.col_num += length_written;
+  emitter->last_token_kind = tok->kind;
 }
 
 void token_emit_cstr(const char* keyword, Emitter* emitter) {
@@ -153,6 +184,7 @@ void token_emit_cstr(const char* keyword, Emitter* emitter) {
   }
   fprintf(emitter->file, "%s", keyword);
   emitter->cursor.col_num += strlen(keyword);
+  emitter->last_token_kind = TOKEN_WORD;
 }
 
 bool token_eq_keyword(Token* tok, const char* keyword) {

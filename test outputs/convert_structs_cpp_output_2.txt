@@ -470,8 +470,8 @@ typedef struct Declaration {
 } Declaration;
 typedef struct Lexer {
   char peeked_char;
- _Boolexhausted;
- _Boolis_newline;
+ _Bool exhausted;
+ _Bool is_newline;
   Loc current_location;
 
   FILE* file;

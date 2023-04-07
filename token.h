@@ -42,6 +42,7 @@ typedef struct Token {
 typedef struct Emitter {
   FILE* file;
   Loc cursor;
+  TokenKind last_token_kind;
   bool delete_repeted_empty_lines;
   bool ignore_next_indent;
   bool convert_structs;

@@ -16,7 +16,7 @@ struct Circle {
 struct Figure { int tag; struct {
   char* color;
 } head; union {
-  struct Triangle;
-  struct Rectangle;
-  struct Circle; } tail;
+  struct Triangle s00;
+  struct Rectangle s01;
+  struct Circle s02; } tail;
 };

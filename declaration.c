@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#pragma GCC diagnostic ignored "-Wsign-compare"
 #define STB_DS_IMPLEMENTATION
 #include "stb_ds.h"
 
@@ -61,11 +62,16 @@ void declaration_emit_fancy_struct(Struct* s, Emitter* emitter) {
 
       token_emit_cstr("union {", emitter);
       for(int i = 0; i < arrlen(s->subtypes); i++) {
+        Token name = token_from_keyword("s___");
+        snprintf(name.data, name.length, "s%02x", i);
+        arrins(s->subtypes[i].tokens, arrlen(s->subtypes[i].tokens) - 2, name);
         declaration_emit(&s->subtypes[i], emitter);
-        // TODO: add phony name token
       }
       token_emit_cstr(" } tail;", emitter);
-      token_emit_cstr("\n}", emitter);  // TODO: use location of '>'
+
+      Token end_bracket = s->tokens[arrlen(s->tokens) - 1];
+      end_bracket.data = "}";
+      token_emit(&end_bracket, emitter);
     }
   }
 }

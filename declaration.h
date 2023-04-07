@@ -7,9 +7,11 @@ typedef struct Struct {
   Token* tokens;
   char* name;
   struct Declaration* members;
-  int tokens_header_len;
+  int tokens_members_pos;
 
   struct Declaration* subtypes;
+  int tokens_subtypes_pos;
+  bool is_primitive;
 } Struct;
 
 typedef struct Declaration {

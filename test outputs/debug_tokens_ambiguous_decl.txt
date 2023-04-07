@@ -1,0 +1,40 @@
+WORD[ambiguous_decl.c:1:1] data = typedef
+WORD[ambiguous_decl.c:1:9] data = int
+WORD[ambiguous_decl.c:1:13] data = Type
+CHAR[ambiguous_decl.c:1:17] data = ;
+WORD[ambiguous_decl.c:3:1] data = int
+WORD[ambiguous_decl.c:3:5] data = main
+CHAR[ambiguous_decl.c:3:9] data = (
+CHAR[ambiguous_decl.c:3:10] data = )
+CHAR[ambiguous_decl.c:3:12] data = {
+WORD[ambiguous_decl.c:4:3] data = int
+WORD[ambiguous_decl.c:4:7] data = type
+CHAR[ambiguous_decl.c:4:12] data = =
+NUMBER[ambiguous_decl.c:4:14] data = 0
+CHAR[ambiguous_decl.c:4:15] data = ;
+WORD[ambiguous_decl.c:5:3] data = Type
+CHAR[ambiguous_decl.c:5:7] data = *
+WORD[ambiguous_decl.c:5:8] data = var
+CHAR[ambiguous_decl.c:5:11] data = ;
+SHORTCOMMENT[ambiguous_decl.c:5:15] data = // declaration
+WORD[ambiguous_decl.c:6:3] data = type
+CHAR[ambiguous_decl.c:6:7] data = *
+WORD[ambiguous_decl.c:6:8] data = var
+CHAR[ambiguous_decl.c:6:11] data = ;
+SHORTCOMMENT[ambiguous_decl.c:6:15] data = // expression
+CHAR[ambiguous_decl.c:7:3] data = *
+WORD[ambiguous_decl.c:7:4] data = var
+CHAR[ambiguous_decl.c:7:8] data = =
+NUMBER[ambiguous_decl.c:7:10] data = 0
+CHAR[ambiguous_decl.c:7:11] data = ;
+SHORTCOMMENT[ambiguous_decl.c:7:15] data = // derefrence
+CHAR[ambiguous_decl.c:8:3] data = *
+WORD[ambiguous_decl.c:8:4] data = Type
+CHAR[ambiguous_decl.c:8:9] data = =
+NUMBER[ambiguous_decl.c:8:11] data = 0
+CHAR[ambiguous_decl.c:8:12] data = ;
+SHORTCOMMENT[ambiguous_decl.c:8:15] data = // error
+WORD[ambiguous_decl.c:9:3] data = return
+NUMBER[ambiguous_decl.c:9:10] data = 0
+CHAR[ambiguous_decl.c:9:11] data = ;
+CHAR[ambiguous_decl.c:10:1] data = }

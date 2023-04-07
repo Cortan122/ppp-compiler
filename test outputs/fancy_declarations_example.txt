@@ -3,7 +3,7 @@ Declaration(tokens = 1, name = (null))
     WORD[example.c:1:1] data = struct
     WORD[example.c:1:8] data = Triangle
     CHAR[example.c:1:17] data = {
-    Declaration(tokens = 7, name = c)
+    Declaration(tokens = 7, name = a)
       WORD[example.c:1:18] data = int
       WORD[example.c:1:22] data = a
       CHAR[example.c:1:23] data = ,
@@ -19,7 +19,7 @@ Declaration(tokens = 1, name = (null))
     WORD[example.c:2:1] data = struct
     WORD[example.c:2:8] data = Rectangle
     CHAR[example.c:2:18] data = {
-    Declaration(tokens = 5, name = y)
+    Declaration(tokens = 5, name = x)
       WORD[example.c:2:19] data = int
       WORD[example.c:2:23] data = x
       CHAR[example.c:2:24] data = ,

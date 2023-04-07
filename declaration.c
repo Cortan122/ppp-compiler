@@ -8,19 +8,27 @@
 #include "stb_ds.h"
 
 void declaration_print_struct(Struct* s, int rec_lvl) {
+  if(s->is_primitive) {
+    for(int i = 0; i < arrlen(s->tokens); i++) {
+      printf("%*s", rec_lvl * 2, "");
+      token_print_debug(&s->tokens[i]);
+    }
+    return;
+  }
+
   printf("%*sStruct(tokens = %d, name = %s) \n", rec_lvl * 2, "", (int)arrlen(s->tokens), s->name);
   rec_lvl++;
   for(int i = 0; i < arrlen(s->tokens); i++) {
     printf("%*s", rec_lvl * 2, "");
     token_print_debug(&s->tokens[i]);
 
-    if(s->tokens_header_len == i + 1) {
+    if(s->tokens_members_pos == i + 1) {
       for(int j = 0; j < arrlen(s->members); j++) {
         declaration_print_debug(&s->members[j], rec_lvl);
       }
     }
 
-    if(i == arrlen(s->tokens) - 2) {
+    if(s->tokens_subtypes_pos == i + 1) {
       for(int j = 0; j < arrlen(s->subtypes); j++) {
         declaration_print_debug(&s->subtypes[j], rec_lvl);
       }
@@ -30,7 +38,12 @@ void declaration_print_struct(Struct* s, int rec_lvl) {
 }
 
 void declaration_print_debug(Declaration* d, int rec_lvl) {
-  printf("%*sDeclaration(tokens = %d, name = %s)\n", rec_lvl * 2, "", (int)arrlen(d->tokens), d->name);
+  int total_tokens = arrlen(d->tokens);
+  if(d->type && d->type->is_primitive) {
+    total_tokens += arrlen(d->type->tokens);
+  }
+
+  printf("%*sDeclaration(tokens = %d, name = %s)\n", rec_lvl * 2, "", total_tokens, d->name);
   rec_lvl++;
 
   if(d->type) {
@@ -49,9 +62,9 @@ void declaration_print_debug(Declaration* d, int rec_lvl) {
 }
 
 void declaration_emit_fancy_struct(Struct* s, Emitter* emitter) {
-  for(int i = 0; i < arrlen(s->tokens) - 2; i++) {
+  for(int i = 0; i < arrlen(s->tokens); i++) {
     token_emit(&s->tokens[i], emitter);
-    if(s->tokens_header_len == i + 1) {
+    if(s->tokens_members_pos == i + 1) {
       token_emit_cstr(" int tag; ", emitter);
       token_emit_cstr("struct {", emitter);
       for(int i = 0; i < arrlen(s->members); i++) {
@@ -69,16 +82,17 @@ void declaration_emit_fancy_struct(Struct* s, Emitter* emitter) {
       }
       token_emit_cstr(" } tail;", emitter);
 
-      Token end_bracket = s->tokens[arrlen(s->tokens) - 1];
+      Token end_bracket = s->tokens[s->tokens_subtypes_pos];
       end_bracket.data = "}";
       token_emit(&end_bracket, emitter);
+      i = s->tokens_subtypes_pos;
     }
   }
 }
 
 void declaration_emit_struct(Struct* s, Emitter* emitter) {
   if(emitter->convert_structs && s->subtypes) {
-    if(s->tokens_header_len) {
+    if(s->tokens_members_pos) {
       declaration_emit_fancy_struct(s, emitter);
     } else {
       // TODO
@@ -88,13 +102,13 @@ void declaration_emit_struct(Struct* s, Emitter* emitter) {
 
   for(int i = 0; i < arrlen(s->tokens); i++) {
     token_emit(&s->tokens[i], emitter);
-    if(s->tokens_header_len == i + 1) {
+    if(s->tokens_members_pos == i + 1) {
       for(int i = 0; i < arrlen(s->members); i++) {
         declaration_emit(&s->members[i], emitter);
       }
     }
 
-    if(i == arrlen(s->tokens) - 2) {
+    if(s->tokens_subtypes_pos == i + 1) {
       for(int j = 0; j < arrlen(s->subtypes); j++) {
         declaration_emit(&s->subtypes[j], emitter);
       }

@@ -1,0 +1,16 @@
+Declaration(tokens = 3, name = ssize_t)
+  WORD[redef.c:1:9] data = long
+  WORD[redef.c:1:14] data = ssize_t
+  CHAR[redef.c:1:21] data = ;
+
+Declaration(tokens = 4, name = __ssize_t)
+  WORD[redef.c:2:9] data = long
+  WORD[redef.c:2:14] data = int
+  WORD[redef.c:2:18] data = __ssize_t
+  CHAR[redef.c:2:27] data = ;
+
+Declaration(tokens = 3, name = ssize_t)
+  WORD[redef.c:3:9] data = __ssize_t
+  WORD[redef.c:3:19] data = ssize_t
+  CHAR[redef.c:3:26] data = ;
+

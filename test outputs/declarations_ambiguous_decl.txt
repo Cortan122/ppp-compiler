@@ -1,0 +1,5 @@
+Declaration(tokens = 3, name = Type)
+  WORD[ambiguous_decl.c:1:9] data = int
+  WORD[ambiguous_decl.c:1:13] data = Type
+  CHAR[ambiguous_decl.c:1:17] data = ;
+

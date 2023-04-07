@@ -118,7 +118,7 @@ Declaration(tokens = 2, name = __va_list_struct)
   WORD[stdarg.h:17:3] data = __va_list_struct
   CHAR[stdarg.h:17:19] data = ;
 
-Declaration(tokens = 6, name = (null))
+Declaration(tokens = 6, name = va_list)
   WORD[stdarg.h:19:9] data = __va_list_struct
   WORD[stdarg.h:19:26] data = va_list
   CHAR[stdarg.h:19:33] data = [
@@ -342,7 +342,7 @@ Declaration(tokens = 2, name = __fsid_t)
   Struct(tokens = 3, name = (null)) 
     WORD[types.h:155:9] data = struct
     CHAR[types.h:155:16] data = {
-    Declaration(tokens = 6, name = (null))
+    Declaration(tokens = 6, name = __val)
       WORD[types.h:155:18] data = int
       WORD[types.h:155:22] data = __val
       CHAR[types.h:155:27] data = [
@@ -740,7 +740,7 @@ Declaration(tokens = 1, name = (null))
       WORD[struct_FILE.h:78:10] data = char
       WORD[struct_FILE.h:78:15] data = _vtable_offset
       CHAR[struct_FILE.h:78:29] data = ;
-    Declaration(tokens = 6, name = (null))
+    Declaration(tokens = 6, name = _shortbuf)
       WORD[struct_FILE.h:79:3] data = char
       WORD[struct_FILE.h:79:8] data = _shortbuf
       CHAR[struct_FILE.h:79:17] data = [
@@ -790,7 +790,7 @@ Declaration(tokens = 1, name = (null))
       WORD[struct_FILE.h:96:3] data = int
       WORD[struct_FILE.h:96:7] data = _mode
       CHAR[struct_FILE.h:96:12] data = ;
-    Declaration(tokens = 24, name = (null))
+    Declaration(tokens = 24, name = _unused2)
       WORD[struct_FILE.h:98:3] data = char
       WORD[struct_FILE.h:98:8] data = _unused2
       CHAR[struct_FILE.h:98:16] data = [
@@ -1092,7 +1092,7 @@ Declaration(tokens = 2, name = __sigset_t)
   Struct(tokens = 3, name = (null)) 
     WORD[__sigset_t.h:5:9] data = struct
     CHAR[__sigset_t.h:6:1] data = {
-    Declaration(tokens = 21, name = (null))
+    Declaration(tokens = 21, name = __val)
       WORD[__sigset_t.h:7:3] data = unsigned
       WORD[__sigset_t.h:7:12] data = long
       WORD[__sigset_t.h:7:17] data = int
@@ -1170,7 +1170,7 @@ Declaration(tokens = 2, name = fd_set)
   Struct(tokens = 3, name = (null)) 
     WORD[select.h:59:9] data = struct
     CHAR[select.h:60:3] data = {
-    Declaration(tokens = 18, name = (null))
+    Declaration(tokens = 18, name = __fds_bits)
       WORD[select.h:67:5] data = __fd_mask
       WORD[select.h:67:15] data = __fds_bits
       CHAR[select.h:67:25] data = [
@@ -1373,7 +1373,7 @@ Declaration(tokens = 1, name = (null))
       WORD[struct_rwlock.h:34:10] data = char
       WORD[struct_rwlock.h:34:15] data = __rwelision
       CHAR[struct_rwlock.h:34:26] data = ;
-    Declaration(tokens = 7, name = (null))
+    Declaration(tokens = 7, name = __pad1)
       WORD[struct_rwlock.h:39:3] data = unsigned
       WORD[struct_rwlock.h:39:12] data = char
       WORD[struct_rwlock.h:39:17] data = __pad1
@@ -1408,7 +1408,7 @@ Declaration(tokens = 1, name = (null))
       WORD[thread-shared-types.h:97:3] data = __atomic_wide_counter
       WORD[thread-shared-types.h:97:25] data = __g1_start
       CHAR[thread-shared-types.h:97:35] data = ;
-    Declaration(tokens = 7, name = (null))
+    Declaration(tokens = 7, name = __g_refs)
       WORD[thread-shared-types.h:98:3] data = unsigned
       WORD[thread-shared-types.h:98:12] data = int
       WORD[thread-shared-types.h:98:16] data = __g_refs
@@ -1416,7 +1416,7 @@ Declaration(tokens = 1, name = (null))
       NUMBER[thread-shared-types.h:98:25] data = 2
       CHAR[thread-shared-types.h:98:26] data = ]
       CHAR[thread-shared-types.h:98:28] data = ;
-    Declaration(tokens = 7, name = (null))
+    Declaration(tokens = 7, name = __g_size)
       WORD[thread-shared-types.h:99:3] data = unsigned
       WORD[thread-shared-types.h:99:12] data = int
       WORD[thread-shared-types.h:99:16] data = __g_size
@@ -1434,7 +1434,7 @@ Declaration(tokens = 1, name = (null))
       WORD[thread-shared-types.h:101:12] data = int
       WORD[thread-shared-types.h:101:16] data = __wrefs
       CHAR[thread-shared-types.h:101:23] data = ;
-    Declaration(tokens = 7, name = (null))
+    Declaration(tokens = 7, name = __g_signals)
       WORD[thread-shared-types.h:102:3] data = unsigned
       WORD[thread-shared-types.h:102:12] data = int
       WORD[thread-shared-types.h:102:16] data = __g_signals
@@ -1691,7 +1691,7 @@ Declaration(tokens = 1, name = (null))
     WORD[stdlib.h:491:1] data = struct
     WORD[stdlib.h:491:8] data = drand48_data
     CHAR[stdlib.h:492:3] data = {
-    Declaration(tokens = 8, name = (null))
+    Declaration(tokens = 8, name = __x)
       WORD[stdlib.h:493:5] data = unsigned
       WORD[stdlib.h:493:14] data = short
       WORD[stdlib.h:493:20] data = int
@@ -1700,7 +1700,7 @@ Declaration(tokens = 1, name = (null))
       NUMBER[stdlib.h:493:28] data = 3
       CHAR[stdlib.h:493:29] data = ]
       CHAR[stdlib.h:493:30] data = ;
-    Declaration(tokens = 8, name = (null))
+    Declaration(tokens = 8, name = __old_x)
       WORD[stdlib.h:494:5] data = unsigned
       WORD[stdlib.h:494:14] data = short
       WORD[stdlib.h:494:20] data = int

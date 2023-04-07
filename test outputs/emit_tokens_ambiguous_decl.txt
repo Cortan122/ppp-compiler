@@ -1,0 +1,10 @@
+typedef int Type;
+
+int main() {
+  int type = 0;
+  Type*var;   // declaration
+  type*var;   // expression
+  *var = 0;   // derefrence
+  *Type = 0;  // error
+  return 0;
+}

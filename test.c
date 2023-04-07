@@ -59,10 +59,21 @@ void testfunc_named_types(const char* input_file) {
     printf("struct %s;\n", parser.structs[i].key);
   }
   for(int i = 0; i < shlen(parser.typedefs); i++) {
-    if(parser.typedefs[i].value) {
-      printf("typedef struct %s %s;\n", parser.typedefs[i].value->name, parser.typedefs[i].key);
-    } else {
+    Struct* struc = parser.typedefs[i].value;
+    if(struc == NULL) {
       printf("typedef ... %s;\n", parser.typedefs[i].key);
+    } else if(struc->is_primitive) {
+      Emitter em = {.file = stdout};
+      token_emit_cstr("typedef", &em);
+      em.ignore_next_indent = true;
+      for(int j = 0; j < arrlen(struc->tokens); j++) {
+        token_emit(&struc->tokens[j], &em);
+      }
+      token_emit_cstr(" ", &em);
+      token_emit_cstr(parser.typedefs[i].key, &em);
+      token_emit_cstr(";\n", &em);
+    } else {
+      printf("typedef struct %s %s;\n", struc->name, parser.typedefs[i].key);
     }
   }
 

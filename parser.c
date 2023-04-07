@@ -42,6 +42,47 @@ static void parse_declaration_list_until(Parser* p, Token** tok_dest, Declaratio
   }
 }
 
+static bool is_typename(Parser* p, const char* word, bool* has_used_typedef) {
+  if(strcmp(word, "char") == 0) return true;
+  if(strcmp(word, "short") == 0) return true;
+  if(strcmp(word, "int") == 0) return true;
+  if(strcmp(word, "long") == 0) return true;
+  if(strcmp(word, "float") == 0) return true;
+  if(strcmp(word, "double") == 0) return true;
+  if(strcmp(word, "signed") == 0) return true;
+  if(strcmp(word, "unsigned") == 0) return true;
+
+  if(has_used_typedef && *has_used_typedef) return false;
+
+  Struct* s = shget(p->typedefs, word);
+  if(s == NULL) return false;
+
+  if(has_used_typedef) *has_used_typedef = true;
+  return true;
+}
+
+static int consume_type_modifiers(Parser* p, Token** tok_dest, bool allow_words) {
+  int res = 0;
+  bool has_used_typedef = false;
+  while(1) {
+    Token tok = parser_peek_token(p);
+    if(token_eq_char(&tok, '*') || token_eq_keyword(&tok, "const")) {
+      parser_transfer_token(p, tok_dest);
+      res++;
+    } else if(allow_words && tok.kind == TOKEN_WORD) {
+      if(is_typename(p, tok.data, &has_used_typedef)) {
+        parser_transfer_token(p, tok_dest);
+        res++;
+      } else {
+        break;
+      }
+    } else {
+      break;
+    }
+  }
+  return res;
+}
+
 void parser_transfer_token(Parser* p, Token** dest) {
   Token tok = lexer_drop_token(&p->lexer);
   // TODO: default emitter?
@@ -88,7 +129,7 @@ bool parser_parse_struct(Parser* p, Struct* res) {
     exit(1);
   }
   parser_transfer_token(p, &res->tokens);
-  res->tokens_header_len = arrlen(res->tokens);
+  res->tokens_members_pos = arrlen(res->tokens);
 
   parse_declaration_list_until(p, &res->tokens, &res->members, '}');
 
@@ -97,10 +138,27 @@ no_body:;
     tok = parser_peek_token(p);
     if(!token_eq_char(&tok, '<')) return true;
     parser_transfer_token(p, &res->tokens);
+    res->tokens_subtypes_pos = arrlen(res->tokens);
 
     parse_declaration_list_until(p, &res->tokens, &res->subtypes, '>');
   }
 
+  return true;
+}
+
+bool parser_parse_type(Parser* p, Struct* res) {
+  if(parser_parse_struct(p, res)) {
+    return true;
+    consume_type_modifiers(p, &res->tokens, false);
+  }
+
+  Token tok = parser_peek_token(p);
+  if(!is_typename(p, tok.data, NULL)) {
+    return false;
+  }
+
+  consume_type_modifiers(p, &res->tokens, true);
+  res->is_primitive = true;
   return true;
 }
 
@@ -109,17 +167,26 @@ Declaration parser_parse_declaration(Parser* p) {
   res.location = parser_peek_token(p).location;
   res.type = calloc(1, sizeof(Struct));
 
-  if(!parser_parse_struct(p, res.type)) {
+  Token name = {0};
+  if(!parser_parse_type(p, res.type)) {
     free(res.type);
     res.type = NULL;
+  } else {
+    name = parser_peek_token(p);
+    if(name.kind == TOKEN_WORD) {
+      res.name = name.data;
+    }
   }
   skip_bracket_block(p, &res.tokens, ';', '\0');
 
-  if(arrlen(res.tokens) > 1) {
+  if(res.name == NULL && arrlen(res.tokens) > 1) {
     Token last = res.tokens[arrlen(res.tokens) - 2];
     if(last.kind == TOKEN_WORD) {
       res.name = last.data;
     } else {
+      if(name.data && !token_eq_char(&name, ';')) {
+        token_print_error(&name, LOGLEVEL_WARNING, "expected declaration name, but found '%s'", name.data);
+      }
       token_print_error(&last, LOGLEVEL_WARNING, "extracting the names of long declarations is not implemented yet%s", "");
     }
   }

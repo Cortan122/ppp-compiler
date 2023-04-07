@@ -1,0 +1,1974 @@
+Declaration(tokens = 4, name = size_t)
+  WORD[stddef.h:4:9] data = unsigned
+  WORD[stddef.h:4:18] data = long
+  WORD[stddef.h:4:23] data = size_t
+  CHAR[stddef.h:4:29] data = ;
+
+Declaration(tokens = 3, name = ssize_t)
+  WORD[stddef.h:5:9] data = long
+  WORD[stddef.h:5:14] data = ssize_t
+  CHAR[stddef.h:5:21] data = ;
+
+Declaration(tokens = 3, name = wchar_t)
+  WORD[stddef.h:6:9] data = int
+  WORD[stddef.h:6:13] data = wchar_t
+  CHAR[stddef.h:6:20] data = ;
+
+Declaration(tokens = 3, name = ptrdiff_t)
+  WORD[stddef.h:7:9] data = long
+  WORD[stddef.h:7:14] data = ptrdiff_t
+  CHAR[stddef.h:7:23] data = ;
+
+Declaration(tokens = 3, name = intptr_t)
+  WORD[stddef.h:8:9] data = long
+  WORD[stddef.h:8:14] data = intptr_t
+  CHAR[stddef.h:8:22] data = ;
+
+Declaration(tokens = 4, name = uintptr_t)
+  WORD[stddef.h:9:9] data = unsigned
+  WORD[stddef.h:9:18] data = long
+  WORD[stddef.h:9:23] data = uintptr_t
+  CHAR[stddef.h:9:32] data = ;
+
+Declaration(tokens = 4, name = int8_t)
+  WORD[stddef.h:13:9] data = signed
+  WORD[stddef.h:13:16] data = char
+  WORD[stddef.h:13:21] data = int8_t
+  CHAR[stddef.h:13:27] data = ;
+
+Declaration(tokens = 5, name = int16_t)
+  WORD[stddef.h:14:9] data = signed
+  WORD[stddef.h:14:16] data = short
+  WORD[stddef.h:14:22] data = int
+  WORD[stddef.h:14:26] data = int16_t
+  CHAR[stddef.h:14:33] data = ;
+
+Declaration(tokens = 4, name = int32_t)
+  WORD[stddef.h:15:9] data = signed
+  WORD[stddef.h:15:16] data = int
+  WORD[stddef.h:15:20] data = int32_t
+  CHAR[stddef.h:15:27] data = ;
+
+Declaration(tokens = 5, name = int64_t)
+  WORD[stddef.h:17:9] data = signed
+  WORD[stddef.h:17:16] data = long
+  WORD[stddef.h:17:21] data = int
+  WORD[stddef.h:17:25] data = int64_t
+  CHAR[stddef.h:17:32] data = ;
+
+Declaration(tokens = 4, name = uint8_t)
+  WORD[stddef.h:21:9] data = unsigned
+  WORD[stddef.h:21:18] data = char
+  WORD[stddef.h:21:23] data = uint8_t
+  CHAR[stddef.h:21:30] data = ;
+
+Declaration(tokens = 5, name = uint16_t)
+  WORD[stddef.h:22:9] data = unsigned
+  WORD[stddef.h:22:18] data = short
+  WORD[stddef.h:22:24] data = int
+  WORD[stddef.h:22:28] data = uint16_t
+  CHAR[stddef.h:22:36] data = ;
+
+Declaration(tokens = 4, name = uint32_t)
+  WORD[stddef.h:23:9] data = unsigned
+  WORD[stddef.h:23:18] data = int
+  WORD[stddef.h:23:22] data = uint32_t
+  CHAR[stddef.h:23:30] data = ;
+
+Declaration(tokens = 5, name = uint64_t)
+  WORD[stddef.h:25:9] data = unsigned
+  WORD[stddef.h:25:18] data = long
+  WORD[stddef.h:25:23] data = int
+  WORD[stddef.h:25:27] data = uint64_t
+  CHAR[stddef.h:25:35] data = ;
+
+Declaration(tokens = 2, name = __va_list_struct)
+  Struct(tokens = 3, name = (null)) 
+    WORD[stdarg.h:9:9] data = struct
+    CHAR[stdarg.h:9:16] data = {
+    Declaration(tokens = 4, name = gp_offset)
+      WORD[stdarg.h:10:5] data = unsigned
+      WORD[stdarg.h:10:14] data = int
+      WORD[stdarg.h:10:18] data = gp_offset
+      CHAR[stdarg.h:10:27] data = ;
+    Declaration(tokens = 4, name = fp_offset)
+      WORD[stdarg.h:11:5] data = unsigned
+      WORD[stdarg.h:11:14] data = int
+      WORD[stdarg.h:11:18] data = fp_offset
+      CHAR[stdarg.h:11:27] data = ;
+    Declaration(tokens = 12, name = (null))
+      WORD[stdarg.h:12:5] data = union
+      CHAR[stdarg.h:12:11] data = {
+      WORD[stdarg.h:13:9] data = unsigned
+      WORD[stdarg.h:13:18] data = int
+      WORD[stdarg.h:13:22] data = overflow_offset
+      CHAR[stdarg.h:13:37] data = ;
+      WORD[stdarg.h:14:9] data = char
+      CHAR[stdarg.h:14:14] data = *
+      WORD[stdarg.h:14:15] data = overflow_arg_area
+      CHAR[stdarg.h:14:32] data = ;
+      CHAR[stdarg.h:15:5] data = }
+      CHAR[stdarg.h:15:6] data = ;
+    Declaration(tokens = 4, name = reg_save_area)
+      WORD[stdarg.h:16:5] data = char
+      CHAR[stdarg.h:16:10] data = *
+      WORD[stdarg.h:16:11] data = reg_save_area
+      CHAR[stdarg.h:16:24] data = ;
+    CHAR[stdarg.h:17:1] data = }
+  WORD[stdarg.h:17:3] data = __va_list_struct
+  CHAR[stdarg.h:17:19] data = ;
+
+Declaration(tokens = 6, name = (null))
+  WORD[stdarg.h:19:9] data = __va_list_struct
+  WORD[stdarg.h:19:26] data = va_list
+  CHAR[stdarg.h:19:33] data = [
+  NUMBER[stdarg.h:19:34] data = 1
+  CHAR[stdarg.h:19:35] data = ]
+  CHAR[stdarg.h:19:36] data = ;
+
+Declaration(tokens = 3, name = __gnuc_va_list)
+  WORD[stdarg.h:76:9] data = va_list
+  WORD[stdarg.h:76:17] data = __gnuc_va_list
+  CHAR[stdarg.h:76:31] data = ;
+
+Declaration(tokens = 4, name = __u_char)
+  WORD[types.h:31:9] data = unsigned
+  WORD[types.h:31:18] data = char
+  WORD[types.h:31:23] data = __u_char
+  CHAR[types.h:31:31] data = ;
+
+Declaration(tokens = 5, name = __u_short)
+  WORD[types.h:32:9] data = unsigned
+  WORD[types.h:32:18] data = short
+  WORD[types.h:32:24] data = int
+  WORD[types.h:32:28] data = __u_short
+  CHAR[types.h:32:37] data = ;
+
+Declaration(tokens = 4, name = __u_int)
+  WORD[types.h:33:9] data = unsigned
+  WORD[types.h:33:18] data = int
+  WORD[types.h:33:22] data = __u_int
+  CHAR[types.h:33:29] data = ;
+
+Declaration(tokens = 5, name = __u_long)
+  WORD[types.h:34:9] data = unsigned
+  WORD[types.h:34:18] data = long
+  WORD[types.h:34:23] data = int
+  WORD[types.h:34:27] data = __u_long
+  CHAR[types.h:34:35] data = ;
+
+Declaration(tokens = 4, name = __int8_t)
+  WORD[types.h:37:9] data = signed
+  WORD[types.h:37:16] data = char
+  WORD[types.h:37:21] data = __int8_t
+  CHAR[types.h:37:29] data = ;
+
+Declaration(tokens = 4, name = __uint8_t)
+  WORD[types.h:38:9] data = unsigned
+  WORD[types.h:38:18] data = char
+  WORD[types.h:38:23] data = __uint8_t
+  CHAR[types.h:38:32] data = ;
+
+Declaration(tokens = 5, name = __int16_t)
+  WORD[types.h:39:9] data = signed
+  WORD[types.h:39:16] data = short
+  WORD[types.h:39:22] data = int
+  WORD[types.h:39:26] data = __int16_t
+  CHAR[types.h:39:35] data = ;
+
+Declaration(tokens = 5, name = __uint16_t)
+  WORD[types.h:40:9] data = unsigned
+  WORD[types.h:40:18] data = short
+  WORD[types.h:40:24] data = int
+  WORD[types.h:40:28] data = __uint16_t
+  CHAR[types.h:40:38] data = ;
+
+Declaration(tokens = 4, name = __int32_t)
+  WORD[types.h:41:9] data = signed
+  WORD[types.h:41:16] data = int
+  WORD[types.h:41:20] data = __int32_t
+  CHAR[types.h:41:29] data = ;
+
+Declaration(tokens = 4, name = __uint32_t)
+  WORD[types.h:42:9] data = unsigned
+  WORD[types.h:42:18] data = int
+  WORD[types.h:42:22] data = __uint32_t
+  CHAR[types.h:42:32] data = ;
+
+Declaration(tokens = 5, name = __int64_t)
+  WORD[types.h:44:9] data = signed
+  WORD[types.h:44:16] data = long
+  WORD[types.h:44:21] data = int
+  WORD[types.h:44:25] data = __int64_t
+  CHAR[types.h:44:34] data = ;
+
+Declaration(tokens = 5, name = __uint64_t)
+  WORD[types.h:45:9] data = unsigned
+  WORD[types.h:45:18] data = long
+  WORD[types.h:45:23] data = int
+  WORD[types.h:45:27] data = __uint64_t
+  CHAR[types.h:45:37] data = ;
+
+Declaration(tokens = 3, name = __int_least8_t)
+  WORD[types.h:52:9] data = __int8_t
+  WORD[types.h:52:18] data = __int_least8_t
+  CHAR[types.h:52:32] data = ;
+
+Declaration(tokens = 3, name = __uint_least8_t)
+  WORD[types.h:53:9] data = __uint8_t
+  WORD[types.h:53:19] data = __uint_least8_t
+  CHAR[types.h:53:34] data = ;
+
+Declaration(tokens = 3, name = __int_least16_t)
+  WORD[types.h:54:9] data = __int16_t
+  WORD[types.h:54:19] data = __int_least16_t
+  CHAR[types.h:54:34] data = ;
+
+Declaration(tokens = 3, name = __uint_least16_t)
+  WORD[types.h:55:9] data = __uint16_t
+  WORD[types.h:55:20] data = __uint_least16_t
+  CHAR[types.h:55:36] data = ;
+
+Declaration(tokens = 3, name = __int_least32_t)
+  WORD[types.h:56:9] data = __int32_t
+  WORD[types.h:56:19] data = __int_least32_t
+  CHAR[types.h:56:34] data = ;
+
+Declaration(tokens = 3, name = __uint_least32_t)
+  WORD[types.h:57:9] data = __uint32_t
+  WORD[types.h:57:20] data = __uint_least32_t
+  CHAR[types.h:57:36] data = ;
+
+Declaration(tokens = 3, name = __int_least64_t)
+  WORD[types.h:58:9] data = __int64_t
+  WORD[types.h:58:19] data = __int_least64_t
+  CHAR[types.h:58:34] data = ;
+
+Declaration(tokens = 3, name = __uint_least64_t)
+  WORD[types.h:59:9] data = __uint64_t
+  WORD[types.h:59:20] data = __uint_least64_t
+  CHAR[types.h:59:36] data = ;
+
+Declaration(tokens = 4, name = __quad_t)
+  WORD[types.h:63:9] data = long
+  WORD[types.h:63:14] data = int
+  WORD[types.h:63:18] data = __quad_t
+  CHAR[types.h:63:26] data = ;
+
+Declaration(tokens = 5, name = __u_quad_t)
+  WORD[types.h:64:9] data = unsigned
+  WORD[types.h:64:18] data = long
+  WORD[types.h:64:23] data = int
+  WORD[types.h:64:27] data = __u_quad_t
+  CHAR[types.h:64:37] data = ;
+
+Declaration(tokens = 4, name = __intmax_t)
+  WORD[types.h:72:9] data = long
+  WORD[types.h:72:14] data = int
+  WORD[types.h:72:18] data = __intmax_t
+  CHAR[types.h:72:28] data = ;
+
+Declaration(tokens = 5, name = __uintmax_t)
+  WORD[types.h:73:9] data = unsigned
+  WORD[types.h:73:18] data = long
+  WORD[types.h:73:23] data = int
+  WORD[types.h:73:27] data = __uintmax_t
+  CHAR[types.h:73:38] data = ;
+
+Declaration(tokens = 5, name = __dev_t)
+  WORD[types.h:145:9] data = unsigned
+  WORD[types.h:145:18] data = long
+  WORD[types.h:145:23] data = int
+  WORD[types.h:145:27] data = __dev_t
+  CHAR[types.h:145:34] data = ;
+
+Declaration(tokens = 4, name = __uid_t)
+  WORD[types.h:146:9] data = unsigned
+  WORD[types.h:146:18] data = int
+  WORD[types.h:146:22] data = __uid_t
+  CHAR[types.h:146:29] data = ;
+
+Declaration(tokens = 4, name = __gid_t)
+  WORD[types.h:147:9] data = unsigned
+  WORD[types.h:147:18] data = int
+  WORD[types.h:147:22] data = __gid_t
+  CHAR[types.h:147:29] data = ;
+
+Declaration(tokens = 5, name = __ino_t)
+  WORD[types.h:148:9] data = unsigned
+  WORD[types.h:148:18] data = long
+  WORD[types.h:148:23] data = int
+  WORD[types.h:148:27] data = __ino_t
+  CHAR[types.h:148:34] data = ;
+
+Declaration(tokens = 5, name = __ino64_t)
+  WORD[types.h:149:9] data = unsigned
+  WORD[types.h:149:18] data = long
+  WORD[types.h:149:23] data = int
+  WORD[types.h:149:27] data = __ino64_t
+  CHAR[types.h:149:36] data = ;
+
+Declaration(tokens = 4, name = __mode_t)
+  WORD[types.h:150:9] data = unsigned
+  WORD[types.h:150:18] data = int
+  WORD[types.h:150:22] data = __mode_t
+  CHAR[types.h:150:30] data = ;
+
+Declaration(tokens = 5, name = __nlink_t)
+  WORD[types.h:151:9] data = unsigned
+  WORD[types.h:151:18] data = long
+  WORD[types.h:151:23] data = int
+  WORD[types.h:151:27] data = __nlink_t
+  CHAR[types.h:151:36] data = ;
+
+Declaration(tokens = 4, name = __off_t)
+  WORD[types.h:152:9] data = long
+  WORD[types.h:152:14] data = int
+  WORD[types.h:152:18] data = __off_t
+  CHAR[types.h:152:25] data = ;
+
+Declaration(tokens = 4, name = __off64_t)
+  WORD[types.h:153:9] data = long
+  WORD[types.h:153:14] data = int
+  WORD[types.h:153:18] data = __off64_t
+  CHAR[types.h:153:27] data = ;
+
+Declaration(tokens = 3, name = __pid_t)
+  WORD[types.h:154:9] data = int
+  WORD[types.h:154:13] data = __pid_t
+  CHAR[types.h:154:20] data = ;
+
+Declaration(tokens = 2, name = __fsid_t)
+  Struct(tokens = 3, name = (null)) 
+    WORD[types.h:155:9] data = struct
+    CHAR[types.h:155:16] data = {
+    Declaration(tokens = 6, name = (null))
+      WORD[types.h:155:18] data = int
+      WORD[types.h:155:22] data = __val
+      CHAR[types.h:155:27] data = [
+      NUMBER[types.h:155:28] data = 2
+      CHAR[types.h:155:29] data = ]
+      CHAR[types.h:155:30] data = ;
+    CHAR[types.h:155:32] data = }
+  WORD[types.h:155:34] data = __fsid_t
+  CHAR[types.h:155:42] data = ;
+
+Declaration(tokens = 4, name = __clock_t)
+  WORD[types.h:156:9] data = long
+  WORD[types.h:156:14] data = int
+  WORD[types.h:156:18] data = __clock_t
+  CHAR[types.h:156:27] data = ;
+
+Declaration(tokens = 5, name = __rlim_t)
+  WORD[types.h:157:9] data = unsigned
+  WORD[types.h:157:18] data = long
+  WORD[types.h:157:23] data = int
+  WORD[types.h:157:27] data = __rlim_t
+  CHAR[types.h:157:35] data = ;
+
+Declaration(tokens = 5, name = __rlim64_t)
+  WORD[types.h:158:9] data = unsigned
+  WORD[types.h:158:18] data = long
+  WORD[types.h:158:23] data = int
+  WORD[types.h:158:27] data = __rlim64_t
+  CHAR[types.h:158:37] data = ;
+
+Declaration(tokens = 4, name = __id_t)
+  WORD[types.h:159:9] data = unsigned
+  WORD[types.h:159:18] data = int
+  WORD[types.h:159:22] data = __id_t
+  CHAR[types.h:159:28] data = ;
+
+Declaration(tokens = 4, name = __time_t)
+  WORD[types.h:160:9] data = long
+  WORD[types.h:160:14] data = int
+  WORD[types.h:160:18] data = __time_t
+  CHAR[types.h:160:26] data = ;
+
+Declaration(tokens = 4, name = __useconds_t)
+  WORD[types.h:161:9] data = unsigned
+  WORD[types.h:161:18] data = int
+  WORD[types.h:161:22] data = __useconds_t
+  CHAR[types.h:161:34] data = ;
+
+Declaration(tokens = 4, name = __suseconds_t)
+  WORD[types.h:162:9] data = long
+  WORD[types.h:162:14] data = int
+  WORD[types.h:162:18] data = __suseconds_t
+  CHAR[types.h:162:31] data = ;
+
+Declaration(tokens = 4, name = __suseconds64_t)
+  WORD[types.h:163:9] data = long
+  WORD[types.h:163:14] data = int
+  WORD[types.h:163:18] data = __suseconds64_t
+  CHAR[types.h:163:33] data = ;
+
+Declaration(tokens = 3, name = __daddr_t)
+  WORD[types.h:165:9] data = int
+  WORD[types.h:165:13] data = __daddr_t
+  CHAR[types.h:165:22] data = ;
+
+Declaration(tokens = 3, name = __key_t)
+  WORD[types.h:166:9] data = int
+  WORD[types.h:166:13] data = __key_t
+  CHAR[types.h:166:20] data = ;
+
+Declaration(tokens = 3, name = __clockid_t)
+  WORD[types.h:169:9] data = int
+  WORD[types.h:169:13] data = __clockid_t
+  CHAR[types.h:169:24] data = ;
+
+Declaration(tokens = 4, name = __timer_t)
+  WORD[types.h:172:9] data = void
+  CHAR[types.h:172:14] data = *
+  WORD[types.h:172:16] data = __timer_t
+  CHAR[types.h:172:25] data = ;
+
+Declaration(tokens = 4, name = __blksize_t)
+  WORD[types.h:175:9] data = long
+  WORD[types.h:175:14] data = int
+  WORD[types.h:175:18] data = __blksize_t
+  CHAR[types.h:175:29] data = ;
+
+Declaration(tokens = 4, name = __blkcnt_t)
+  WORD[types.h:180:9] data = long
+  WORD[types.h:180:14] data = int
+  WORD[types.h:180:18] data = __blkcnt_t
+  CHAR[types.h:180:28] data = ;
+
+Declaration(tokens = 4, name = __blkcnt64_t)
+  WORD[types.h:181:9] data = long
+  WORD[types.h:181:14] data = int
+  WORD[types.h:181:18] data = __blkcnt64_t
+  CHAR[types.h:181:30] data = ;
+
+Declaration(tokens = 5, name = __fsblkcnt_t)
+  WORD[types.h:184:9] data = unsigned
+  WORD[types.h:184:18] data = long
+  WORD[types.h:184:23] data = int
+  WORD[types.h:184:27] data = __fsblkcnt_t
+  CHAR[types.h:184:39] data = ;
+
+Declaration(tokens = 5, name = __fsblkcnt64_t)
+  WORD[types.h:185:9] data = unsigned
+  WORD[types.h:185:18] data = long
+  WORD[types.h:185:23] data = int
+  WORD[types.h:185:27] data = __fsblkcnt64_t
+  CHAR[types.h:185:41] data = ;
+
+Declaration(tokens = 5, name = __fsfilcnt_t)
+  WORD[types.h:188:9] data = unsigned
+  WORD[types.h:188:18] data = long
+  WORD[types.h:188:23] data = int
+  WORD[types.h:188:27] data = __fsfilcnt_t
+  CHAR[types.h:188:39] data = ;
+
+Declaration(tokens = 5, name = __fsfilcnt64_t)
+  WORD[types.h:189:9] data = unsigned
+  WORD[types.h:189:18] data = long
+  WORD[types.h:189:23] data = int
+  WORD[types.h:189:27] data = __fsfilcnt64_t
+  CHAR[types.h:189:41] data = ;
+
+Declaration(tokens = 4, name = __fsword_t)
+  WORD[types.h:192:9] data = long
+  WORD[types.h:192:14] data = int
+  WORD[types.h:192:18] data = __fsword_t
+  CHAR[types.h:192:28] data = ;
+
+Declaration(tokens = 4, name = __ssize_t)
+  WORD[types.h:194:9] data = long
+  WORD[types.h:194:14] data = int
+  WORD[types.h:194:18] data = __ssize_t
+  CHAR[types.h:194:27] data = ;
+
+Declaration(tokens = 4, name = __syscall_slong_t)
+  WORD[types.h:197:9] data = long
+  WORD[types.h:197:14] data = int
+  WORD[types.h:197:18] data = __syscall_slong_t
+  CHAR[types.h:197:35] data = ;
+
+Declaration(tokens = 5, name = __syscall_ulong_t)
+  WORD[types.h:199:9] data = unsigned
+  WORD[types.h:199:18] data = long
+  WORD[types.h:199:23] data = int
+  WORD[types.h:199:27] data = __syscall_ulong_t
+  CHAR[types.h:199:44] data = ;
+
+Declaration(tokens = 3, name = __loff_t)
+  WORD[types.h:203:9] data = __off64_t
+  WORD[types.h:203:19] data = __loff_t
+  CHAR[types.h:203:27] data = ;
+
+Declaration(tokens = 4, name = __caddr_t)
+  WORD[types.h:204:9] data = char
+  CHAR[types.h:204:14] data = *
+  WORD[types.h:204:15] data = __caddr_t
+  CHAR[types.h:204:24] data = ;
+
+Declaration(tokens = 4, name = __intptr_t)
+  WORD[types.h:207:9] data = long
+  WORD[types.h:207:14] data = int
+  WORD[types.h:207:18] data = __intptr_t
+  CHAR[types.h:207:28] data = ;
+
+Declaration(tokens = 4, name = __socklen_t)
+  WORD[types.h:210:9] data = unsigned
+  WORD[types.h:210:18] data = int
+  WORD[types.h:210:22] data = __socklen_t
+  CHAR[types.h:210:33] data = ;
+
+Declaration(tokens = 3, name = __sig_atomic_t)
+  WORD[types.h:215:9] data = int
+  WORD[types.h:215:13] data = __sig_atomic_t
+  CHAR[types.h:215:27] data = ;
+
+Declaration(tokens = 2, name = __mbstate_t)
+  Struct(tokens = 3, name = (null)) 
+    WORD[__mbstate_t.h:13:9] data = struct
+    CHAR[__mbstate_t.h:14:1] data = {
+    Declaration(tokens = 3, name = __count)
+      WORD[__mbstate_t.h:15:3] data = int
+      WORD[__mbstate_t.h:15:7] data = __count
+      CHAR[__mbstate_t.h:15:14] data = ;
+    Declaration(tokens = 15, name = __value)
+      WORD[__mbstate_t.h:16:3] data = union
+      CHAR[__mbstate_t.h:17:3] data = {
+      WORD[__mbstate_t.h:18:5] data = unsigned
+      WORD[__mbstate_t.h:18:14] data = int
+      WORD[__mbstate_t.h:18:18] data = __wch
+      CHAR[__mbstate_t.h:18:23] data = ;
+      WORD[__mbstate_t.h:19:5] data = char
+      WORD[__mbstate_t.h:19:10] data = __wchb
+      CHAR[__mbstate_t.h:19:16] data = [
+      NUMBER[__mbstate_t.h:19:17] data = 4
+      CHAR[__mbstate_t.h:19:18] data = ]
+      CHAR[__mbstate_t.h:19:19] data = ;
+      CHAR[__mbstate_t.h:20:3] data = }
+      WORD[__mbstate_t.h:20:5] data = __value
+      CHAR[__mbstate_t.h:20:12] data = ;
+    CHAR[__mbstate_t.h:21:1] data = }
+  WORD[__mbstate_t.h:21:3] data = __mbstate_t
+  CHAR[__mbstate_t.h:21:14] data = ;
+
+Declaration(tokens = 2, name = __fpos_t)
+  Struct(tokens = 4, name = _G_fpos_t) 
+    WORD[__fpos_t.h:10:9] data = struct
+    WORD[__fpos_t.h:10:16] data = _G_fpos_t
+    CHAR[__fpos_t.h:11:1] data = {
+    Declaration(tokens = 3, name = __pos)
+      WORD[__fpos_t.h:12:3] data = __off_t
+      WORD[__fpos_t.h:12:11] data = __pos
+      CHAR[__fpos_t.h:12:16] data = ;
+    Declaration(tokens = 3, name = __state)
+      WORD[__fpos_t.h:13:3] data = __mbstate_t
+      WORD[__fpos_t.h:13:15] data = __state
+      CHAR[__fpos_t.h:13:22] data = ;
+    CHAR[__fpos_t.h:14:1] data = }
+  WORD[__fpos_t.h:14:3] data = __fpos_t
+  CHAR[__fpos_t.h:14:11] data = ;
+
+Declaration(tokens = 2, name = __fpos64_t)
+  Struct(tokens = 4, name = _G_fpos64_t) 
+    WORD[__fpos64_t.h:10:9] data = struct
+    WORD[__fpos64_t.h:10:16] data = _G_fpos64_t
+    CHAR[__fpos64_t.h:11:1] data = {
+    Declaration(tokens = 3, name = __pos)
+      WORD[__fpos64_t.h:12:3] data = __off64_t
+      WORD[__fpos64_t.h:12:13] data = __pos
+      CHAR[__fpos64_t.h:12:18] data = ;
+    Declaration(tokens = 3, name = __state)
+      WORD[__fpos64_t.h:13:3] data = __mbstate_t
+      WORD[__fpos64_t.h:13:15] data = __state
+      CHAR[__fpos64_t.h:13:22] data = ;
+    CHAR[__fpos64_t.h:14:1] data = }
+  WORD[__fpos64_t.h:14:3] data = __fpos64_t
+  CHAR[__fpos64_t.h:14:13] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = _IO_FILE) 
+    WORD[__FILE.h:4:1] data = struct
+    WORD[__FILE.h:4:8] data = _IO_FILE
+  CHAR[__FILE.h:4:16] data = ;
+
+Declaration(tokens = 2, name = __FILE)
+  Struct(tokens = 2, name = _IO_FILE) 
+    WORD[__FILE.h:5:9] data = struct
+    WORD[__FILE.h:5:16] data = _IO_FILE
+  WORD[__FILE.h:5:25] data = __FILE
+  CHAR[__FILE.h:5:31] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = _IO_FILE) 
+    WORD[FILE.h:4:1] data = struct
+    WORD[FILE.h:4:8] data = _IO_FILE
+  CHAR[FILE.h:4:16] data = ;
+
+Declaration(tokens = 2, name = FILE)
+  Struct(tokens = 2, name = _IO_FILE) 
+    WORD[FILE.h:7:9] data = struct
+    WORD[FILE.h:7:16] data = _IO_FILE
+  WORD[FILE.h:7:25] data = FILE
+  CHAR[FILE.h:7:29] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = _IO_FILE) 
+    WORD[struct_FILE.h:35:1] data = struct
+    WORD[struct_FILE.h:35:8] data = _IO_FILE
+  CHAR[struct_FILE.h:35:16] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = _IO_marker) 
+    WORD[struct_FILE.h:36:1] data = struct
+    WORD[struct_FILE.h:36:8] data = _IO_marker
+  CHAR[struct_FILE.h:36:18] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = _IO_codecvt) 
+    WORD[struct_FILE.h:37:1] data = struct
+    WORD[struct_FILE.h:37:8] data = _IO_codecvt
+  CHAR[struct_FILE.h:37:19] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = _IO_wide_data) 
+    WORD[struct_FILE.h:38:1] data = struct
+    WORD[struct_FILE.h:38:8] data = _IO_wide_data
+  CHAR[struct_FILE.h:38:21] data = ;
+
+Declaration(tokens = 3, name = _IO_lock_t)
+  WORD[struct_FILE.h:43:9] data = void
+  WORD[struct_FILE.h:43:14] data = _IO_lock_t
+  CHAR[struct_FILE.h:43:24] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = _IO_FILE) 
+    WORD[struct_FILE.h:49:1] data = struct
+    WORD[struct_FILE.h:49:8] data = _IO_FILE
+    CHAR[struct_FILE.h:50:1] data = {
+    Declaration(tokens = 3, name = _flags)
+      WORD[struct_FILE.h:51:3] data = int
+      WORD[struct_FILE.h:51:7] data = _flags
+      CHAR[struct_FILE.h:51:13] data = ;
+    Declaration(tokens = 4, name = _IO_read_ptr)
+      WORD[struct_FILE.h:54:3] data = char
+      CHAR[struct_FILE.h:54:8] data = *
+      WORD[struct_FILE.h:54:9] data = _IO_read_ptr
+      CHAR[struct_FILE.h:54:21] data = ;
+    Declaration(tokens = 4, name = _IO_read_end)
+      WORD[struct_FILE.h:55:3] data = char
+      CHAR[struct_FILE.h:55:8] data = *
+      WORD[struct_FILE.h:55:9] data = _IO_read_end
+      CHAR[struct_FILE.h:55:21] data = ;
+    Declaration(tokens = 4, name = _IO_read_base)
+      WORD[struct_FILE.h:56:3] data = char
+      CHAR[struct_FILE.h:56:8] data = *
+      WORD[struct_FILE.h:56:9] data = _IO_read_base
+      CHAR[struct_FILE.h:56:22] data = ;
+    Declaration(tokens = 4, name = _IO_write_base)
+      WORD[struct_FILE.h:57:3] data = char
+      CHAR[struct_FILE.h:57:8] data = *
+      WORD[struct_FILE.h:57:9] data = _IO_write_base
+      CHAR[struct_FILE.h:57:23] data = ;
+    Declaration(tokens = 4, name = _IO_write_ptr)
+      WORD[struct_FILE.h:58:3] data = char
+      CHAR[struct_FILE.h:58:8] data = *
+      WORD[struct_FILE.h:58:9] data = _IO_write_ptr
+      CHAR[struct_FILE.h:58:22] data = ;
+    Declaration(tokens = 4, name = _IO_write_end)
+      WORD[struct_FILE.h:59:3] data = char
+      CHAR[struct_FILE.h:59:8] data = *
+      WORD[struct_FILE.h:59:9] data = _IO_write_end
+      CHAR[struct_FILE.h:59:22] data = ;
+    Declaration(tokens = 4, name = _IO_buf_base)
+      WORD[struct_FILE.h:60:3] data = char
+      CHAR[struct_FILE.h:60:8] data = *
+      WORD[struct_FILE.h:60:9] data = _IO_buf_base
+      CHAR[struct_FILE.h:60:21] data = ;
+    Declaration(tokens = 4, name = _IO_buf_end)
+      WORD[struct_FILE.h:61:3] data = char
+      CHAR[struct_FILE.h:61:8] data = *
+      WORD[struct_FILE.h:61:9] data = _IO_buf_end
+      CHAR[struct_FILE.h:61:20] data = ;
+    Declaration(tokens = 4, name = _IO_save_base)
+      WORD[struct_FILE.h:64:3] data = char
+      CHAR[struct_FILE.h:64:8] data = *
+      WORD[struct_FILE.h:64:9] data = _IO_save_base
+      CHAR[struct_FILE.h:64:22] data = ;
+    Declaration(tokens = 4, name = _IO_backup_base)
+      WORD[struct_FILE.h:65:3] data = char
+      CHAR[struct_FILE.h:65:8] data = *
+      WORD[struct_FILE.h:65:9] data = _IO_backup_base
+      CHAR[struct_FILE.h:65:24] data = ;
+    Declaration(tokens = 4, name = _IO_save_end)
+      WORD[struct_FILE.h:66:3] data = char
+      CHAR[struct_FILE.h:66:8] data = *
+      WORD[struct_FILE.h:66:9] data = _IO_save_end
+      CHAR[struct_FILE.h:66:21] data = ;
+    Declaration(tokens = 3, name = _markers)
+      Struct(tokens = 2, name = _IO_marker) 
+        WORD[struct_FILE.h:68:3] data = struct
+        WORD[struct_FILE.h:68:10] data = _IO_marker
+      CHAR[struct_FILE.h:68:21] data = *
+      WORD[struct_FILE.h:68:22] data = _markers
+      CHAR[struct_FILE.h:68:30] data = ;
+    Declaration(tokens = 3, name = _chain)
+      Struct(tokens = 2, name = _IO_FILE) 
+        WORD[struct_FILE.h:70:3] data = struct
+        WORD[struct_FILE.h:70:10] data = _IO_FILE
+      CHAR[struct_FILE.h:70:19] data = *
+      WORD[struct_FILE.h:70:20] data = _chain
+      CHAR[struct_FILE.h:70:26] data = ;
+    Declaration(tokens = 3, name = _fileno)
+      WORD[struct_FILE.h:72:3] data = int
+      WORD[struct_FILE.h:72:7] data = _fileno
+      CHAR[struct_FILE.h:72:14] data = ;
+    Declaration(tokens = 3, name = _flags2)
+      WORD[struct_FILE.h:73:3] data = int
+      WORD[struct_FILE.h:73:7] data = _flags2
+      CHAR[struct_FILE.h:73:14] data = ;
+    Declaration(tokens = 3, name = _old_offset)
+      WORD[struct_FILE.h:74:3] data = __off_t
+      WORD[struct_FILE.h:74:11] data = _old_offset
+      CHAR[struct_FILE.h:74:22] data = ;
+    Declaration(tokens = 4, name = _cur_column)
+      WORD[struct_FILE.h:77:3] data = unsigned
+      WORD[struct_FILE.h:77:12] data = short
+      WORD[struct_FILE.h:77:18] data = _cur_column
+      CHAR[struct_FILE.h:77:29] data = ;
+    Declaration(tokens = 4, name = _vtable_offset)
+      WORD[struct_FILE.h:78:3] data = signed
+      WORD[struct_FILE.h:78:10] data = char
+      WORD[struct_FILE.h:78:15] data = _vtable_offset
+      CHAR[struct_FILE.h:78:29] data = ;
+    Declaration(tokens = 6, name = (null))
+      WORD[struct_FILE.h:79:3] data = char
+      WORD[struct_FILE.h:79:8] data = _shortbuf
+      CHAR[struct_FILE.h:79:17] data = [
+      NUMBER[struct_FILE.h:79:18] data = 1
+      CHAR[struct_FILE.h:79:19] data = ]
+      CHAR[struct_FILE.h:79:20] data = ;
+    Declaration(tokens = 4, name = _lock)
+      WORD[struct_FILE.h:81:3] data = _IO_lock_t
+      CHAR[struct_FILE.h:81:14] data = *
+      WORD[struct_FILE.h:81:15] data = _lock
+      CHAR[struct_FILE.h:81:20] data = ;
+    Declaration(tokens = 3, name = _offset)
+      WORD[struct_FILE.h:89:3] data = __off64_t
+      WORD[struct_FILE.h:89:13] data = _offset
+      CHAR[struct_FILE.h:89:20] data = ;
+    Declaration(tokens = 3, name = _codecvt)
+      Struct(tokens = 2, name = _IO_codecvt) 
+        WORD[struct_FILE.h:91:3] data = struct
+        WORD[struct_FILE.h:91:10] data = _IO_codecvt
+      CHAR[struct_FILE.h:91:22] data = *
+      WORD[struct_FILE.h:91:23] data = _codecvt
+      CHAR[struct_FILE.h:91:31] data = ;
+    Declaration(tokens = 3, name = _wide_data)
+      Struct(tokens = 2, name = _IO_wide_data) 
+        WORD[struct_FILE.h:92:3] data = struct
+        WORD[struct_FILE.h:92:10] data = _IO_wide_data
+      CHAR[struct_FILE.h:92:24] data = *
+      WORD[struct_FILE.h:92:25] data = _wide_data
+      CHAR[struct_FILE.h:92:35] data = ;
+    Declaration(tokens = 3, name = _freeres_list)
+      Struct(tokens = 2, name = _IO_FILE) 
+        WORD[struct_FILE.h:93:3] data = struct
+        WORD[struct_FILE.h:93:10] data = _IO_FILE
+      CHAR[struct_FILE.h:93:19] data = *
+      WORD[struct_FILE.h:93:20] data = _freeres_list
+      CHAR[struct_FILE.h:93:33] data = ;
+    Declaration(tokens = 4, name = _freeres_buf)
+      WORD[struct_FILE.h:94:3] data = void
+      CHAR[struct_FILE.h:94:8] data = *
+      WORD[struct_FILE.h:94:9] data = _freeres_buf
+      CHAR[struct_FILE.h:94:21] data = ;
+    Declaration(tokens = 3, name = __pad5)
+      WORD[struct_FILE.h:95:3] data = size_t
+      WORD[struct_FILE.h:95:10] data = __pad5
+      CHAR[struct_FILE.h:95:16] data = ;
+    Declaration(tokens = 3, name = _mode)
+      WORD[struct_FILE.h:96:3] data = int
+      WORD[struct_FILE.h:96:7] data = _mode
+      CHAR[struct_FILE.h:96:12] data = ;
+    Declaration(tokens = 24, name = (null))
+      WORD[struct_FILE.h:98:3] data = char
+      WORD[struct_FILE.h:98:8] data = _unused2
+      CHAR[struct_FILE.h:98:16] data = [
+      NUMBER[struct_FILE.h:98:17] data = 15
+      CHAR[struct_FILE.h:98:20] data = *
+      WORD[struct_FILE.h:98:22] data = sizeof
+      CHAR[struct_FILE.h:98:29] data = (
+      WORD[struct_FILE.h:98:30] data = int
+      CHAR[struct_FILE.h:98:33] data = )
+      CHAR[struct_FILE.h:98:35] data = -
+      NUMBER[struct_FILE.h:98:37] data = 4
+      CHAR[struct_FILE.h:98:39] data = *
+      WORD[struct_FILE.h:98:41] data = sizeof
+      CHAR[struct_FILE.h:98:48] data = (
+      WORD[struct_FILE.h:98:49] data = void
+      CHAR[struct_FILE.h:98:54] data = *
+      CHAR[struct_FILE.h:98:55] data = )
+      CHAR[struct_FILE.h:98:57] data = -
+      WORD[struct_FILE.h:98:59] data = sizeof
+      CHAR[struct_FILE.h:98:66] data = (
+      WORD[struct_FILE.h:98:67] data = size_t
+      CHAR[struct_FILE.h:98:73] data = )
+      CHAR[struct_FILE.h:98:74] data = ]
+      CHAR[struct_FILE.h:98:75] data = ;
+    CHAR[struct_FILE.h:99:1] data = }
+  CHAR[struct_FILE.h:99:2] data = ;
+
+Declaration(tokens = 3, name = off_t)
+  WORD[stdio.h:63:9] data = __off_t
+  WORD[stdio.h:63:17] data = off_t
+  CHAR[stdio.h:63:22] data = ;
+
+Declaration(tokens = 3, name = ssize_t)
+  WORD[stdio.h:77:9] data = __ssize_t
+  WORD[stdio.h:77:19] data = ssize_t
+  CHAR[stdio.h:77:26] data = ;
+
+Declaration(tokens = 3, name = fpos_t)
+  WORD[stdio.h:84:9] data = __fpos_t
+  WORD[stdio.h:84:18] data = fpos_t
+  CHAR[stdio.h:84:24] data = ;
+
+Declaration(tokens = 3, name = _Float32)
+  WORD[floatn-common.h:214:9] data = float
+  WORD[floatn-common.h:214:15] data = _Float32
+  CHAR[floatn-common.h:214:23] data = ;
+
+Declaration(tokens = 3, name = _Float64)
+  WORD[floatn-common.h:251:9] data = double
+  WORD[floatn-common.h:251:16] data = _Float64
+  CHAR[floatn-common.h:251:24] data = ;
+
+Declaration(tokens = 3, name = _Float32x)
+  WORD[floatn-common.h:268:9] data = double
+  WORD[floatn-common.h:268:16] data = _Float32x
+  CHAR[floatn-common.h:268:25] data = ;
+
+Declaration(tokens = 4, name = _Float64x)
+  WORD[floatn-common.h:285:9] data = long
+  WORD[floatn-common.h:285:14] data = double
+  WORD[floatn-common.h:285:21] data = _Float64x
+  CHAR[floatn-common.h:285:30] data = ;
+
+Declaration(tokens = 2, name = div_t)
+  Struct(tokens = 3, name = (null)) 
+    WORD[stdlib.h:59:9] data = struct
+    CHAR[stdlib.h:60:3] data = {
+    Declaration(tokens = 3, name = quot)
+      WORD[stdlib.h:61:5] data = int
+      WORD[stdlib.h:61:9] data = quot
+      CHAR[stdlib.h:61:13] data = ;
+    Declaration(tokens = 3, name = rem)
+      WORD[stdlib.h:62:5] data = int
+      WORD[stdlib.h:62:9] data = rem
+      CHAR[stdlib.h:62:12] data = ;
+    CHAR[stdlib.h:63:3] data = }
+  WORD[stdlib.h:63:5] data = div_t
+  CHAR[stdlib.h:63:10] data = ;
+
+Declaration(tokens = 2, name = ldiv_t)
+  Struct(tokens = 3, name = (null)) 
+    WORD[stdlib.h:67:9] data = struct
+    CHAR[stdlib.h:68:3] data = {
+    Declaration(tokens = 4, name = quot)
+      WORD[stdlib.h:69:5] data = long
+      WORD[stdlib.h:69:10] data = int
+      WORD[stdlib.h:69:14] data = quot
+      CHAR[stdlib.h:69:18] data = ;
+    Declaration(tokens = 4, name = rem)
+      WORD[stdlib.h:70:5] data = long
+      WORD[stdlib.h:70:10] data = int
+      WORD[stdlib.h:70:14] data = rem
+      CHAR[stdlib.h:70:17] data = ;
+    CHAR[stdlib.h:71:3] data = }
+  WORD[stdlib.h:71:5] data = ldiv_t
+  CHAR[stdlib.h:71:11] data = ;
+
+Declaration(tokens = 2, name = lldiv_t)
+  Struct(tokens = 3, name = (null)) 
+    WORD[stdlib.h:77:10] data = struct
+    CHAR[stdlib.h:78:3] data = {
+    Declaration(tokens = 5, name = quot)
+      WORD[stdlib.h:79:5] data = long
+      WORD[stdlib.h:79:10] data = long
+      WORD[stdlib.h:79:15] data = int
+      WORD[stdlib.h:79:19] data = quot
+      CHAR[stdlib.h:79:23] data = ;
+    Declaration(tokens = 5, name = rem)
+      WORD[stdlib.h:80:5] data = long
+      WORD[stdlib.h:80:10] data = long
+      WORD[stdlib.h:80:15] data = int
+      WORD[stdlib.h:80:19] data = rem
+      CHAR[stdlib.h:80:22] data = ;
+    CHAR[stdlib.h:81:3] data = }
+  WORD[stdlib.h:81:5] data = lldiv_t
+  CHAR[stdlib.h:81:12] data = ;
+
+Declaration(tokens = 3, name = u_char)
+  WORD[types.h:33:9] data = __u_char
+  WORD[types.h:33:18] data = u_char
+  CHAR[types.h:33:24] data = ;
+
+Declaration(tokens = 3, name = u_short)
+  WORD[types.h:34:9] data = __u_short
+  WORD[types.h:34:19] data = u_short
+  CHAR[types.h:34:26] data = ;
+
+Declaration(tokens = 3, name = u_int)
+  WORD[types.h:35:9] data = __u_int
+  WORD[types.h:35:17] data = u_int
+  CHAR[types.h:35:22] data = ;
+
+Declaration(tokens = 3, name = u_long)
+  WORD[types.h:36:9] data = __u_long
+  WORD[types.h:36:18] data = u_long
+  CHAR[types.h:36:24] data = ;
+
+Declaration(tokens = 3, name = quad_t)
+  WORD[types.h:37:9] data = __quad_t
+  WORD[types.h:37:18] data = quad_t
+  CHAR[types.h:37:24] data = ;
+
+Declaration(tokens = 3, name = u_quad_t)
+  WORD[types.h:38:9] data = __u_quad_t
+  WORD[types.h:38:20] data = u_quad_t
+  CHAR[types.h:38:28] data = ;
+
+Declaration(tokens = 3, name = fsid_t)
+  WORD[types.h:39:9] data = __fsid_t
+  WORD[types.h:39:18] data = fsid_t
+  CHAR[types.h:39:24] data = ;
+
+Declaration(tokens = 3, name = loff_t)
+  WORD[types.h:42:9] data = __loff_t
+  WORD[types.h:42:18] data = loff_t
+  CHAR[types.h:42:24] data = ;
+
+Declaration(tokens = 3, name = ino_t)
+  WORD[types.h:47:9] data = __ino_t
+  WORD[types.h:47:17] data = ino_t
+  CHAR[types.h:47:22] data = ;
+
+Declaration(tokens = 3, name = dev_t)
+  WORD[types.h:59:9] data = __dev_t
+  WORD[types.h:59:17] data = dev_t
+  CHAR[types.h:59:22] data = ;
+
+Declaration(tokens = 3, name = gid_t)
+  WORD[types.h:64:9] data = __gid_t
+  WORD[types.h:64:17] data = gid_t
+  CHAR[types.h:64:22] data = ;
+
+Declaration(tokens = 3, name = mode_t)
+  WORD[types.h:69:9] data = __mode_t
+  WORD[types.h:69:18] data = mode_t
+  CHAR[types.h:69:24] data = ;
+
+Declaration(tokens = 3, name = nlink_t)
+  WORD[types.h:74:9] data = __nlink_t
+  WORD[types.h:74:19] data = nlink_t
+  CHAR[types.h:74:26] data = ;
+
+Declaration(tokens = 3, name = uid_t)
+  WORD[types.h:79:9] data = __uid_t
+  WORD[types.h:79:17] data = uid_t
+  CHAR[types.h:79:22] data = ;
+
+Declaration(tokens = 3, name = pid_t)
+  WORD[types.h:97:9] data = __pid_t
+  WORD[types.h:97:17] data = pid_t
+  CHAR[types.h:97:22] data = ;
+
+Declaration(tokens = 3, name = id_t)
+  WORD[types.h:103:9] data = __id_t
+  WORD[types.h:103:16] data = id_t
+  CHAR[types.h:103:20] data = ;
+
+Declaration(tokens = 3, name = daddr_t)
+  WORD[types.h:114:9] data = __daddr_t
+  WORD[types.h:114:19] data = daddr_t
+  CHAR[types.h:114:26] data = ;
+
+Declaration(tokens = 3, name = caddr_t)
+  WORD[types.h:115:9] data = __caddr_t
+  WORD[types.h:115:19] data = caddr_t
+  CHAR[types.h:115:26] data = ;
+
+Declaration(tokens = 3, name = key_t)
+  WORD[types.h:121:9] data = __key_t
+  WORD[types.h:121:17] data = key_t
+  CHAR[types.h:121:22] data = ;
+
+Declaration(tokens = 3, name = clock_t)
+  WORD[clock_t.h:7:9] data = __clock_t
+  WORD[clock_t.h:7:19] data = clock_t
+  CHAR[clock_t.h:7:26] data = ;
+
+Declaration(tokens = 3, name = clockid_t)
+  WORD[clockid_t.h:7:9] data = __clockid_t
+  WORD[clockid_t.h:7:21] data = clockid_t
+  CHAR[clockid_t.h:7:30] data = ;
+
+Declaration(tokens = 3, name = time_t)
+  WORD[time_t.h:10:9] data = __time_t
+  WORD[time_t.h:10:18] data = time_t
+  CHAR[time_t.h:10:24] data = ;
+
+Declaration(tokens = 3, name = timer_t)
+  WORD[timer_t.h:7:9] data = __timer_t
+  WORD[timer_t.h:7:19] data = timer_t
+  CHAR[timer_t.h:7:26] data = ;
+
+Declaration(tokens = 5, name = ulong)
+  WORD[types.h:148:9] data = unsigned
+  WORD[types.h:148:18] data = long
+  WORD[types.h:148:23] data = int
+  WORD[types.h:148:27] data = ulong
+  CHAR[types.h:148:32] data = ;
+
+Declaration(tokens = 5, name = ushort)
+  WORD[types.h:149:9] data = unsigned
+  WORD[types.h:149:18] data = short
+  WORD[types.h:149:24] data = int
+  WORD[types.h:149:28] data = ushort
+  CHAR[types.h:149:34] data = ;
+
+Declaration(tokens = 4, name = uint)
+  WORD[types.h:150:9] data = unsigned
+  WORD[types.h:150:18] data = int
+  WORD[types.h:150:22] data = uint
+  CHAR[types.h:150:26] data = ;
+
+Declaration(tokens = 3, name = int8_t)
+  WORD[stdint-intn.h:24:9] data = __int8_t
+  WORD[stdint-intn.h:24:18] data = int8_t
+  CHAR[stdint-intn.h:24:24] data = ;
+
+Declaration(tokens = 3, name = int16_t)
+  WORD[stdint-intn.h:25:9] data = __int16_t
+  WORD[stdint-intn.h:25:19] data = int16_t
+  CHAR[stdint-intn.h:25:26] data = ;
+
+Declaration(tokens = 3, name = int32_t)
+  WORD[stdint-intn.h:26:9] data = __int32_t
+  WORD[stdint-intn.h:26:19] data = int32_t
+  CHAR[stdint-intn.h:26:26] data = ;
+
+Declaration(tokens = 3, name = int64_t)
+  WORD[stdint-intn.h:27:9] data = __int64_t
+  WORD[stdint-intn.h:27:19] data = int64_t
+  CHAR[stdint-intn.h:27:26] data = ;
+
+Declaration(tokens = 3, name = u_int8_t)
+  WORD[types.h:158:9] data = __uint8_t
+  WORD[types.h:158:19] data = u_int8_t
+  CHAR[types.h:158:27] data = ;
+
+Declaration(tokens = 3, name = u_int16_t)
+  WORD[types.h:159:9] data = __uint16_t
+  WORD[types.h:159:20] data = u_int16_t
+  CHAR[types.h:159:29] data = ;
+
+Declaration(tokens = 3, name = u_int32_t)
+  WORD[types.h:160:9] data = __uint32_t
+  WORD[types.h:160:20] data = u_int32_t
+  CHAR[types.h:160:29] data = ;
+
+Declaration(tokens = 3, name = u_int64_t)
+  WORD[types.h:161:9] data = __uint64_t
+  WORD[types.h:161:20] data = u_int64_t
+  CHAR[types.h:161:29] data = ;
+
+Declaration(tokens = 3, name = register_t)
+  WORD[types.h:166:9] data = int
+  WORD[types.h:166:13] data = register_t
+  CHAR[types.h:166:23] data = ;
+
+Declaration(tokens = 2, name = __sigset_t)
+  Struct(tokens = 3, name = (null)) 
+    WORD[__sigset_t.h:5:9] data = struct
+    CHAR[__sigset_t.h:6:1] data = {
+    Declaration(tokens = 21, name = (null))
+      WORD[__sigset_t.h:7:3] data = unsigned
+      WORD[__sigset_t.h:7:12] data = long
+      WORD[__sigset_t.h:7:17] data = int
+      WORD[__sigset_t.h:7:21] data = __val
+      CHAR[__sigset_t.h:7:26] data = [
+      CHAR[__sigset_t.h:7:27] data = (
+      NUMBER[__sigset_t.h:7:28] data = 1024
+      CHAR[__sigset_t.h:7:33] data = /
+      CHAR[__sigset_t.h:7:35] data = (
+      NUMBER[__sigset_t.h:7:36] data = 8
+      CHAR[__sigset_t.h:7:38] data = *
+      WORD[__sigset_t.h:7:40] data = sizeof
+      CHAR[__sigset_t.h:7:47] data = (
+      WORD[__sigset_t.h:7:48] data = unsigned
+      WORD[__sigset_t.h:7:57] data = long
+      WORD[__sigset_t.h:7:62] data = int
+      CHAR[__sigset_t.h:7:65] data = )
+      CHAR[__sigset_t.h:7:66] data = )
+      CHAR[__sigset_t.h:7:67] data = )
+      CHAR[__sigset_t.h:7:68] data = ]
+      CHAR[__sigset_t.h:7:69] data = ;
+    CHAR[__sigset_t.h:8:1] data = }
+  WORD[__sigset_t.h:8:3] data = __sigset_t
+  CHAR[__sigset_t.h:8:13] data = ;
+
+Declaration(tokens = 3, name = sigset_t)
+  WORD[sigset_t.h:7:9] data = __sigset_t
+  WORD[sigset_t.h:7:20] data = sigset_t
+  CHAR[sigset_t.h:7:28] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = timeval) 
+    WORD[struct_timeval.h:8:1] data = struct
+    WORD[struct_timeval.h:8:8] data = timeval
+    CHAR[struct_timeval.h:9:1] data = {
+    Declaration(tokens = 3, name = tv_sec)
+      WORD[struct_timeval.h:14:3] data = __time_t
+      WORD[struct_timeval.h:14:12] data = tv_sec
+      CHAR[struct_timeval.h:14:18] data = ;
+    Declaration(tokens = 3, name = tv_usec)
+      WORD[struct_timeval.h:15:3] data = __suseconds_t
+      WORD[struct_timeval.h:15:17] data = tv_usec
+      CHAR[struct_timeval.h:15:24] data = ;
+    CHAR[struct_timeval.h:17:1] data = }
+  CHAR[struct_timeval.h:17:2] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = timespec) 
+    WORD[struct_timespec.h:11:1] data = struct
+    WORD[struct_timespec.h:11:8] data = timespec
+    CHAR[struct_timespec.h:12:1] data = {
+    Declaration(tokens = 3, name = tv_sec)
+      WORD[struct_timespec.h:16:3] data = __time_t
+      WORD[struct_timespec.h:16:12] data = tv_sec
+      CHAR[struct_timespec.h:16:18] data = ;
+    Declaration(tokens = 3, name = tv_nsec)
+      WORD[struct_timespec.h:21:3] data = __syscall_slong_t
+      WORD[struct_timespec.h:21:21] data = tv_nsec
+      CHAR[struct_timespec.h:21:28] data = ;
+    CHAR[struct_timespec.h:31:1] data = }
+  CHAR[struct_timespec.h:31:2] data = ;
+
+Declaration(tokens = 3, name = suseconds_t)
+  WORD[select.h:43:9] data = __suseconds_t
+  WORD[select.h:43:23] data = suseconds_t
+  CHAR[select.h:43:34] data = ;
+
+Declaration(tokens = 4, name = __fd_mask)
+  WORD[select.h:49:9] data = long
+  WORD[select.h:49:14] data = int
+  WORD[select.h:49:18] data = __fd_mask
+  CHAR[select.h:49:27] data = ;
+
+Declaration(tokens = 2, name = fd_set)
+  Struct(tokens = 3, name = (null)) 
+    WORD[select.h:59:9] data = struct
+    CHAR[select.h:60:3] data = {
+    Declaration(tokens = 18, name = (null))
+      WORD[select.h:67:5] data = __fd_mask
+      WORD[select.h:67:15] data = __fds_bits
+      CHAR[select.h:67:25] data = [
+      NUMBER[select.h:67:26] data = 1024
+      CHAR[select.h:67:31] data = /
+      CHAR[select.h:67:33] data = (
+      NUMBER[select.h:67:34] data = 8
+      CHAR[select.h:67:36] data = *
+      CHAR[select.h:67:38] data = (
+      WORD[select.h:67:39] data = int
+      CHAR[select.h:67:42] data = )
+      WORD[select.h:67:44] data = sizeof
+      CHAR[select.h:67:51] data = (
+      WORD[select.h:67:52] data = __fd_mask
+      CHAR[select.h:67:61] data = )
+      CHAR[select.h:67:62] data = )
+      CHAR[select.h:67:63] data = ]
+      CHAR[select.h:67:64] data = ;
+    CHAR[select.h:70:3] data = }
+  WORD[select.h:70:5] data = fd_set
+  CHAR[select.h:70:11] data = ;
+
+Declaration(tokens = 3, name = fd_mask)
+  WORD[select.h:77:9] data = __fd_mask
+  WORD[select.h:77:19] data = fd_mask
+  CHAR[select.h:77:26] data = ;
+
+Declaration(tokens = 3, name = blksize_t)
+  WORD[types.h:185:9] data = __blksize_t
+  WORD[types.h:185:21] data = blksize_t
+  CHAR[types.h:185:30] data = ;
+
+Declaration(tokens = 3, name = blkcnt_t)
+  WORD[types.h:192:9] data = __blkcnt_t
+  WORD[types.h:192:20] data = blkcnt_t
+  CHAR[types.h:192:28] data = ;
+
+Declaration(tokens = 3, name = fsblkcnt_t)
+  WORD[types.h:196:9] data = __fsblkcnt_t
+  WORD[types.h:196:22] data = fsblkcnt_t
+  CHAR[types.h:196:32] data = ;
+
+Declaration(tokens = 3, name = fsfilcnt_t)
+  WORD[types.h:200:9] data = __fsfilcnt_t
+  WORD[types.h:200:22] data = fsfilcnt_t
+  CHAR[types.h:200:32] data = ;
+
+Declaration(tokens = 24, name = __atomic_wide_counter)
+  WORD[atomic_wide_counter.h:25:9] data = union
+  CHAR[atomic_wide_counter.h:26:1] data = {
+  WORD[atomic_wide_counter.h:27:4] data = unsigned
+  WORD[atomic_wide_counter.h:27:13] data = long
+  WORD[atomic_wide_counter.h:27:18] data = long
+  WORD[atomic_wide_counter.h:27:23] data = int
+  WORD[atomic_wide_counter.h:27:27] data = __value64
+  CHAR[atomic_wide_counter.h:27:36] data = ;
+  WORD[atomic_wide_counter.h:28:3] data = struct
+  CHAR[atomic_wide_counter.h:29:3] data = {
+  WORD[atomic_wide_counter.h:30:5] data = unsigned
+  WORD[atomic_wide_counter.h:30:14] data = int
+  WORD[atomic_wide_counter.h:30:18] data = __low
+  CHAR[atomic_wide_counter.h:30:23] data = ;
+  WORD[atomic_wide_counter.h:31:5] data = unsigned
+  WORD[atomic_wide_counter.h:31:14] data = int
+  WORD[atomic_wide_counter.h:31:18] data = __high
+  CHAR[atomic_wide_counter.h:31:24] data = ;
+  CHAR[atomic_wide_counter.h:32:3] data = }
+  WORD[atomic_wide_counter.h:32:5] data = __value32
+  CHAR[atomic_wide_counter.h:32:14] data = ;
+  CHAR[atomic_wide_counter.h:33:1] data = }
+  WORD[atomic_wide_counter.h:33:3] data = __atomic_wide_counter
+  CHAR[atomic_wide_counter.h:33:24] data = ;
+
+Declaration(tokens = 2, name = __pthread_list_t)
+  Struct(tokens = 4, name = __pthread_internal_list) 
+    WORD[thread-shared-types.h:51:9] data = struct
+    WORD[thread-shared-types.h:51:16] data = __pthread_internal_list
+    CHAR[thread-shared-types.h:52:1] data = {
+    Declaration(tokens = 3, name = __prev)
+      Struct(tokens = 2, name = __pthread_internal_list) 
+        WORD[thread-shared-types.h:53:3] data = struct
+        WORD[thread-shared-types.h:53:10] data = __pthread_internal_list
+      CHAR[thread-shared-types.h:53:34] data = *
+      WORD[thread-shared-types.h:53:35] data = __prev
+      CHAR[thread-shared-types.h:53:41] data = ;
+    Declaration(tokens = 3, name = __next)
+      Struct(tokens = 2, name = __pthread_internal_list) 
+        WORD[thread-shared-types.h:54:3] data = struct
+        WORD[thread-shared-types.h:54:10] data = __pthread_internal_list
+      CHAR[thread-shared-types.h:54:34] data = *
+      WORD[thread-shared-types.h:54:35] data = __next
+      CHAR[thread-shared-types.h:54:41] data = ;
+    CHAR[thread-shared-types.h:55:1] data = }
+  WORD[thread-shared-types.h:55:3] data = __pthread_list_t
+  CHAR[thread-shared-types.h:55:19] data = ;
+
+Declaration(tokens = 2, name = __pthread_slist_t)
+  Struct(tokens = 4, name = __pthread_internal_slist) 
+    WORD[thread-shared-types.h:57:9] data = struct
+    WORD[thread-shared-types.h:57:16] data = __pthread_internal_slist
+    CHAR[thread-shared-types.h:58:1] data = {
+    Declaration(tokens = 3, name = __next)
+      Struct(tokens = 2, name = __pthread_internal_slist) 
+        WORD[thread-shared-types.h:59:3] data = struct
+        WORD[thread-shared-types.h:59:10] data = __pthread_internal_slist
+      CHAR[thread-shared-types.h:59:35] data = *
+      WORD[thread-shared-types.h:59:36] data = __next
+      CHAR[thread-shared-types.h:59:42] data = ;
+    CHAR[thread-shared-types.h:60:1] data = }
+  WORD[thread-shared-types.h:60:3] data = __pthread_slist_t
+  CHAR[thread-shared-types.h:60:20] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = __pthread_mutex_s) 
+    WORD[struct_mutex.h:22:1] data = struct
+    WORD[struct_mutex.h:22:8] data = __pthread_mutex_s
+    CHAR[struct_mutex.h:23:1] data = {
+    Declaration(tokens = 3, name = __lock)
+      WORD[struct_mutex.h:24:3] data = int
+      WORD[struct_mutex.h:24:7] data = __lock
+      CHAR[struct_mutex.h:24:13] data = ;
+    Declaration(tokens = 4, name = __count)
+      WORD[struct_mutex.h:25:3] data = unsigned
+      WORD[struct_mutex.h:25:12] data = int
+      WORD[struct_mutex.h:25:16] data = __count
+      CHAR[struct_mutex.h:25:23] data = ;
+    Declaration(tokens = 3, name = __owner)
+      WORD[struct_mutex.h:26:3] data = int
+      WORD[struct_mutex.h:26:7] data = __owner
+      CHAR[struct_mutex.h:26:14] data = ;
+    Declaration(tokens = 4, name = __nusers)
+      WORD[struct_mutex.h:28:3] data = unsigned
+      WORD[struct_mutex.h:28:12] data = int
+      WORD[struct_mutex.h:28:16] data = __nusers
+      CHAR[struct_mutex.h:28:24] data = ;
+    Declaration(tokens = 3, name = __kind)
+      WORD[struct_mutex.h:32:3] data = int
+      WORD[struct_mutex.h:32:7] data = __kind
+      CHAR[struct_mutex.h:32:13] data = ;
+    Declaration(tokens = 3, name = __spins)
+      WORD[struct_mutex.h:34:3] data = short
+      WORD[struct_mutex.h:34:9] data = __spins
+      CHAR[struct_mutex.h:34:16] data = ;
+    Declaration(tokens = 3, name = __elision)
+      WORD[struct_mutex.h:35:3] data = short
+      WORD[struct_mutex.h:35:9] data = __elision
+      CHAR[struct_mutex.h:35:18] data = ;
+    Declaration(tokens = 3, name = __list)
+      WORD[struct_mutex.h:36:3] data = __pthread_list_t
+      WORD[struct_mutex.h:36:20] data = __list
+      CHAR[struct_mutex.h:36:26] data = ;
+    CHAR[struct_mutex.h:53:1] data = }
+  CHAR[struct_mutex.h:53:2] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = __pthread_rwlock_arch_t) 
+    WORD[struct_rwlock.h:23:1] data = struct
+    WORD[struct_rwlock.h:23:8] data = __pthread_rwlock_arch_t
+    CHAR[struct_rwlock.h:24:1] data = {
+    Declaration(tokens = 4, name = __readers)
+      WORD[struct_rwlock.h:25:3] data = unsigned
+      WORD[struct_rwlock.h:25:12] data = int
+      WORD[struct_rwlock.h:25:16] data = __readers
+      CHAR[struct_rwlock.h:25:25] data = ;
+    Declaration(tokens = 4, name = __writers)
+      WORD[struct_rwlock.h:26:3] data = unsigned
+      WORD[struct_rwlock.h:26:12] data = int
+      WORD[struct_rwlock.h:26:16] data = __writers
+      CHAR[struct_rwlock.h:26:25] data = ;
+    Declaration(tokens = 4, name = __wrphase_futex)
+      WORD[struct_rwlock.h:27:3] data = unsigned
+      WORD[struct_rwlock.h:27:12] data = int
+      WORD[struct_rwlock.h:27:16] data = __wrphase_futex
+      CHAR[struct_rwlock.h:27:31] data = ;
+    Declaration(tokens = 4, name = __writers_futex)
+      WORD[struct_rwlock.h:28:3] data = unsigned
+      WORD[struct_rwlock.h:28:12] data = int
+      WORD[struct_rwlock.h:28:16] data = __writers_futex
+      CHAR[struct_rwlock.h:28:31] data = ;
+    Declaration(tokens = 4, name = __pad3)
+      WORD[struct_rwlock.h:29:3] data = unsigned
+      WORD[struct_rwlock.h:29:12] data = int
+      WORD[struct_rwlock.h:29:16] data = __pad3
+      CHAR[struct_rwlock.h:29:22] data = ;
+    Declaration(tokens = 4, name = __pad4)
+      WORD[struct_rwlock.h:30:3] data = unsigned
+      WORD[struct_rwlock.h:30:12] data = int
+      WORD[struct_rwlock.h:30:16] data = __pad4
+      CHAR[struct_rwlock.h:30:22] data = ;
+    Declaration(tokens = 3, name = __cur_writer)
+      WORD[struct_rwlock.h:32:3] data = int
+      WORD[struct_rwlock.h:32:7] data = __cur_writer
+      CHAR[struct_rwlock.h:32:19] data = ;
+    Declaration(tokens = 3, name = __shared)
+      WORD[struct_rwlock.h:33:3] data = int
+      WORD[struct_rwlock.h:33:7] data = __shared
+      CHAR[struct_rwlock.h:33:15] data = ;
+    Declaration(tokens = 4, name = __rwelision)
+      WORD[struct_rwlock.h:34:3] data = signed
+      WORD[struct_rwlock.h:34:10] data = char
+      WORD[struct_rwlock.h:34:15] data = __rwelision
+      CHAR[struct_rwlock.h:34:26] data = ;
+    Declaration(tokens = 7, name = (null))
+      WORD[struct_rwlock.h:39:3] data = unsigned
+      WORD[struct_rwlock.h:39:12] data = char
+      WORD[struct_rwlock.h:39:17] data = __pad1
+      CHAR[struct_rwlock.h:39:23] data = [
+      NUMBER[struct_rwlock.h:39:24] data = 7
+      CHAR[struct_rwlock.h:39:25] data = ]
+      CHAR[struct_rwlock.h:39:26] data = ;
+    Declaration(tokens = 5, name = __pad2)
+      WORD[struct_rwlock.h:42:3] data = unsigned
+      WORD[struct_rwlock.h:42:12] data = long
+      WORD[struct_rwlock.h:42:17] data = int
+      WORD[struct_rwlock.h:42:21] data = __pad2
+      CHAR[struct_rwlock.h:42:27] data = ;
+    Declaration(tokens = 4, name = __flags)
+      WORD[struct_rwlock.h:45:3] data = unsigned
+      WORD[struct_rwlock.h:45:12] data = int
+      WORD[struct_rwlock.h:45:16] data = __flags
+      CHAR[struct_rwlock.h:45:23] data = ;
+    CHAR[struct_rwlock.h:55:1] data = }
+  CHAR[struct_rwlock.h:55:2] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = __pthread_cond_s) 
+    WORD[thread-shared-types.h:94:1] data = struct
+    WORD[thread-shared-types.h:94:8] data = __pthread_cond_s
+    CHAR[thread-shared-types.h:95:1] data = {
+    Declaration(tokens = 3, name = __wseq)
+      WORD[thread-shared-types.h:96:3] data = __atomic_wide_counter
+      WORD[thread-shared-types.h:96:25] data = __wseq
+      CHAR[thread-shared-types.h:96:31] data = ;
+    Declaration(tokens = 3, name = __g1_start)
+      WORD[thread-shared-types.h:97:3] data = __atomic_wide_counter
+      WORD[thread-shared-types.h:97:25] data = __g1_start
+      CHAR[thread-shared-types.h:97:35] data = ;
+    Declaration(tokens = 7, name = (null))
+      WORD[thread-shared-types.h:98:3] data = unsigned
+      WORD[thread-shared-types.h:98:12] data = int
+      WORD[thread-shared-types.h:98:16] data = __g_refs
+      CHAR[thread-shared-types.h:98:24] data = [
+      NUMBER[thread-shared-types.h:98:25] data = 2
+      CHAR[thread-shared-types.h:98:26] data = ]
+      CHAR[thread-shared-types.h:98:28] data = ;
+    Declaration(tokens = 7, name = (null))
+      WORD[thread-shared-types.h:99:3] data = unsigned
+      WORD[thread-shared-types.h:99:12] data = int
+      WORD[thread-shared-types.h:99:16] data = __g_size
+      CHAR[thread-shared-types.h:99:24] data = [
+      NUMBER[thread-shared-types.h:99:25] data = 2
+      CHAR[thread-shared-types.h:99:26] data = ]
+      CHAR[thread-shared-types.h:99:27] data = ;
+    Declaration(tokens = 4, name = __g1_orig_size)
+      WORD[thread-shared-types.h:100:3] data = unsigned
+      WORD[thread-shared-types.h:100:12] data = int
+      WORD[thread-shared-types.h:100:16] data = __g1_orig_size
+      CHAR[thread-shared-types.h:100:30] data = ;
+    Declaration(tokens = 4, name = __wrefs)
+      WORD[thread-shared-types.h:101:3] data = unsigned
+      WORD[thread-shared-types.h:101:12] data = int
+      WORD[thread-shared-types.h:101:16] data = __wrefs
+      CHAR[thread-shared-types.h:101:23] data = ;
+    Declaration(tokens = 7, name = (null))
+      WORD[thread-shared-types.h:102:3] data = unsigned
+      WORD[thread-shared-types.h:102:12] data = int
+      WORD[thread-shared-types.h:102:16] data = __g_signals
+      CHAR[thread-shared-types.h:102:27] data = [
+      NUMBER[thread-shared-types.h:102:28] data = 2
+      CHAR[thread-shared-types.h:102:29] data = ]
+      CHAR[thread-shared-types.h:102:30] data = ;
+    CHAR[thread-shared-types.h:103:1] data = }
+  CHAR[thread-shared-types.h:103:2] data = ;
+
+Declaration(tokens = 4, name = __tss_t)
+  WORD[thread-shared-types.h:105:9] data = unsigned
+  WORD[thread-shared-types.h:105:18] data = int
+  WORD[thread-shared-types.h:105:22] data = __tss_t
+  CHAR[thread-shared-types.h:105:29] data = ;
+
+Declaration(tokens = 5, name = __thrd_t)
+  WORD[thread-shared-types.h:106:9] data = unsigned
+  WORD[thread-shared-types.h:106:18] data = long
+  WORD[thread-shared-types.h:106:23] data = int
+  WORD[thread-shared-types.h:106:27] data = __thrd_t
+  CHAR[thread-shared-types.h:106:35] data = ;
+
+Declaration(tokens = 2, name = __once_flag)
+  Struct(tokens = 3, name = (null)) 
+    WORD[thread-shared-types.h:108:9] data = struct
+    CHAR[thread-shared-types.h:109:1] data = {
+    Declaration(tokens = 3, name = __data)
+      WORD[thread-shared-types.h:110:3] data = int
+      WORD[thread-shared-types.h:110:7] data = __data
+      CHAR[thread-shared-types.h:110:14] data = ;
+    CHAR[thread-shared-types.h:111:1] data = }
+  WORD[thread-shared-types.h:111:3] data = __once_flag
+  CHAR[thread-shared-types.h:111:14] data = ;
+
+Declaration(tokens = 5, name = pthread_t)
+  WORD[pthreadtypes.h:27:9] data = unsigned
+  WORD[pthreadtypes.h:27:18] data = long
+  WORD[pthreadtypes.h:27:23] data = int
+  WORD[pthreadtypes.h:27:27] data = pthread_t
+  CHAR[pthreadtypes.h:27:36] data = ;
+
+Declaration(tokens = 14, name = pthread_mutexattr_t)
+  WORD[pthreadtypes.h:32:9] data = union
+  CHAR[pthreadtypes.h:33:1] data = {
+  WORD[pthreadtypes.h:34:3] data = char
+  WORD[pthreadtypes.h:34:8] data = __size
+  CHAR[pthreadtypes.h:34:14] data = [
+  NUMBER[pthreadtypes.h:34:15] data = 4
+  CHAR[pthreadtypes.h:34:16] data = ]
+  CHAR[pthreadtypes.h:34:17] data = ;
+  WORD[pthreadtypes.h:35:3] data = int
+  WORD[pthreadtypes.h:35:7] data = __align
+  CHAR[pthreadtypes.h:35:14] data = ;
+  CHAR[pthreadtypes.h:36:1] data = }
+  WORD[pthreadtypes.h:36:3] data = pthread_mutexattr_t
+  CHAR[pthreadtypes.h:36:22] data = ;
+
+Declaration(tokens = 14, name = pthread_condattr_t)
+  WORD[pthreadtypes.h:41:9] data = union
+  CHAR[pthreadtypes.h:42:1] data = {
+  WORD[pthreadtypes.h:43:3] data = char
+  WORD[pthreadtypes.h:43:8] data = __size
+  CHAR[pthreadtypes.h:43:14] data = [
+  NUMBER[pthreadtypes.h:43:15] data = 4
+  CHAR[pthreadtypes.h:43:16] data = ]
+  CHAR[pthreadtypes.h:43:17] data = ;
+  WORD[pthreadtypes.h:44:3] data = int
+  WORD[pthreadtypes.h:44:7] data = __align
+  CHAR[pthreadtypes.h:44:14] data = ;
+  CHAR[pthreadtypes.h:45:1] data = }
+  WORD[pthreadtypes.h:45:3] data = pthread_condattr_t
+  CHAR[pthreadtypes.h:45:21] data = ;
+
+Declaration(tokens = 4, name = pthread_key_t)
+  WORD[pthreadtypes.h:49:9] data = unsigned
+  WORD[pthreadtypes.h:49:18] data = int
+  WORD[pthreadtypes.h:49:22] data = pthread_key_t
+  CHAR[pthreadtypes.h:49:35] data = ;
+
+Declaration(tokens = 3, name = pthread_once_t)
+  WORD[pthreadtypes.h:53:9] data = int
+  WORD[pthreadtypes.h:53:14] data = pthread_once_t
+  CHAR[pthreadtypes.h:53:28] data = ;
+
+Declaration(tokens = 4, name = pthread_attr_t)
+  WORD[pthreadtypes.h:62:9] data = union
+  WORD[pthreadtypes.h:62:15] data = pthread_attr_t
+  WORD[pthreadtypes.h:62:30] data = pthread_attr_t
+  CHAR[pthreadtypes.h:62:44] data = ;
+
+Declaration(tokens = 19, name = pthread_mutex_t)
+  WORD[pthreadtypes.h:67:9] data = union
+  CHAR[pthreadtypes.h:68:1] data = {
+  WORD[pthreadtypes.h:69:3] data = struct
+  WORD[pthreadtypes.h:69:10] data = __pthread_mutex_s
+  WORD[pthreadtypes.h:69:28] data = __data
+  CHAR[pthreadtypes.h:69:34] data = ;
+  WORD[pthreadtypes.h:70:3] data = char
+  WORD[pthreadtypes.h:70:8] data = __size
+  CHAR[pthreadtypes.h:70:14] data = [
+  NUMBER[pthreadtypes.h:70:15] data = 40
+  CHAR[pthreadtypes.h:70:17] data = ]
+  CHAR[pthreadtypes.h:70:18] data = ;
+  WORD[pthreadtypes.h:71:3] data = long
+  WORD[pthreadtypes.h:71:8] data = int
+  WORD[pthreadtypes.h:71:12] data = __align
+  CHAR[pthreadtypes.h:71:19] data = ;
+  CHAR[pthreadtypes.h:72:1] data = }
+  WORD[pthreadtypes.h:72:3] data = pthread_mutex_t
+  CHAR[pthreadtypes.h:72:18] data = ;
+
+Declaration(tokens = 20, name = pthread_cond_t)
+  WORD[pthreadtypes.h:75:9] data = union
+  CHAR[pthreadtypes.h:76:1] data = {
+  WORD[pthreadtypes.h:77:3] data = struct
+  WORD[pthreadtypes.h:77:10] data = __pthread_cond_s
+  WORD[pthreadtypes.h:77:27] data = __data
+  CHAR[pthreadtypes.h:77:33] data = ;
+  WORD[pthreadtypes.h:78:3] data = char
+  WORD[pthreadtypes.h:78:8] data = __size
+  CHAR[pthreadtypes.h:78:14] data = [
+  NUMBER[pthreadtypes.h:78:15] data = 48
+  CHAR[pthreadtypes.h:78:17] data = ]
+  CHAR[pthreadtypes.h:78:18] data = ;
+  WORD[pthreadtypes.h:79:4] data = long
+  WORD[pthreadtypes.h:79:9] data = long
+  WORD[pthreadtypes.h:79:14] data = int
+  WORD[pthreadtypes.h:79:18] data = __align
+  CHAR[pthreadtypes.h:79:25] data = ;
+  CHAR[pthreadtypes.h:80:1] data = }
+  WORD[pthreadtypes.h:80:3] data = pthread_cond_t
+  CHAR[pthreadtypes.h:80:17] data = ;
+
+Declaration(tokens = 19, name = pthread_rwlock_t)
+  WORD[pthreadtypes.h:86:9] data = union
+  CHAR[pthreadtypes.h:87:1] data = {
+  WORD[pthreadtypes.h:88:3] data = struct
+  WORD[pthreadtypes.h:88:10] data = __pthread_rwlock_arch_t
+  WORD[pthreadtypes.h:88:34] data = __data
+  CHAR[pthreadtypes.h:88:40] data = ;
+  WORD[pthreadtypes.h:89:3] data = char
+  WORD[pthreadtypes.h:89:8] data = __size
+  CHAR[pthreadtypes.h:89:14] data = [
+  NUMBER[pthreadtypes.h:89:15] data = 56
+  CHAR[pthreadtypes.h:89:17] data = ]
+  CHAR[pthreadtypes.h:89:18] data = ;
+  WORD[pthreadtypes.h:90:3] data = long
+  WORD[pthreadtypes.h:90:8] data = int
+  WORD[pthreadtypes.h:90:12] data = __align
+  CHAR[pthreadtypes.h:90:19] data = ;
+  CHAR[pthreadtypes.h:91:1] data = }
+  WORD[pthreadtypes.h:91:3] data = pthread_rwlock_t
+  CHAR[pthreadtypes.h:91:19] data = ;
+
+Declaration(tokens = 15, name = pthread_rwlockattr_t)
+  WORD[pthreadtypes.h:93:9] data = union
+  CHAR[pthreadtypes.h:94:1] data = {
+  WORD[pthreadtypes.h:95:3] data = char
+  WORD[pthreadtypes.h:95:8] data = __size
+  CHAR[pthreadtypes.h:95:14] data = [
+  NUMBER[pthreadtypes.h:95:15] data = 8
+  CHAR[pthreadtypes.h:95:16] data = ]
+  CHAR[pthreadtypes.h:95:17] data = ;
+  WORD[pthreadtypes.h:96:3] data = long
+  WORD[pthreadtypes.h:96:8] data = int
+  WORD[pthreadtypes.h:96:12] data = __align
+  CHAR[pthreadtypes.h:96:19] data = ;
+  CHAR[pthreadtypes.h:97:1] data = }
+  WORD[pthreadtypes.h:97:3] data = pthread_rwlockattr_t
+  CHAR[pthreadtypes.h:97:23] data = ;
+
+Declaration(tokens = 4, name = pthread_spinlock_t)
+  WORD[pthreadtypes.h:103:9] data = volatile
+  WORD[pthreadtypes.h:103:18] data = int
+  WORD[pthreadtypes.h:103:22] data = pthread_spinlock_t
+  CHAR[pthreadtypes.h:103:40] data = ;
+
+Declaration(tokens = 15, name = pthread_barrier_t)
+  WORD[pthreadtypes.h:108:9] data = union
+  CHAR[pthreadtypes.h:109:1] data = {
+  WORD[pthreadtypes.h:110:3] data = char
+  WORD[pthreadtypes.h:110:8] data = __size
+  CHAR[pthreadtypes.h:110:14] data = [
+  NUMBER[pthreadtypes.h:110:15] data = 32
+  CHAR[pthreadtypes.h:110:17] data = ]
+  CHAR[pthreadtypes.h:110:18] data = ;
+  WORD[pthreadtypes.h:111:3] data = long
+  WORD[pthreadtypes.h:111:8] data = int
+  WORD[pthreadtypes.h:111:12] data = __align
+  CHAR[pthreadtypes.h:111:19] data = ;
+  CHAR[pthreadtypes.h:112:1] data = }
+  WORD[pthreadtypes.h:112:3] data = pthread_barrier_t
+  CHAR[pthreadtypes.h:112:20] data = ;
+
+Declaration(tokens = 14, name = pthread_barrierattr_t)
+  WORD[pthreadtypes.h:114:9] data = union
+  CHAR[pthreadtypes.h:115:1] data = {
+  WORD[pthreadtypes.h:116:3] data = char
+  WORD[pthreadtypes.h:116:8] data = __size
+  CHAR[pthreadtypes.h:116:14] data = [
+  NUMBER[pthreadtypes.h:116:15] data = 4
+  CHAR[pthreadtypes.h:116:16] data = ]
+  CHAR[pthreadtypes.h:116:17] data = ;
+  WORD[pthreadtypes.h:117:3] data = int
+  WORD[pthreadtypes.h:117:7] data = __align
+  CHAR[pthreadtypes.h:117:14] data = ;
+  CHAR[pthreadtypes.h:118:1] data = }
+  WORD[pthreadtypes.h:118:3] data = pthread_barrierattr_t
+  CHAR[pthreadtypes.h:118:24] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = random_data) 
+    WORD[stdlib.h:424:1] data = struct
+    WORD[stdlib.h:424:8] data = random_data
+    CHAR[stdlib.h:425:3] data = {
+    Declaration(tokens = 4, name = fptr)
+      WORD[stdlib.h:426:5] data = int32_t
+      CHAR[stdlib.h:426:13] data = *
+      WORD[stdlib.h:426:14] data = fptr
+      CHAR[stdlib.h:426:18] data = ;
+    Declaration(tokens = 4, name = rptr)
+      WORD[stdlib.h:427:5] data = int32_t
+      CHAR[stdlib.h:427:13] data = *
+      WORD[stdlib.h:427:14] data = rptr
+      CHAR[stdlib.h:427:18] data = ;
+    Declaration(tokens = 4, name = state)
+      WORD[stdlib.h:428:5] data = int32_t
+      CHAR[stdlib.h:428:13] data = *
+      WORD[stdlib.h:428:14] data = state
+      CHAR[stdlib.h:428:19] data = ;
+    Declaration(tokens = 3, name = rand_type)
+      WORD[stdlib.h:429:5] data = int
+      WORD[stdlib.h:429:9] data = rand_type
+      CHAR[stdlib.h:429:18] data = ;
+    Declaration(tokens = 3, name = rand_deg)
+      WORD[stdlib.h:430:5] data = int
+      WORD[stdlib.h:430:9] data = rand_deg
+      CHAR[stdlib.h:430:17] data = ;
+    Declaration(tokens = 3, name = rand_sep)
+      WORD[stdlib.h:431:5] data = int
+      WORD[stdlib.h:431:9] data = rand_sep
+      CHAR[stdlib.h:431:17] data = ;
+    Declaration(tokens = 4, name = end_ptr)
+      WORD[stdlib.h:432:5] data = int32_t
+      CHAR[stdlib.h:432:13] data = *
+      WORD[stdlib.h:432:14] data = end_ptr
+      CHAR[stdlib.h:432:21] data = ;
+    CHAR[stdlib.h:433:3] data = }
+  CHAR[stdlib.h:433:4] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = drand48_data) 
+    WORD[stdlib.h:491:1] data = struct
+    WORD[stdlib.h:491:8] data = drand48_data
+    CHAR[stdlib.h:492:3] data = {
+    Declaration(tokens = 8, name = (null))
+      WORD[stdlib.h:493:5] data = unsigned
+      WORD[stdlib.h:493:14] data = short
+      WORD[stdlib.h:493:20] data = int
+      WORD[stdlib.h:493:24] data = __x
+      CHAR[stdlib.h:493:27] data = [
+      NUMBER[stdlib.h:493:28] data = 3
+      CHAR[stdlib.h:493:29] data = ]
+      CHAR[stdlib.h:493:30] data = ;
+    Declaration(tokens = 8, name = (null))
+      WORD[stdlib.h:494:5] data = unsigned
+      WORD[stdlib.h:494:14] data = short
+      WORD[stdlib.h:494:20] data = int
+      WORD[stdlib.h:494:24] data = __old_x
+      CHAR[stdlib.h:494:31] data = [
+      NUMBER[stdlib.h:494:32] data = 3
+      CHAR[stdlib.h:494:33] data = ]
+      CHAR[stdlib.h:494:34] data = ;
+    Declaration(tokens = 5, name = __c)
+      WORD[stdlib.h:495:5] data = unsigned
+      WORD[stdlib.h:495:14] data = short
+      WORD[stdlib.h:495:20] data = int
+      WORD[stdlib.h:495:24] data = __c
+      CHAR[stdlib.h:495:27] data = ;
+    Declaration(tokens = 5, name = __init)
+      WORD[stdlib.h:496:5] data = unsigned
+      WORD[stdlib.h:496:14] data = short
+      WORD[stdlib.h:496:20] data = int
+      WORD[stdlib.h:496:24] data = __init
+      CHAR[stdlib.h:496:30] data = ;
+    Declaration(tokens = 6, name = __a)
+      WORD[stdlib.h:497:6] data = unsigned
+      WORD[stdlib.h:497:15] data = long
+      WORD[stdlib.h:497:20] data = long
+      WORD[stdlib.h:497:25] data = int
+      WORD[stdlib.h:497:29] data = __a
+      CHAR[stdlib.h:497:32] data = ;
+    CHAR[stdlib.h:499:3] data = }
+  CHAR[stdlib.h:499:4] data = ;
+
+Declaration(tokens = 15, name = (null))
+  WORD[stdlib.h:829:9] data = int
+  CHAR[stdlib.h:829:13] data = (
+  CHAR[stdlib.h:829:14] data = *
+  WORD[stdlib.h:829:15] data = __compar_fn_t
+  CHAR[stdlib.h:829:28] data = )
+  CHAR[stdlib.h:829:30] data = (
+  WORD[stdlib.h:829:31] data = const
+  WORD[stdlib.h:829:37] data = void
+  CHAR[stdlib.h:829:42] data = *
+  CHAR[stdlib.h:829:43] data = ,
+  WORD[stdlib.h:829:45] data = const
+  WORD[stdlib.h:829:51] data = void
+  CHAR[stdlib.h:829:56] data = *
+  CHAR[stdlib.h:829:57] data = )
+  CHAR[stdlib.h:829:58] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = __locale_struct) 
+    WORD[__locale_t.h:27:1] data = struct
+    WORD[__locale_t.h:27:8] data = __locale_struct
+    CHAR[__locale_t.h:28:1] data = {
+    Declaration(tokens = 6, name = (null))
+      Struct(tokens = 2, name = __locale_data) 
+        WORD[__locale_t.h:30:3] data = struct
+        WORD[__locale_t.h:30:10] data = __locale_data
+      CHAR[__locale_t.h:30:24] data = *
+      WORD[__locale_t.h:30:25] data = __locales
+      CHAR[__locale_t.h:30:34] data = [
+      NUMBER[__locale_t.h:30:35] data = 13
+      CHAR[__locale_t.h:30:37] data = ]
+      CHAR[__locale_t.h:30:38] data = ;
+    Declaration(tokens = 7, name = __ctype_b)
+      WORD[__locale_t.h:33:3] data = const
+      WORD[__locale_t.h:33:9] data = unsigned
+      WORD[__locale_t.h:33:18] data = short
+      WORD[__locale_t.h:33:24] data = int
+      CHAR[__locale_t.h:33:28] data = *
+      WORD[__locale_t.h:33:29] data = __ctype_b
+      CHAR[__locale_t.h:33:38] data = ;
+    Declaration(tokens = 5, name = __ctype_tolower)
+      WORD[__locale_t.h:34:3] data = const
+      WORD[__locale_t.h:34:9] data = int
+      CHAR[__locale_t.h:34:13] data = *
+      WORD[__locale_t.h:34:14] data = __ctype_tolower
+      CHAR[__locale_t.h:34:29] data = ;
+    Declaration(tokens = 5, name = __ctype_toupper)
+      WORD[__locale_t.h:35:3] data = const
+      WORD[__locale_t.h:35:9] data = int
+      CHAR[__locale_t.h:35:13] data = *
+      WORD[__locale_t.h:35:14] data = __ctype_toupper
+      CHAR[__locale_t.h:35:29] data = ;
+    Declaration(tokens = 8, name = (null))
+      WORD[__locale_t.h:38:3] data = const
+      WORD[__locale_t.h:38:9] data = char
+      CHAR[__locale_t.h:38:14] data = *
+      WORD[__locale_t.h:38:15] data = __names
+      CHAR[__locale_t.h:38:22] data = [
+      NUMBER[__locale_t.h:38:23] data = 13
+      CHAR[__locale_t.h:38:25] data = ]
+      CHAR[__locale_t.h:38:26] data = ;
+    CHAR[__locale_t.h:39:1] data = }
+  CHAR[__locale_t.h:39:2] data = ;
+
+Declaration(tokens = 3, name = __locale_t)
+  Struct(tokens = 2, name = __locale_struct) 
+    WORD[__locale_t.h:41:9] data = struct
+    WORD[__locale_t.h:41:16] data = __locale_struct
+  CHAR[__locale_t.h:41:32] data = *
+  WORD[__locale_t.h:41:33] data = __locale_t
+  CHAR[__locale_t.h:41:43] data = ;
+
+Declaration(tokens = 3, name = locale_t)
+  WORD[locale_t.h:24:9] data = __locale_t
+  WORD[locale_t.h:24:20] data = locale_t
+  CHAR[locale_t.h:24:28] data = ;
+
+Declaration(tokens = 14, name = LogLevel)
+  WORD[token.h:5:9] data = enum
+  WORD[token.h:5:14] data = LogLevel
+  CHAR[token.h:5:23] data = {
+  WORD[token.h:6:3] data = LOGLEVEL_ERROR
+  CHAR[token.h:6:18] data = =
+  NUMBER[token.h:6:20] data = 0
+  CHAR[token.h:6:21] data = ,
+  WORD[token.h:7:3] data = LOGLEVEL_WARNING
+  CHAR[token.h:7:19] data = ,
+  WORD[token.h:8:3] data = LOGLEVEL_INFO
+  CHAR[token.h:8:16] data = ,
+  CHAR[token.h:9:1] data = }
+  WORD[token.h:9:3] data = LogLevel
+  CHAR[token.h:9:11] data = ;
+
+Declaration(tokens = 28, name = TokenKind)
+  WORD[token.h:11:9] data = enum
+  WORD[token.h:11:14] data = TokenKind
+  CHAR[token.h:11:24] data = {
+  WORD[token.h:12:3] data = TOKEN_EOF
+  CHAR[token.h:12:13] data = =
+  NUMBER[token.h:12:15] data = 0
+  CHAR[token.h:12:16] data = ,
+  WORD[token.h:13:3] data = TOKEN_INVALID
+  CHAR[token.h:13:16] data = ,
+  WORD[token.h:14:3] data = TOKEN_CHAR
+  CHAR[token.h:14:13] data = ,
+  WORD[token.h:15:3] data = TOKEN_WORD
+  CHAR[token.h:15:13] data = ,
+  WORD[token.h:16:3] data = TOKEN_LONGCOMMENT
+  CHAR[token.h:16:20] data = ,
+  WORD[token.h:17:3] data = TOKEN_SHORTCOMMENT
+  CHAR[token.h:17:21] data = ,
+  WORD[token.h:18:3] data = TOKEN_PREPROCESSOR
+  CHAR[token.h:18:21] data = ,
+  WORD[token.h:19:3] data = TOKEN_LONGSTRING
+  CHAR[token.h:19:19] data = ,
+  WORD[token.h:20:3] data = TOKEN_SHORTSTRING
+  CHAR[token.h:20:20] data = ,
+  WORD[token.h:21:3] data = TOKEN_NUMBER
+  CHAR[token.h:21:15] data = ,
+  CHAR[token.h:22:1] data = }
+  WORD[token.h:22:3] data = TokenKind
+  CHAR[token.h:22:12] data = ;
+
+Declaration(tokens = 2, name = Loc)
+  Struct(tokens = 4, name = Loc) 
+    WORD[token.h:24:9] data = struct
+    WORD[token.h:24:16] data = Loc
+    CHAR[token.h:24:20] data = {
+    Declaration(tokens = 5, name = filename)
+      WORD[token.h:25:3] data = const
+      WORD[token.h:25:9] data = char
+      CHAR[token.h:25:13] data = *
+      WORD[token.h:25:15] data = filename
+      CHAR[token.h:25:23] data = ;
+    Declaration(tokens = 3, name = line_num)
+      WORD[token.h:26:3] data = int
+      WORD[token.h:26:7] data = line_num
+      CHAR[token.h:26:15] data = ;
+    Declaration(tokens = 3, name = col_num)
+      WORD[token.h:27:3] data = int
+      WORD[token.h:27:7] data = col_num
+      CHAR[token.h:27:14] data = ;
+    Declaration(tokens = 3, name = byte_num)
+      WORD[token.h:28:3] data = int
+      WORD[token.h:28:7] data = byte_num
+      CHAR[token.h:28:15] data = ;
+    CHAR[token.h:29:1] data = }
+  WORD[token.h:29:3] data = Loc
+  CHAR[token.h:29:6] data = ;
+
+Declaration(tokens = 2, name = Token)
+  Struct(tokens = 4, name = Token) 
+    WORD[token.h:31:9] data = struct
+    WORD[token.h:31:16] data = Token
+    CHAR[token.h:31:22] data = {
+    Declaration(tokens = 4, name = data)
+      WORD[token.h:32:3] data = char
+      CHAR[token.h:32:7] data = *
+      WORD[token.h:32:9] data = data
+      CHAR[token.h:32:13] data = ;
+    Declaration(tokens = 3, name = length)
+      WORD[token.h:33:3] data = size_t
+      WORD[token.h:33:10] data = length
+      CHAR[token.h:33:16] data = ;
+    Declaration(tokens = 3, name = capacity)
+      WORD[token.h:34:3] data = size_t
+      WORD[token.h:34:10] data = capacity
+      CHAR[token.h:34:18] data = ;
+    Declaration(tokens = 3, name = kind)
+      WORD[token.h:35:3] data = TokenKind
+      WORD[token.h:35:13] data = kind
+      CHAR[token.h:35:17] data = ;
+    Declaration(tokens = 3, name = location)
+      WORD[token.h:36:3] data = Loc
+      WORD[token.h:36:7] data = location
+      CHAR[token.h:36:15] data = ;
+    CHAR[token.h:37:1] data = }
+  WORD[token.h:37:3] data = Token
+  CHAR[token.h:37:8] data = ;
+
+Declaration(tokens = 2, name = Lexer)
+  Struct(tokens = 4, name = Lexer) 
+    WORD[lexer.h:20:9] data = struct
+    WORD[lexer.h:20:16] data = Lexer
+    CHAR[lexer.h:20:22] data = {
+    Declaration(tokens = 3, name = peeked_char)
+      WORD[lexer.h:21:3] data = char
+      WORD[lexer.h:21:8] data = peeked_char
+      CHAR[lexer.h:21:19] data = ;
+    Declaration(tokens = 3, name = exhausted)
+      WORD[lexer.h:22:3] data = _Bool
+      WORD[lexer.h:22:9] data = exhausted
+      CHAR[lexer.h:22:18] data = ;
+    Declaration(tokens = 3, name = is_newline)
+      WORD[lexer.h:23:3] data = _Bool
+      WORD[lexer.h:23:9] data = is_newline
+      CHAR[lexer.h:23:19] data = ;
+    Declaration(tokens = 3, name = current_location)
+      WORD[lexer.h:24:3] data = Loc
+      WORD[lexer.h:24:7] data = current_location
+      CHAR[lexer.h:24:23] data = ;
+    Declaration(tokens = 4, name = file)
+      WORD[lexer.h:26:3] data = FILE
+      CHAR[lexer.h:26:7] data = *
+      WORD[lexer.h:26:9] data = file
+      CHAR[lexer.h:26:13] data = ;
+    Declaration(tokens = 5, name = memory)
+      WORD[lexer.h:27:3] data = const
+      WORD[lexer.h:27:9] data = char
+      CHAR[lexer.h:27:13] data = *
+      WORD[lexer.h:27:15] data = memory
+      CHAR[lexer.h:27:21] data = ;
+    Declaration(tokens = 3, name = memory_length)
+      WORD[lexer.h:28:3] data = size_t
+      WORD[lexer.h:28:10] data = memory_length
+      CHAR[lexer.h:28:23] data = ;
+    Declaration(tokens = 2, name = allocated_strings)
+      Struct(tokens = 3, name = (null)) 
+        WORD[lexer.h:30:3] data = struct
+        CHAR[lexer.h:30:10] data = {
+        Declaration(tokens = 5, name = data)
+          WORD[lexer.h:31:5] data = char
+          CHAR[lexer.h:31:9] data = *
+          CHAR[lexer.h:31:10] data = *
+          WORD[lexer.h:31:12] data = data
+          CHAR[lexer.h:31:16] data = ;
+        Declaration(tokens = 3, name = length)
+          WORD[lexer.h:32:5] data = size_t
+          WORD[lexer.h:32:12] data = length
+          CHAR[lexer.h:32:18] data = ;
+        Declaration(tokens = 3, name = capacity)
+          WORD[lexer.h:33:5] data = size_t
+          WORD[lexer.h:33:12] data = capacity
+          CHAR[lexer.h:33:20] data = ;
+        CHAR[lexer.h:34:3] data = }
+      WORD[lexer.h:34:5] data = allocated_strings
+      CHAR[lexer.h:34:22] data = ;
+    CHAR[lexer.h:35:1] data = }
+  WORD[lexer.h:35:3] data = Lexer
+  CHAR[lexer.h:35:8] data = ;
+

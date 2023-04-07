@@ -1,0 +1,5 @@
+struct Triangle {int a, b, c;};
+struct Rectangle {int x, y;};
+struct Circle {int r;};
+
+struct Figure {} <struct Triangle;struct Rectangle;struct Circle;>;

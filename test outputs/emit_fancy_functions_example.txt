@@ -1,0 +1,9 @@
+struct Triangle;
+struct Rectangle;
+struct Circle;
+struct Figure;
+void PrintFigure<struct Figure<struct Rectangle> *r>();
+
+void PrintFigure<struct Figure<struct Triangle> *t>();
+
+void PrintFigure<struct Figure<struct Circle> *c>();

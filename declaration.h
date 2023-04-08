@@ -27,6 +27,7 @@ typedef struct Declaration {
 typedef struct Function {
   Declaration decl;
 
+  int tokens_prams_pos;
   Declaration* fancy_params;
   bool is_header;
 } Function;
@@ -37,6 +38,7 @@ void declaration_print_debug(Declaration* d, int rec_lvl);
 
 void declaration_emit_fancy_struct(Struct* s, Emitter* emitter);
 void declaration_emit_struct(Struct* s, Emitter* emitter);
+void declaration_emit_function(Function* func, Emitter* emitter);
 void declaration_emit(Declaration* d, Emitter* emitter);
 
 void declaration_delete_function(Function* func);

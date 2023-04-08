@@ -113,7 +113,7 @@ void declaration_emit_struct(Struct* s, Emitter* emitter) {
     if(s->tokens_members_pos) {
       declaration_emit_fancy_struct(s, emitter);
     } else {
-      // TODO
+      token_print_error(&s->tokens[0], LOGLEVEL_INFO, "converting struct names is not implemented yet%s", "");
     }
     return;
   }
@@ -129,6 +129,35 @@ void declaration_emit_struct(Struct* s, Emitter* emitter) {
     if(s->tokens_subtypes_pos == i + 1) {
       for(int j = 0; j < arrlen(s->subtypes); j++) {
         declaration_emit(&s->subtypes[j], emitter);
+      }
+      if(s->parameter) {
+        declaration_emit_struct(s->parameter, emitter);
+      }
+    }
+  }
+}
+
+void declaration_emit_function(Function* func, Emitter* emitter) {
+  if(func->fancy_params == NULL) {
+    declaration_emit(&func->decl, emitter);
+    return;
+  }
+
+  if(emitter->convert_structs) {
+    token_print_error(&func->decl.tokens[0], LOGLEVEL_INFO, "converting function headers is not implemented yet%s", "");
+  } else {
+    declaration_emit_struct(func->decl.type, emitter);
+
+    for(int i = 0; i < arrlen(func->decl.tokens); i++) {
+      token_emit(&func->decl.tokens[i], emitter);
+
+      if(func->tokens_prams_pos == i + 1) {
+        for(int j = 0; j < arrlen(func->fancy_params); j++) {
+          if(j != 0) {
+            token_emit(&func->decl.tokens[++i], emitter);
+          }
+          declaration_emit(&func->fancy_params[j], emitter);
+        }
       }
     }
   }

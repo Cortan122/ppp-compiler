@@ -1,0 +1,3 @@
+typedef __ssize_t ssize_t;
+typedef long int __ssize_t;
+

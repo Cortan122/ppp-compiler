@@ -1,0 +1,3 @@
+struct Circle;
+struct Figure;
+int Intersect<struct Figure<struct Circle> *c1, struct Figure<struct Circle> *c2>();

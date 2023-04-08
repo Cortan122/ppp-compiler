@@ -1,0 +1,2 @@
+struct Circle;
+struct Figure;

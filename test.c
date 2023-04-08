@@ -19,12 +19,15 @@
   { .func = testfunc_##x, .name = #x }
 #define TESTCASE_L(x) \
   { .func = testfunc_##x, .name = #x, .loop_check = true }
+#define TESTCASE_LL(x) \
+  { .func = testfunc_##x, .name = #x, .loop_check = true, .ignore_some_files = true }
 
 typedef void (*TestFunc)(const char*);
 typedef struct TestCase {
   TestFunc func;
   char* name;
   bool loop_check;
+  bool ignore_some_files;
 } TestCase;
 
 void testfunc_debug_tokens(const char* input_file) {
@@ -52,30 +55,10 @@ void testfunc_declarations(const char* input_file) {
 }
 
 void testfunc_named_types(const char* input_file) {
+  Emitter em = {.file = stdout};
   Parser parser = {0};
   parser_read_file(&parser, input_file);
-
-  for(int i = 0; i < shlen(parser.structs); i++) {
-    printf("struct %s;\n", parser.structs[i].key);
-  }
-  for(int i = 0; i < shlen(parser.typedefs); i++) {
-    Struct* struc = parser.typedefs[i].value;
-    if(struc == NULL) {
-      printf("typedef ... %s;\n", parser.typedefs[i].key);
-    } else if(struc->is_primitive) {
-      Emitter em = {.file = stdout};
-      token_emit_cstr("typedef", &em);
-      em.ignore_next_indent = true;
-      for(int j = 0; j < arrlen(struc->tokens); j++) {
-        token_emit(&struc->tokens[j], &em);
-      }
-      token_emit_cstr(" ", &em);
-      token_emit_cstr(parser.typedefs[i].key, &em);
-      token_emit_cstr(";\n", &em);
-    } else {
-      printf("typedef struct %s %s;\n", struc->name, parser.typedefs[i].key);
-    }
-  }
+  parser_emit_typedefs(&parser, &em, true);
 
   parser_delete(&parser);
 }
@@ -154,10 +137,30 @@ void testfunc_fancy_functions(const char* input_file) {
   parser_delete(&parser);
 }
 
+void testfunc_emit_functions(const char* input_file) {
+  Emitter em = {.file = stdout};
+  Parser parser = {0};
+  parser_read_file(&parser, input_file);
+  parser_emit_typedefs(&parser, &em, false);
+  parser_emit_functions(&parser, &em);
+
+  parser_delete(&parser);
+}
+
+void testfunc_emit_fancy_functions(const char* input_file) {
+  Emitter em = {.file = stdout};
+  Parser parser = {.allow_fancy_structs = true};
+  parser_read_file(&parser, input_file);
+  parser_emit_typedefs(&parser, &em, false);
+  parser_emit_functions(&parser, &em);
+
+  parser_delete(&parser);
+}
+
 TestCase test_cases[] = {
     TESTCASE(debug_tokens),
     TESTCASE(declarations),
-    TESTCASE(named_types),
+    TESTCASE_LL(named_types),
     TESTCASE_L(emit_tokens),
     TESTCASE_L(emit_declarations),
     TESTCASE(fancy_declarations),
@@ -165,8 +168,17 @@ TestCase test_cases[] = {
     TESTCASE_L(convert_structs),
     TESTCASE(functions),
     TESTCASE(fancy_functions),
+    TESTCASE_LL(emit_functions),
+    TESTCASE_LL(emit_fancy_functions),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
+
+bool endsWith(const char* restrict str, const char* restrict suffix) {
+  size_t lenstr = strlen(str);
+  size_t lensuffix = strlen(suffix);
+  if(lensuffix > lenstr) return false;
+  return strncmp(str + lenstr - lensuffix, suffix, lensuffix) == 0;
+}
 
 bool diff_files(const char* file1, const char* file2) {
   bool result = false;
@@ -230,6 +242,12 @@ bool run_testcase(const char* input_file, TestCase tc, bool rewrite, bool loop) 
       fprintf(stderr, "Error deleting file %s: %s\n", namebuf, strerror(errno));
     }
     fprintf(stderr, "Test %s(\x1b[36m'%s'\x1b[0m) succeeded!!\n", tc.name, input_name);
+
+    if(tc.ignore_some_files) {
+      if(endsWith(input_file, "redef.c")) return false;
+      if(endsWith(input_file, "cpp_output.c")) return false;
+      if(endsWith(input_file, "cpp_output_2.c")) return false;
+    }
 
     if(tc.loop_check && !loop) {
       return run_testcase(correct_output, tc, false, true);

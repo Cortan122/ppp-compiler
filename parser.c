@@ -202,6 +202,7 @@ Declaration parser_force_declaration(Parser* p) {
     res.name = tok.data;
     parser_transfer_token(p, &res.tokens);
   } else {
+    // TODO: headers have optional names
     token_print_error(&tok, LOGLEVEL_ERROR, "expected parameter name, but found '%s'", tok.data);
     exit(1);
   }
@@ -257,6 +258,7 @@ bool parser_parse_function(Parser* p, Function* func) {
   tok = parser_peek_token(p);
   if(token_eq_char(&tok, '<') && p->allow_fancy_structs) {
     parser_transfer_token(p, &func->decl.tokens);
+    func->tokens_prams_pos = arrlen(func->decl.tokens);
     while(1) {
       arrpush(func->fancy_params, parser_force_declaration(p));
 
@@ -347,6 +349,50 @@ void parser_emit_declarations(Parser* p, Emitter* emitter) {
 
   token_emit(&(Token){.kind = TOKEN_EOF}, emitter);
   emitter->delete_repeted_empty_lines = restore_drel;
+}
+
+void parser_emit_functions(Parser* p, Emitter* emitter) {
+  bool restore_drel = emitter->delete_repeted_empty_lines;
+  emitter->delete_repeted_empty_lines = true;
+
+  for(int i = 0; i < arrlen(p->funcs); i++) {
+    declaration_emit_function(&p->funcs[i], emitter);
+    if(!p->funcs[i].is_header) {
+      token_emit_cstr(";", emitter);
+    }
+  }
+
+  token_emit(&(Token){.kind = TOKEN_EOF}, emitter);
+  emitter->delete_repeted_empty_lines = restore_drel;
+}
+
+void parser_emit_typedefs(Parser* p, Emitter* emitter, bool print_unknowns) {
+  token_emit(&(Token){.kind = TOKEN_EOF}, emitter);
+
+  for(int i = 0; i < shlen(p->structs); i++) {
+    fprintf(emitter->file, "struct %s;\n", p->structs[i].key);
+  }
+
+  for(int i = 0; i < shlen(p->typedefs); i++) {
+    Struct* struc = p->typedefs[i].value;
+    if(struc == NULL) {
+      if(print_unknowns) {
+        fprintf(emitter->file, "typedef ... %s;\n", p->typedefs[i].key);
+      }
+    } else if(struc->is_primitive) {
+      emitter->cursor.filename = NULL;
+      token_emit_cstr("typedef", emitter);
+      emitter->ignore_next_indent = true;
+      for(int j = 0; j < arrlen(struc->tokens); j++) {
+        token_emit(&struc->tokens[j], emitter);
+      }
+      token_emit_cstr(" ", emitter);
+      token_emit_cstr(p->typedefs[i].key, emitter);
+      token_emit_cstr(";\n", emitter);
+    } else if(print_unknowns || struc->name != NULL) {
+      fprintf(emitter->file, "typedef struct %s %s;\n", struc->name, p->typedefs[i].key);
+    }
+  }
 }
 
 void parser_delete(Parser* p) {

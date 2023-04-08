@@ -30,5 +30,7 @@ void parser_transfer_token(Parser* p, Token** dest);
 
 void parser_read_file(Parser* p, const char* filename);
 void parser_emit_declarations(Parser* p, Emitter* emitter);
+void parser_emit_functions(Parser* p, Emitter* emitter);
+void parser_emit_typedefs(Parser* p, Emitter* emitter, bool print_unknowns);
 
 void parser_delete(Parser* p);

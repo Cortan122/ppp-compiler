@@ -1,0 +1,44 @@
+struct Declaration;
+struct Struct;
+struct Lexer;
+struct NamedType;
+struct Parser;
+struct Loc;
+struct Token;
+typedef struct Struct Struct;
+typedef struct Declaration Declaration;
+typedef struct Lexer Lexer;
+typedef struct NamedType NamedType;
+typedef struct Parser Parser;
+typedef struct Loc Loc;
+typedef struct Token Token;
+void declaration_print_struct(Struct* s, int rec_lvl);
+void declaration_print_debug(Declaration* d, int rec_lvl);
+void declaration_delete_struct(Struct* s);
+void declaration_delete(Declaration* d);
+
+void lexer_parse_escape_sequence(Lexer* l, Token* res);
+void lexer_lex_string(Lexer* l, Token* res, char end);
+void lexer_lex_line(Lexer* l, Token* res);
+void lexer_lex_comment(Lexer* l, Token* res);
+
+void lexer_open_file(Lexer* l, const char* filename);
+void lexer_open_memory(Lexer* l, const char* text, size_t length);
+void lexer_delete(Lexer* l);
+
+char lexer_next_char(Lexer* l);
+char lexer_peek_char(Lexer* l);
+char lexer_drop_char(Lexer* l);
+
+bool parser_parse_struct(Parser* p, Struct* res);
+Declaration parser_parse_declaration(Parser* p);
+bool parser_parse_line(Parser* p);
+
+void parser_transfer_token(Parser* p, Token** dest);
+
+void parser_delete(Parser* p);
+
+void token_print_debug(Token* tok);
+void token_print_error(Token* tok, LogLevel level, const char* msg, const char* printf_arg);
+bool token_eq_keyword(Token* tok, const char* keyword);
+bool token_eq_char(Token* tok, char val);

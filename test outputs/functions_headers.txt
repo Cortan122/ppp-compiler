@@ -191,6 +191,21 @@ Function(is_header = 1, prams = 0)
     CHAR[headers.c:71:31] data = ;
 
 Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = parser_parse_struct)
+    WORD[headers.c:94:1] data = bool
+    WORD[headers.c:94:6] data = parser_parse_struct
+    CHAR[headers.c:94:25] data = (
+    WORD[headers.c:94:26] data = Parser
+    CHAR[headers.c:94:32] data = *
+    WORD[headers.c:94:34] data = p
+    CHAR[headers.c:94:35] data = ,
+    WORD[headers.c:94:37] data = Struct
+    CHAR[headers.c:94:43] data = *
+    WORD[headers.c:94:45] data = res
+    CHAR[headers.c:94:48] data = )
+    CHAR[headers.c:94:49] data = ;
+
+Function(is_header = 1, prams = 0)
   Declaration(tokens = 8, name = parser_parse_declaration)
     WORD[headers.c:95:1] data = Declaration
     WORD[headers.c:95:13] data = parser_parse_declaration
@@ -200,6 +215,17 @@ Function(is_header = 1, prams = 0)
     WORD[headers.c:95:46] data = p
     CHAR[headers.c:95:47] data = )
     CHAR[headers.c:95:48] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = parser_parse_line)
+    WORD[headers.c:96:1] data = bool
+    WORD[headers.c:96:6] data = parser_parse_line
+    CHAR[headers.c:96:23] data = (
+    WORD[headers.c:96:24] data = Parser
+    CHAR[headers.c:96:30] data = *
+    WORD[headers.c:96:32] data = p
+    CHAR[headers.c:96:33] data = )
+    CHAR[headers.c:96:34] data = ;
 
 Function(is_header = 1, prams = 0)
   Declaration(tokens = 13, name = parser_transfer_token)
@@ -262,4 +288,34 @@ Function(is_header = 1, prams = 0)
     WORD[headers.c:142:81] data = printf_arg
     CHAR[headers.c:142:91] data = )
     CHAR[headers.c:142:92] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = token_eq_keyword)
+    WORD[headers.c:143:1] data = bool
+    WORD[headers.c:143:6] data = token_eq_keyword
+    CHAR[headers.c:143:22] data = (
+    WORD[headers.c:143:23] data = Token
+    CHAR[headers.c:143:28] data = *
+    WORD[headers.c:143:30] data = tok
+    CHAR[headers.c:143:33] data = ,
+    WORD[headers.c:143:35] data = const
+    WORD[headers.c:143:41] data = char
+    CHAR[headers.c:143:45] data = *
+    WORD[headers.c:143:47] data = keyword
+    CHAR[headers.c:143:54] data = )
+    CHAR[headers.c:143:55] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 11, name = token_eq_char)
+    WORD[headers.c:144:1] data = bool
+    WORD[headers.c:144:6] data = token_eq_char
+    CHAR[headers.c:144:19] data = (
+    WORD[headers.c:144:20] data = Token
+    CHAR[headers.c:144:25] data = *
+    WORD[headers.c:144:27] data = tok
+    CHAR[headers.c:144:30] data = ,
+    WORD[headers.c:144:32] data = char
+    WORD[headers.c:144:37] data = val
+    CHAR[headers.c:144:40] data = )
+    CHAR[headers.c:144:41] data = ;
 

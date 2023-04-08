@@ -53,6 +53,8 @@ static bool is_typename(Parser* p, const char* word, bool* has_used_typedef) {
   if(strcmp(word, "signed") == 0) return true;
   if(strcmp(word, "unsigned") == 0) return true;
 
+  if(strcmp(word, "_Bool") == 0) return true;
+  if(strcmp(word, "bool") == 0) return true;
   if(strcmp(word, "extern") == 0) return true;
   if(strcmp(word, "const") == 0) return true;
 

@@ -3171,6 +3171,36 @@ Function(is_header = 1, prams = 0)
     CHAR[token.h:41:92] data = ;
 
 Function(is_header = 1, prams = 0)
+  Declaration(tokens = 13, name = token_eq_keyword)
+    WORD[token.h:42:1] data = _Bool
+    WORD[token.h:42:5] data = token_eq_keyword
+    CHAR[token.h:42:21] data = (
+    WORD[token.h:42:22] data = Token
+    CHAR[token.h:42:27] data = *
+    WORD[token.h:42:29] data = tok
+    CHAR[token.h:42:32] data = ,
+    WORD[token.h:42:34] data = const
+    WORD[token.h:42:40] data = char
+    CHAR[token.h:42:44] data = *
+    WORD[token.h:42:46] data = keyword
+    CHAR[token.h:42:53] data = )
+    CHAR[token.h:42:54] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 11, name = token_eq_char)
+    WORD[token.h:43:1] data = _Bool
+    WORD[token.h:43:5] data = token_eq_char
+    CHAR[token.h:43:18] data = (
+    WORD[token.h:43:19] data = Token
+    CHAR[token.h:43:24] data = *
+    WORD[token.h:43:26] data = tok
+    CHAR[token.h:43:29] data = ,
+    WORD[token.h:43:31] data = char
+    WORD[token.h:43:36] data = val
+    CHAR[token.h:43:39] data = )
+    CHAR[token.h:43:40] data = ;
+
+Function(is_header = 1, prams = 0)
   Declaration(tokens = 11, name = declaration_print_debug)
     WORD[declaration.h:18:1] data = void
     WORD[declaration.h:18:6] data = declaration_print_debug
@@ -4570,6 +4600,21 @@ Function(is_header = 1, prams = 0)
     CHAR[stb_ds.h:502:59] data = ;
 
 Function(is_header = 1, prams = 0)
+  Declaration(tokens = 12, name = parser_parse_struct)
+    WORD[parser.h:16:1] data = _Bool
+    WORD[parser.h:16:5] data = parser_parse_struct
+    CHAR[parser.h:16:24] data = (
+    WORD[parser.h:16:25] data = Parser
+    CHAR[parser.h:16:31] data = *
+    WORD[parser.h:16:33] data = p
+    CHAR[parser.h:16:34] data = ,
+    WORD[parser.h:16:36] data = Struct
+    CHAR[parser.h:16:42] data = *
+    WORD[parser.h:16:44] data = res
+    CHAR[parser.h:16:47] data = )
+    CHAR[parser.h:16:48] data = ;
+
+Function(is_header = 1, prams = 0)
   Declaration(tokens = 8, name = parser_parse_declaration)
     WORD[parser.h:17:1] data = Declaration
     WORD[parser.h:17:13] data = parser_parse_declaration
@@ -4579,6 +4624,17 @@ Function(is_header = 1, prams = 0)
     WORD[parser.h:17:46] data = p
     CHAR[parser.h:17:47] data = )
     CHAR[parser.h:17:48] data = ;
+
+Function(is_header = 1, prams = 0)
+  Declaration(tokens = 8, name = parser_parse_line)
+    WORD[parser.h:18:1] data = _Bool
+    WORD[parser.h:18:5] data = parser_parse_line
+    CHAR[parser.h:18:22] data = (
+    WORD[parser.h:18:23] data = Parser
+    CHAR[parser.h:18:29] data = *
+    WORD[parser.h:18:31] data = p
+    CHAR[parser.h:18:32] data = )
+    CHAR[parser.h:18:33] data = ;
 
 Function(is_header = 1, prams = 0)
   Declaration(tokens = 8, name = parser_peek_token)

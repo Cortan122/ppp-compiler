@@ -1,0 +1,27 @@
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = Circle) 
+    WORD[example_multimethod.c:1:1] data = struct
+    WORD[example_multimethod.c:1:8] data = Circle
+    CHAR[example_multimethod.c:1:15] data = {
+    Declaration(tokens = 3, name = r)
+      WORD[example_multimethod.c:2:3] data = int
+      WORD[example_multimethod.c:2:7] data = r
+      CHAR[example_multimethod.c:2:8] data = ;
+    CHAR[example_multimethod.c:3:1] data = }
+  CHAR[example_multimethod.c:3:2] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 6, name = Figure) 
+    WORD[example_multimethod.c:5:1] data = struct
+    WORD[example_multimethod.c:5:8] data = Figure
+    CHAR[example_multimethod.c:5:15] data = {
+    CHAR[example_multimethod.c:5:16] data = }
+    CHAR[example_multimethod.c:5:18] data = <
+    Declaration(tokens = 1, name = (null))
+      Struct(tokens = 2, name = Circle) 
+        WORD[example_multimethod.c:5:19] data = struct
+        WORD[example_multimethod.c:5:26] data = Circle
+      CHAR[example_multimethod.c:5:32] data = ;
+    CHAR[example_multimethod.c:5:33] data = >
+  CHAR[example_multimethod.c:5:34] data = ;
+

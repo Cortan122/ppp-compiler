@@ -1,0 +1,32 @@
+Function(is_header = 0, prams = 2)
+  Declaration(tokens = 7, name = Intersect)
+    WORD[example_multimethod.c:8:1] data = int
+    WORD[example_multimethod.c:8:5] data = Intersect
+    CHAR[example_multimethod.c:8:14] data = <
+    CHAR[example_multimethod.c:8:47] data = ,
+    CHAR[example_multimethod.c:8:81] data = >
+    CHAR[example_multimethod.c:8:82] data = (
+    CHAR[example_multimethod.c:8:83] data = )
+  Declaration(tokens = 1, name = c1)
+    Struct(tokens = 5, name = Figure) 
+      WORD[example_multimethod.c:8:15] data = struct
+      WORD[example_multimethod.c:8:22] data = Figure
+      CHAR[example_multimethod.c:8:28] data = <
+      Struct(tokens = 2, name = Circle) 
+        WORD[example_multimethod.c:8:29] data = struct
+        WORD[example_multimethod.c:8:36] data = Circle
+      CHAR[example_multimethod.c:8:42] data = >
+      CHAR[example_multimethod.c:8:44] data = *
+    WORD[example_multimethod.c:8:45] data = c1
+  Declaration(tokens = 1, name = c2)
+    Struct(tokens = 5, name = Figure) 
+      WORD[example_multimethod.c:8:49] data = struct
+      WORD[example_multimethod.c:8:56] data = Figure
+      CHAR[example_multimethod.c:8:62] data = <
+      Struct(tokens = 2, name = Circle) 
+        WORD[example_multimethod.c:8:63] data = struct
+        WORD[example_multimethod.c:8:70] data = Circle
+      CHAR[example_multimethod.c:8:76] data = >
+      CHAR[example_multimethod.c:8:78] data = *
+    WORD[example_multimethod.c:8:79] data = c2
+

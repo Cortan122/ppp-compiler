@@ -1,0 +1,7 @@
+struct Triangle;
+struct Rectangle;
+struct Circle;
+struct Figure;
+typedef struct Figure Triangle;
+typedef struct Rectangle Rectangle;
+typedef struct Circle Circle;

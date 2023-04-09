@@ -1,0 +1,76 @@
+Declaration(tokens = 2, name = Triangle)
+  Struct(tokens = 4, name = Triangle) 
+    WORD[example_typedefs.c:1:9] data = struct
+    WORD[example_typedefs.c:1:16] data = Triangle
+    CHAR[example_typedefs.c:1:25] data = {
+    Declaration(tokens = 3, name = a)
+      WORD[example_typedefs.c:2:3] data = int
+      WORD[example_typedefs.c:2:7] data = a
+      CHAR[example_typedefs.c:2:8] data = ;
+    Declaration(tokens = 3, name = b)
+      WORD[example_typedefs.c:3:3] data = int
+      WORD[example_typedefs.c:3:7] data = b
+      CHAR[example_typedefs.c:3:8] data = ;
+    Declaration(tokens = 3, name = c)
+      WORD[example_typedefs.c:4:3] data = int
+      WORD[example_typedefs.c:4:7] data = c
+      CHAR[example_typedefs.c:4:8] data = ;
+    CHAR[example_typedefs.c:5:1] data = }
+  WORD[example_typedefs.c:5:3] data = Triangle
+  CHAR[example_typedefs.c:5:11] data = ;
+
+Declaration(tokens = 2, name = Rectangle)
+  Struct(tokens = 4, name = Rectangle) 
+    WORD[example_typedefs.c:7:9] data = struct
+    WORD[example_typedefs.c:7:16] data = Rectangle
+    CHAR[example_typedefs.c:7:26] data = {
+    Declaration(tokens = 3, name = x)
+      WORD[example_typedefs.c:8:3] data = int
+      WORD[example_typedefs.c:8:7] data = x
+      CHAR[example_typedefs.c:8:8] data = ;
+    Declaration(tokens = 3, name = y)
+      WORD[example_typedefs.c:9:3] data = int
+      WORD[example_typedefs.c:9:7] data = y
+      CHAR[example_typedefs.c:9:8] data = ;
+    CHAR[example_typedefs.c:10:1] data = }
+  WORD[example_typedefs.c:10:3] data = Rectangle
+  CHAR[example_typedefs.c:10:12] data = ;
+
+Declaration(tokens = 2, name = Circle)
+  Struct(tokens = 4, name = Circle) 
+    WORD[example_typedefs.c:12:9] data = struct
+    WORD[example_typedefs.c:12:16] data = Circle
+    CHAR[example_typedefs.c:12:23] data = {
+    Declaration(tokens = 3, name = r)
+      WORD[example_typedefs.c:13:3] data = int
+      WORD[example_typedefs.c:13:7] data = r
+      CHAR[example_typedefs.c:13:8] data = ;
+    CHAR[example_typedefs.c:14:1] data = }
+  WORD[example_typedefs.c:14:3] data = Circle
+  CHAR[example_typedefs.c:14:9] data = ;
+
+Declaration(tokens = 2, name = Figure)
+  Struct(tokens = 6, name = Figure) 
+    WORD[example_typedefs.c:16:9] data = struct
+    WORD[example_typedefs.c:16:16] data = Figure
+    CHAR[example_typedefs.c:16:23] data = {
+    Declaration(tokens = 4, name = color)
+      WORD[example_typedefs.c:17:3] data = char
+      CHAR[example_typedefs.c:17:7] data = *
+      WORD[example_typedefs.c:17:9] data = color
+      CHAR[example_typedefs.c:17:14] data = ;
+    CHAR[example_typedefs.c:18:1] data = }
+    CHAR[example_typedefs.c:18:3] data = <
+    Declaration(tokens = 2, name = (null))
+      WORD[example_typedefs.c:19:3] data = Triangle
+      CHAR[example_typedefs.c:19:11] data = ;
+    Declaration(tokens = 2, name = (null))
+      WORD[example_typedefs.c:20:3] data = Rectangle
+      CHAR[example_typedefs.c:20:12] data = ;
+    Declaration(tokens = 2, name = (null))
+      WORD[example_typedefs.c:21:3] data = Circle
+      CHAR[example_typedefs.c:21:9] data = ;
+    CHAR[example_typedefs.c:22:1] data = >
+  WORD[example_typedefs.c:22:3] data = Figure
+  CHAR[example_typedefs.c:22:9] data = ;
+

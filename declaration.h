@@ -13,6 +13,7 @@ typedef struct Struct {
   int tokens_subtypes_pos;
   bool is_primitive;
 
+  struct Struct* aliased_to;
   struct Struct* parameter;
   char* converted_name;
   int tokens_modifier_pos;

@@ -1,0 +1,13 @@
+struct Triangle;
+struct Rectangle;
+struct Circle;
+struct Figure;
+typedef struct Triangle Triangle;
+typedef struct Rectangle Rectangle;
+typedef struct Circle Circle;
+typedef struct Figure Figure;
+bool Intersect<Figure *first, Figure *second>();
+
+bool Intersect<Figure<Rectangle> *r1, Figure<Rectangle> *r2>();
+
+bool Intersect<Figure<Circle> *c1, Figure<Circle> *c2>();

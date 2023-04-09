@@ -75,9 +75,8 @@ static bool is_typename(Parser* p, const char* word, bool* has_used_typedef) {
   return true;
 }
 
-static int consume_type_modifiers(Parser* p, Token** tok_dest, bool allow_words) {
+static int consume_type_modifiers(Parser* p, Token** tok_dest, bool allow_words, bool has_used_typedef) {
   int res = 0;
-  bool has_used_typedef = false;
   while(1) {
     Token tok = parser_peek_token(p);
     if(token_eq_char(&tok, '*') || token_eq_keyword(&tok, "const") || token_eq_keyword(&tok, "extern")) {
@@ -97,17 +96,38 @@ static int consume_type_modifiers(Parser* p, Token** tok_dest, bool allow_words)
   return res;
 }
 
+static char* get_struct_name(Struct* s, bool use_converted_name) {
+  if(s == NULL) {
+    return "null";
+  } else if(s->converted_name && use_converted_name) {
+    return s->converted_name;
+  } else if(s->name) {
+    return s->name;
+  } else if(s->aliased_to) {
+    return get_struct_name(s->aliased_to, use_converted_name);
+  } else {
+    token_print_error(&s->tokens[0], LOGLEVEL_INFO, "mangaling primitive names is not implemented yet%s", "");
+    return "primitive";
+  }
+}
+
 static void generate_converted_function_name(Function* func) {
   if(func->converted_name) return;
   if(func->fancy_params == NULL) return;
+
+  int num_parametrised_types = 0;
+  for(int i = 0; i < arrlen(func->fancy_params); i++) {
+    num_parametrised_types += func->fancy_params[i].type->parameter != NULL;
+  }
+  if(num_parametrised_types == 0) return;
 
   strappend(func->converted_name, MANGLED_NAME_PREFIX);
   strappend(func->converted_name, func->decl.name);
   for(int i = 0; i < arrlen(func->fancy_params); i++) {
     strappend(func->converted_name, "_");
-    strappend(func->converted_name, func->fancy_params[i].type->name);
+    strappend(func->converted_name, get_struct_name(func->fancy_params[i].type, false));
     strappend(func->converted_name, "_");
-    strappend(func->converted_name, func->fancy_params[i].type->parameter->name);
+    strappend(func->converted_name, get_struct_name(func->fancy_params[i].type->parameter, true));
   }
   arrpush(func->converted_name, '\0');
 }
@@ -117,16 +137,10 @@ static void generate_converted_struct_name(Struct* s) {
   if(s->parameter == NULL) return;
 
   strappend(s->converted_name, MANGLED_NAME_PREFIX);
-  strappend(s->converted_name, s->name);
+  strappend(s->converted_name, get_struct_name(s, false));
 
   strappend(s->converted_name, "_");
-  if(s->parameter->converted_name) {
-    strappend(s->converted_name, s->parameter->converted_name);
-  } else if(s->parameter->name == NULL) {
-    token_print_error(&s->parameter->tokens[0], LOGLEVEL_INFO, "mangaling primitive names is not implemented yet%s", "");
-  } else {
-    strappend(s->converted_name, s->parameter->name);
-  }
+  strappend(s->converted_name, get_struct_name(s->parameter, true));
   arrpush(s->converted_name, '\0');
 }
 
@@ -158,6 +172,42 @@ Token parser_peek_token(Parser* p) {
   return res;
 }
 
+void parser_parse_struct_parameter(Parser* p, Struct* res) {
+  Token tok = parser_peek_token(p);
+  res->parameter = calloc(1, sizeof(Struct));
+
+  if(!parser_parse_type(p, res->parameter)) {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected type name, but found '%s'", tok.data);
+    exit(1);
+  }
+
+  tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, '>')) {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected '>', but found '%s'", tok.data);
+    exit(1);
+  }
+
+  parser_transfer_token(p, &res->tokens);
+  generate_converted_struct_name(res);
+}
+
+bool parser_parse_struct_subtypes(Parser* p, Struct* res, bool force_parameter) {
+  if(!p->allow_fancy_structs) return false;
+
+  Token tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, '<')) return false;
+  parser_transfer_token(p, &res->tokens);
+  res->tokens_subtypes_pos = arrlen(res->tokens);
+
+  if(res->tokens_members_pos && !force_parameter) {
+    parse_declaration_list_until(p, &res->tokens, &res->subtypes, '>');
+  } else {
+    parser_parse_struct_parameter(p, res);
+  }
+
+  return true;
+}
+
 bool parser_parse_struct(Parser* p, Struct* res) {
   Token tok = parser_peek_token(p);
   if(!token_eq_keyword(&tok, "struct")) return false;
@@ -184,30 +234,7 @@ bool parser_parse_struct(Parser* p, Struct* res) {
   parse_declaration_list_until(p, &res->tokens, &res->members, '}');
 
 no_body:;
-  if(p->allow_fancy_structs) {
-    tok = parser_peek_token(p);
-    if(!token_eq_char(&tok, '<')) return true;
-    parser_transfer_token(p, &res->tokens);
-    res->tokens_subtypes_pos = arrlen(res->tokens);
-
-    if(res->tokens_members_pos) {
-      parse_declaration_list_until(p, &res->tokens, &res->subtypes, '>');
-    } else {
-      res->parameter = calloc(1, sizeof(Struct));
-      if(!parser_parse_type(p, res->parameter)) {
-        token_print_error(&tok, LOGLEVEL_ERROR, "expected type name, but found '%s'", tok.data);
-        exit(1);
-      }
-
-      tok = parser_peek_token(p);
-      if(!token_eq_char(&tok, '>')) {
-        token_print_error(&tok, LOGLEVEL_ERROR, "expected '>', but found '%s'", tok.data);
-        exit(1);
-      }
-      parser_transfer_token(p, &res->tokens);
-      generate_converted_struct_name(res);
-    }
-  }
+  parser_parse_struct_subtypes(p, res, false);
 
   return true;
 }
@@ -215,7 +242,7 @@ no_body:;
 bool parser_parse_type(Parser* p, Struct* res) {
   if(parser_parse_struct(p, res)) {
     res->tokens_modifier_pos = arrlen(res->tokens);
-    consume_type_modifiers(p, &res->tokens, false);
+    consume_type_modifiers(p, &res->tokens, false, false);
     return true;
   }
 
@@ -224,8 +251,15 @@ bool parser_parse_type(Parser* p, Struct* res) {
     return false;
   }
 
-  res->tokens_modifier_pos = arrlen(res->tokens);
-  consume_type_modifiers(p, &res->tokens, true);
+  Struct* truetype = shget(p->typedefs, tok.data);
+  if(truetype != NULL) {
+    res->aliased_to = truetype;
+    parser_transfer_token(p, &res->tokens);
+    parser_parse_struct_subtypes(p, res, true);
+    res->tokens_modifier_pos = arrlen(res->tokens);
+  }
+
+  consume_type_modifiers(p, &res->tokens, true, truetype != NULL);
   res->is_primitive = true;
   return true;
 }

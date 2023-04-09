@@ -1,0 +1,13 @@
+struct Triangle;
+struct Rectangle;
+struct Circle;
+struct Figure;
+typedef struct Triangle Triangle;
+typedef struct Rectangle Rectangle;
+typedef struct Circle Circle;
+typedef struct Figure Figure;
+bool Intersect(Figure *first, Figure *second  );
+
+bool __ppp__Intersect_Figure_Rectangle_Figure_Rectangle(struct __ppp__Figure_Rectangle*r1, struct __ppp__Figure_Rectangle*r2  );
+
+bool __ppp__Intersect_Figure_Circle_Figure_Circle(struct __ppp__Figure_Circle*c1, struct __ppp__Figure_Circle*c2  );

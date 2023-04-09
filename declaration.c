@@ -7,6 +7,12 @@
 #define STB_DS_IMPLEMENTATION
 #include "stb_ds.h"
 
+static void token_emit_as(Token tok, char* string, Emitter* emitter) {
+  tok.data = string;
+  tok.length = strlen(string);
+  token_emit(&tok, emitter);
+}
+
 void declaration_print_struct(Struct* s, int rec_lvl) {
   if(s->is_primitive) {
     for(int i = 0; i < arrlen(s->tokens); i++) {
@@ -100,9 +106,7 @@ void declaration_emit_fancy_struct(Struct* s, Emitter* emitter) {
       }
       token_emit_cstr(" } tail;", emitter);
 
-      Token end_bracket = s->tokens[s->tokens_subtypes_pos];
-      end_bracket.data = "}";
-      token_emit(&end_bracket, emitter);
+      token_emit_as(s->tokens[s->tokens_subtypes_pos], "}", emitter);
       i = s->tokens_subtypes_pos;
     }
   }
@@ -114,7 +118,7 @@ void declaration_emit_struct(Struct* s, Emitter* emitter) {
       declaration_emit_fancy_struct(s, emitter);
       return;
     } else if(s->parameter) {
-      token_emit(&s->tokens[0], emitter);
+      token_emit_as(s->tokens[0], "struct", emitter);
       token_emit_cstr(" ", emitter);
       token_emit_cstr(s->converted_name, emitter);
       for(int i = s->tokens_modifier_pos; i < arrlen(s->tokens); i++) {
@@ -146,7 +150,11 @@ void declaration_emit_struct(Struct* s, Emitter* emitter) {
 void declaration_emit_fancy_function(Function* func, Emitter* emitter) {
   declaration_emit_struct(func->decl.type, emitter);
   token_emit_cstr(" ", emitter);
-  token_emit_cstr(func->converted_name, emitter);
+  if(func->converted_name) {
+    token_emit_cstr(func->converted_name, emitter);
+  } else {
+    token_emit_cstr(func->decl.name, emitter);
+  }
 
   emitter->ignore_next_indent = true;
   token_emit(&func->decl.tokens[func->tokens_args_pos], emitter);

@@ -1,0 +1,22 @@
+typedef struct Triangle {
+  int a;
+  int b;
+  int c;
+} Triangle;
+
+typedef struct Rectangle {
+  int x;
+  int y;
+} Rectangle;
+
+typedef struct Circle {
+  int r;
+} Circle;
+
+typedef struct Figure {
+  char* color;
+} <
+  Triangle;
+  Rectangle;
+  Circle;
+> Figure;

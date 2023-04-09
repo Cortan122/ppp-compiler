@@ -18,8 +18,11 @@ typedef struct Parser {
   bool allow_fancy_structs;
 } Parser;
 
+void parser_parse_struct_parameter(Parser* p, Struct* res);
+bool parser_parse_struct_subtypes(Parser* p, Struct* res, bool force_parameter);
 bool parser_parse_struct(Parser* p, Struct* res);
 bool parser_parse_type(Parser* p, Struct* res);
+
 Declaration parser_force_declaration(Parser* p);
 Declaration parser_parse_declaration(Parser* p);
 bool parser_parse_function(Parser* p, Function* func);

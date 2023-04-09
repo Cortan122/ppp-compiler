@@ -1,0 +1,62 @@
+Function(is_header = 0, prams = 2)
+  Declaration(tokens = 7, name = Intersect)
+    WORD[example_typedefs.c:24:1] data = bool
+    WORD[example_typedefs.c:24:6] data = Intersect
+    CHAR[example_typedefs.c:24:15] data = <
+    CHAR[example_typedefs.c:24:29] data = ,
+    CHAR[example_typedefs.c:24:45] data = >
+    CHAR[example_typedefs.c:24:46] data = (
+    CHAR[example_typedefs.c:24:47] data = )
+  Declaration(tokens = 3, name = first)
+    WORD[example_typedefs.c:24:16] data = Figure
+    CHAR[example_typedefs.c:24:23] data = *
+    WORD[example_typedefs.c:24:24] data = first
+  Declaration(tokens = 3, name = second)
+    WORD[example_typedefs.c:24:31] data = Figure
+    CHAR[example_typedefs.c:24:38] data = *
+    WORD[example_typedefs.c:24:39] data = second
+
+Function(is_header = 0, prams = 2)
+  Declaration(tokens = 7, name = Intersect)
+    WORD[example_typedefs.c:27:1] data = bool
+    WORD[example_typedefs.c:27:6] data = Intersect
+    CHAR[example_typedefs.c:27:15] data = <
+    CHAR[example_typedefs.c:27:37] data = ,
+    CHAR[example_typedefs.c:27:60] data = >
+    CHAR[example_typedefs.c:27:61] data = (
+    CHAR[example_typedefs.c:27:62] data = )
+  Declaration(tokens = 5, name = r1)
+    WORD[example_typedefs.c:27:16] data = Figure
+    CHAR[example_typedefs.c:27:22] data = <
+    CHAR[example_typedefs.c:27:32] data = >
+    CHAR[example_typedefs.c:27:34] data = *
+    WORD[example_typedefs.c:27:35] data = r1
+  Declaration(tokens = 5, name = r2)
+    WORD[example_typedefs.c:27:39] data = Figure
+    CHAR[example_typedefs.c:27:45] data = <
+    CHAR[example_typedefs.c:27:55] data = >
+    CHAR[example_typedefs.c:27:57] data = *
+    WORD[example_typedefs.c:27:58] data = r2
+
+Function(is_header = 0, prams = 2)
+  Declaration(tokens = 7, name = Intersect)
+    WORD[example_typedefs.c:33:1] data = bool
+    WORD[example_typedefs.c:33:6] data = Intersect
+    CHAR[example_typedefs.c:33:15] data = <
+    CHAR[example_typedefs.c:33:34] data = ,
+    CHAR[example_typedefs.c:33:54] data = >
+    CHAR[example_typedefs.c:33:55] data = (
+    CHAR[example_typedefs.c:33:56] data = )
+  Declaration(tokens = 5, name = c1)
+    WORD[example_typedefs.c:33:16] data = Figure
+    CHAR[example_typedefs.c:33:22] data = <
+    CHAR[example_typedefs.c:33:29] data = >
+    CHAR[example_typedefs.c:33:31] data = *
+    WORD[example_typedefs.c:33:32] data = c1
+  Declaration(tokens = 5, name = c2)
+    WORD[example_typedefs.c:33:36] data = Figure
+    CHAR[example_typedefs.c:33:42] data = <
+    CHAR[example_typedefs.c:33:49] data = >
+    CHAR[example_typedefs.c:33:51] data = *
+    WORD[example_typedefs.c:33:52] data = c2
+

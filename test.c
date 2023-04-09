@@ -157,6 +157,16 @@ void testfunc_emit_fancy_functions(const char* input_file) {
   parser_delete(&parser);
 }
 
+void testfunc_convert_functions(const char* input_file) {
+  Emitter em = {.file = stdout, .convert_structs = true};
+  Parser parser = {.allow_fancy_structs = true};
+  parser_read_file(&parser, input_file);
+  parser_emit_typedefs(&parser, &em, false);
+  parser_emit_functions(&parser, &em);
+
+  parser_delete(&parser);
+}
+
 TestCase test_cases[] = {
     TESTCASE(debug_tokens),
     TESTCASE(declarations),
@@ -170,6 +180,7 @@ TestCase test_cases[] = {
     TESTCASE(fancy_functions),
     TESTCASE_LL(emit_functions),
     TESTCASE_LL(emit_fancy_functions),
+    TESTCASE_LL(convert_functions),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
 

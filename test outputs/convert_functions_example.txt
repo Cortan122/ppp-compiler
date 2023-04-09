@@ -1,0 +1,9 @@
+struct Triangle;
+struct Rectangle;
+struct Circle;
+struct Figure;
+void __ppp__PrintFigure_Figure_Rectangle(struct __ppp__Figure_Rectangle  *r  );
+
+void __ppp__PrintFigure_Figure_Triangle(struct __ppp__Figure_Triangle  *t  );
+
+void __ppp__PrintFigure_Figure_Circle(struct __ppp__Figure_Circle  *c  );

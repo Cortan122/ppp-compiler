@@ -1,5 +1,13 @@
 #include "parser.h"
 
+#define strappend(arr, str)                     \
+  do {                                          \
+    size_t len = strlen((str));                 \
+    memcpy(arraddnptr((arr), len), (str), len); \
+  } while(0)
+
+#define MANGLED_NAME_PREFIX "__ppp__"
+
 static void skip_bracket_block(Parser* p, Token** res, char end, char end2) {
   int rec_level = 0;
   bool keep_looping = true;
@@ -89,6 +97,39 @@ static int consume_type_modifiers(Parser* p, Token** tok_dest, bool allow_words)
   return res;
 }
 
+static void generate_converted_function_name(Function* func) {
+  if(func->converted_name) return;
+  if(func->fancy_params == NULL) return;
+
+  strappend(func->converted_name, MANGLED_NAME_PREFIX);
+  strappend(func->converted_name, func->decl.name);
+  for(int i = 0; i < arrlen(func->fancy_params); i++) {
+    strappend(func->converted_name, "_");
+    strappend(func->converted_name, func->fancy_params[i].type->name);
+    strappend(func->converted_name, "_");
+    strappend(func->converted_name, func->fancy_params[i].type->parameter->name);
+  }
+  arrpush(func->converted_name, '\0');
+}
+
+static void generate_converted_struct_name(Struct* s) {
+  if(s->converted_name) return;
+  if(s->parameter == NULL) return;
+
+  strappend(s->converted_name, MANGLED_NAME_PREFIX);
+  strappend(s->converted_name, s->name);
+
+  strappend(s->converted_name, "_");
+  if(s->parameter->converted_name) {
+    strappend(s->converted_name, s->parameter->converted_name);
+  } else if(s->parameter->name == NULL) {
+    token_print_error(&s->parameter->tokens[0], LOGLEVEL_INFO, "mangaling primitive names is not implemented yet%s", "");
+  } else {
+    strappend(s->converted_name, s->parameter->name);
+  }
+  arrpush(s->converted_name, '\0');
+}
+
 void parser_transfer_token(Parser* p, Token** dest) {
   Token tok = lexer_drop_token(&p->lexer);
   // TODO: default emitter?
@@ -164,6 +205,7 @@ no_body:;
         exit(1);
       }
       parser_transfer_token(p, &res->tokens);
+      generate_converted_struct_name(res);
     }
   }
 
@@ -172,6 +214,7 @@ no_body:;
 
 bool parser_parse_type(Parser* p, Struct* res) {
   if(parser_parse_struct(p, res)) {
+    res->tokens_modifier_pos = arrlen(res->tokens);
     consume_type_modifiers(p, &res->tokens, false);
     return true;
   }
@@ -181,6 +224,7 @@ bool parser_parse_type(Parser* p, Struct* res) {
     return false;
   }
 
+  res->tokens_modifier_pos = arrlen(res->tokens);
   consume_type_modifiers(p, &res->tokens, true);
   res->is_primitive = true;
   return true;
@@ -277,6 +321,7 @@ bool parser_parse_function(Parser* p, Function* func) {
 
   tok = parser_peek_token(p);
   if(token_eq_char(&tok, '(')) {
+    func->tokens_args_pos = arrlen(func->decl.tokens);
     skip_bracket_block(p, &func->decl.tokens, ')', '\0');
   } else {
     goto defer;
@@ -292,6 +337,7 @@ bool parser_parse_function(Parser* p, Function* func) {
   }
 
   func->decl.type = tmp;
+  generate_converted_function_name(func);
   return true;
 defer:;
   declaration_delete_function(func);

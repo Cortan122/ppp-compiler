@@ -1,0 +1,1 @@
+void normal_function_header(char nothig_to_see_here);

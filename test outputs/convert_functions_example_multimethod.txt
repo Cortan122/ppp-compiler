@@ -1,0 +1,3 @@
+struct Circle;
+struct Figure;
+int __ppp__Intersect_Figure_Circle_Figure_Circle(struct __ppp__Figure_Circle  *c1, struct __ppp__Figure_Circle  *c2  );

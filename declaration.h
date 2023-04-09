@@ -14,6 +14,8 @@ typedef struct Struct {
   bool is_primitive;
 
   struct Struct* parameter;
+  char* converted_name;
+  int tokens_modifier_pos;
 } Struct;
 
 typedef struct Declaration {
@@ -28,8 +30,10 @@ typedef struct Function {
   Declaration decl;
 
   int tokens_prams_pos;
+  int tokens_args_pos;
   Declaration* fancy_params;
   bool is_header;
+  char* converted_name;
 } Function;
 
 void declaration_print_function(Function* func, int rec_lvl);

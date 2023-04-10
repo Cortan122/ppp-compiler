@@ -45,6 +45,7 @@ typedef struct Emitter {
   TokenKind last_token_kind;
   bool delete_repeted_empty_lines;
   bool ignore_next_indent;
+  bool ignore_next_newline;
   bool convert_structs;
 } Emitter;
 

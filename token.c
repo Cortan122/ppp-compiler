@@ -98,6 +98,10 @@ static void emit_spaces(Emitter* emitter, Loc loc, bool force_space) {
 
   int line_delta = loc.line_num - emitter->cursor.line_num;
   if(emitter->delete_repeted_empty_lines && line_delta > 2) line_delta = 2;
+  if(emitter->ignore_next_newline) {
+    emitter->ignore_next_newline = false;
+    line_delta = 0;
+  }
   for(int i = 0; i < line_delta; i++) {
     fprintf(emitter->file, "\n");
     emitter->cursor.col_num = 0;

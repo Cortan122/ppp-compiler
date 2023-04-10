@@ -19,6 +19,9 @@ typedef struct Parser {
 
   Emitter* default_emitter;
   Emitter* decl_emitter;
+  Emitter* extra_emitter;
+
+  NamedType* defined_specialized_structs;
 } Parser;
 
 void parser_parse_struct_parameter(Parser* p, Struct* res);

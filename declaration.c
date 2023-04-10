@@ -13,6 +13,33 @@ static void token_emit_as(Token tok, char* string, Emitter* emitter) {
   token_emit(&tok, emitter);
 }
 
+static void emit_struct_internals(Struct* s, Emitter* emitter) {
+  if(emitter == NULL) return;
+
+  token_emit_cstr(" int tag; ", emitter);
+  token_emit_cstr("struct {", emitter);
+  for(int j = 0; j < arrlen(s->members); j++) {
+    declaration_emit(&s->members[j], emitter);
+  }
+  token_emit(&s->tokens[s->tokens_members_pos], emitter);
+  token_emit_cstr(" head; ", emitter);
+}
+
+static void emit_parameter_struct_header(Struct* s, Emitter* emitter, bool keep_modifiers) {
+  if(emitter == NULL) return;
+  if(s->parameter == NULL) return;
+
+  token_emit_as(s->tokens[0], "struct", emitter);
+  token_emit_cstr(" ", emitter);
+  token_emit_cstr(s->converted_name, emitter);
+
+  if(keep_modifiers) {
+    for(int i = s->tokens_modifier_pos; i < arrlen(s->tokens); i++) {
+      token_emit(&s->tokens[i], emitter);
+    }
+  }
+}
+
 void declaration_print_struct(Struct* s, int rec_lvl) {
   if(s->is_primitive) {
     for(int i = 0; i < arrlen(s->tokens); i++) {
@@ -85,19 +112,30 @@ void declaration_print_debug(Declaration* d, int rec_lvl) {
   }
 }
 
+void declaration_emit_parameter_struct(Struct* s, Emitter* emitter, Struct* base) {
+  if(emitter == NULL) return;
+
+  emitter->ignore_next_indent = true;
+  emit_parameter_struct_header(s, emitter, false);
+  token_emit_cstr("{", emitter);
+  emit_struct_internals(base, emitter);
+
+  emitter->ignore_next_indent = true;
+  emitter->ignore_next_newline = true;
+  declaration_emit_struct(s->parameter, emitter);
+  token_emit_cstr(" tail; };", emitter);
+
+  token_emit(&(Token){.kind = TOKEN_EOF}, emitter);
+}
+
 void declaration_emit_fancy_struct(Struct* s, Emitter* emitter) {
   if(emitter == NULL) return;
 
   for(int i = 0; i < arrlen(s->tokens); i++) {
     token_emit(&s->tokens[i], emitter);
     if(s->tokens_members_pos == i + 1) {
-      token_emit_cstr(" int tag; ", emitter);
-      token_emit_cstr("struct {", emitter);
-      for(int i = 0; i < arrlen(s->members); i++) {
-        declaration_emit(&s->members[i], emitter);
-      }
-      token_emit(&s->tokens[++i], emitter);
-      token_emit_cstr(" head; ", emitter);
+      emit_struct_internals(s, emitter);
+      i++;
 
       token_emit_cstr("union {", emitter);
       for(int i = 0; i < arrlen(s->subtypes); i++) {
@@ -122,12 +160,7 @@ void declaration_emit_struct(Struct* s, Emitter* emitter) {
       declaration_emit_fancy_struct(s, emitter);
       return;
     } else if(s->parameter) {
-      token_emit_as(s->tokens[0], "struct", emitter);
-      token_emit_cstr(" ", emitter);
-      token_emit_cstr(s->converted_name, emitter);
-      for(int i = s->tokens_modifier_pos; i < arrlen(s->tokens); i++) {
-        token_emit(&s->tokens[i], emitter);
-      }
+      emit_parameter_struct_header(s, emitter, true);
       return;
     }
   }

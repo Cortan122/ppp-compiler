@@ -41,6 +41,7 @@ void declaration_print_function(Function* func, int rec_lvl);
 void declaration_print_struct(Struct* s, int rec_lvl);
 void declaration_print_debug(Declaration* d, int rec_lvl);
 
+void declaration_emit_parameter_struct(Struct* s, Emitter* emitter, Struct* base);
 void declaration_emit_fancy_struct(Struct* s, Emitter* emitter);
 void declaration_emit_struct(Struct* s, Emitter* emitter);
 void declaration_emit_function(Function* func, Emitter* emitter);

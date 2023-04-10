@@ -191,6 +191,11 @@ void parser_parse_struct_parameter(Parser* p, Struct* res) {
 
   parser_transfer_token(p, &res->tokens);
   generate_converted_struct_name(res);
+  if(shget(p->defined_specialized_structs, res->converted_name) == NULL) {
+    Struct* base = shget(p->structs, get_struct_name(res, false));
+    declaration_emit_parameter_struct(res, p->extra_emitter, base);
+    shput(p->defined_specialized_structs, res->converted_name, res);
+  }
 }
 
 bool parser_parse_struct_subtypes(Parser* p, Struct* res, bool force_parameter) {
@@ -509,5 +514,6 @@ void parser_delete(Parser* p) {
 
   shfree(p->typedefs);
   shfree(p->structs);
+  shfree(p->defined_specialized_structs);
   lexer_delete(&p->lexer);
 }

@@ -16,6 +16,9 @@ typedef struct Parser {
   NamedType* structs;
   Function* funcs;
   bool allow_fancy_structs;
+
+  Emitter* default_emitter;
+  Emitter* decl_emitter;
 } Parser;
 
 void parser_parse_struct_parameter(Parser* p, Struct* res);

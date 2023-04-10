@@ -86,6 +86,8 @@ void declaration_print_debug(Declaration* d, int rec_lvl) {
 }
 
 void declaration_emit_fancy_struct(Struct* s, Emitter* emitter) {
+  if(emitter == NULL) return;
+
   for(int i = 0; i < arrlen(s->tokens); i++) {
     token_emit(&s->tokens[i], emitter);
     if(s->tokens_members_pos == i + 1) {
@@ -113,6 +115,8 @@ void declaration_emit_fancy_struct(Struct* s, Emitter* emitter) {
 }
 
 void declaration_emit_struct(Struct* s, Emitter* emitter) {
+  if(emitter == NULL) return;
+
   if(emitter->convert_structs) {
     if(s->subtypes) {
       declaration_emit_fancy_struct(s, emitter);
@@ -148,6 +152,8 @@ void declaration_emit_struct(Struct* s, Emitter* emitter) {
 }
 
 void declaration_emit_fancy_function(Function* func, Emitter* emitter) {
+  if(emitter == NULL) return;
+
   declaration_emit_struct(func->decl.type, emitter);
   token_emit_cstr(" ", emitter);
   if(func->converted_name) {
@@ -176,6 +182,8 @@ void declaration_emit_fancy_function(Function* func, Emitter* emitter) {
 }
 
 void declaration_emit_function(Function* func, Emitter* emitter) {
+  if(emitter == NULL) return;
+
   if(func->fancy_params == NULL) {
     declaration_emit(&func->decl, emitter);
     return;
@@ -201,6 +209,8 @@ void declaration_emit_function(Function* func, Emitter* emitter) {
 }
 
 void declaration_emit(Declaration* d, Emitter* emitter) {
+  if(emitter == NULL) return;
+
   if(d->type) {
     declaration_emit_struct(d->type, emitter);
   }

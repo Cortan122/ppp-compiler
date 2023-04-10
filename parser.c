@@ -146,10 +146,12 @@ static void generate_converted_struct_name(Struct* s) {
 
 void parser_transfer_token(Parser* p, Token** dest) {
   Token tok = lexer_drop_token(&p->lexer);
-  // TODO: default emitter?
   if(dest) {
     arrpush(*dest, tok);
   } else {
+    if(p->default_emitter) {
+      token_emit(&tok, p->default_emitter);
+    }
     free(tok.data);
   }
 }
@@ -322,7 +324,8 @@ Declaration parser_parse_declaration(Parser* p) {
 
 bool parser_parse_function(Parser* p, Function* func) {
   Struct* tmp = calloc(1, sizeof(Struct));
-  if(!parser_parse_type(p, tmp)) goto defer;
+  if(!parser_parse_type(p, tmp)) goto defer_type;
+  func->decl.type = tmp;
 
   Token tok = parser_peek_token(p);
   if(tok.kind == TOKEN_WORD) {
@@ -361,19 +364,31 @@ bool parser_parse_function(Parser* p, Function* func) {
     goto defer;
   }
 
+  generate_converted_function_name(func);
+
   tok = parser_peek_token(p);
   if(token_eq_char(&tok, '{')) {
     // TODO: we have to go deeper
+    declaration_emit_function(func, p->decl_emitter);
     skip_bracket_block(p, NULL, '}', '\0');
+    return true;
   } else if(token_eq_char(&tok, ';')) {
     parser_transfer_token(p, &func->decl.tokens);
     func->is_header = true;
+  } else if(token_eq_char(&tok, '=')) {
+    token_print_error(&tok, LOGLEVEL_INFO, "abstract '= 0' headers are not implemented yet%s", "");
+  } else {
+    // there is a lot of __attribute__ and __asm__
+    // this is fine 🔥
+    func->is_header = false;
   }
 
-  func->decl.type = tmp;
-  generate_converted_function_name(func);
+  declaration_emit_function(func, p->decl_emitter);
   return true;
 defer:;
+  declaration_emit(&func->decl, p->decl_emitter);
+defer_type:;
+  func->decl.type = NULL;
   declaration_delete_function(func);
   declaration_delete_struct(tmp);
   return false;
@@ -392,8 +407,11 @@ bool parser_parse_line(Parser* p) {
       shput(p->typedefs, d.name, d.type);
     }
     arrpush(p->top_level, d);
+    declaration_emit(&d, p->decl_emitter);
   } else if(token_eq_keyword(&tok, "struct")) {
-    arrpush(p->top_level, parser_parse_declaration(p));
+    Declaration d = parser_parse_declaration(p);
+    arrpush(p->top_level, d);
+    declaration_emit(&d, p->decl_emitter);
   } else {
     Function func = {0};
     if(!parser_parse_function(p, &func)) {
@@ -409,6 +427,9 @@ bool parser_parse_line(Parser* p) {
 void parser_read_file(Parser* p, const char* filename) {
   lexer_open_file(&p->lexer, filename);
   while(parser_parse_line(p)) {
+  }
+  if(p->default_emitter) {
+    token_emit(&(Token){.kind = TOKEN_EOF}, p->default_emitter);
   }
 }
 

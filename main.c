@@ -4,13 +4,22 @@
 #include "parser.h"
 
 int main(int argc, char** argv) {
-  (void)argc;
+  FILE* output1 = argc > 2 ? fopen(argv[2], "w") : stdout;
+  FILE* output2 = argc > 3 ? fopen(argv[3], "w") : stderr;
 
-  Emitter em = {.file = stdout, .convert_structs = true};
-  Parser parser = {.allow_fancy_structs = true};
-  parser_read_file(&parser, argv[1] ? argv[1] : "main.c");
-  parser_emit_declarations(&parser, &em);
-  parser_emit_functions(&parser, &em);
+  Emitter em1 = {.file = output1, .convert_structs = true};
+  Emitter em2 = {.file = output2};
+  Parser parser = {.allow_fancy_structs = true, .decl_emitter = &em1, .default_emitter = &em1};
+
+  char* filename = argc > 1 ? argv[1] : "main.c";
+  parser_read_file(&parser, filename);
+  if(argc > 2) {
+    parser_emit_declarations(&parser, &em2);
+    parser_emit_functions(&parser, &em2);
+  }
+
+  fclose(output1);
+  fclose(output2);
 
   parser_delete(&parser);
   return 0;

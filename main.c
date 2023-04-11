@@ -9,7 +9,10 @@ int main(int argc, char** argv) {
 
   Emitter em1 = {.file = output1, .convert_structs = true};
   Emitter em2 = {.file = output2};
-  Parser parser = {.allow_fancy_structs = true, .decl_emitter = &em1, .default_emitter = &em1, .extra_emitter = &em1};
+  Parser parser = {.allow_fancy_structs = true, .go_deeper = true};
+  parser.decl_emitter = &em1;
+  parser.default_emitter = &em1;
+  parser.extra_emitter = &em1;
 
   char* filename = argc > 1 ? argv[1] : "main.c";
   parser_read_file(&parser, filename);
@@ -18,8 +21,8 @@ int main(int argc, char** argv) {
     parser_emit_functions(&parser, &em2);
   }
 
-  fclose(output1);
-  fclose(output2);
+  if(argc > 2) fclose(output1);
+  if(argc > 3) fclose(output2);
 
   parser_delete(&parser);
   return 0;

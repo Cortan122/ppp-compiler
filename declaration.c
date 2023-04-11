@@ -262,6 +262,7 @@ void declaration_delete_function(Function* func) {
   arrfree(func->fancy_params);
 
   arrfree(func->converted_name);
+  free(func);
 }
 
 void declaration_delete_struct(Struct* s) {

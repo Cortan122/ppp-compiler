@@ -1,0 +1,11 @@
+struct Circle {
+  int r;
+};
+
+struct Figure { int tag; struct {} head; union { struct Circle s00; } tail;};
+
+// Круг разместится внутри круга
+struct __ppp__Figure_Circle{ int tag; struct {} head;  struct Circle tail; };
+int __ppp__Intersect_Figure_Circle_Figure_Circle(struct __ppp__Figure_Circle  *c1, struct __ppp__Figure_Circle  *c2  ) {
+  return c1->tail. r< c2->tail. r;
+}

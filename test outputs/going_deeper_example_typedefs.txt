@@ -1,0 +1,39 @@
+typedef struct Triangle {
+  int a;
+  int b;
+  int c;
+} Triangle;
+
+typedef struct Rectangle {
+  int x;
+  int y;
+} Rectangle;
+
+typedef struct Circle {
+  int r;
+} Circle;
+
+typedef struct Figure { int tag; struct {
+  char* color;
+} head; union {
+  Triangle s00;
+  Rectangle s01;
+  Circle s02; } tail;
+} Figure;
+
+bool Intersect(Figure *first, Figure *second  ) = 0;
+
+// Прямоугольник разместится внутри прямоугольника
+struct __ppp__Figure_Rectangle{ int tag; struct { char* color;
+} head;  Rectangle tail; };
+bool __ppp__Intersect_Figure_Rectangle_Figure_Rectangle(struct __ppp__Figure_Rectangle*r1, struct __ppp__Figure_Rectangle*r2  ) {
+  return ((r1->tail. x< r2->tail. x) && (r1->tail. y< r2->tail. y)) ||
+         ((r1->tail. x< r2->tail. y) && (r1->tail. y< r2->tail. x));
+}
+
+// Круг разместится внутри круга
+struct __ppp__Figure_Circle{ int tag; struct { char* color;
+} head;  Circle tail; };
+bool __ppp__Intersect_Figure_Circle_Figure_Circle(struct __ppp__Figure_Circle*c1, struct __ppp__Figure_Circle*c2  ) {
+  return c1->tail. r< c2->tail. r;
+}

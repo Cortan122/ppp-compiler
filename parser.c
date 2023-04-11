@@ -6,6 +6,17 @@
     memcpy(arraddnptr((arr), len), (str), len); \
   } while(0)
 
+#define bracket_lookup_switch(rec_level) \
+  case '(':                              \
+  case '[':                              \
+  case '{':                              \
+    (rec_level)++;                       \
+    break;                               \
+  case ')':                              \
+  case ']':                              \
+  case '}':                              \
+    (rec_level)--;
+
 #define MANGLED_NAME_PREFIX "__ppp__"
 
 static void skip_bracket_block(Parser* p, Token** res, char end, char end2) {
@@ -20,16 +31,8 @@ static void skip_bracket_block(Parser* p, Token** res, char end, char end2) {
     } else if(tok.kind == TOKEN_CHAR) {
       char val = *tok.data;
       switch(val) {
-        case '(':
-        case '[':
-        case '{':
-          rec_level++;
-          break;
-        case ')':
-        case ']':
-        case '}':
-          rec_level--;
-          /* fall through */
+        bracket_lookup_switch(rec_level);
+        /* fall through */
         default:
           if((val == end || val == end2) && rec_level == 0) keep_looping = false;
       }
@@ -144,14 +147,23 @@ static void generate_converted_struct_name(Struct* s) {
   arrpush(s->converted_name, '\0');
 }
 
+static Declaration* get_scope_variable(Function* func, char* word) {
+  // linear search here is fine.. i think
+  for(int i = 0; i < arrlen(func->fancy_params); i++) {
+    if(strcmp(func->fancy_params[i].name, word) == 0) {
+      return &func->fancy_params[i];
+    }
+  }
+
+  return NULL;
+}
+
 void parser_transfer_token(Parser* p, Token** dest) {
   Token tok = lexer_drop_token(&p->lexer);
   if(dest) {
     arrpush(*dest, tok);
   } else {
-    if(p->default_emitter) {
-      token_emit(&tok, p->default_emitter);
-    }
+    token_emit(&tok, p->default_emitter);
     free(tok.data);
   }
 }
@@ -327,6 +339,90 @@ Declaration parser_parse_declaration(Parser* p) {
   return res;
 }
 
+bool parser_parse_variable(Parser* p, Declaration* var) {
+  Token* tmp_storage = NULL;
+  bool result = false;
+
+  parser_transfer_token(p, NULL);
+  Token tok = parser_peek_token(p);
+  if(tok.kind != TOKEN_CHAR) goto defer;
+
+  if(token_eq_char(&tok, '!')) {
+    parser_transfer_token(p, &tmp_storage);
+    Token last = var->type->tokens[arrlen(var->type->tokens)];
+    if(token_eq_char(&last, '*')) {
+      token_emit_cstr("->tail", p->default_emitter);
+    } else {
+      token_emit_cstr(".tail", p->default_emitter);
+    }
+    result = true;
+    goto defer;
+  }
+
+  if(token_eq_char(&tok, '.')) {
+    Token last = var->type->tokens[arrlen(var->type->tokens)];
+    if(token_eq_char(&last, '*')) {
+      token_emit_cstr("->head", p->default_emitter);
+    } else {
+      token_emit_cstr(".head", p->default_emitter);
+    }
+  }
+
+  if(!token_eq_char(&tok, '-')) goto defer;
+  parser_transfer_token(p, &tmp_storage);
+  tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, '>')) goto defer;
+  parser_transfer_token(p, &tmp_storage);
+  tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, '!')) goto defer;
+  parser_transfer_token(p, &tmp_storage);
+
+  // TODO: check if field actually exists
+  token_emit_cstr("->tail.", p->default_emitter);
+
+  result = true;
+defer:;
+  if(!result) {
+    token_print_error(&tok, LOGLEVEL_WARNING, "expected '!' or '->!', but found '%s'", tok.data);
+  }
+  for(int i = 0; i < arrlen(tmp_storage); i++) {
+    if(!result) {
+      token_emit(&tmp_storage[i], p->default_emitter);
+    }
+    free(tmp_storage[i].data);
+  }
+  arrfree(tmp_storage);
+  return result;
+}
+
+void parser_inside_function(Parser* p, Function* func) {
+  int rec_level = 0;
+  bool keep_looping = true;
+
+  while(keep_looping) {
+    Token tok = parser_peek_token(p);
+    if(tok.kind == TOKEN_EOF) {
+      token_print_error(&tok, LOGLEVEL_ERROR, "expected end of function code but found EOF%s", "");
+      exit(1);
+    } else if(tok.kind == TOKEN_CHAR) {
+      switch(*tok.data) {
+        bracket_lookup_switch(rec_level);
+      }
+      if(rec_level == 0) keep_looping = false;
+    } else if(tok.kind == TOKEN_WORD) {
+      Declaration* var;
+      if(shget(p->polymorphic_functions, tok.data)) {
+        // todo: parse_function_call()
+        token_print_error(&tok, LOGLEVEL_INFO, "calling functuons is not implemented yet%s", "");
+      } else if((var = get_scope_variable(func, tok.data))) {
+        parser_parse_variable(p, var);
+      }
+    }
+
+    parser_transfer_token(p, NULL);
+  }
+}
+
 bool parser_parse_function(Parser* p, Function* func) {
   Struct* tmp = calloc(1, sizeof(Struct));
   if(!parser_parse_type(p, tmp)) goto defer_type;
@@ -343,6 +439,7 @@ bool parser_parse_function(Parser* p, Function* func) {
 
   tok = parser_peek_token(p);
   if(token_eq_char(&tok, '<') && p->allow_fancy_structs) {
+    shput(p->polymorphic_functions, func->decl.name, func);
     parser_transfer_token(p, &func->decl.tokens);
     func->tokens_prams_pos = arrlen(func->decl.tokens);
     while(1) {
@@ -373,9 +470,12 @@ bool parser_parse_function(Parser* p, Function* func) {
 
   tok = parser_peek_token(p);
   if(token_eq_char(&tok, '{')) {
-    // TODO: we have to go deeper
     declaration_emit_function(func, p->decl_emitter);
-    skip_bracket_block(p, NULL, '}', '\0');
+    if(p->go_deeper) {
+      parser_inside_function(p, func);
+    } else {
+      skip_bracket_block(p, NULL, '}', '\0');
+    }
     return true;
   } else if(token_eq_char(&tok, ';')) {
     parser_transfer_token(p, &func->decl.tokens);
@@ -418,8 +518,8 @@ bool parser_parse_line(Parser* p) {
     arrpush(p->top_level, d);
     declaration_emit(&d, p->decl_emitter);
   } else {
-    Function func = {0};
-    if(!parser_parse_function(p, &func)) {
+    Function* func = calloc(1, sizeof(Function));
+    if(!parser_parse_function(p, func)) {
       skip_bracket_block(p, NULL, ';', '}');
     } else {
       arrpush(p->funcs, func);
@@ -462,8 +562,8 @@ void parser_emit_functions(Parser* p, Emitter* emitter) {
   emitter->delete_repeted_empty_lines = true;
 
   for(int i = 0; i < arrlen(p->funcs); i++) {
-    declaration_emit_function(&p->funcs[i], emitter);
-    if(!p->funcs[i].is_header) {
+    declaration_emit_function(p->funcs[i], emitter);
+    if(!p->funcs[i]->is_header) {
       token_emit_cstr(";", emitter);
     }
   }
@@ -508,12 +608,13 @@ void parser_delete(Parser* p) {
   arrfree(p->top_level);
 
   for(int i = 0; i < arrlen(p->funcs); i++) {
-    declaration_delete_function(&p->funcs[i]);
+    declaration_delete_function(p->funcs[i]);
   }
   arrfree(p->funcs);
 
   shfree(p->typedefs);
   shfree(p->structs);
   shfree(p->defined_specialized_structs);
+  shfree(p->polymorphic_functions);
   lexer_delete(&p->lexer);
 }

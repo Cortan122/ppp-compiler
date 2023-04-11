@@ -120,7 +120,7 @@ void testfunc_functions(const char* input_file) {
   parser_read_file(&parser, input_file);
 
   for(int i = 0; i < arrlen(parser.funcs); i++) {
-    declaration_print_function(&parser.funcs[i], 0);
+    declaration_print_function(parser.funcs[i], 0);
   }
 
   parser_delete(&parser);
@@ -131,7 +131,7 @@ void testfunc_fancy_functions(const char* input_file) {
   parser_read_file(&parser, input_file);
 
   for(int i = 0; i < arrlen(parser.funcs); i++) {
-    declaration_print_function(&parser.funcs[i], 0);
+    declaration_print_function(parser.funcs[i], 0);
   }
 
   parser_delete(&parser);
@@ -183,6 +183,14 @@ void testfunc_triple_emittion(const char* input_file) {
   parser_delete(&parser);
 }
 
+void testfunc_going_deeper(const char* input_file) {
+  Emitter em = {.file = stdout, .convert_structs = true};
+  Parser parser = {.allow_fancy_structs = true, .go_deeper = true, .decl_emitter = &em, .default_emitter = &em, .extra_emitter = &em};
+  parser_read_file(&parser, input_file);
+
+  parser_delete(&parser);
+}
+
 TestCase test_cases[] = {
     TESTCASE(debug_tokens),
     TESTCASE(declarations),
@@ -199,6 +207,7 @@ TestCase test_cases[] = {
     TESTCASE_LL(convert_functions),
     TESTCASE_L(double_emittion),
     TESTCASE_L(triple_emittion),
+    TESTCASE_L(going_deeper),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
 

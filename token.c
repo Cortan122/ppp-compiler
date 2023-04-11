@@ -125,6 +125,8 @@ static void emit_spaces(Emitter* emitter, Loc loc, bool force_space) {
 }
 
 void token_emit(Token* tok, Emitter* emitter) {
+  if(emitter == NULL) return;
+
   emit_spaces(emitter, tok->location, is_sticky_token(tok->kind) && is_sticky_token(emitter->last_token_kind));
 
   int length_written = 0;
@@ -180,6 +182,8 @@ void token_emit(Token* tok, Emitter* emitter) {
 }
 
 void token_emit_cstr(const char* keyword, Emitter* emitter) {
+  if(emitter == NULL) return;
+
   if(*keyword == '\n') {
     fprintf(emitter->file, "\n");
     emitter->cursor.line_num++;

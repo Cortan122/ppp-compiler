@@ -1,0 +1,14 @@
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 4, name = print_array)
+    WORD[example_lines.c:53:1] data = void
+    WORD[example_lines.c:53:6] data = print_array
+    CHAR[example_lines.c:53:17] data = (
+    CHAR[example_lines.c:53:18] data = )
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 4, name = main)
+    WORD[example_lines.c:92:1] data = int
+    WORD[example_lines.c:92:5] data = main
+    CHAR[example_lines.c:92:9] data = (
+    CHAR[example_lines.c:92:10] data = )
+

@@ -1,5 +1,6 @@
 #include "token.h"
 
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -165,7 +166,7 @@ void token_emit(Token* tok, Emitter* emitter) {
       for(size_t i = 0; i < tok->length; i++) {
         char c = tok->data[i];
         if(c < ' ' || c == '"' || c == '\'' || c == '\\') {
-          fprintf(emitter->file, "\\x%02x", c);
+          fprintf(emitter->file, "\\x%02x", (uint8_t)c);
           length_written += 4;
         } else {
           fprintf(emitter->file, "%c", c);

@@ -1,0 +1,19 @@
+struct VerticalLine;
+struct HorizontalLine;
+struct Box;
+struct Drawable;
+typedef struct VerticalLine VerticalLine;
+typedef struct HorizontalLine HorizontalLine;
+typedef struct Box Box;
+typedef struct Drawable Drawable;
+void print_array();
+
+void Draw(Drawable* d  ) = 0;
+
+void __ppp__Draw_Drawable_VerticalLine(struct __ppp__Drawable_VerticalLine* vl  );
+
+void __ppp__Draw_Drawable_HorizontalLine(struct __ppp__Drawable_HorizontalLine* hl  );
+
+void __ppp__Draw_Drawable_Box(struct __ppp__Drawable_Box* b  );
+
+int main();

@@ -1,0 +1,75 @@
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 4, name = print_array)
+    WORD[example_lines.c:53:1] data = void
+    WORD[example_lines.c:53:6] data = print_array
+    CHAR[example_lines.c:53:17] data = (
+    CHAR[example_lines.c:53:18] data = )
+
+Function(is_header = 1, prams = 1)
+  Declaration(tokens = 9, name = Draw)
+    WORD[example_lines.c:62:1] data = void
+    WORD[example_lines.c:62:6] data = Draw
+    CHAR[example_lines.c:62:10] data = <
+    CHAR[example_lines.c:62:22] data = >
+    CHAR[example_lines.c:62:23] data = (
+    CHAR[example_lines.c:62:24] data = )
+    CHAR[example_lines.c:62:26] data = =
+    NUMBER[example_lines.c:62:28] data = 0
+    CHAR[example_lines.c:62:29] data = ;
+  Declaration(tokens = 3, name = d)
+    WORD[example_lines.c:62:11] data = Drawable
+    CHAR[example_lines.c:62:19] data = *
+    WORD[example_lines.c:62:21] data = d
+
+Function(is_header = 0, prams = 1)
+  Declaration(tokens = 6, name = Draw)
+    WORD[example_lines.c:64:1] data = void
+    WORD[example_lines.c:64:6] data = Draw
+    CHAR[example_lines.c:64:10] data = <
+    CHAR[example_lines.c:64:37] data = >
+    CHAR[example_lines.c:64:38] data = (
+    CHAR[example_lines.c:64:39] data = )
+  Declaration(tokens = 5, name = vl)
+    WORD[example_lines.c:64:11] data = Drawable
+    CHAR[example_lines.c:64:19] data = <
+    CHAR[example_lines.c:64:32] data = >
+    CHAR[example_lines.c:64:33] data = *
+    WORD[example_lines.c:64:35] data = vl
+
+Function(is_header = 0, prams = 1)
+  Declaration(tokens = 6, name = Draw)
+    WORD[example_lines.c:72:1] data = void
+    WORD[example_lines.c:72:6] data = Draw
+    CHAR[example_lines.c:72:10] data = <
+    CHAR[example_lines.c:72:39] data = >
+    CHAR[example_lines.c:72:40] data = (
+    CHAR[example_lines.c:72:41] data = )
+  Declaration(tokens = 5, name = hl)
+    WORD[example_lines.c:72:11] data = Drawable
+    CHAR[example_lines.c:72:19] data = <
+    CHAR[example_lines.c:72:34] data = >
+    CHAR[example_lines.c:72:35] data = *
+    WORD[example_lines.c:72:37] data = hl
+
+Function(is_header = 0, prams = 1)
+  Declaration(tokens = 6, name = Draw)
+    WORD[example_lines.c:80:1] data = void
+    WORD[example_lines.c:80:6] data = Draw
+    CHAR[example_lines.c:80:10] data = <
+    CHAR[example_lines.c:80:27] data = >
+    CHAR[example_lines.c:80:28] data = (
+    CHAR[example_lines.c:80:29] data = )
+  Declaration(tokens = 5, name = b)
+    WORD[example_lines.c:80:11] data = Drawable
+    CHAR[example_lines.c:80:19] data = <
+    CHAR[example_lines.c:80:23] data = >
+    CHAR[example_lines.c:80:24] data = *
+    WORD[example_lines.c:80:26] data = b
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 4, name = main)
+    WORD[example_lines.c:92:1] data = int
+    WORD[example_lines.c:92:5] data = main
+    CHAR[example_lines.c:92:9] data = (
+    CHAR[example_lines.c:92:10] data = )
+

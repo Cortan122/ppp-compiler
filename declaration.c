@@ -184,6 +184,36 @@ void declaration_emit_struct(Struct* s, Emitter* emitter) {
   }
 }
 
+void declaration_emit_function_arguments(Function* func, Emitter* emitter, bool name_only) {
+  if(emitter == NULL) return;
+
+  emitter->ignore_next_indent = true;
+  token_emit(&func->decl.tokens[func->tokens_args_pos], emitter);
+  int i = func->tokens_prams_pos - 1;
+  for(int j = 0; j < arrlen(func->fancy_params); j++) {
+    if(j != 0) {
+      token_emit(&func->decl.tokens[++i], emitter);
+    }
+    if(name_only) {
+      token_emit_cstr(func->fancy_params[j].name, emitter);
+    } else {
+      declaration_emit(&func->fancy_params[j], emitter);
+    }
+  }
+
+  if(func->has_normal_prams) {
+    token_emit_cstr(", ", emitter);
+  }
+
+  int len = arrlen(func->decl.tokens) - func->is_abstract_header * 3;
+  for(int j = func->tokens_args_pos + 1; j < len; j++) {
+    token_emit(&func->decl.tokens[j], emitter);
+    if(name_only && j == 0) {
+      token_print_error(&func->decl.tokens[j], LOGLEVEL_WARNING, "passing normal parameters is not implemented yet%s", "");
+    }
+  }
+}
+
 void declaration_emit_fancy_function(Function* func, Emitter* emitter) {
   if(emitter == NULL) return;
 
@@ -195,22 +225,27 @@ void declaration_emit_fancy_function(Function* func, Emitter* emitter) {
     token_emit_cstr(func->decl.name, emitter);
   }
 
-  emitter->ignore_next_indent = true;
-  token_emit(&func->decl.tokens[func->tokens_args_pos], emitter);
-  int i = func->tokens_prams_pos - 1;
-  for(int j = 0; j < arrlen(func->fancy_params); j++) {
-    if(j != 0) {
-      token_emit(&func->decl.tokens[++i], emitter);
+  declaration_emit_function_arguments(func, emitter, false);
+
+  if(func->is_abstract_header) {
+    token_emit_cstr("{", emitter);
+    token_emit_cstr("return ", emitter);
+    token_emit_cstr(func->table_name, emitter);
+    token_emit_cstr("[", emitter);
+    for(int i = 0; i < arrlen(func->fancy_params); i++) {
+      if(i != 0) {
+        token_emit_cstr("+", emitter);
+      }
+      token_emit_cstr(func->fancy_params[i].name, emitter);
+      token_emit_cstr("->tag", emitter);
+      for(int j = 0; j < i; j++) {
+        token_emit_cstr("*", emitter);
+        token_emit_cstr(func->table_count_name, emitter);
+      }
     }
-    declaration_emit(&func->fancy_params[j], emitter);
-  }
-
-  if(arrlen(func->decl.tokens) - func->tokens_args_pos > 2) {
-    token_emit_cstr(", ", emitter);
-  }
-
-  for(int j = func->tokens_args_pos + 1; j < arrlen(func->decl.tokens); j++) {
-    token_emit(&func->decl.tokens[j], emitter);
+    token_emit_cstr("]", emitter);
+    declaration_emit_function_arguments(func, emitter, true);
+    token_emit_cstr(";}", emitter);
   }
 }
 
@@ -262,6 +297,8 @@ void declaration_delete_function(Function* func) {
   arrfree(func->fancy_params);
 
   arrfree(func->converted_name);
+  arrfree(func->table_name);
+  arrfree(func->table_count_name);
   free(func);
 }
 

@@ -35,6 +35,11 @@ typedef struct Function {
   Declaration* fancy_params;
   bool is_header;
   char* converted_name;
+
+  bool is_abstract_header;
+  bool has_normal_prams;
+  char* table_name;
+  char* table_count_name;
 } Function;
 
 void declaration_print_function(Function* func, int rec_lvl);
@@ -44,6 +49,8 @@ void declaration_print_debug(Declaration* d, int rec_lvl);
 void declaration_emit_parameter_struct(Struct* s, Emitter* emitter, Struct* base);
 void declaration_emit_fancy_struct(Struct* s, Emitter* emitter);
 void declaration_emit_struct(Struct* s, Emitter* emitter);
+void declaration_emit_function_arguments(Function* func, Emitter* emitter, bool name_only);
+void declaration_emit_fancy_function(Function* func, Emitter* emitter);
 void declaration_emit_function(Function* func, Emitter* emitter);
 void declaration_emit(Declaration* d, Emitter* emitter);
 

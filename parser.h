@@ -20,8 +20,10 @@ typedef struct Parser {
   NamedType* typedefs;
   NamedType* structs;
   Function** funcs;
+
   bool allow_fancy_structs;
   bool go_deeper;
+  bool keep_abstract_headers;
 
   Emitter* default_emitter;
   Emitter* decl_emitter;

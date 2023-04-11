@@ -19,8 +19,7 @@
 
 #define MANGLED_NAME_PREFIX "__ppp__"
 
-static void skip_bracket_block(Parser* p, Token** res, char end, char end2) {
-  int rec_level = 0;
+static void skip_bracket_block(Parser* p, Token** res, char end, char end2, int rec_level) {
   bool keep_looping = true;
 
   while(keep_looping) {
@@ -135,6 +134,22 @@ static void generate_converted_function_name(Function* func) {
   arrpush(func->converted_name, '\0');
 }
 
+static char* generate_function_table_name(Function* func, char* prefix) {
+  if(func->fancy_params == NULL) return NULL;
+  char* res = NULL;
+
+  strappend(res, MANGLED_NAME_PREFIX);
+  strappend(res, prefix);
+  strappend(res, func->decl.name);
+  for(int i = 0; i < arrlen(func->fancy_params); i++) {
+    strappend(res, "_");
+    strappend(res, get_struct_name(func->fancy_params[i].type, false));
+  }
+  arrpush(res, '\0');
+
+  return res;
+}
+
 static void generate_converted_struct_name(Struct* s) {
   if(s->converted_name) return;
   if(s->parameter == NULL) return;
@@ -156,6 +171,48 @@ static Declaration* get_scope_variable(Function* func, char* word) {
   }
 
   return NULL;
+}
+
+static void free_tmp_storage(Token* tmp_storage, Emitter* emitter) {
+  for(int i = 0; i < arrlen(tmp_storage); i++) {
+    token_emit(&tmp_storage[i], emitter);
+    free(tmp_storage[i].data);
+  }
+  arrfree(tmp_storage);
+}
+
+static void emit_table_and_count_externs(Parser* p, Function* func) {
+  func->is_header = true;
+
+  if(p->keep_abstract_headers == true) return;
+  func->is_abstract_header = true;
+  func->table_name = generate_function_table_name(func, "table_");
+  func->table_count_name = generate_function_table_name(func, "table_count_");
+
+  if(p->extra_emitter == NULL) return;
+
+  char* function_pointer_type = generate_function_table_name(func, "pointer_");
+
+  token_emit(&(Token){.kind = TOKEN_EOF}, p->extra_emitter);
+  token_emit_cstr("typedef", p->extra_emitter);
+  p->extra_emitter->ignore_next_newline = true;
+  declaration_emit_struct(func->decl.type, p->extra_emitter);
+  token_emit_cstr("(*", p->extra_emitter);
+  token_emit_cstr(function_pointer_type, p->extra_emitter);
+  token_emit_cstr(")", p->extra_emitter);
+  declaration_emit_function_arguments(func, p->extra_emitter, false);
+  token_emit_cstr(");", p->extra_emitter);
+
+  token_emit_cstr("extern ", p->extra_emitter);
+  token_emit_cstr(function_pointer_type, p->extra_emitter);
+  token_emit_cstr("* ", p->extra_emitter);
+  token_emit_cstr(func->table_name, p->extra_emitter);
+  token_emit_cstr(";", p->extra_emitter);
+  token_emit_cstr("extern int ", p->extra_emitter);
+  token_emit_cstr(func->table_count_name, p->extra_emitter);
+  token_emit_cstr(";", p->extra_emitter);
+
+  arrfree(function_pointer_type);
 }
 
 void parser_transfer_token(Parser* p, Token** dest) {
@@ -322,7 +379,7 @@ Declaration parser_parse_declaration(Parser* p) {
       res.name = name.data;
     }
   }
-  skip_bracket_block(p, &res.tokens, ';', '\0');
+  skip_bracket_block(p, &res.tokens, ';', '\0', 0);
 
   if(res.name == NULL && arrlen(res.tokens) > 1) {
     Token last = res.tokens[arrlen(res.tokens) - 2];
@@ -355,6 +412,10 @@ bool parser_parse_variable(Parser* p, Declaration* var) {
     } else {
       token_emit_cstr(".tail", p->default_emitter);
     }
+    tok = parser_peek_token(p);
+    if(tok.kind == TOKEN_WORD) {
+      token_emit_cstr(".", p->default_emitter);
+    }
     result = true;
     goto defer;
   }
@@ -385,14 +446,45 @@ defer:;
   if(!result) {
     token_print_error(&tok, LOGLEVEL_WARNING, "expected '!' or '->!', but found '%s'", tok.data);
   }
-  for(int i = 0; i < arrlen(tmp_storage); i++) {
-    if(!result) {
-      token_emit(&tmp_storage[i], p->default_emitter);
-    }
-    free(tmp_storage[i].data);
-  }
-  arrfree(tmp_storage);
+  free_tmp_storage(tmp_storage, result ? NULL : p->default_emitter);
   return result;
+}
+
+bool parse_function_call(Parser* p) {
+  parser_transfer_token(p, NULL);
+  Token tok = parser_peek_token(p);
+
+  if(token_eq_char(&tok, '(')) {
+    token_print_error(&tok, LOGLEVEL_WARNING, "calling a parametric function like a normal one%s", "");
+    return false;
+  } else if(!token_eq_char(&tok, '<')) {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected '<' or '(', but found '%s'", tok.data);
+    return false;
+  }
+
+  Token* prams = NULL;
+  parser_transfer_token(p, &prams);
+  skip_bracket_block(p, &prams, '>', '\0', 0);
+
+  tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, '(')) {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected function arguments, but found '%s'", tok.data);
+    free_tmp_storage(prams, NULL);
+    return false;
+  }
+
+  parser_transfer_token(p, NULL);
+  for(int i = 1; i < arrlen(prams) - 1; i++) {
+    token_emit(&prams[i], p->extra_emitter);
+  }
+  free_tmp_storage(prams, NULL);
+  tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, ')')) {
+    token_emit_cstr(",", p->extra_emitter);
+  }
+  skip_bracket_block(p, NULL, ')', ';', 1);
+
+  return true;
 }
 
 void parser_inside_function(Parser* p, Function* func) {
@@ -412,8 +504,9 @@ void parser_inside_function(Parser* p, Function* func) {
     } else if(tok.kind == TOKEN_WORD) {
       Declaration* var;
       if(shget(p->polymorphic_functions, tok.data)) {
-        // todo: parse_function_call()
-        token_print_error(&tok, LOGLEVEL_INFO, "calling functuons is not implemented yet%s", "");
+        parse_function_call(p);
+      } else if(shget(p->typedefs, tok.data)) {
+        token_print_error(&tok, LOGLEVEL_INFO, "local variable declarations are not implemented yet%s", "");
       } else if((var = get_scope_variable(func, tok.data))) {
         parser_parse_variable(p, var);
       }
@@ -461,7 +554,8 @@ bool parser_parse_function(Parser* p, Function* func) {
   tok = parser_peek_token(p);
   if(token_eq_char(&tok, '(')) {
     func->tokens_args_pos = arrlen(func->decl.tokens);
-    skip_bracket_block(p, &func->decl.tokens, ')', '\0');
+    skip_bracket_block(p, &func->decl.tokens, ')', '\0', 0);
+    func->has_normal_prams = func->tokens_args_pos + 2 != arrlen(func->decl.tokens);
   } else {
     goto defer;
   }
@@ -474,14 +568,15 @@ bool parser_parse_function(Parser* p, Function* func) {
     if(p->go_deeper) {
       parser_inside_function(p, func);
     } else {
-      skip_bracket_block(p, NULL, '}', '\0');
+      skip_bracket_block(p, NULL, '}', '\0', 0);
     }
     return true;
   } else if(token_eq_char(&tok, ';')) {
     parser_transfer_token(p, &func->decl.tokens);
     func->is_header = true;
   } else if(token_eq_char(&tok, '=')) {
-    token_print_error(&tok, LOGLEVEL_INFO, "abstract '= 0' headers are not implemented yet%s", "");
+    emit_table_and_count_externs(p, func);
+    skip_bracket_block(p, &func->decl.tokens, ';', '\0', 0);
   } else {
     // there is a lot of __attribute__ and __asm__
     // this is fine 🔥
@@ -520,7 +615,7 @@ bool parser_parse_line(Parser* p) {
   } else {
     Function* func = calloc(1, sizeof(Function));
     if(!parser_parse_function(p, func)) {
-      skip_bracket_block(p, NULL, ';', '}');
+      skip_bracket_block(p, NULL, ';', '}', 0);
     } else {
       arrpush(p->funcs, func);
     }

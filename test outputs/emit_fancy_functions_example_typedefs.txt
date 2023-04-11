@@ -6,7 +6,7 @@ typedef struct Triangle Triangle;
 typedef struct Rectangle Rectangle;
 typedef struct Circle Circle;
 typedef struct Figure Figure;
-bool Intersect<Figure *first, Figure *second>();
+bool Intersect<Figure *first, Figure *second>() = 0;
 
 bool Intersect<Figure<Rectangle> *r1, Figure<Rectangle> *r2>();
 

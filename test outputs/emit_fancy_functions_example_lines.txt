@@ -1,0 +1,19 @@
+struct VerticalLine;
+struct HorizontalLine;
+struct Box;
+struct Drawable;
+typedef struct VerticalLine VerticalLine;
+typedef struct HorizontalLine HorizontalLine;
+typedef struct Box Box;
+typedef struct Drawable Drawable;
+void print_array();
+
+void Draw<Drawable* d>() = 0;
+
+void Draw<Drawable<VerticalLine>* vl>();
+
+void Draw<Drawable<HorizontalLine>* hl>();
+
+void Draw<Drawable<Box>* b>();
+
+int main();

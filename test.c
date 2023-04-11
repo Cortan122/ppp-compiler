@@ -159,7 +159,7 @@ void testfunc_emit_fancy_functions(const char* input_file) {
 
 void testfunc_convert_functions(const char* input_file) {
   Emitter em = {.file = stdout, .convert_structs = true};
-  Parser parser = {.allow_fancy_structs = true};
+  Parser parser = {.allow_fancy_structs = true, .keep_abstract_headers = true};
   parser_read_file(&parser, input_file);
   parser_emit_typedefs(&parser, &em, false);
   parser_emit_functions(&parser, &em);

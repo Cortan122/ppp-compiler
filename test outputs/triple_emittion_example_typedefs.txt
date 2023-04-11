@@ -20,8 +20,7 @@ typedef struct Figure { int tag; struct {
   Rectangle s01;
   Circle s02; } tail;
 } Figure;
-
-bool Intersect(Figure *first, Figure *second  ) = 0;
+typedef bool(*__ppp__pointer_Intersect_Figure_Figure)(Figure *first, Figure *second);extern __ppp__pointer_Intersect_Figure_Figure* __ppp__table_Intersect_Figure_Figure;extern int __ppp__table_count_Intersect_Figure_Figure; bool Intersect(Figure *first, Figure *second  ){return __ppp__table_Intersect_Figure_Figure[first->tag+second->tag*__ppp__table_count_Intersect_Figure_Figure](first,second           );}
 
 // Прямоугольник разместится внутри прямоугольника
 struct __ppp__Figure_Rectangle{ int tag; struct { char* color;

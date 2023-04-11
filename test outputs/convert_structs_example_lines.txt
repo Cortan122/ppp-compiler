@@ -1,0 +1,24 @@
+typedef struct VerticalLine {
+  int x;
+  int y1;
+  int y2;
+} VerticalLine;
+
+typedef struct HorizontalLine {
+  int y;
+  int x1;
+  int x2;
+} HorizontalLine;
+
+typedef struct Box {
+  int x1;
+  int y1;
+  int x2;
+  int y2;
+} Box;
+
+typedef struct Drawable { int tag; struct {} head; union {
+  struct VerticalLine s00;
+  struct HorizontalLine s01;
+  struct Box s02; } tail;
+} Drawable;

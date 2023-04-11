@@ -6,7 +6,7 @@ typedef struct Triangle Triangle;
 typedef struct Rectangle Rectangle;
 typedef struct Circle Circle;
 typedef struct Figure Figure;
-bool Intersect(Figure *first, Figure *second  );
+bool Intersect(Figure *first, Figure *second  ) = 0;
 
 bool __ppp__Intersect_Figure_Rectangle_Figure_Rectangle(struct __ppp__Figure_Rectangle*r1, struct __ppp__Figure_Rectangle*r2  );
 

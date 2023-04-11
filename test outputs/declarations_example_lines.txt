@@ -1,0 +1,90 @@
+Declaration(tokens = 2, name = VerticalLine)
+  Struct(tokens = 4, name = VerticalLine) 
+    WORD[example_lines.c:6:9] data = struct
+    WORD[example_lines.c:6:16] data = VerticalLine
+    CHAR[example_lines.c:6:29] data = {
+    Declaration(tokens = 3, name = x)
+      WORD[example_lines.c:7:3] data = int
+      WORD[example_lines.c:7:7] data = x
+      CHAR[example_lines.c:7:8] data = ;
+    Declaration(tokens = 3, name = y1)
+      WORD[example_lines.c:8:3] data = int
+      WORD[example_lines.c:8:7] data = y1
+      CHAR[example_lines.c:8:9] data = ;
+    Declaration(tokens = 3, name = y2)
+      WORD[example_lines.c:9:3] data = int
+      WORD[example_lines.c:9:7] data = y2
+      CHAR[example_lines.c:9:9] data = ;
+    CHAR[example_lines.c:10:1] data = }
+  WORD[example_lines.c:10:3] data = VerticalLine
+  CHAR[example_lines.c:10:15] data = ;
+
+Declaration(tokens = 2, name = HorizontalLine)
+  Struct(tokens = 4, name = HorizontalLine) 
+    WORD[example_lines.c:12:9] data = struct
+    WORD[example_lines.c:12:16] data = HorizontalLine
+    CHAR[example_lines.c:12:31] data = {
+    Declaration(tokens = 3, name = y)
+      WORD[example_lines.c:13:3] data = int
+      WORD[example_lines.c:13:7] data = y
+      CHAR[example_lines.c:13:8] data = ;
+    Declaration(tokens = 3, name = x1)
+      WORD[example_lines.c:14:3] data = int
+      WORD[example_lines.c:14:7] data = x1
+      CHAR[example_lines.c:14:9] data = ;
+    Declaration(tokens = 3, name = x2)
+      WORD[example_lines.c:15:3] data = int
+      WORD[example_lines.c:15:7] data = x2
+      CHAR[example_lines.c:15:9] data = ;
+    CHAR[example_lines.c:16:1] data = }
+  WORD[example_lines.c:16:3] data = HorizontalLine
+  CHAR[example_lines.c:16:17] data = ;
+
+Declaration(tokens = 2, name = Box)
+  Struct(tokens = 4, name = Box) 
+    WORD[example_lines.c:18:9] data = struct
+    WORD[example_lines.c:18:16] data = Box
+    CHAR[example_lines.c:18:20] data = {
+    Declaration(tokens = 3, name = x1)
+      WORD[example_lines.c:19:3] data = int
+      WORD[example_lines.c:19:7] data = x1
+      CHAR[example_lines.c:19:9] data = ;
+    Declaration(tokens = 3, name = y1)
+      WORD[example_lines.c:20:3] data = int
+      WORD[example_lines.c:20:7] data = y1
+      CHAR[example_lines.c:20:9] data = ;
+    Declaration(tokens = 3, name = x2)
+      WORD[example_lines.c:21:3] data = int
+      WORD[example_lines.c:21:7] data = x2
+      CHAR[example_lines.c:21:9] data = ;
+    Declaration(tokens = 3, name = y2)
+      WORD[example_lines.c:22:3] data = int
+      WORD[example_lines.c:22:7] data = y2
+      CHAR[example_lines.c:22:9] data = ;
+    CHAR[example_lines.c:23:1] data = }
+  WORD[example_lines.c:23:3] data = Box
+  CHAR[example_lines.c:23:6] data = ;
+
+Declaration(tokens = 4, name = VerticalLine)
+  Struct(tokens = 4, name = Drawable) 
+    WORD[example_lines.c:25:9] data = struct
+    WORD[example_lines.c:25:16] data = Drawable
+    CHAR[example_lines.c:25:25] data = {
+    CHAR[example_lines.c:25:26] data = }
+  CHAR[example_lines.c:25:27] data = <
+  WORD[example_lines.c:26:3] data = struct
+  WORD[example_lines.c:26:10] data = VerticalLine
+  CHAR[example_lines.c:26:22] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = HorizontalLine) 
+    WORD[example_lines.c:27:3] data = struct
+    WORD[example_lines.c:27:10] data = HorizontalLine
+  CHAR[example_lines.c:27:24] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = Box) 
+    WORD[example_lines.c:28:3] data = struct
+    WORD[example_lines.c:28:10] data = Box
+  CHAR[example_lines.c:28:13] data = ;
+

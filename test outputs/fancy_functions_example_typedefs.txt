@@ -1,5 +1,5 @@
-Function(is_header = 0, prams = 2)
-  Declaration(tokens = 7, name = Intersect)
+Function(is_header = 1, prams = 2)
+  Declaration(tokens = 10, name = Intersect)
     WORD[example_typedefs.c:24:1] data = bool
     WORD[example_typedefs.c:24:6] data = Intersect
     CHAR[example_typedefs.c:24:15] data = <
@@ -7,6 +7,9 @@ Function(is_header = 0, prams = 2)
     CHAR[example_typedefs.c:24:45] data = >
     CHAR[example_typedefs.c:24:46] data = (
     CHAR[example_typedefs.c:24:47] data = )
+    CHAR[example_typedefs.c:24:49] data = =
+    NUMBER[example_typedefs.c:24:51] data = 0
+    CHAR[example_typedefs.c:24:52] data = ;
   Declaration(tokens = 3, name = first)
     WORD[example_typedefs.c:24:16] data = Figure
     CHAR[example_typedefs.c:24:23] data = *

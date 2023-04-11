@@ -1,0 +1,7 @@
+struct VerticalLine;
+struct HorizontalLine;
+struct Box;
+struct Drawable;
+typedef struct Drawable VerticalLine;
+typedef struct HorizontalLine HorizontalLine;
+typedef struct Box Box;

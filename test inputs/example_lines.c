@@ -80,12 +80,12 @@ void Draw<Drawable<HorizontalLine>* hl>() {
 void Draw<Drawable<Box>* b>() {
   Drawable<VerticalLine> vl = {}<{.x = b->!x1, .y1 = b->!y1, .y2 = b->!y2}>;
   Draw<&vl>();
-  vl.x = b->!x2;
+  vl!x = b->!x2;
   Draw<&vl>();
 
   Drawable<HorizontalLine> hl = {}<{.y = b->!y1, .x1 = b->!x1, .x2 = b->!x2}>;
   Draw<&hl>();
-  hl.y = b->!y2;
+  hl!y = b->!y2;
   Draw<&hl>();
 }
 

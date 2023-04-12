@@ -9,7 +9,7 @@ Original idea (in Russian): http://softcraft.ru/paradigm/ppp/
 
 ```console
 $ make
-$ ./main "test inputs/example.c"
+$ ./main "test inputs/example_lines.c"
 ```
 
 ## Install pre-commit hooks

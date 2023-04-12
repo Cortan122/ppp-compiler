@@ -4,11 +4,6 @@
 #include "lexer.h"
 #include "stb_ds.h"
 
-typedef struct NamedType {
-  char* key;
-  Struct* value;
-} NamedType;
-
 typedef struct NamedFunction {
   char* key;
   Function* value;
@@ -38,6 +33,9 @@ bool parser_parse_struct_subtypes(Parser* p, Struct* res, bool force_parameter);
 bool parser_parse_struct(Parser* p, Struct* res);
 bool parser_parse_type(Parser* p, Struct* res);
 
+bool parser_parse_variable(Parser* p, Struct* type);
+bool parser_parse_function_call(Parser* p);
+bool parser_parse_local_variable(Parser* p, Function* func);
 void parser_inside_function(Parser* p, Function* func);
 
 Declaration parser_force_declaration(Parser* p);

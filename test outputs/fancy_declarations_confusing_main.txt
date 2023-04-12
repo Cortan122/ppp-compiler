@@ -1,0 +1,23 @@
+Declaration(tokens = 2, name = Parser)
+  Struct(tokens = 4, name = Parser) 
+    WORD[confusing_main.c:1:9] data = struct
+    WORD[confusing_main.c:1:16] data = Parser
+    CHAR[confusing_main.c:1:23] data = {
+    Declaration(tokens = 3, name = lexer)
+      WORD[confusing_main.c:2:3] data = int
+      WORD[confusing_main.c:2:7] data = lexer
+      CHAR[confusing_main.c:2:12] data = ;
+    Declaration(tokens = 3, name = top_level)
+      WORD[confusing_main.c:3:3] data = int
+      WORD[confusing_main.c:3:7] data = top_level
+      CHAR[confusing_main.c:3:16] data = ;
+    CHAR[confusing_main.c:4:1] data = }
+  WORD[confusing_main.c:4:3] data = Parser
+  CHAR[confusing_main.c:4:9] data = ;
+
+Declaration(tokens = 4, name = ptrdiff_t)
+  WORD[confusing_main.c:5:9] data = long
+  WORD[confusing_main.c:5:14] data = long
+  WORD[confusing_main.c:5:19] data = ptrdiff_t
+  CHAR[confusing_main.c:5:28] data = ;
+

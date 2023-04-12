@@ -455,7 +455,7 @@ CHAR[example_lines.c:82:12] data = (
 CHAR[example_lines.c:82:13] data = )
 CHAR[example_lines.c:82:14] data = ;
 WORD[example_lines.c:83:3] data = vl
-CHAR[example_lines.c:83:5] data = .
+CHAR[example_lines.c:83:5] data = !
 WORD[example_lines.c:83:6] data = x
 CHAR[example_lines.c:83:8] data = =
 WORD[example_lines.c:83:10] data = b
@@ -520,7 +520,7 @@ CHAR[example_lines.c:87:12] data = (
 CHAR[example_lines.c:87:13] data = )
 CHAR[example_lines.c:87:14] data = ;
 WORD[example_lines.c:88:3] data = hl
-CHAR[example_lines.c:88:5] data = .
+CHAR[example_lines.c:88:5] data = !
 WORD[example_lines.c:88:6] data = y
 CHAR[example_lines.c:88:8] data = =
 WORD[example_lines.c:88:10] data = b

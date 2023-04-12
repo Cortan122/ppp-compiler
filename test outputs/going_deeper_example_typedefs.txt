@@ -24,7 +24,7 @@ typedef bool(*__ppp__pointer_Intersect_Figure_Figure)(Figure *first, Figure *sec
 
 // Прямоугольник разместится внутри прямоугольника
 struct __ppp__Figure_Rectangle{ int tag; struct { char* color;
-} head;  Rectangle tail; };
+} head;  Rectangle tail; };extern int __ppp__tag_value_Figure_Rectangle;
 bool __ppp__Intersect_Figure_Rectangle_Figure_Rectangle(struct __ppp__Figure_Rectangle*r1, struct __ppp__Figure_Rectangle*r2  ) {
   return ((r1->tail. x< r2->tail. x) && (r1->tail. y< r2->tail. y)) ||
          ((r1->tail. x< r2->tail. y) && (r1->tail. y< r2->tail. x));
@@ -32,7 +32,7 @@ bool __ppp__Intersect_Figure_Rectangle_Figure_Rectangle(struct __ppp__Figure_Rec
 
 // Круг разместится внутри круга
 struct __ppp__Figure_Circle{ int tag; struct { char* color;
-} head;  Circle tail; };
+} head;  Circle tail; };extern int __ppp__tag_value_Figure_Circle;
 bool __ppp__Intersect_Figure_Circle_Figure_Circle(struct __ppp__Figure_Circle*c1, struct __ppp__Figure_Circle*c2  ) {
   return c1->tail. r< c2->tail. r;
 }

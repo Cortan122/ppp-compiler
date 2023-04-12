@@ -16,6 +16,7 @@ typedef struct Struct {
   struct Struct* aliased_to;
   struct Struct* parameter;
   char* converted_name;
+  char* tag_value_name;
   int tokens_modifier_pos;
 } Struct;
 
@@ -26,6 +27,11 @@ typedef struct Declaration {
   Loc location;
   bool is_typedef;
 } Declaration;
+
+typedef struct NamedType {
+  char* key;
+  Struct* value;
+} NamedType;
 
 typedef struct Function {
   Declaration decl;
@@ -40,6 +46,8 @@ typedef struct Function {
   bool has_normal_prams;
   char* table_name;
   char* table_count_name;
+
+  NamedType* scope;
 } Function;
 
 void declaration_print_function(Function* func, int rec_lvl);

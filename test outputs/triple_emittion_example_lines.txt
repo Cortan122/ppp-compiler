@@ -60,7 +60,7 @@ void print_array() {
 }
 typedef void(*__ppp__pointer_Draw_Drawable)(Drawable* d);extern __ppp__pointer_Draw_Drawable* __ppp__table_Draw_Drawable;extern int __ppp__table_count_Draw_Drawable; void Draw(Drawable* d  ){return __ppp__table_Draw_Drawable[d->tag](d);}
 
-struct __ppp__Drawable_VerticalLine{ int tag; struct {} head;  VerticalLine tail; };
+struct __ppp__Drawable_VerticalLine{ int tag; struct {} head;  VerticalLine tail; };extern int __ppp__tag_value_Drawable_VerticalLine;
 void __ppp__Draw_Drawable_VerticalLine(struct __ppp__Drawable_VerticalLine* vl  ) {
   array[vl->!y1][vl->!x] |= 4;  // 0b0100
   for(int i = vl->!y1 + 1; i < vl->!y2; i++) {
@@ -69,7 +69,7 @@ void __ppp__Draw_Drawable_VerticalLine(struct __ppp__Drawable_VerticalLine* vl  
   array[vl->!y2][vl->!x] |= 8;  // 0b1000
 }
 
-struct __ppp__Drawable_HorizontalLine{ int tag; struct {} head;  HorizontalLine tail; };
+struct __ppp__Drawable_HorizontalLine{ int tag; struct {} head;  HorizontalLine tail; };extern int __ppp__tag_value_Drawable_HorizontalLine;
 void __ppp__Draw_Drawable_HorizontalLine(struct __ppp__Drawable_HorizontalLine* hl  ) {
   array[hl->!y][hl->!x1] |= 1;  // 0b0001
   for(int i = hl->!x1 + 1; i < hl->!x2; i++) {
@@ -78,16 +78,16 @@ void __ppp__Draw_Drawable_HorizontalLine(struct __ppp__Drawable_HorizontalLine* 
   array[hl->!y][hl->!x2] |= 2;  // 0b0010
 }
 
-struct __ppp__Drawable_Box{ int tag; struct {} head;  Box tail; };
+struct __ppp__Drawable_Box{ int tag; struct {} head;  Box tail; };extern int __ppp__tag_value_Drawable_Box;
 void __ppp__Draw_Drawable_Box(struct __ppp__Drawable_Box* b  ) {
   Drawable<VerticalLine> vl = {}<{.x = b->!x1, .y1 = b->!y1, .y2 = b->!y2}>;
   Draw<&vl>();
-  vl.x = b->!x2;
+  vl!x = b->!x2;
   Draw<&vl>();
 
   Drawable<HorizontalLine> hl = {}<{.y = b->!y1, .x1 = b->!x1, .x2 = b->!x2}>;
   Draw<&hl>();
-  hl.y = b->!y2;
+  hl!y = b->!y2;
   Draw<&hl>();
 }
 

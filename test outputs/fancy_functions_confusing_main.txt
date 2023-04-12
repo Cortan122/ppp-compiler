@@ -1,0 +1,14 @@
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 11, name = main)
+    WORD[confusing_main.c:7:1] data = int
+    WORD[confusing_main.c:7:5] data = main
+    CHAR[confusing_main.c:7:9] data = (
+    WORD[confusing_main.c:7:10] data = int
+    WORD[confusing_main.c:7:14] data = argc
+    CHAR[confusing_main.c:7:18] data = ,
+    WORD[confusing_main.c:7:20] data = char
+    CHAR[confusing_main.c:7:24] data = *
+    CHAR[confusing_main.c:7:25] data = *
+    WORD[confusing_main.c:7:27] data = argv
+    CHAR[confusing_main.c:7:31] data = )
+

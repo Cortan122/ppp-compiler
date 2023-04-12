@@ -150,7 +150,21 @@ static char* generate_function_table_name(Function* func, char* prefix) {
   return res;
 }
 
+static void generate_struct_tag_name(Struct* s) {
+  if(s->tag_value_name) return;
+  if(s->parameter == NULL) return;
+
+  strappend(s->tag_value_name, MANGLED_NAME_PREFIX);
+  strappend(s->tag_value_name, "tag_value_");
+  strappend(s->tag_value_name, get_struct_name(s, false));
+
+  strappend(s->tag_value_name, "_");
+  strappend(s->tag_value_name, get_struct_name(s->parameter, true));
+  arrpush(s->tag_value_name, '\0');
+}
+
 static void generate_converted_struct_name(Struct* s) {
+  generate_struct_tag_name(s);
   if(s->converted_name) return;
   if(s->parameter == NULL) return;
 
@@ -162,11 +176,16 @@ static void generate_converted_struct_name(Struct* s) {
   arrpush(s->converted_name, '\0');
 }
 
-static Declaration* get_scope_variable(Function* func, char* word) {
+static Struct* get_scope_variable(Function* func, char* word) {
+  Struct* type = shget(func->scope, word);
+  if(type) {
+    return type;
+  }
+
   // linear search here is fine.. i think
   for(int i = 0; i < arrlen(func->fancy_params); i++) {
     if(strcmp(func->fancy_params[i].name, word) == 0) {
-      return &func->fancy_params[i];
+      return func->fancy_params[i].type;
     }
   }
 
@@ -396,7 +415,7 @@ Declaration parser_parse_declaration(Parser* p) {
   return res;
 }
 
-bool parser_parse_variable(Parser* p, Declaration* var) {
+bool parser_parse_variable(Parser* p, Struct* type) {
   Token* tmp_storage = NULL;
   bool result = false;
 
@@ -404,9 +423,14 @@ bool parser_parse_variable(Parser* p, Declaration* var) {
   Token tok = parser_peek_token(p);
   if(tok.kind != TOKEN_CHAR) goto defer;
 
+  if(token_eq_char(&tok, ';')) {
+    result = true;
+    goto defer;
+  }
+
   if(token_eq_char(&tok, '!')) {
     parser_transfer_token(p, &tmp_storage);
-    Token last = var->type->tokens[arrlen(var->type->tokens)];
+    Token last = type->tokens[arrlen(type->tokens)];
     if(token_eq_char(&last, '*')) {
       token_emit_cstr("->tail", p->default_emitter);
     } else {
@@ -421,12 +445,14 @@ bool parser_parse_variable(Parser* p, Declaration* var) {
   }
 
   if(token_eq_char(&tok, '.')) {
-    Token last = var->type->tokens[arrlen(var->type->tokens)];
+    Token last = type->tokens[arrlen(type->tokens)];
     if(token_eq_char(&last, '*')) {
       token_emit_cstr("->head", p->default_emitter);
     } else {
       token_emit_cstr(".head", p->default_emitter);
     }
+    result = true;
+    goto defer;
   }
 
   if(!token_eq_char(&tok, '-')) goto defer;
@@ -450,7 +476,7 @@ defer:;
   return result;
 }
 
-bool parse_function_call(Parser* p) {
+bool parser_parse_function_call(Parser* p) {
   parser_transfer_token(p, NULL);
   Token tok = parser_peek_token(p);
 
@@ -487,6 +513,82 @@ bool parse_function_call(Parser* p) {
   return true;
 }
 
+bool parser_parse_initializer(Parser* p, Function* func, Struct* type) {
+  Token tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, '{')) {
+    return false;
+  }
+
+  token_emit_cstr("{.tag = ", p->extra_emitter);
+  token_emit_cstr(type->tag_value_name, p->extra_emitter);
+  token_emit_cstr(", .head = ", p->extra_emitter);
+  skip_bracket_block(p, NULL, '}', ';', 0);
+
+  tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, '<')) {
+    token_emit_cstr("}", p->extra_emitter);
+    return true;
+  }
+
+  Token* prams = NULL;
+  parser_transfer_token(p, &prams);
+  token_emit_cstr(", .tail = ", p->extra_emitter);
+  parser_inside_function(p, func);
+
+  tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, '>')) {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected '>', but found '%s'", tok.data);
+    return true;
+  }
+
+  parser_transfer_token(p, &prams);
+  free_tmp_storage(prams, NULL);
+  token_emit_cstr("}", p->extra_emitter);
+
+  return true;
+}
+
+bool parser_parse_local_variable(Parser* p, Function* func) {
+  char* name = NULL;
+  Struct* type = calloc(1, sizeof(Struct));
+  if(!parser_parse_type(p, type)) goto defer;
+  declaration_emit_struct(type, p->decl_emitter);
+
+  if(type->parameter == NULL) goto defer;
+
+  Token tok = parser_peek_token(p);
+  if(tok.kind == TOKEN_WORD) {
+    name = strdup(tok.data);
+    parser_transfer_token(p, NULL);
+  } else {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected variable name, but found '%s'", tok.data);
+    goto defer;
+  }
+
+  if(shget(func->scope, name)) {
+    token_print_error(&tok, LOGLEVEL_WARNING, "attempting to redefine local variable '%s'", tok.data);
+    goto defer;
+  } else {
+    shput(func->scope, name, type);
+  }
+
+  tok = parser_peek_token(p);
+  if(token_eq_char(&tok, '=')) {
+    parser_transfer_token(p, NULL);
+    parser_parse_initializer(p, func, type);
+  } else {
+    token_emit_cstr("= {.tag = ", p->extra_emitter);
+    token_emit_cstr(type->tag_value_name, p->extra_emitter);
+    token_emit_cstr("}", p->extra_emitter);
+  }
+
+  return true;
+defer:;
+  free(name);
+  declaration_delete_struct(type);
+  return false;
+}
+
 void parser_inside_function(Parser* p, Function* func) {
   int rec_level = 0;
   bool keep_looping = true;
@@ -495,6 +597,7 @@ void parser_inside_function(Parser* p, Function* func) {
     Token tok = parser_peek_token(p);
     if(tok.kind == TOKEN_EOF) {
       token_print_error(&tok, LOGLEVEL_ERROR, "expected end of function code but found EOF%s", "");
+      token_print_error(&func->decl.tokens[0], LOGLEVEL_INFO, "in function '%s'", func->decl.name);
       exit(1);
     } else if(tok.kind == TOKEN_CHAR) {
       switch(*tok.data) {
@@ -502,14 +605,17 @@ void parser_inside_function(Parser* p, Function* func) {
       }
       if(rec_level == 0) keep_looping = false;
     } else if(tok.kind == TOKEN_WORD) {
-      Declaration* var;
+      Struct* var;
       if(shget(p->polymorphic_functions, tok.data)) {
-        parse_function_call(p);
+        parser_parse_function_call(p);
       } else if(shget(p->typedefs, tok.data)) {
-        token_print_error(&tok, LOGLEVEL_INFO, "local variable declarations are not implemented yet%s", "");
+        parser_parse_local_variable(p, func);
       } else if((var = get_scope_variable(func, tok.data))) {
         parser_parse_variable(p, var);
       }
+
+      tok = parser_peek_token(p);
+      if(tok.kind != TOKEN_WORD) continue;
     }
 
     parser_transfer_token(p, NULL);

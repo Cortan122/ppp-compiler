@@ -1,0 +1,5 @@
+typedef struct Parser {
+  int lexer;
+  int top_level;
+} Parser;
+typedef long long ptrdiff_t;

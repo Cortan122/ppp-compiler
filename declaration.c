@@ -125,6 +125,10 @@ void declaration_emit_parameter_struct(Struct* s, Emitter* emitter, Struct* base
   declaration_emit_struct(s->parameter, emitter);
   token_emit_cstr(" tail; };", emitter);
 
+  token_emit_cstr("extern int ", emitter);
+  token_emit_cstr(s->tag_value_name, emitter);
+  token_emit_cstr(";", emitter);
+
   token_emit(&(Token){.kind = TOKEN_EOF}, emitter);
 }
 
@@ -296,6 +300,12 @@ void declaration_delete_function(Function* func) {
   }
   arrfree(func->fancy_params);
 
+  for(int i = 0; i < shlen(func->scope); i++) {
+    free(func->scope[i].key);
+    declaration_delete_struct(func->scope[i].value);
+  }
+  shfree(func->scope);
+
   arrfree(func->converted_name);
   arrfree(func->table_name);
   arrfree(func->table_count_name);
@@ -322,6 +332,7 @@ void declaration_delete_struct(Struct* s) {
     declaration_delete_struct(s->parameter);
   }
   arrfree(s->converted_name);
+  arrfree(s->tag_value_name);
   free(s);
 }
 

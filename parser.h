@@ -4,11 +4,6 @@
 #include "lexer.h"
 #include "stb_ds.h"
 
-typedef struct NamedFunction {
-  char* key;
-  Function* value;
-} NamedFunction;
-
 typedef struct Parser {
   Lexer lexer;
   Declaration* top_level;
@@ -50,5 +45,6 @@ void parser_read_file(Parser* p, const char* filename);
 void parser_emit_declarations(Parser* p, Emitter* emitter);
 void parser_emit_functions(Parser* p, Emitter* emitter);
 void parser_emit_typedefs(Parser* p, Emitter* emitter, bool print_unknowns);
+void parser_emit_final_tables(Parser* p, Emitter* emitter);
 
 void parser_delete(Parser* p);

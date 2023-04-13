@@ -207,31 +207,82 @@ static void emit_table_and_count_externs(Parser* p, Function* func) {
   func->is_abstract_header = true;
   func->table_name = generate_function_table_name(func, "table_");
   func->table_count_name = generate_function_table_name(func, "table_count_");
+  func->function_pointer_type = generate_function_table_name(func, "pointer_");
 
   if(p->extra_emitter == NULL) return;
-
-  char* function_pointer_type = generate_function_table_name(func, "pointer_");
 
   token_emit(&(Token){.kind = TOKEN_EOF}, p->extra_emitter);
   token_emit_cstr("typedef", p->extra_emitter);
   p->extra_emitter->ignore_next_newline = true;
   declaration_emit_struct(func->decl.type, p->extra_emitter);
   token_emit_cstr("(*", p->extra_emitter);
-  token_emit_cstr(function_pointer_type, p->extra_emitter);
+  token_emit_cstr(func->function_pointer_type, p->extra_emitter);
   token_emit_cstr(")", p->extra_emitter);
   declaration_emit_function_arguments(func, p->extra_emitter, false);
   token_emit_cstr(");", p->extra_emitter);
 
   token_emit_cstr("extern ", p->extra_emitter);
-  token_emit_cstr(function_pointer_type, p->extra_emitter);
+  token_emit_cstr(func->function_pointer_type, p->extra_emitter);
   token_emit_cstr("* ", p->extra_emitter);
   token_emit_cstr(func->table_name, p->extra_emitter);
   token_emit_cstr(";", p->extra_emitter);
   token_emit_cstr("extern int ", p->extra_emitter);
   token_emit_cstr(func->table_count_name, p->extra_emitter);
   token_emit_cstr(";", p->extra_emitter);
+}
 
-  arrfree(function_pointer_type);
+static void emit_int(char* name, int i, Emitter* emitter) {
+  char buff[11] = {0};
+  snprintf(buff, sizeof(buff), "%d", i);
+
+  token_emit_cstr("int ", emitter);
+  token_emit_cstr(name, emitter);
+  token_emit_cstr(" = ", emitter);
+  token_emit_cstr(buff, emitter);
+  token_emit_cstr(";\n", emitter);
+}
+
+static void emit_tag_values(Struct* s, Emitter* emitter) {
+  for(int i = 0; i < arrlen(s->tag_names); i++) {
+    emit_int(s->tag_names[i], i, emitter);
+  }
+}
+
+static void emit_function_table(Parser* p, Function* func, Emitter* emitter) {
+  token_emit_cstr(func->function_pointer_type, emitter);
+  token_emit_cstr("* ", emitter);
+  token_emit_cstr(func->table_name, emitter);
+  token_emit_cstr(" = (", emitter);
+  token_emit_cstr(func->function_pointer_type, emitter);
+  token_emit_cstr("[]){\n", emitter);
+
+  int count = 0;
+  int rec_lvl = 0;
+  Struct* base = shget(p->structs, get_struct_name(func->fancy_params[rec_lvl].type, false));
+  rec_lvl++;
+
+  for(int i = 0; i < arrlen(base->tag_names); i++) {
+    if(rec_lvl < arrlen(func->fancy_params)) {
+      // todo: recursion
+      // count += rec
+      token_print_error(func->decl.tokens, LOGLEVEL_WARNING, "multimethod tables are not implemented yet%s", "");
+      break;
+    } else {
+      count++;
+      Function* impl = shget(func->implementations, base->tag_names[i]);
+      if(impl == NULL) {
+        // todo: default functions?
+        token_emit_cstr("(void*)0,\n", emitter);
+      } else {
+        token_emit_cstr("(void*)&", emitter);
+        token_emit_cstr(impl->converted_name, emitter);
+        token_emit_cstr(",\n", emitter);
+      }
+    }
+  }
+
+  token_emit_cstr("};\n", emitter);
+  emit_int(func->table_count_name, count, emitter);
 }
 
 void parser_transfer_token(Parser* p, Token** dest) {
@@ -281,6 +332,7 @@ void parser_parse_struct_parameter(Parser* p, Struct* res) {
   generate_converted_struct_name(res);
   if(shget(p->defined_specialized_structs, res->converted_name) == NULL) {
     Struct* base = shget(p->structs, get_struct_name(res, false));
+    arrpush(base->tag_names, res->tag_value_name);
     declaration_emit_parameter_struct(res, p->extra_emitter, base);
     shput(p->defined_specialized_structs, res->converted_name, res);
   }
@@ -638,7 +690,6 @@ bool parser_parse_function(Parser* p, Function* func) {
 
   tok = parser_peek_token(p);
   if(token_eq_char(&tok, '<') && p->allow_fancy_structs) {
-    shput(p->polymorphic_functions, func->decl.name, func);
     parser_transfer_token(p, &func->decl.tokens);
     func->tokens_prams_pos = arrlen(func->decl.tokens);
     while(1) {
@@ -669,6 +720,19 @@ bool parser_parse_function(Parser* p, Function* func) {
   generate_converted_function_name(func);
 
   tok = parser_peek_token(p);
+  if(func->tokens_prams_pos) {
+    Function* val = shget(p->polymorphic_functions, func->decl.name);
+    if(val) {
+      // TODO: func->converted_name or...
+      char* name = func->fancy_params[0].type->tag_value_name;
+      shput(val->implementations, name, func);
+    } else if(token_eq_char(&tok, '=')) {
+      shput(p->polymorphic_functions, func->decl.name, func);
+    } else {
+      token_print_error(&tok, LOGLEVEL_ERROR, "parametric function defined before its header%s", "");
+    }
+  }
+
   if(token_eq_char(&tok, '{')) {
     declaration_emit_function(func, p->decl_emitter);
     if(p->go_deeper) {
@@ -799,6 +863,16 @@ void parser_emit_typedefs(Parser* p, Emitter* emitter, bool print_unknowns) {
     } else if(print_unknowns || struc->name != NULL) {
       fprintf(emitter->file, "typedef struct %s %s;\n", struc->name, p->typedefs[i].key);
     }
+  }
+}
+
+void parser_emit_final_tables(Parser* p, Emitter* emitter) {
+  for(int i = 0; i < shlen(p->structs); i++) {
+    emit_tag_values(p->structs[i].value, emitter);
+  }
+
+  for(int i = 0; i < shlen(p->polymorphic_functions); i++) {
+    emit_function_table(p, p->polymorphic_functions[i].value, emitter);
   }
 }
 

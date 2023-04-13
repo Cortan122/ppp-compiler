@@ -16,6 +16,7 @@ int main(int argc, char** argv) {
 
   char* filename = argc > 1 ? argv[1] : "main.c";
   parser_read_file(&parser, filename);
+  parser_emit_final_tables(&parser, &em1);
   if(argc > 2) {
     parser_emit_declarations(&parser, &em2);
     parser_emit_functions(&parser, &em2);

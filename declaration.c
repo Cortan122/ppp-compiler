@@ -306,9 +306,12 @@ void declaration_delete_function(Function* func) {
   }
   shfree(func->scope);
 
+  shfree(func->implementations);
+
   arrfree(func->converted_name);
   arrfree(func->table_name);
   arrfree(func->table_count_name);
+  arrfree(func->function_pointer_type);
   free(func);
 }
 
@@ -333,6 +336,7 @@ void declaration_delete_struct(Struct* s) {
   }
   arrfree(s->converted_name);
   arrfree(s->tag_value_name);
+  arrfree(s->tag_names);
   free(s);
 }
 

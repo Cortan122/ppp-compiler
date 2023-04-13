@@ -12,6 +12,7 @@ typedef struct Struct {
   struct Declaration* subtypes;
   int tokens_subtypes_pos;
   bool is_primitive;
+  char** tag_names;
 
   struct Struct* aliased_to;
   struct Struct* parameter;
@@ -33,6 +34,12 @@ typedef struct NamedType {
   Struct* value;
 } NamedType;
 
+struct Function;
+typedef struct NamedFunction {
+  char* key;
+  struct Function* value;
+} NamedFunction;
+
 typedef struct Function {
   Declaration decl;
 
@@ -46,8 +53,10 @@ typedef struct Function {
   bool has_normal_prams;
   char* table_name;
   char* table_count_name;
+  char* function_pointer_type;
 
   NamedType* scope;
+  NamedFunction* implementations;
 } Function;
 
 void declaration_print_function(Function* func, int rec_lvl);

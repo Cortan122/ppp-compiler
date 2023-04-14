@@ -2,5 +2,6 @@ test outputs/tmp.*
 *.o
 main
 test
+wrapper
 stb_ds.h
 depend.mk

@@ -41,6 +41,7 @@ void lexer_lex_string(Lexer* l, Token* res, char end);
 void lexer_lex_line(Lexer* l, Token* res);
 void lexer_lex_comment(Lexer* l, Token* res);
 
+void lexer_reset(Lexer* l);
 void lexer_open_file(Lexer* l, const char* filename);
 void lexer_open_memory(Lexer* l, const char* text, size_t length);
 void lexer_delete(Lexer* l);

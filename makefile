@@ -7,8 +7,13 @@ HEADERS=$(wildcard *.h)
 OBJS=token.o lexer.o parser.o declaration.o
 
 all: main test
+wrapper: wrapper.o $(OBJS)
 main: main.o $(OBJS)
 test: test.o $(OBJS)
+
+ifneq ($(OS),Windows_NT)
+all: wrapper
+endif
 
 depend.mk: $(SRC) $(HEADERS)
 	$(CC) -MM -MG $(SRC) > depend.mk
@@ -16,7 +21,7 @@ depend.mk: $(SRC) $(HEADERS)
 include depend.mk
 
 clean:
-	rm -f *.o depend.mk main test "test outputs/"tmp.*
+	rm -f *.o depend.mk main test wrapper "test outputs/"tmp.*
 
 run_tests: test
 	./test "test inputs/"*

@@ -112,7 +112,7 @@ void declaration_print_debug(Declaration* d, int rec_lvl) {
   }
 }
 
-void declaration_emit_parameter_struct(Struct* s, Emitter* emitter, Struct* base) {
+void declaration_emit_parameter_struct(Struct* s, Emitter* emitter, Struct* base, bool weak) {
   if(emitter == NULL) return;
 
   emitter->ignore_next_indent = true;
@@ -125,7 +125,11 @@ void declaration_emit_parameter_struct(Struct* s, Emitter* emitter, Struct* base
   declaration_emit_struct(s->parameter, emitter);
   token_emit_cstr(" tail; };", emitter);
 
-  token_emit_cstr("extern int ", emitter);
+  if(weak) {
+    token_emit_cstr("int __attribute__((weak)) ", emitter);
+  } else {
+    token_emit_cstr("extern int ", emitter);
+  }
   token_emit_cstr(s->tag_value_name, emitter);
   token_emit_cstr(";", emitter);
 
@@ -235,6 +239,7 @@ void declaration_emit_fancy_function(Function* func, Emitter* emitter) {
     token_emit_cstr("{", emitter);
     token_emit_cstr("return ", emitter);
     token_emit_cstr(func->table_name, emitter);
+
     token_emit_cstr("[", emitter);
     for(int i = 0; i < arrlen(func->fancy_params); i++) {
       if(i != 0) {
@@ -244,10 +249,11 @@ void declaration_emit_fancy_function(Function* func, Emitter* emitter) {
       token_emit_cstr("->tag", emitter);
       for(int j = 0; j < i; j++) {
         token_emit_cstr("*", emitter);
-        token_emit_cstr(func->table_count_name, emitter);
+        token_emit_cstr(func->fancy_params[j].type->tag_counter_name, emitter);
       }
     }
     token_emit_cstr("]", emitter);
+
     declaration_emit_function_arguments(func, emitter, true);
     token_emit_cstr(";}", emitter);
   }
@@ -337,6 +343,7 @@ void declaration_delete_struct(Struct* s) {
   arrfree(s->converted_name);
   arrfree(s->tag_value_name);
   arrfree(s->tag_names);
+  arrfree(s->tag_counter_name);
   free(s);
 }
 

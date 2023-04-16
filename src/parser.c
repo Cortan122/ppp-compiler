@@ -150,30 +150,36 @@ static char* generate_function_table_name(Function* func, char* prefix) {
   return res;
 }
 
-static void generate_struct_tag_name(Struct* s) {
-  if(s->tag_value_name) return;
-  if(s->parameter == NULL) return;
+static char* generate_struct_prefixed_name(Struct* s, char* prefix, bool ignore_parameter) {
+  char* res = NULL;
 
-  strappend(s->tag_value_name, MANGLED_NAME_PREFIX);
-  strappend(s->tag_value_name, "tag_value_");
-  strappend(s->tag_value_name, get_struct_name(s, false));
+  strappend(res, MANGLED_NAME_PREFIX);
+  strappend(res, prefix);
+  strappend(res, get_struct_name(s, false));
 
-  strappend(s->tag_value_name, "_");
-  strappend(s->tag_value_name, get_struct_name(s->parameter, true));
-  arrpush(s->tag_value_name, '\0');
+  if(!ignore_parameter) {
+    strappend(res, "_");
+    strappend(res, get_struct_name(s->parameter, true));
+  }
+  arrpush(res, '\0');
+
+  return res;
 }
 
 static void generate_converted_struct_name(Struct* s) {
-  generate_struct_tag_name(s);
-  if(s->converted_name) return;
+  if(s->tag_counter_name == NULL) {
+    s->tag_counter_name = generate_struct_prefixed_name(s, "tag_counter_", true);
+  }
+
   if(s->parameter == NULL) return;
 
-  strappend(s->converted_name, MANGLED_NAME_PREFIX);
-  strappend(s->converted_name, get_struct_name(s, false));
+  if(s->tag_value_name == NULL) {
+    s->tag_value_name = generate_struct_prefixed_name(s, "tag_value_", false);
+  }
 
-  strappend(s->converted_name, "_");
-  strappend(s->converted_name, get_struct_name(s->parameter, true));
-  arrpush(s->converted_name, '\0');
+  if(s->converted_name == NULL) {
+    s->converted_name = generate_struct_prefixed_name(s, "", false);
+  }
 }
 
 static Struct* get_scope_variable(Function* func, char* word) {
@@ -200,6 +206,17 @@ static void free_tmp_storage(Token* tmp_storage, Emitter* emitter) {
   arrfree(tmp_storage);
 }
 
+static void emit_int(char* name, int i, Emitter* emitter) {
+  char buff[11] = {0};
+  snprintf(buff, sizeof(buff), "%d", i);
+
+  token_emit_cstr("int ", emitter);
+  token_emit_cstr(name, emitter);
+  token_emit_cstr(" = ", emitter);
+  token_emit_cstr(buff, emitter);
+  token_emit_cstr(";\n", emitter);
+}
+
 static void emit_table_and_count_externs(Parser* p, Function* func) {
   func->is_header = true;
 
@@ -221,31 +238,41 @@ static void emit_table_and_count_externs(Parser* p, Function* func) {
   declaration_emit_function_arguments(func, p->extra_emitter, false);
   token_emit_cstr(");", p->extra_emitter);
 
-  token_emit_cstr("extern ", p->extra_emitter);
+  if(!p->use_constructors) {
+    token_emit_cstr("extern ", p->extra_emitter);
+  }
   token_emit_cstr(func->function_pointer_type, p->extra_emitter);
   token_emit_cstr("* ", p->extra_emitter);
   token_emit_cstr(func->table_name, p->extra_emitter);
+  if(p->use_constructors) {
+    token_emit_cstr(" = (void*)0", p->extra_emitter);
+  }
   token_emit_cstr(";", p->extra_emitter);
-  token_emit_cstr("extern int ", p->extra_emitter);
-  token_emit_cstr(func->table_count_name, p->extra_emitter);
-  token_emit_cstr(";", p->extra_emitter);
-}
 
-static void emit_int(char* name, int i, Emitter* emitter) {
-  char buff[11] = {0};
-  snprintf(buff, sizeof(buff), "%d", i);
-
-  token_emit_cstr("int ", emitter);
-  token_emit_cstr(name, emitter);
-  token_emit_cstr(" = ", emitter);
-  token_emit_cstr(buff, emitter);
-  token_emit_cstr(";\n", emitter);
+  if(p->use_constructors) {
+    emit_int(func->table_count_name, 0, p->extra_emitter);
+  } else {
+    token_emit_cstr("extern int ", p->extra_emitter);
+    token_emit_cstr(func->table_count_name, p->extra_emitter);
+    token_emit_cstr(";", p->extra_emitter);
+  }
 }
 
 static void emit_tag_values(Struct* s, Emitter* emitter) {
   for(int i = 0; i < arrlen(s->tag_names); i++) {
     emit_int(s->tag_names[i], i, emitter);
   }
+}
+
+static void emit_tag_value_constructor(char* tagname, char* counter, Emitter* emitter) {
+  token_emit_cstr("void  __attribute__((constructor(101))) _constructor", emitter);
+  token_emit_cstr(tagname, emitter);
+  token_emit_cstr("() {\n  ", emitter);
+  token_emit_cstr(tagname, emitter);
+  token_emit_cstr(" = ", emitter);
+  token_emit_cstr(counter, emitter);
+  token_emit_cstr("++;\n", emitter);
+  token_emit_cstr("}\n\n", emitter);
 }
 
 static void emit_function_table(Parser* p, Function* func, Emitter* emitter) {
@@ -285,6 +312,54 @@ static void emit_function_table(Parser* p, Function* func, Emitter* emitter) {
   emit_int(func->table_count_name, count, emitter);
 }
 
+static void emit_function_table_constructor(Parser* p, Function* func, Emitter* emitter) {
+  token_emit_cstr("void  __attribute__((constructor(102))) _constructor", emitter);
+  token_emit_cstr(func->table_name, emitter);
+  token_emit_cstr("() {\n  ", emitter);
+  token_emit_cstr(func->table_name, emitter);
+  token_emit_cstr(" = calloc(", emitter);
+
+  for(int i = 0; i < arrlen(func->fancy_params); i++) {
+    if(i > 0) {
+      token_emit_cstr(" * ", emitter);
+    }
+
+    Struct* base = shget(p->structs, get_struct_name(func->fancy_params[i].type, false));
+    token_emit_cstr(base->tag_counter_name, emitter);
+  }
+
+  token_emit_cstr(", sizeof(void*));\n", emitter);
+  token_emit_cstr("}\n\n", emitter);
+}
+
+static void emit_function_constructor(Function* func, Emitter* emitter) {
+  if(func->fancy_params == NULL) return;
+  if(func->base == NULL) return;
+
+  token_emit_cstr("\nvoid  __attribute__((constructor(103))) _constructor", emitter);
+  token_emit_cstr(func->converted_name, emitter);
+  token_emit_cstr("() {\n  ", emitter);
+  token_emit_cstr(func->base->table_name, emitter);
+
+  token_emit_cstr("[", emitter);
+  for(int i = 0; i < arrlen(func->fancy_params); i++) {
+    if(i != 0) {
+      token_emit_cstr("+", emitter);
+    }
+    token_emit_cstr(func->fancy_params[i].type->tag_value_name, emitter);
+    for(int j = 0; j < i; j++) {
+      token_emit_cstr("*", emitter);
+      token_emit_cstr(func->fancy_params[j].type->tag_counter_name, emitter);
+    }
+  }
+  token_emit_cstr("]", emitter);
+
+  token_emit_cstr(" = &", emitter);
+  token_emit_cstr(func->converted_name, emitter);
+  token_emit_cstr(";\n", emitter);
+  token_emit_cstr("}\n\n", emitter);
+}
+
 static bool check_valid_subtype(Struct* base, Struct* parameterized) {
   char* name1 = get_struct_name(parameterized->parameter, true);
   for(int i = 0; i < arrlen(base->subtypes); i++) {
@@ -297,6 +372,13 @@ static bool check_valid_subtype(Struct* base, Struct* parameterized) {
   token_print_error(last, LOGLEVEL_ERROR, "invalid parameter value '%s'", last->data);
 
   return false;
+}
+
+static void emit_struct_counter_name(Parser* p, Struct* s) {
+  generate_converted_struct_name(s);
+  token_emit_cstr("int __attribute__((weak)) ", p->extra_emitter);
+  token_emit_cstr(s->tag_counter_name, p->extra_emitter);
+  token_emit_cstr(" = 0;\n", p->extra_emitter);
 }
 
 void parser_transfer_token(Parser* p, Token** dest) {
@@ -348,7 +430,7 @@ void parser_parse_struct_parameter(Parser* p, Struct* res) {
     Struct* base = shget(p->structs, get_struct_name(res, false));
     if(check_valid_subtype(base, res)) {
       arrpush(base->tag_names, res->tag_value_name);
-      declaration_emit_parameter_struct(res, p->extra_emitter, base);
+      declaration_emit_parameter_struct(res, p->extra_emitter, base, p->use_constructors);
     }
     shput(p->defined_specialized_structs, res->converted_name, res);
   }
@@ -448,6 +530,7 @@ Declaration parser_force_declaration(Parser* p) {
     exit(1);
   }
 
+  generate_converted_struct_name(res.type);
   return res;
 }
 
@@ -742,7 +825,8 @@ bool parser_parse_function(Parser* p, Function* func) {
       // TODO: func->converted_name or...
       char* name = func->fancy_params[0].type->tag_value_name;
       shput(val->implementations, name, func);
-    } else if(token_eq_char(&tok, '=')) {
+      func->base = val;
+    } else if(token_eq_char(&tok, '=') || token_eq_char(&tok, ';')) {
       shput(p->polymorphic_functions, func->decl.name, func);
     } else {
       token_print_error(&tok, LOGLEVEL_ERROR, "parametric function defined before its header%s", "");
@@ -755,6 +839,9 @@ bool parser_parse_function(Parser* p, Function* func) {
       parser_inside_function(p, func);
     } else {
       skip_bracket_block(p, NULL, '}', '\0', 0);
+    }
+    if(p->use_constructors) {
+      emit_function_constructor(func, p->extra_emitter);
     }
     return true;
   } else if(token_eq_char(&tok, ';')) {
@@ -817,6 +904,12 @@ void parser_read_file(Parser* p, const char* filename) {
   if(p->default_emitter) {
     token_emit(&(Token){.kind = TOKEN_EOF}, p->default_emitter);
   }
+}
+
+void parser_set_emitter(Parser* p, Emitter* emitter) {
+  p->decl_emitter = emitter;
+  p->default_emitter = emitter;
+  p->extra_emitter = emitter;
 }
 
 void parser_emit_declarations(Parser* p, Emitter* emitter) {
@@ -883,12 +976,34 @@ void parser_emit_typedefs(Parser* p, Emitter* emitter, bool print_unknowns) {
 }
 
 void parser_emit_final_tables(Parser* p, Emitter* emitter) {
+  if(p->use_constructors) {
+    parser_emit_final_constructors(p, emitter);
+    return;
+  }
+
   for(int i = 0; i < shlen(p->structs); i++) {
     emit_tag_values(p->structs[i].value, emitter);
   }
 
   for(int i = 0; i < shlen(p->polymorphic_functions); i++) {
     emit_function_table(p, p->polymorphic_functions[i].value, emitter);
+  }
+}
+
+void parser_emit_final_constructors(Parser* p, Emitter* emitter) {
+  token_emit_cstr("#include <stdlib.h>\n", emitter);
+
+  for(int i = 0; i < shlen(p->structs); i++) {
+    Struct* s = p->structs[i].value;
+
+    emit_struct_counter_name(p, s);
+    for(int j = 0; j < arrlen(s->tag_names); j++) {
+      emit_tag_value_constructor(s->tag_names[j], s->tag_counter_name, emitter);
+    }
+  }
+
+  for(int i = 0; i < shlen(p->polymorphic_functions); i++) {
+    emit_function_table_constructor(p, p->polymorphic_functions[i].value, emitter);
   }
 }
 

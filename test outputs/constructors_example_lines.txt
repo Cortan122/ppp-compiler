@@ -1,0 +1,178 @@
+
+# 0 "test inputs/example_lines.c"
+#include <stdint.h>
+#include <stdio.h>
+
+#define SIZE 20
+
+typedef struct VerticalLine {
+  int x;
+  int y1;
+  int y2;
+} VerticalLine;
+
+typedef struct HorizontalLine {
+  int y;
+  int x1;
+  int x2;
+} HorizontalLine;
+
+typedef struct Box {
+  int x1;
+  int y1;
+  int x2;
+  int y2;
+} Box;
+
+typedef struct Drawable { int tag; struct {} head; union {
+  struct VerticalLine s00;
+  struct HorizontalLine s01;
+  struct Box s02; } tail;
+} Drawable;
+
+uint8_t array[SIZE][SIZE] = {0};
+
+// 4 bits -- udlr
+const char* rom[] = {
+    " ",
+    "\xe2\x95\xb6",
+    "\xe2\x95\xb4",
+    "\xe2\x94\x80",
+    "\xe2\x95\xb7",
+    "\xe2\x94\x8c",
+    "\xe2\x94\x90",
+    "\xe2\x94\xac",
+    "\xe2\x95\xb5",
+    "\xe2\x94\x94",
+    "\xe2\x94\x98",
+    "\xe2\x94\xb4",
+    "\xe2\x94\x82",
+    "\xe2\x94\x9c",
+    "\xe2\x94\xa4",
+    "\xe2\x94\xbc",
+};
+
+void print_array() {
+  for(int i = 0; i < SIZE; i++) {
+    for(int j = 0; j < SIZE; j++) {
+      printf("%s", rom[array[i][j]]);
+    }
+    printf("\x0a");
+  }
+}
+typedef
+# 61 "test inputs/example_lines.c"
+ void(*__ppp__pointer_Draw_Drawable)(Drawable* d);__ppp__pointer_Draw_Drawable* __ppp__table_Draw_Drawable = (void*)0;int __ppp__table_count_Draw_Drawable = 0;
+
+# 61 "test inputs/example_lines.c"
+ void Draw(Drawable* d  ){return __ppp__table_Draw_Drawable[d->tag](d);}
+
+struct __ppp__Drawable_VerticalLine{ int tag; struct {
+# 24 "test inputs/example_lines.c"
+} head; 
+# 63 "test inputs/example_lines.c"
+ VerticalLine tail; };int __attribute__((weak)) __ppp__tag_value_Drawable_VerticalLine;
+void __ppp__Draw_Drawable_VerticalLine(struct __ppp__Drawable_VerticalLine* vl  ) {
+  array[vl->tail. y1][vl->tail. x] |= 4;  // 0b0100
+  for(int i = vl->tail. y1+ 1; i < vl->tail. y2; i++) {
+    array[i][vl->tail. x] |= 12;  // 0b1100
+  }
+  array[vl->tail. y2][vl->tail. x] |= 8;  // 0b1000
+}
+void  __attribute__((constructor(103))) _constructor__ppp__Draw_Drawable_VerticalLine() {
+  __ppp__table_Draw_Drawable[__ppp__tag_value_Drawable_VerticalLine] = &__ppp__Draw_Drawable_VerticalLine;
+}
+
+
+# 71 "test inputs/example_lines.c"
+ struct __ppp__Drawable_HorizontalLine{ int tag; struct {
+# 24 "test inputs/example_lines.c"
+} head; 
+# 71 "test inputs/example_lines.c"
+ HorizontalLine tail; };int __attribute__((weak)) __ppp__tag_value_Drawable_HorizontalLine;
+void __ppp__Draw_Drawable_HorizontalLine(struct __ppp__Drawable_HorizontalLine* hl  ) {
+  array[hl->tail. y][hl->tail. x1] |= 1;  // 0b0001
+  for(int i = hl->tail. x1+ 1; i < hl->tail. x2; i++) {
+    array[hl->tail. y][i] |= 3;  // 0b0011
+  }
+  array[hl->tail. y][hl->tail. x2] |= 2;  // 0b0010
+}
+void  __attribute__((constructor(103))) _constructor__ppp__Draw_Drawable_HorizontalLine() {
+  __ppp__table_Draw_Drawable[__ppp__tag_value_Drawable_HorizontalLine] = &__ppp__Draw_Drawable_HorizontalLine;
+}
+
+
+# 79 "test inputs/example_lines.c"
+ struct __ppp__Drawable_Box{ int tag; struct {
+# 24 "test inputs/example_lines.c"
+} head; 
+# 79 "test inputs/example_lines.c"
+ Box tail; };int __attribute__((weak)) __ppp__tag_value_Drawable_Box;
+void __ppp__Draw_Drawable_Box(struct __ppp__Drawable_Box* b  ) {
+  struct __ppp__Drawable_VerticalLine vl={.tag = __ppp__tag_value_Drawable_VerticalLine, .head = {}, .tail = {.x = b->tail. x1, .y1 = b->tail. y1, .y2 = b->tail. y2}};
+  Draw     (&vl  );
+  vl.tail. x= b->tail. x2;
+  Draw     (&vl  );
+
+  struct __ppp__Drawable_HorizontalLine hl={.tag = __ppp__tag_value_Drawable_HorizontalLine, .head = {}, .tail = {.y = b->tail. y1, .x1 = b->tail. x1, .x2 = b->tail. x2}};
+  Draw     (&hl  );
+  hl.tail. y= b->tail. y2;
+  Draw     (&hl  );
+}
+void  __attribute__((constructor(103))) _constructor__ppp__Draw_Drawable_Box() {
+  __ppp__table_Draw_Drawable[__ppp__tag_value_Drawable_Box] = &__ppp__Draw_Drawable_Box;
+}
+
+
+# 91 "test inputs/example_lines.c"
+ int main() {
+  Drawable* objects[4];
+
+  VerticalLine vl = {.x = 3, .y1 = 2, .y2 = 10};
+  HorizontalLine hl = {.y = 3, .x1 = 2, .x2 = 10};
+  Box b1 = {.x1 = 5, .y1 = 5, .x2 = 15, .y2 = 10};
+  Box b2 = {.x1 = 1, .y1 = 11, .x2 = 18, .y2 = 13};
+
+  struct __ppp__Drawable_VerticalLine d_vl= {.tag = __ppp__tag_value_Drawable_VerticalLine};
+  struct __ppp__Drawable_HorizontalLine d_hl= {.tag = __ppp__tag_value_Drawable_HorizontalLine};
+  struct __ppp__Drawable_Box d_b1= {.tag = __ppp__tag_value_Drawable_Box};
+  struct __ppp__Drawable_Box d_b2= {.tag = __ppp__tag_value_Drawable_Box};
+
+  d_vl.tail= vl;
+  d_hl.tail= hl;
+  d_b1.tail= b1;
+  d_b2.tail= b2;
+
+  objects[0] = &d_vl;
+  objects[1] = &d_hl;
+  objects[2] = &d_b1;
+  objects[3] = &d_b2;
+
+  for(int i = 0; i < 4; i++){
+    Draw            (objects[i]  );
+  }
+
+  print_array();
+  return 0;
+}
+#include <stdlib.h>
+int __attribute__((weak)) __ppp__tag_counter_VerticalLine = 0;
+int __attribute__((weak)) __ppp__tag_counter_HorizontalLine = 0;
+int __attribute__((weak)) __ppp__tag_counter_Box = 0;
+int __attribute__((weak)) __ppp__tag_counter_Drawable = 0;
+void  __attribute__((constructor(101))) _constructor__ppp__tag_value_Drawable_VerticalLine() {
+  __ppp__tag_value_Drawable_VerticalLine = __ppp__tag_counter_Drawable++;
+}
+
+void  __attribute__((constructor(101))) _constructor__ppp__tag_value_Drawable_HorizontalLine() {
+  __ppp__tag_value_Drawable_HorizontalLine = __ppp__tag_counter_Drawable++;
+}
+
+void  __attribute__((constructor(101))) _constructor__ppp__tag_value_Drawable_Box() {
+  __ppp__tag_value_Drawable_Box = __ppp__tag_counter_Drawable++;
+}
+
+void  __attribute__((constructor(102))) _constructor__ppp__table_Draw_Drawable() {
+  __ppp__table_Draw_Drawable = calloc(__ppp__tag_counter_Drawable, sizeof(void*));
+}
+

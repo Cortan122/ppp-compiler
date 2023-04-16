@@ -2,5 +2,4 @@ struct Parser;
 typedef struct Parser Parser;
 typedef long long ptrdiff_t;
 
-
 int main(int argc, char** argv);

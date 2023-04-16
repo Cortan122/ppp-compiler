@@ -21,7 +21,7 @@ typedef struct Figure { int tag; struct {
   Circle s02; } tail;
 } Figure;
 
-bool Intersect(Figure *first, Figure *second  ){return __ppp__table_Intersect_Figure_Figure[first->tag+second->tag*__ppp__table_count_Intersect_Figure_Figure](first,second           );}
+bool Intersect(Figure *first, Figure *second  ){return __ppp__table_Intersect_Figure_Figure[first->tag+second->tag*__ppp__tag_counter_Figure](first,second           );}
 
 // Прямоугольник разместится внутри прямоугольника
 bool __ppp__Intersect_Figure_Rectangle_Figure_Rectangle(struct __ppp__Figure_Rectangle*r1, struct __ppp__Figure_Rectangle*r2  ) {

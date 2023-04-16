@@ -177,7 +177,8 @@ void testfunc_double_emittion(const char* input_file) {
 
 void testfunc_triple_emittion(const char* input_file) {
   Emitter em = {.file = stdout, .convert_structs = true};
-  Parser parser = {.allow_fancy_structs = true, .decl_emitter = &em, .default_emitter = &em, .extra_emitter = &em};
+  Parser parser = {.allow_fancy_structs = true};
+  parser_set_emitter(&parser, &em);
   parser_read_file(&parser, input_file);
 
   parser_delete(&parser);
@@ -185,7 +186,8 @@ void testfunc_triple_emittion(const char* input_file) {
 
 void testfunc_going_deeper(const char* input_file) {
   Emitter em = {.file = stdout, .convert_structs = true};
-  Parser parser = {.allow_fancy_structs = true, .go_deeper = true, .decl_emitter = &em, .default_emitter = &em, .extra_emitter = &em};
+  Parser parser = {.allow_fancy_structs = true, .go_deeper = true};
+  parser_set_emitter(&parser, &em);
   parser_read_file(&parser, input_file);
 
   parser_delete(&parser);
@@ -193,7 +195,18 @@ void testfunc_going_deeper(const char* input_file) {
 
 void testfunc_final_tables(const char* input_file) {
   Emitter em = {.file = stdout, .convert_structs = true};
-  Parser parser = {.allow_fancy_structs = true, .go_deeper = true, .decl_emitter = &em, .default_emitter = &em, .extra_emitter = &em};
+  Parser parser = {.allow_fancy_structs = true, .go_deeper = true};
+  parser_set_emitter(&parser, &em);
+  parser_read_file(&parser, input_file);
+  parser_emit_final_tables(&parser, &em);
+
+  parser_delete(&parser);
+}
+
+void testfunc_constructors(const char* input_file) {
+  Emitter em = {.file = stdout, .convert_structs = true, .add_line_directives = true};
+  Parser parser = {.allow_fancy_structs = true, .go_deeper = true, .use_constructors = true};
+  parser_set_emitter(&parser, &em);
   parser_read_file(&parser, input_file);
   parser_emit_final_tables(&parser, &em);
 
@@ -218,6 +231,7 @@ TestCase test_cases[] = {
     TESTCASE_L(triple_emittion),
     TESTCASE_L(going_deeper),
     TESTCASE_L(final_tables),
+    TESTCASE(constructors),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
 

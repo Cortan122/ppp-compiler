@@ -1,0 +1,23 @@
+
+# 0 "test inputs/confusing_main.c"
+typedef struct Parser {
+  int lexer;
+  int top_level;
+} Parser;
+typedef long long ptrdiff_t;
+
+int main(int argc, char** argv) {
+  (void)argc;
+
+  Parser parser = {0};
+  lexer_open_file(&parser.lexer, argv[1] ? argv[1] : "main.c");
+  while(parser_parse_line(&parser)) {
+  }
+  for(int i = 0; i < ((parser.top_level) ? (ptrdiff_t) ((stbds_array_header *) (parser.top_level) - 1)->length : 0); i++) {
+    declaration_print_debug(&parser.top_level[i], 0);
+  }
+  parser_delete(&parser);
+  return 0;
+}
+#include <stdlib.h>
+int __attribute__((weak)) __ppp__tag_counter_Parser = 0;

@@ -14,6 +14,7 @@ typedef struct Parser {
   bool allow_fancy_structs;
   bool go_deeper;
   bool keep_abstract_headers;
+  bool use_constructors;
 
   Emitter* default_emitter;
   Emitter* decl_emitter;
@@ -41,10 +42,12 @@ bool parser_parse_line(Parser* p);
 Token parser_peek_token(Parser* p);
 void parser_transfer_token(Parser* p, Token** dest);
 
-void parser_read_file(Parser* p, const char* filename);
 void parser_emit_declarations(Parser* p, Emitter* emitter);
 void parser_emit_functions(Parser* p, Emitter* emitter);
 void parser_emit_typedefs(Parser* p, Emitter* emitter, bool print_unknowns);
 void parser_emit_final_tables(Parser* p, Emitter* emitter);
+void parser_emit_final_constructors(Parser* p, Emitter* emitter);
 
+void parser_read_file(Parser* p, const char* filename);
+void parser_set_emitter(Parser* p, Emitter* emitter);
 void parser_delete(Parser* p);

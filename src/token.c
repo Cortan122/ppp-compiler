@@ -204,14 +204,15 @@ void token_emit(Token* tok, Emitter* emitter) {
 void token_emit_cstr(const char* keyword, Emitter* emitter) {
   if(emitter == NULL) return;
 
-  if(*keyword == '\n') {
-    fprintf(emitter->file, "\n");
-    emitter->cursor.line_num++;
-    emitter->cursor.col_num = 0;
-    keyword++;
-  }
   fprintf(emitter->file, "%s", keyword);
-  emitter->cursor.col_num += strlen(keyword);
+  for(int i = 0; keyword[i]; i++) {
+    if(keyword[i] == '\n') {
+      emitter->cursor.line_num++;
+      emitter->cursor.col_num = 0;
+    } else {
+      emitter->cursor.col_num++;
+    }
+  }
   emitter->last_token_kind = TOKEN_WORD;
 }
 

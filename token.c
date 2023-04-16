@@ -78,10 +78,39 @@ static bool is_sticky_token(TokenKind kind) {
   return true;
 }
 
+static int emit_string(const char* data, size_t length, char quote, Emitter* emitter) {
+  int length_written = 0;
+  fprintf(emitter->file, "%c", quote);
+
+  for(size_t i = 0; i < length; i++) {
+    char c = data[i];
+    if(c < ' ' || c == '"' || c == '\'' || c == '\\') {
+      fprintf(emitter->file, "\\x%02x", (uint8_t)c);
+      length_written += 4;
+    } else {
+      fprintf(emitter->file, "%c", c);
+      length_written++;
+    }
+  }
+
+  fprintf(emitter->file, "%c", quote);
+  return length_written + 2;
+}
+
+static void emit_line_directive(Emitter* emitter, Loc loc) {
+  if(!emitter->add_line_directives) return;
+  if(loc.line_num == -1) return;
+
+  fprintf(emitter->file, "\n# %d ", loc.line_num);
+  emit_string(loc.filename, strlen(loc.filename), '"', emitter);
+  fprintf(emitter->file, "\n");
+}
+
 static void emit_spaces(Emitter* emitter, Loc loc, bool force_space) {
   if(emitter->cursor.filename == NULL) {
     emitter->cursor = loc;
     emitter->cursor.col_num = 0;
+    emit_line_directive(emitter, loc);
   }
   if(loc.filename == NULL) {
     if(force_space) {
@@ -99,9 +128,11 @@ static void emit_spaces(Emitter* emitter, Loc loc, bool force_space) {
 
   int line_delta = loc.line_num - emitter->cursor.line_num;
   if(emitter->delete_repeted_empty_lines && line_delta > 2) line_delta = 2;
+  if(line_delta < 0) emit_line_directive(emitter, loc);
   if(emitter->ignore_next_newline) {
     emitter->ignore_next_newline = false;
     line_delta = 0;
+    emit_line_directive(emitter, loc);
   }
   for(int i = 0; i < line_delta; i++) {
     fprintf(emitter->file, "\n");
@@ -162,19 +193,7 @@ void token_emit(Token* tok, Emitter* emitter) {
     case TOKEN_LONGSTRING:
     case TOKEN_SHORTSTRING: {
       char quote = tok->kind == TOKEN_LONGSTRING ? '"' : '\'';
-      fprintf(emitter->file, "%c", quote);
-      for(size_t i = 0; i < tok->length; i++) {
-        char c = tok->data[i];
-        if(c < ' ' || c == '"' || c == '\'' || c == '\\') {
-          fprintf(emitter->file, "\\x%02x", (uint8_t)c);
-          length_written += 4;
-        } else {
-          fprintf(emitter->file, "%c", c);
-          length_written++;
-        }
-      }
-      fprintf(emitter->file, "%c", quote);
-      length_written += 2;
+      length_written += emit_string(tok->data, tok->length, quote, emitter);
     } break;
   }
 

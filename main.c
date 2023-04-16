@@ -7,7 +7,7 @@ int main(int argc, char** argv) {
   FILE* output1 = argc > 2 ? fopen(argv[2], "w") : stdout;
   FILE* output2 = argc > 3 ? fopen(argv[3], "w") : stderr;
 
-  Emitter em1 = {.file = output1, .convert_structs = true};
+  Emitter em1 = {.file = output1, .convert_structs = true, .add_line_directives = true};
   Emitter em2 = {.file = output2};
   Parser parser = {.allow_fancy_structs = true, .go_deeper = true};
   parser.decl_emitter = &em1;

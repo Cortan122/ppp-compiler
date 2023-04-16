@@ -21,7 +21,7 @@ depend.mk: $(SRC) $(HEADERS)
 include depend.mk
 
 clean:
-	rm -f *.o depend.mk main test wrapper "test outputs/"tmp.*
+	rm -f *.o depend.mk main test wrapper a.out "test outputs/"tmp.*
 
 run_tests: test
 	./test "test inputs/"*

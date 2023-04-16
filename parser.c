@@ -285,6 +285,20 @@ static void emit_function_table(Parser* p, Function* func, Emitter* emitter) {
   emit_int(func->table_count_name, count, emitter);
 }
 
+static bool check_valid_subtype(Struct* base, Struct* parameterized) {
+  char* name1 = get_struct_name(parameterized->parameter, true);
+  for(int i = 0; i < arrlen(base->subtypes); i++) {
+    char* name2 = get_struct_name(base->subtypes[i].type, true);
+    if(strcmp(name1, name2) == 0) return true;
+  }
+
+  Token* tokens = parameterized->parameter->tokens;
+  Token* last = &tokens[arrlen(tokens) - 1];
+  token_print_error(last, LOGLEVEL_ERROR, "invalid parameter value '%s'", last->data);
+
+  return false;
+}
+
 void parser_transfer_token(Parser* p, Token** dest) {
   Token tok = lexer_drop_token(&p->lexer);
   if(dest) {
@@ -332,8 +346,10 @@ void parser_parse_struct_parameter(Parser* p, Struct* res) {
   generate_converted_struct_name(res);
   if(shget(p->defined_specialized_structs, res->converted_name) == NULL) {
     Struct* base = shget(p->structs, get_struct_name(res, false));
-    arrpush(base->tag_names, res->tag_value_name);
-    declaration_emit_parameter_struct(res, p->extra_emitter, base);
+    if(check_valid_subtype(base, res)) {
+      arrpush(base->tag_names, res->tag_value_name);
+      declaration_emit_parameter_struct(res, p->extra_emitter, base);
+    }
     shput(p->defined_specialized_structs, res->converted_name, res);
   }
 }

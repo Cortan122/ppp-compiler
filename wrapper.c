@@ -62,24 +62,15 @@ void wait_pid(Pid pid) {
   }
 }
 
-int main(int argc, char** argv) {
-  printf("hello world\n");
-
-  Pipe cpp_pipe = make_pipe();
-  Pipe cc_pipe = make_pipe();
-  Pid cpp = exec_file_with_pipe("gcc", (char*[]){"gcc", "-E", argv[1], NULL}, cpp_pipe, false, true);
-  Pid cc = exec_file_with_pipe("gcc", (char*[]){"gcc", "-Wno-incompatible-pointer-types", "-x", "c", "-", NULL}, cc_pipe, true, false);
-  FILE* input_file = fdopen(cpp_pipe.read, "r");
-  FILE* output_file = fdopen(cc_pipe.write, "w");
-
-  Emitter em = {.file = output_file, .convert_structs = true};
+void run_parser(FILE* input_file, FILE* output_file, const char* input_filename) {
+  Emitter em = {.file = output_file, .convert_structs = true, .add_line_directives = true};
   Parser parser = {.allow_fancy_structs = true, .go_deeper = true};
   parser.decl_emitter = &em;
   parser.default_emitter = &em;
   parser.extra_emitter = &em;
 
   lexer_reset(&parser.lexer);
-  parser.lexer.current_location.filename = argv[1];
+  parser.lexer.current_location.filename = input_filename;
   parser.lexer.file = input_file;
   while(parser_parse_line(&parser)) {
   }
@@ -88,8 +79,28 @@ int main(int argc, char** argv) {
   parser_delete(&parser);
 
   fclose(output_file);
+}
+
+void setup_pipes(char* input_filename) {
+  Pipe cpp_pipe = make_pipe();
+  Pipe cc_pipe = make_pipe();
+  Pid cpp = exec_file_with_pipe("gcc", (char*[]){"gcc", "-E", input_filename, NULL}, cpp_pipe, false, true);
+  Pid cc = exec_file_with_pipe("gcc", (char*[]){"gcc", "-Wno-incompatible-pointer-types", "-x", "c", "-", NULL}, cc_pipe, true, false);
+  FILE* input_file = fdopen(cpp_pipe.read, "r");
+  FILE* output_file = fdopen(cc_pipe.write, "w");
+
+  run_parser(input_file, output_file, input_filename);
+
   wait_pid(cpp);
   wait_pid(cc);
+}
 
+int main(int argc, char** argv) {
+  if(argc < 2) {
+    fprintf(stderr, "ppp-wrapper: no input file provided\n");
+    exit(1);
+  }
+
+  setup_pipes(argv[1]);
   return 0;
 }

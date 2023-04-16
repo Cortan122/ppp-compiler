@@ -1,9 +1,14 @@
+vpath %.c src
+vpath %.h src
+vpath %.o build/
+
 MAKEFLAGS += -j4
 WARNINGS=-Wall -Wextra -Werror=vla
-CFLAGS=-O2 $(WARNINGS)
+CFLAGS=-O2 $(WARNINGS) -I.
 
-SRC=$(wildcard *.c)
-HEADERS=$(wildcard *.h)
+OBJDIR=build
+SRC=$(wildcard src/*.c)
+HEADERS=$(wildcard src/*.h)
 OBJS=token.o lexer.o parser.o declaration.o
 
 all: main test
@@ -15,13 +20,20 @@ ifneq ($(OS),Windows_NT)
 all: wrapper
 endif
 
-depend.mk: $(SRC) $(HEADERS)
-	$(CC) -MM -MG $(SRC) > depend.mk
+$(OBJDIR)/depend.mk: $(SRC) $(HEADERS)
+	@mkdir -p $(OBJDIR)
+	$(CC) -MM -MG $(SRC) > $(OBJDIR)/depend.mk
 
-include depend.mk
+include $(OBJDIR)/depend.mk
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o build/$@ $<
+
+.o:
+	$(CC) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(^:$(OBJDIR)/%=%)) $(LOADLIBES) $(LDLIBS) -o $@
 
 clean:
-	rm -f *.o depend.mk main test wrapper a.out "test outputs/"tmp.*
+	rm -rf $(OBJDIR) *.o depend.mk main test wrapper a.out "test outputs/"tmp.*
 
 run_tests: test
 	./test "test inputs/"*

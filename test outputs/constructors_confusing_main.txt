@@ -19,5 +19,4 @@ int main(int argc, char** argv) {
   parser_delete(&parser);
   return 0;
 }
-#include <stdlib.h>
-int __attribute__((weak)) __ppp__tag_counter_Parser = 0;
+void* calloc(unsigned long nmemb, unsigned long size);

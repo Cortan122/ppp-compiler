@@ -155,10 +155,7 @@ void  __attribute__((constructor(103))) _constructor__ppp__Draw_Drawable_Box() {
   print_array();
   return 0;
 }
-#include <stdlib.h>
-int __attribute__((weak)) __ppp__tag_counter_VerticalLine = 0;
-int __attribute__((weak)) __ppp__tag_counter_HorizontalLine = 0;
-int __attribute__((weak)) __ppp__tag_counter_Box = 0;
+void* calloc(unsigned long nmemb, unsigned long size);
 int __attribute__((weak)) __ppp__tag_counter_Drawable = 0;
 void  __attribute__((constructor(101))) _constructor__ppp__tag_value_Drawable_VerticalLine() {
   __ppp__tag_value_Drawable_VerticalLine = __ppp__tag_counter_Drawable++;

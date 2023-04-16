@@ -100,6 +100,7 @@ static int emit_string(const char* data, size_t length, char quote, Emitter* emi
 static void emit_line_directive(Emitter* emitter, Loc loc) {
   if(!emitter->add_line_directives) return;
   if(loc.line_num == -1) return;
+  if(!loc.filename) return;
 
   fprintf(emitter->file, "\n# %d ", loc.line_num);
   emit_string(loc.filename, strlen(loc.filename), '"', emitter);

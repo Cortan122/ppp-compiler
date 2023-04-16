@@ -22,8 +22,5 @@ struct Figure { int tag; struct {
   struct Rectangle s01;
   struct Circle s02; } tail;
 };
-#include <stdlib.h>
-int __attribute__((weak)) __ppp__tag_counter_Triangle = 0;
-int __attribute__((weak)) __ppp__tag_counter_Rectangle = 0;
-int __attribute__((weak)) __ppp__tag_counter_Circle = 0;
+void* calloc(unsigned long nmemb, unsigned long size);
 int __attribute__((weak)) __ppp__tag_counter_Figure = 0;

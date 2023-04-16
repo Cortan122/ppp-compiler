@@ -821,13 +821,16 @@ bool parser_parse_function(Parser* p, Function* func) {
   tok = parser_peek_token(p);
   if(func->tokens_prams_pos) {
     Function* val = shget(p->polymorphic_functions, func->decl.name);
-    if(val) {
+    if(token_eq_char(&tok, '=') || token_eq_char(&tok, ';')) {
+      if(!val || !val->is_abstract_header) {
+        shput(p->polymorphic_functions, func->decl.name, func);
+      }
+    } else if(val) {
       // TODO: func->converted_name or...
+      // TODO: name can be null???
       char* name = func->fancy_params[0].type->tag_value_name;
       shput(val->implementations, name, func);
       func->base = val;
-    } else if(token_eq_char(&tok, '=') || token_eq_char(&tok, ';')) {
-      shput(p->polymorphic_functions, func->decl.name, func);
     } else {
       token_print_error(&tok, LOGLEVEL_ERROR, "parametric function defined before its header%s", "");
     }
@@ -991,18 +994,22 @@ void parser_emit_final_tables(Parser* p, Emitter* emitter) {
 }
 
 void parser_emit_final_constructors(Parser* p, Emitter* emitter) {
-  token_emit_cstr("#include <stdlib.h>\n", emitter);
+  token_emit_cstr("void* calloc(unsigned long nmemb, unsigned long size);\n", emitter);
 
   for(int i = 0; i < shlen(p->structs); i++) {
     Struct* s = p->structs[i].value;
+    if(s->tokens_subtypes_pos) {
+      emit_struct_counter_name(p, s);
+    }
 
-    emit_struct_counter_name(p, s);
     for(int j = 0; j < arrlen(s->tag_names); j++) {
       emit_tag_value_constructor(s->tag_names[j], s->tag_counter_name, emitter);
     }
   }
 
   for(int i = 0; i < shlen(p->polymorphic_functions); i++) {
+    if(!p->polymorphic_functions[i].value->is_abstract_header) continue;
+
     emit_function_table_constructor(p, p->polymorphic_functions[i].value, emitter);
   }
 }

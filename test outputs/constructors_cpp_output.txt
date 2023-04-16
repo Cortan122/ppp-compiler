@@ -2643,24 +2643,4 @@ int main(int argc, char** argv) {
   lexer_delete(&lexer);
   return 0;
 }
-#include <stdlib.h>
-int __attribute__((weak)) __ppp__tag_counter__G_fpos_t = 0;
-int __attribute__((weak)) __ppp__tag_counter__G_fpos64_t = 0;
-int __attribute__((weak)) __ppp__tag_counter__IO_FILE = 0;
-int __attribute__((weak)) __ppp__tag_counter__IO_marker = 0;
-int __attribute__((weak)) __ppp__tag_counter__IO_codecvt = 0;
-int __attribute__((weak)) __ppp__tag_counter__IO_wide_data = 0;
-int __attribute__((weak)) __ppp__tag_counter_timeval = 0;
-int __attribute__((weak)) __ppp__tag_counter_timespec = 0;
-int __attribute__((weak)) __ppp__tag_counter___pthread_internal_list = 0;
-int __attribute__((weak)) __ppp__tag_counter___pthread_internal_slist = 0;
-int __attribute__((weak)) __ppp__tag_counter___pthread_mutex_s = 0;
-int __attribute__((weak)) __ppp__tag_counter___pthread_rwlock_arch_t = 0;
-int __attribute__((weak)) __ppp__tag_counter___pthread_cond_s = 0;
-int __attribute__((weak)) __ppp__tag_counter_random_data = 0;
-int __attribute__((weak)) __ppp__tag_counter_drand48_data = 0;
-int __attribute__((weak)) __ppp__tag_counter___locale_struct = 0;
-int __attribute__((weak)) __ppp__tag_counter___locale_data = 0;
-int __attribute__((weak)) __ppp__tag_counter_Loc = 0;
-int __attribute__((weak)) __ppp__tag_counter_Token = 0;
-int __attribute__((weak)) __ppp__tag_counter_Lexer = 0;
+void* calloc(unsigned long nmemb, unsigned long size);

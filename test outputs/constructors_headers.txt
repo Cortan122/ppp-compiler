@@ -144,11 +144,4 @@ void token_print_debug(Token* tok);
 void token_print_error(Token* tok, LogLevel level, const char* msg, const char* printf_arg);
 bool token_eq_keyword(Token* tok, const char* keyword);
 bool token_eq_char(Token* tok, char val);
-#include <stdlib.h>
-int __attribute__((weak)) __ppp__tag_counter_Declaration = 0;
-int __attribute__((weak)) __ppp__tag_counter_Struct = 0;
-int __attribute__((weak)) __ppp__tag_counter_Lexer = 0;
-int __attribute__((weak)) __ppp__tag_counter_NamedType = 0;
-int __attribute__((weak)) __ppp__tag_counter_Parser = 0;
-int __attribute__((weak)) __ppp__tag_counter_Loc = 0;
-int __attribute__((weak)) __ppp__tag_counter_Token = 0;
+void* calloc(unsigned long nmemb, unsigned long size);

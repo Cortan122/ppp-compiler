@@ -28,4 +28,4 @@ float floaty = 1.1f;
 double doubly = 1.1;
 long longish = 122l;
 long long longest = 122ll;
-#include <stdlib.h>
+void* calloc(unsigned long nmemb, unsigned long size);

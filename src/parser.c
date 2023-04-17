@@ -182,6 +182,13 @@ static void generate_converted_struct_name(Struct* s) {
   }
 }
 
+static void generate_function_names(Function* func) {
+  if(func->table_name) return;
+  func->table_name = generate_function_table_name(func, "table_");
+  func->table_count_name = generate_function_table_name(func, "table_count_");
+  func->function_pointer_type = generate_function_table_name(func, "pointer_");
+}
+
 static Struct* get_scope_variable(Function* func, char* word) {
   Struct* type = shget(func->scope, word);
   if(type) {
@@ -217,37 +224,41 @@ static void emit_int(char* name, int i, Emitter* emitter) {
   token_emit_cstr(";\n", emitter);
 }
 
+static void emit_extern_function_table(Emitter* emitter, Function* func, bool use_extern) {
+  token_emit(&(Token){.kind = TOKEN_EOF}, emitter);
+  token_emit_cstr("typedef", emitter);
+  emitter->ignore_next_newline = true;
+  declaration_emit_struct(func->decl.type, emitter);
+  token_emit_cstr("(*", emitter);
+  token_emit_cstr(func->function_pointer_type, emitter);
+  token_emit_cstr(")", emitter);
+  declaration_emit_function_arguments(func, emitter, false);
+  if(func->is_abstract_header) {
+    token_emit_cstr(");", emitter);
+  }
+
+  if(use_extern) {
+    token_emit_cstr("extern ", emitter);
+  }
+  token_emit_cstr(func->function_pointer_type, emitter);
+  token_emit_cstr("* ", emitter);
+  token_emit_cstr(func->table_name, emitter);
+  if(!use_extern) {
+    token_emit_cstr(" = (void*)0", emitter);
+  }
+  token_emit_cstr(";", emitter);
+}
+
 static void emit_table_and_count_externs(Parser* p, Function* func) {
   func->is_header = true;
 
   if(p->keep_abstract_headers == true) return;
   func->is_abstract_header = true;
-  func->table_name = generate_function_table_name(func, "table_");
-  func->table_count_name = generate_function_table_name(func, "table_count_");
-  func->function_pointer_type = generate_function_table_name(func, "pointer_");
+  generate_function_names(func);
 
   if(p->extra_emitter == NULL) return;
 
-  token_emit(&(Token){.kind = TOKEN_EOF}, p->extra_emitter);
-  token_emit_cstr("typedef", p->extra_emitter);
-  p->extra_emitter->ignore_next_newline = true;
-  declaration_emit_struct(func->decl.type, p->extra_emitter);
-  token_emit_cstr("(*", p->extra_emitter);
-  token_emit_cstr(func->function_pointer_type, p->extra_emitter);
-  token_emit_cstr(")", p->extra_emitter);
-  declaration_emit_function_arguments(func, p->extra_emitter, false);
-  token_emit_cstr(");", p->extra_emitter);
-
-  if(!p->use_constructors) {
-    token_emit_cstr("extern ", p->extra_emitter);
-  }
-  token_emit_cstr(func->function_pointer_type, p->extra_emitter);
-  token_emit_cstr("* ", p->extra_emitter);
-  token_emit_cstr(func->table_name, p->extra_emitter);
-  if(p->use_constructors) {
-    token_emit_cstr(" = (void*)0", p->extra_emitter);
-  }
-  token_emit_cstr(";", p->extra_emitter);
+  emit_extern_function_table(p->extra_emitter, func, !p->use_constructors);
 
   if(p->use_constructors) {
     emit_int(func->table_count_name, 0, p->extra_emitter);
@@ -349,6 +360,11 @@ static void emit_function_constructor(Function* func, Emitter* emitter) {
   if(func->base == NULL) return;
   if(func->is_default_implementation) return;
 
+  if(func->base->table_name == NULL) {
+    generate_function_names(func->base);
+    emit_extern_function_table(emitter, func->base, true);
+  }
+
   token_emit_cstr("\nvoid __attribute__((weak, constructor(103))) _constructor", emitter);
   token_emit_cstr(func->converted_name, emitter);
   token_emit_cstr("() {\n  ", emitter);
@@ -411,14 +427,14 @@ static void try_emit_parameterized_struct(Parser* p, Struct* res) {
   }
 }
 
-static bool preemit_subtypes(Parser* p, Struct* res) {
+static bool preemit_subtypes(Parser* p, Struct* res, int start_from) {
   if(!p->preemit_structs) return false;
   if(!res) return false;
   if(!res->tokens_members_pos) return false;
   if(!res->subtypes) return false;
   if(res->parameter) return false;
 
-  for(int i = 0; i < arrlen(res->subtypes); i++) {
+  for(int i = start_from; i < arrlen(res->subtypes); i++) {
     Struct* tmp = calloc(1, sizeof(Struct));
     tmp->name = res->name;
     tmp->tokens = res->tokens;
@@ -430,10 +446,12 @@ static bool preemit_subtypes(Parser* p, Struct* res) {
     arrpush(res->expanded_subtypes, tmp);
   }
 
-  generate_converted_struct_name(res);
-  token_emit_cstr("extern int ", p->extra_emitter);
-  token_emit_cstr(res->tag_counter_name, p->extra_emitter);
-  token_emit_cstr(";", p->extra_emitter);
+  if(start_from == 0) {
+    generate_converted_struct_name(res);
+    token_emit_cstr("extern int ", p->extra_emitter);
+    token_emit_cstr(res->tag_counter_name, p->extra_emitter);
+    token_emit_cstr(";", p->extra_emitter);
+  }
 
   return true;
 }
@@ -517,7 +535,12 @@ bool parser_parse_struct(Parser* p, Struct* res) {
     parser_transfer_token(p, &res->tokens);
 
     tok = parser_peek_token(p);
-    if(!token_eq_char(&tok, '{')) goto no_body;
+    if(token_eq_char(&tok, '+') && val) {
+      parser_parse_type_extention(p, val);
+      return false;
+    } else if(!token_eq_char(&tok, '{')) {
+      goto no_body;
+    }
   } else if(!token_eq_char(&tok, '{')) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected '{' but found '%s'", tok.data);
     exit(1);
@@ -590,7 +613,7 @@ Declaration parser_parse_declaration(Parser* p) {
 
   Token name = {0};
   if(!parser_parse_type(p, res.type)) {
-    free(res.type);
+    declaration_delete_struct(res.type);
     res.type = NULL;
   } else {
     name = parser_peek_token(p);
@@ -822,6 +845,28 @@ void parser_inside_function(Parser* p, Function* func) {
   }
 }
 
+bool parser_parse_type_extention(Parser* p, Struct* base) {
+  bool result = true;
+  Token* tmp_storage = NULL;
+  parser_transfer_token(p, &tmp_storage);
+
+  Token tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, '<')) {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected '<', but found '%s'", tok.data);
+    goto defer;
+  }
+  parser_transfer_token(p, &tmp_storage);
+
+  int old_subtypes_count = arrlen(base->subtypes);
+  parse_declaration_list_until(p, &tmp_storage, &base->subtypes, '>');
+  preemit_subtypes(p, base, old_subtypes_count);
+
+  result = true;
+defer:;
+  free_tmp_storage(tmp_storage, result ? NULL : p->default_emitter);
+  return result;
+}
+
 bool parser_parse_function(Parser* p, Function* func) {
   Struct* tmp = calloc(1, sizeof(Struct));
   if(!parser_parse_type(p, tmp)) goto defer_type;
@@ -831,6 +876,15 @@ bool parser_parse_function(Parser* p, Function* func) {
   if(tok.kind == TOKEN_WORD) {
     func->decl.name = tok.data;
     parser_transfer_token(p, &func->decl.tokens);
+  } else if(token_eq_char(&tok, '+')) {
+    Struct* real_type = func->decl.type->aliased_to;
+    if(real_type == NULL) {
+      token_print_error(&tok, LOGLEVEL_WARNING, "trying to expand non parametric type '%s'", func->decl.type->name);
+      goto defer;
+    }
+
+    parser_parse_type_extention(p, real_type);
+    goto defer_type;
   } else {
     token_print_error(&tok, LOGLEVEL_INFO, "expected function name, but found '%s'", tok.data);
     goto defer;
@@ -937,7 +991,7 @@ bool parser_parse_line(Parser* p) {
     }
     arrpush(p->top_level, d);
     declaration_emit(&d, p->decl_emitter);
-    preemit_subtypes(p, d.type);
+    preemit_subtypes(p, d.type, 0);
   } else if(token_eq_keyword(&tok, "struct")) {
     Declaration d = parser_parse_declaration(p);
     arrpush(p->top_level, d);

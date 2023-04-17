@@ -37,6 +37,7 @@ void parser_inside_function(Parser* p, Function* func);
 
 Declaration parser_force_declaration(Parser* p);
 Declaration parser_parse_declaration(Parser* p);
+bool parser_parse_type_extention(Parser* p, Struct* base);
 bool parser_parse_function(Parser* p, Function* func);
 bool parser_parse_line(Parser* p);
 

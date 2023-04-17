@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdbool.h>
 #include <stdint.h>
 #define SIZE 20
 extern uint8_t array[SIZE][SIZE];
@@ -30,3 +31,4 @@ typedef struct Drawable {}<
 > Drawable;
 
 void Draw<Drawable* d>();
+bool Intersect<Drawable* d1, Drawable* d2>();

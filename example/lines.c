@@ -29,3 +29,33 @@ void Draw<Drawable<Box>* b>() {
   hl!y = b->!y2;
   Draw<&hl>();
 }
+
+bool Intersect<Drawable* d1, Drawable* d2>() = 0;
+
+bool Intersect<Drawable* d1, Drawable* d2>() {
+  if(d1->tag > d2->tag) {
+    return Intersect<d2, d1>();
+  }
+  return false;
+}
+
+bool Intersect<Drawable<VerticalLine>* vl, Drawable<HorizontalLine>* hl>() {
+  return hl->!x1 <= vl->!x && vl->!x <= hl->!x2 && vl->!y1 <= hl->!y && hl->!y <= vl->!y2;
+}
+
+bool Intersect<Drawable<Box>* rectA, Drawable<Box>* rectB>() {
+  return rectA->!x1 <= rectB->!x2 && rectA->!x2 >= rectB->!x1 && rectA->!y1 >= rectB->!y2 && rectA->!y2 <= rectB->!y1;
+}
+
+bool Intersect<Drawable<VerticalLine>* line, Drawable<Box>* b>() {
+  Drawable<VerticalLine> vl = {}<{.x = b->!x1, .y1 = b->!y1, .y2 = b->!y2}>;
+  if(Intersect<&vl, line>()) return true;
+  vl!x = b->!x2;
+  if(Intersect<&vl, line>()) return true;
+
+  Drawable<HorizontalLine> hl = {}<{.y = b->!y1, .x1 = b->!x1, .x2 = b->!x2}>;
+  if(Intersect<&hl, line>()) return true;
+  hl!y = b->!y2;
+  if(Intersect<&hl, line>()) return true;
+  return false;
+}

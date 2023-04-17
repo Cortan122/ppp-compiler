@@ -60,6 +60,8 @@ typedef struct Function {
   NamedType* scope;
   NamedFunction* implementations;
   struct Function* base;
+  struct Function* default_implementation;
+  bool is_default_implementation;
 } Function;
 
 void declaration_print_function(Function* func, int rec_lvl);

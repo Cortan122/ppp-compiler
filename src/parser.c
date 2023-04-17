@@ -121,7 +121,7 @@ static void generate_converted_function_name(Function* func) {
   for(int i = 0; i < arrlen(func->fancy_params); i++) {
     num_parametrised_types += func->fancy_params[i].type->parameter != NULL;
   }
-  if(num_parametrised_types == 0) return;
+  if(num_parametrised_types == 0 && !func->is_default_implementation) return;
 
   strappend(func->converted_name, MANGLED_NAME_PREFIX);
   strappend(func->converted_name, func->decl.name);
@@ -298,7 +298,9 @@ static void emit_function_table(Parser* p, Function* func, Emitter* emitter) {
       count++;
       Function* impl = shget(func->implementations, base->tag_names[i]);
       if(impl == NULL) {
-        // todo: default functions?
+        impl = func->default_implementation;
+      }
+      if(impl == NULL) {
         token_emit_cstr("(void*)0,\n", emitter);
       } else {
         token_emit_cstr("(void*)&", emitter);
@@ -316,9 +318,8 @@ static void emit_function_table_constructor(Parser* p, Function* func, Emitter* 
   token_emit_cstr("void __attribute__((weak, constructor(102))) _constructor", emitter);
   token_emit_cstr(func->table_name, emitter);
   token_emit_cstr("() {\n  ", emitter);
-  token_emit_cstr(func->table_name, emitter);
-  token_emit_cstr(" = calloc(", emitter);
 
+  token_emit_cstr("int size = ", emitter);
   for(int i = 0; i < arrlen(func->fancy_params); i++) {
     if(i > 0) {
       token_emit_cstr(" * ", emitter);
@@ -327,14 +328,26 @@ static void emit_function_table_constructor(Parser* p, Function* func, Emitter* 
     Struct* base = shget(p->structs, get_struct_name(func->fancy_params[i].type, false));
     token_emit_cstr(base->tag_counter_name, emitter);
   }
+  token_emit_cstr(";\n  ", emitter);
 
-  token_emit_cstr(", sizeof(void*));\n", emitter);
+  token_emit_cstr(func->table_name, emitter);
+  token_emit_cstr(" = calloc(size, sizeof(void*));\n", emitter);
+
+  if(func->default_implementation) {
+    token_emit_cstr("  for(int i = 0; i < size; i++){\n    ", emitter);
+    token_emit_cstr(func->table_name, emitter);
+    token_emit_cstr("[i] = (void*)&", emitter);
+    token_emit_cstr(func->default_implementation->converted_name, emitter);
+    token_emit_cstr(";\n  }\n", emitter);
+  }
+
   token_emit_cstr("}\n\n", emitter);
 }
 
 static void emit_function_constructor(Function* func, Emitter* emitter) {
   if(func->fancy_params == NULL) return;
   if(func->base == NULL) return;
+  if(func->is_default_implementation) return;
 
   token_emit_cstr("\nvoid __attribute__((weak, constructor(103))) _constructor", emitter);
   token_emit_cstr(func->converted_name, emitter);
@@ -416,6 +429,11 @@ static bool preemit_subtypes(Parser* p, Struct* res) {
     tmp->tokens = NULL;
     arrpush(res->expanded_subtypes, tmp);
   }
+
+  generate_converted_struct_name(res);
+  token_emit_cstr("extern int ", p->extra_emitter);
+  token_emit_cstr(res->tag_counter_name, p->extra_emitter);
+  token_emit_cstr(";", p->extra_emitter);
 
   return true;
 }
@@ -847,8 +865,6 @@ bool parser_parse_function(Parser* p, Function* func) {
     goto defer;
   }
 
-  generate_converted_function_name(func);
-
   tok = parser_peek_token(p);
   if(func->tokens_prams_pos) {
     Function* val = shget(p->polymorphic_functions, func->decl.name);
@@ -858,14 +874,20 @@ bool parser_parse_function(Parser* p, Function* func) {
       }
     } else if(val) {
       // TODO: func->converted_name or...
-      // TODO: name can be null???
       char* name = func->fancy_params[0].type->tag_value_name;
-      shput(val->implementations, name, func);
+      if(name == NULL) {
+        val->default_implementation = func;
+        func->is_default_implementation = true;
+      } else {
+        shput(val->implementations, name, func);
+      }
       func->base = val;
     } else {
       token_print_error(&tok, LOGLEVEL_ERROR, "parametric function defined before its header%s", "");
     }
   }
+
+  generate_converted_function_name(func);
 
   if(token_eq_char(&tok, '{')) {
     declaration_emit_function(func, p->decl_emitter);

@@ -4,7 +4,8 @@ vpath %.o build/
 
 MAKEFLAGS += -j4
 WARNINGS=-Wall -Wextra -Werror=vla
-CFLAGS=-O2 $(WARNINGS) -I.
+CFLAGS=-Og -g $(WARNINGS) -I. -fsanitize=address
+LDFLAGS=-fsanitize=address
 
 OBJDIR=build
 SRC=$(wildcard src/*.c)

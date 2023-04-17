@@ -79,7 +79,7 @@ void __ppp__Draw_Drawable_VerticalLine(struct __ppp__Drawable_VerticalLine* vl  
   }
   array[vl->tail. y2][vl->tail. x] |= 8;  // 0b1000
 }
-void  __attribute__((constructor(103))) _constructor__ppp__Draw_Drawable_VerticalLine() {
+void __attribute__((weak, constructor(103))) _constructor__ppp__Draw_Drawable_VerticalLine() {
   __ppp__table_Draw_Drawable[__ppp__tag_value_Drawable_VerticalLine] = &__ppp__Draw_Drawable_VerticalLine;
 }
 
@@ -97,7 +97,7 @@ void __ppp__Draw_Drawable_HorizontalLine(struct __ppp__Drawable_HorizontalLine* 
   }
   array[hl->tail. y][hl->tail. x2] |= 2;  // 0b0010
 }
-void  __attribute__((constructor(103))) _constructor__ppp__Draw_Drawable_HorizontalLine() {
+void __attribute__((weak, constructor(103))) _constructor__ppp__Draw_Drawable_HorizontalLine() {
   __ppp__table_Draw_Drawable[__ppp__tag_value_Drawable_HorizontalLine] = &__ppp__Draw_Drawable_HorizontalLine;
 }
 
@@ -119,7 +119,7 @@ void __ppp__Draw_Drawable_Box(struct __ppp__Drawable_Box* b  ) {
   hl.tail. y= b->tail. y2;
   Draw     (&hl  );
 }
-void  __attribute__((constructor(103))) _constructor__ppp__Draw_Drawable_Box() {
+void __attribute__((weak, constructor(103))) _constructor__ppp__Draw_Drawable_Box() {
   __ppp__table_Draw_Drawable[__ppp__tag_value_Drawable_Box] = &__ppp__Draw_Drawable_Box;
 }
 
@@ -157,19 +157,20 @@ void  __attribute__((constructor(103))) _constructor__ppp__Draw_Drawable_Box() {
 }
 void* calloc(unsigned long nmemb, unsigned long size);
 int __attribute__((weak)) __ppp__tag_counter_Drawable = 0;
-void  __attribute__((constructor(101))) _constructor__ppp__tag_value_Drawable_VerticalLine() {
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Drawable_VerticalLine() {
   __ppp__tag_value_Drawable_VerticalLine = __ppp__tag_counter_Drawable++;
 }
 
-void  __attribute__((constructor(101))) _constructor__ppp__tag_value_Drawable_HorizontalLine() {
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Drawable_HorizontalLine() {
   __ppp__tag_value_Drawable_HorizontalLine = __ppp__tag_counter_Drawable++;
 }
 
-void  __attribute__((constructor(101))) _constructor__ppp__tag_value_Drawable_Box() {
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Drawable_Box() {
   __ppp__tag_value_Drawable_Box = __ppp__tag_counter_Drawable++;
 }
 
-void  __attribute__((constructor(102))) _constructor__ppp__table_Draw_Drawable() {
-  __ppp__table_Draw_Drawable = calloc(__ppp__tag_counter_Drawable, sizeof(void*));
+void __attribute__((weak, constructor(102))) _constructor__ppp__table_Draw_Drawable() {
+  int size = __ppp__tag_counter_Drawable;
+  __ppp__table_Draw_Drawable = calloc(size, sizeof(void*));
 }
 

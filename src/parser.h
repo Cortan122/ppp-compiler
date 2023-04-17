@@ -15,6 +15,7 @@ typedef struct Parser {
   bool go_deeper;
   bool keep_abstract_headers;
   bool use_constructors;
+  bool preemit_structs;
 
   Emitter* default_emitter;
   Emitter* decl_emitter;

@@ -332,6 +332,11 @@ void declaration_delete_struct(Struct* s) {
   }
   arrfree(s->members);
 
+  for(int i = 0; i < arrlen(s->expanded_subtypes); i++) {
+    declaration_delete_struct(s->expanded_subtypes[i]);
+  }
+  arrfree(s->expanded_subtypes);
+
   for(int i = 0; i < arrlen(s->subtypes); i++) {
     declaration_delete(&s->subtypes[i]);
   }

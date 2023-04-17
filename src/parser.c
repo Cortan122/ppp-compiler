@@ -265,7 +265,7 @@ static void emit_tag_values(Struct* s, Emitter* emitter) {
 }
 
 static void emit_tag_value_constructor(char* tagname, char* counter, Emitter* emitter) {
-  token_emit_cstr("void  __attribute__((constructor(101))) _constructor", emitter);
+  token_emit_cstr("void __attribute__((weak, constructor(101))) _constructor", emitter);
   token_emit_cstr(tagname, emitter);
   token_emit_cstr("() {\n  ", emitter);
   token_emit_cstr(tagname, emitter);
@@ -313,7 +313,7 @@ static void emit_function_table(Parser* p, Function* func, Emitter* emitter) {
 }
 
 static void emit_function_table_constructor(Parser* p, Function* func, Emitter* emitter) {
-  token_emit_cstr("void  __attribute__((constructor(102))) _constructor", emitter);
+  token_emit_cstr("void __attribute__((weak, constructor(102))) _constructor", emitter);
   token_emit_cstr(func->table_name, emitter);
   token_emit_cstr("() {\n  ", emitter);
   token_emit_cstr(func->table_name, emitter);
@@ -336,7 +336,7 @@ static void emit_function_constructor(Function* func, Emitter* emitter) {
   if(func->fancy_params == NULL) return;
   if(func->base == NULL) return;
 
-  token_emit_cstr("\nvoid  __attribute__((constructor(103))) _constructor", emitter);
+  token_emit_cstr("\nvoid __attribute__((weak, constructor(103))) _constructor", emitter);
   token_emit_cstr(func->converted_name, emitter);
   token_emit_cstr("() {\n  ", emitter);
   token_emit_cstr(func->base->table_name, emitter);
@@ -379,6 +379,45 @@ static void emit_struct_counter_name(Parser* p, Struct* s) {
   token_emit_cstr("int __attribute__((weak)) ", p->extra_emitter);
   token_emit_cstr(s->tag_counter_name, p->extra_emitter);
   token_emit_cstr(" = 0;\n", p->extra_emitter);
+}
+
+static void try_emit_parameterized_struct(Parser* p, Struct* res) {
+  generate_converted_struct_name(res);
+
+  if(p->defined_specialized_structs == NULL) {
+    sh_new_arena(p->defined_specialized_structs);
+  }
+
+  if(shget(p->defined_specialized_structs, res->converted_name) == NULL) {
+    Struct* base = shget(p->structs, get_struct_name(res, false));
+    if(check_valid_subtype(base, res)) {
+      arrpush(base->tag_names, res->tag_value_name);
+      declaration_emit_parameter_struct(res, p->extra_emitter, base, p->use_constructors);
+    }
+    shput(p->defined_specialized_structs, res->converted_name, res);
+  }
+}
+
+static bool preemit_subtypes(Parser* p, Struct* res) {
+  if(!p->preemit_structs) return false;
+  if(!res) return false;
+  if(!res->tokens_members_pos) return false;
+  if(!res->subtypes) return false;
+  if(res->parameter) return false;
+
+  for(int i = 0; i < arrlen(res->subtypes); i++) {
+    Struct* tmp = calloc(1, sizeof(Struct));
+    tmp->name = res->name;
+    tmp->tokens = res->tokens;
+    tmp->parameter = res->subtypes[i].type;
+    try_emit_parameterized_struct(p, tmp);
+
+    tmp->parameter = NULL;
+    tmp->tokens = NULL;
+    arrpush(res->expanded_subtypes, tmp);
+  }
+
+  return true;
 }
 
 void parser_transfer_token(Parser* p, Token** dest) {
@@ -425,15 +464,7 @@ void parser_parse_struct_parameter(Parser* p, Struct* res) {
   }
 
   parser_transfer_token(p, &res->tokens);
-  generate_converted_struct_name(res);
-  if(shget(p->defined_specialized_structs, res->converted_name) == NULL) {
-    Struct* base = shget(p->structs, get_struct_name(res, false));
-    if(check_valid_subtype(base, res)) {
-      arrpush(base->tag_names, res->tag_value_name);
-      declaration_emit_parameter_struct(res, p->extra_emitter, base, p->use_constructors);
-    }
-    shput(p->defined_specialized_structs, res->converted_name, res);
-  }
+  try_emit_parameterized_struct(p, res);
 }
 
 bool parser_parse_struct_subtypes(Parser* p, Struct* res, bool force_parameter) {
@@ -884,6 +915,7 @@ bool parser_parse_line(Parser* p) {
     }
     arrpush(p->top_level, d);
     declaration_emit(&d, p->decl_emitter);
+    preemit_subtypes(p, d.type);
   } else if(token_eq_keyword(&tok, "struct")) {
     Declaration d = parser_parse_declaration(p);
     arrpush(p->top_level, d);

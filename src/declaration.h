@@ -10,6 +10,7 @@ typedef struct Struct {
   int tokens_members_pos;
 
   struct Declaration* subtypes;
+  struct Struct** expanded_subtypes;
   int tokens_subtypes_pos;
   bool is_primitive;
   char** tag_names;

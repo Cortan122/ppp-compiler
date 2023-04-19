@@ -653,7 +653,7 @@ bool parser_parse_variable(Parser* p, Struct* type) {
 
   if(token_eq_char(&tok, '!')) {
     parser_transfer_token(p, &tmp_storage);
-    Token last = type->tokens[arrlen(type->tokens)];
+    Token last = type->tokens[arrlen(type->tokens) - 1];
     if(token_eq_char(&last, '*')) {
       token_emit_cstr("->tail", p->default_emitter);
     } else {
@@ -668,7 +668,7 @@ bool parser_parse_variable(Parser* p, Struct* type) {
   }
 
   if(token_eq_char(&tok, '.')) {
-    Token last = type->tokens[arrlen(type->tokens)];
+    Token last = type->tokens[arrlen(type->tokens) - 1];
     if(token_eq_char(&last, '*')) {
       token_emit_cstr("->head", p->default_emitter);
     } else {

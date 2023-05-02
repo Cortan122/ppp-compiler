@@ -1,0 +1,48 @@
+# 1 "test inputs/example.c"
+struct Triangle {int a, b, c;}; // Треугольник
+struct Rectangle {int x, y;};   // Прямоугольник
+struct Circle {int r;};         // Круг
+
+struct Figure { int tag; struct {} head; union { struct Triangle s00;struct Rectangle s01;struct Circle s02; } tail;};
+
+// Вывод параметров прямоугольника
+struct __ppp__Figure_Rectangle{ int tag; struct {
+# 5 "test inputs/example.c"
+} head; 
+# 8 "test inputs/example.c"
+struct Rectangle tail; };int __attribute__((weak)) __ppp__tag_value_Figure_Rectangle;
+void __ppp__PrintFigure_Figure_Rectangle(struct __ppp__Figure_Rectangle  *r  ) {
+  printf("Rectangle: x = %d, y = %d", r->tail. x, r->tail. y);
+}
+// Вывод параметров треугольника
+struct __ppp__Figure_Triangle{ int tag; struct {
+# 5 "test inputs/example.c"
+} head; 
+# 12 "test inputs/example.c"
+struct Triangle tail; };int __attribute__((weak)) __ppp__tag_value_Figure_Triangle;
+void __ppp__PrintFigure_Figure_Triangle(struct __ppp__Figure_Triangle  *t  ) {
+  printf("Triangle: a = %d, b = %d, c = %d", t->tail. a, t->tail. b, t->tail. c);
+}
+// Вывод параметров круга
+struct __ppp__Figure_Circle{ int tag; struct {
+# 5 "test inputs/example.c"
+} head; 
+# 16 "test inputs/example.c"
+struct Circle tail; };int __attribute__((weak)) __ppp__tag_value_Figure_Circle;
+void __ppp__PrintFigure_Figure_Circle(struct __ppp__Figure_Circle  *c  ) {
+  printf("Circle: r = %d", c->tail. r);
+}
+void* calloc(unsigned long nmemb, unsigned long size);
+int __attribute__((weak)) __ppp__tag_counter_Figure = 0;
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Figure_Rectangle() {
+  __ppp__tag_value_Figure_Rectangle = __ppp__tag_counter_Figure++;
+}
+
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Figure_Triangle() {
+  __ppp__tag_value_Figure_Triangle = __ppp__tag_counter_Figure++;
+}
+
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Figure_Circle() {
+  __ppp__tag_value_Figure_Circle = __ppp__tag_counter_Figure++;
+}
+

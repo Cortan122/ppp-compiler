@@ -1,0 +1,30 @@
+# 1 "test inputs/positioning.c"
+# 6 "test inputs/positioning.c"
+int lol[-1];
+
+#if 0
+#error this section exists to get referenced
+int lol[-1]; // comment
+#endif
+# 9 "test inputs/positioning.c"
+typedef
+                   // comment 2
+# 10 "test inputs/positioning.c"
+        struct Figure { int tag; struct {
+  char* color[-1];
+} head; union {
+  struct whatever s00; } tail;
+} Figure;
+# 10 "test inputs/positioning.c"
+struct __ppp__Figure_whatever{ int tag; struct {
+  char* color[-1];
+} head; 
+# 13 "test inputs/positioning.c"
+struct whatever tail; };int __attribute__((weak)) __ppp__tag_value_Figure_whatever;
+extern int __ppp__tag_counter_Figure;
+void* calloc(unsigned long nmemb, unsigned long size);
+int __attribute__((weak)) __ppp__tag_counter_Figure = 0;
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Figure_whatever() {
+  __ppp__tag_value_Figure_whatever = __ppp__tag_counter_Figure++;
+}
+

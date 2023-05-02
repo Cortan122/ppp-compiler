@@ -1,0 +1,22 @@
+# 1 "test inputs/example_multimethod.c"
+struct Circle {
+  int r;
+};
+
+struct Figure { int tag; struct {} head; union { struct Circle s00; } tail;};
+
+// Круг разместится внутри круга
+struct __ppp__Figure_Circle{ int tag; struct {
+# 5 "test inputs/example_multimethod.c"
+} head; 
+# 8 "test inputs/example_multimethod.c"
+struct Circle tail; };int __attribute__((weak)) __ppp__tag_value_Figure_Circle;
+int __ppp__Intersect_Figure_Circle_Figure_Circle(struct __ppp__Figure_Circle  *c1, struct __ppp__Figure_Circle  *c2  ) {
+  return c1->tail. r< c2->tail. r;
+}
+void* calloc(unsigned long nmemb, unsigned long size);
+int __attribute__((weak)) __ppp__tag_counter_Figure = 0;
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Figure_Circle() {
+  __ppp__tag_value_Figure_Circle = __ppp__tag_counter_Figure++;
+}
+

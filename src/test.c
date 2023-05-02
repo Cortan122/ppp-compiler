@@ -213,6 +213,25 @@ void testfunc_constructors(const char* input_file) {
   parser_delete(&parser);
 }
 
+void testfunc_full_compilation(const char* input_file) {
+  Emitter em = {.file = stdout, .convert_structs = true, .add_line_directives = true};
+  Parser parser = {.allow_fancy_structs = true, .go_deeper = true, .use_constructors = true, .preemit_structs = true};
+  parser_set_emitter(&parser, &em);
+  parser_read_file(&parser, input_file);
+  parser_emit_final_tables(&parser, &em);
+
+  parser_delete(&parser);
+}
+
+void testfunc_preemit_structs(const char* input_file) {
+  Emitter em = {.file = stdout, .convert_structs = true};
+  Parser parser = {.allow_fancy_structs = true, .preemit_structs = true};
+  parser_set_emitter(&parser, &em);
+  parser_read_file(&parser, input_file);
+
+  parser_delete(&parser);
+}
+
 TestCase test_cases[] = {
     TESTCASE(debug_tokens),
     TESTCASE(declarations),
@@ -232,6 +251,8 @@ TestCase test_cases[] = {
     TESTCASE_L(going_deeper),
     TESTCASE_L(final_tables),
     TESTCASE(constructors),
+    TESTCASE(full_compilation),
+    TESTCASE_L(preemit_structs),
 };
 int test_cases_count = sizeof(test_cases) / sizeof(*test_cases);
 

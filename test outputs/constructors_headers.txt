@@ -1,5 +1,4 @@
-
-# 0 "test inputs/headers.c"
+# 1 "test inputs/headers.c"
 #pragma once
 
 #include "token.h"

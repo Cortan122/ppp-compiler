@@ -64,7 +64,7 @@ void wait_pid(Pid pid) {
 
 void run_parser(FILE* input_file, FILE* output_file, const char* input_filename) {
   Emitter em = {.file = output_file, .convert_structs = true, .add_line_directives = true};
-  Parser parser = {.allow_fancy_structs = true, .go_deeper = true};
+  Parser parser = {.allow_fancy_structs = true, .go_deeper = true, .use_constructors = true, .preemit_structs = true};
   parser_set_emitter(&parser, &em);
 
   lexer_reset(&parser.lexer);

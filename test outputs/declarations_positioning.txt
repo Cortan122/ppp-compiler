@@ -1,0 +1,20 @@
+Declaration(tokens = 4, name = whatever)
+  Struct(tokens = 4, name = Figure) 
+    WORD[positioning.c:10:9] data = struct
+    WORD[positioning.c:10:16] data = Figure
+    CHAR[positioning.c:10:23] data = {
+    Declaration(tokens = 8, name = color)
+      WORD[positioning.c:11:3] data = char
+      CHAR[positioning.c:11:7] data = *
+      WORD[positioning.c:11:9] data = color
+      CHAR[positioning.c:11:14] data = [
+      CHAR[positioning.c:11:15] data = -
+      NUMBER[positioning.c:11:16] data = 1
+      CHAR[positioning.c:11:17] data = ]
+      CHAR[positioning.c:11:18] data = ;
+    CHAR[positioning.c:12:1] data = }
+  CHAR[positioning.c:12:3] data = <
+  WORD[positioning.c:13:3] data = struct
+  WORD[positioning.c:13:10] data = whatever
+  CHAR[positioning.c:13:18] data = ;
+

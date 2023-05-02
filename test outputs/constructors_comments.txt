@@ -1,5 +1,4 @@
-
-# 0 "test inputs/comments.c"
+# 1 "test inputs/comments.c"
 // this is a normal comment
 
 /* this is a fucked up /* nested comment */

@@ -1,5 +1,4 @@
-
-# 0 "test inputs/confusing_main.c"
+# 1 "test inputs/confusing_main.c"
 typedef struct Parser {
   int lexer;
   int top_level;

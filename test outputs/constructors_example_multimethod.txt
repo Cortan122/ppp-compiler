@@ -1,5 +1,4 @@
-
-# 0 "test inputs/example_multimethod.c"
+# 1 "test inputs/example_multimethod.c"
 struct Circle {
   int r;
 };
@@ -8,10 +7,10 @@ struct Figure { int tag; struct {} head; union { struct Circle s00; } tail;};
 
 // Круг разместится внутри круга
 struct __ppp__Figure_Circle{ int tag; struct {
-# 4 "test inputs/example_multimethod.c"
+# 5 "test inputs/example_multimethod.c"
 } head; 
-# 7 "test inputs/example_multimethod.c"
- struct Circle tail; };int __attribute__((weak)) __ppp__tag_value_Figure_Circle;
+# 8 "test inputs/example_multimethod.c"
+struct Circle tail; };int __attribute__((weak)) __ppp__tag_value_Figure_Circle;
 int __ppp__Intersect_Figure_Circle_Figure_Circle(struct __ppp__Figure_Circle  *c1, struct __ppp__Figure_Circle  *c2  ) {
   return c1->tail. r< c2->tail. r;
 }

@@ -1,0 +1,4 @@
+typedef struct Figure {
+  char* color[-1];
+} <
+  struct whatever;

@@ -1,0 +1,15 @@
+# 6 "test inputs/positioning.c"
+int lol[-1];
+
+#if 0
+#error this section exists to get referenced
+int lol[-1]; // comment
+#endif
+# 9 "test inputs/positioning.c"
+typedef
+                   // comment 2
+        struct Figure { int tag; struct {
+  char* color[-1];
+} head; union {
+  struct whatever s00; } tail;
+} Figure;

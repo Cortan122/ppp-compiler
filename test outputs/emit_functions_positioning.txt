@@ -1,0 +1,2 @@
+struct Figure;
+typedef struct Figure whatever;

@@ -48,6 +48,7 @@ typedef struct Emitter {
   bool ignore_next_newline;
   bool convert_structs;
   bool add_line_directives;
+  bool ignore_forced_space;
 } Emitter;
 
 void token_print_debug(Token* tok);

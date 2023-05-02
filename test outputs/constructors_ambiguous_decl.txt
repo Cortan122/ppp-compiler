@@ -1,5 +1,4 @@
-
-# 0 "test inputs/ambiguous_decl.c"
+# 1 "test inputs/ambiguous_decl.c"
 typedef int Type;
 
 int main() {

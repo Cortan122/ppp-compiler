@@ -1,5 +1,4 @@
-
-# 0 "test inputs/example_struct.c"
+# 1 "test inputs/example_struct.c"
 struct Triangle {
   int a;
   int b;

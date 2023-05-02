@@ -104,17 +104,23 @@ static void emit_line_directive(Emitter* emitter, Loc loc) {
   if(!emitter->add_line_directives) return;
   if(loc.line_num == -1) return;
   if(!loc.filename) return;
+  if(emitter->last_token_kind == TOKEN_PREPROCESSOR_LINENUM) return;
 
-  fprintf(emitter->file, "\n# %d ", loc.line_num);
+  if(emitter->cursor.col_num != 0) {
+    fprintf(emitter->file, "\n");
+  }
+
+  fprintf(emitter->file, "# %d ", loc.line_num + 1);
   emit_string(loc.filename, strlen(loc.filename), '"', emitter);
   fprintf(emitter->file, "\n");
+  emitter->ignore_forced_space = true;
 }
 
 static void emit_spaces(Emitter* emitter, Loc loc, bool force_space) {
   if(emitter->cursor.filename == NULL) {
+    emit_line_directive(emitter, loc);
     emitter->cursor = loc;
     emitter->cursor.col_num = 0;
-    emit_line_directive(emitter, loc);
   }
   if(loc.filename == NULL) {
     if(force_space) {
@@ -152,10 +158,11 @@ static void emit_spaces(Emitter* emitter, Loc loc, bool force_space) {
     fprintf(emitter->file, "%*s", col_delta, "");
   }
 
-  if(col_delta <= 0 && line_delta <= 0 && force_space) {
+  if(col_delta <= 0 && line_delta <= 0 && force_space && !emitter->ignore_forced_space) {
     fprintf(emitter->file, " ");
     loc.col_num++;
   }
+  emitter->ignore_forced_space = false;
 
   emitter->cursor = loc;
 }
@@ -179,11 +186,11 @@ void token_emit(Token* tok, Emitter* emitter) {
     case TOKEN_CHAR:
     case TOKEN_WORD:
     case TOKEN_NUMBER:
-    case TOKEN_SHORTCOMMENT:
+    case TOKEN_LONGCOMMENT:
       fprintf(emitter->file, "%.*s%n", (int)tok->length, tok->data, &length_written);
       break;
 
-    case TOKEN_LONGCOMMENT:
+    case TOKEN_SHORTCOMMENT:
     case TOKEN_PREPROCESSOR:
       fprintf(emitter->file, "%.*s\n", (int)tok->length, tok->data);
       emitter->cursor.line_num++;

@@ -1,5 +1,4 @@
-
-# 0 "test inputs/example_lines.c"
+# 1 "test inputs/example_lines.c"
 #include <stdint.h>
 #include <stdio.h>
 
@@ -61,17 +60,16 @@ void print_array() {
   }
 }
 typedef
-# 61 "test inputs/example_lines.c"
- void(*__ppp__pointer_Draw_Drawable)(Drawable* d);__ppp__pointer_Draw_Drawable* __ppp__table_Draw_Drawable = (void*)0;int __ppp__table_count_Draw_Drawable = 0;
-
-# 61 "test inputs/example_lines.c"
- void Draw(Drawable* d  ){return __ppp__table_Draw_Drawable[d->tag](d);}
+# 62 "test inputs/example_lines.c"
+void(*__ppp__pointer_Draw_Drawable)(Drawable* d);__ppp__pointer_Draw_Drawable* __ppp__table_Draw_Drawable = (void*)0;int __ppp__table_count_Draw_Drawable = 0;
+# 62 "test inputs/example_lines.c"
+void Draw(Drawable* d  ){return __ppp__table_Draw_Drawable[d->tag](d);}
 
 struct __ppp__Drawable_VerticalLine{ int tag; struct {
-# 24 "test inputs/example_lines.c"
+# 25 "test inputs/example_lines.c"
 } head; 
-# 63 "test inputs/example_lines.c"
- VerticalLine tail; };int __attribute__((weak)) __ppp__tag_value_Drawable_VerticalLine;
+# 64 "test inputs/example_lines.c"
+VerticalLine tail; };int __attribute__((weak)) __ppp__tag_value_Drawable_VerticalLine;
 void __ppp__Draw_Drawable_VerticalLine(struct __ppp__Drawable_VerticalLine* vl  ) {
   array[vl->tail. y1][vl->tail. x] |= 4;  // 0b0100
   for(int i = vl->tail. y1+ 1; i < vl->tail. y2; i++) {
@@ -83,13 +81,12 @@ void __attribute__((weak, constructor(103))) _constructor__ppp__Draw_Drawable_Ve
   __ppp__table_Draw_Drawable[__ppp__tag_value_Drawable_VerticalLine] = &__ppp__Draw_Drawable_VerticalLine;
 }
 
-
-# 71 "test inputs/example_lines.c"
- struct __ppp__Drawable_HorizontalLine{ int tag; struct {
-# 24 "test inputs/example_lines.c"
+# 72 "test inputs/example_lines.c"
+struct __ppp__Drawable_HorizontalLine{ int tag; struct {
+# 25 "test inputs/example_lines.c"
 } head; 
-# 71 "test inputs/example_lines.c"
- HorizontalLine tail; };int __attribute__((weak)) __ppp__tag_value_Drawable_HorizontalLine;
+# 72 "test inputs/example_lines.c"
+HorizontalLine tail; };int __attribute__((weak)) __ppp__tag_value_Drawable_HorizontalLine;
 void __ppp__Draw_Drawable_HorizontalLine(struct __ppp__Drawable_HorizontalLine* hl  ) {
   array[hl->tail. y][hl->tail. x1] |= 1;  // 0b0001
   for(int i = hl->tail. x1+ 1; i < hl->tail. x2; i++) {
@@ -101,13 +98,12 @@ void __attribute__((weak, constructor(103))) _constructor__ppp__Draw_Drawable_Ho
   __ppp__table_Draw_Drawable[__ppp__tag_value_Drawable_HorizontalLine] = &__ppp__Draw_Drawable_HorizontalLine;
 }
 
-
-# 79 "test inputs/example_lines.c"
- struct __ppp__Drawable_Box{ int tag; struct {
-# 24 "test inputs/example_lines.c"
+# 80 "test inputs/example_lines.c"
+struct __ppp__Drawable_Box{ int tag; struct {
+# 25 "test inputs/example_lines.c"
 } head; 
-# 79 "test inputs/example_lines.c"
- Box tail; };int __attribute__((weak)) __ppp__tag_value_Drawable_Box;
+# 80 "test inputs/example_lines.c"
+Box tail; };int __attribute__((weak)) __ppp__tag_value_Drawable_Box;
 void __ppp__Draw_Drawable_Box(struct __ppp__Drawable_Box* b  ) {
   struct __ppp__Drawable_VerticalLine vl={.tag = __ppp__tag_value_Drawable_VerticalLine, .head = {}, .tail = {.x = b->tail. x1, .y1 = b->tail. y1, .y2 = b->tail. y2}};
   Draw     (&vl  );
@@ -123,9 +119,8 @@ void __attribute__((weak, constructor(103))) _constructor__ppp__Draw_Drawable_Bo
   __ppp__table_Draw_Drawable[__ppp__tag_value_Drawable_Box] = &__ppp__Draw_Drawable_Box;
 }
 
-
-# 91 "test inputs/example_lines.c"
- int main() {
+# 92 "test inputs/example_lines.c"
+int main() {
   Drawable* objects[4];
 
   VerticalLine vl = {.x = 3, .y1 = 2, .y2 = 10};

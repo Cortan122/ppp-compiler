@@ -1,0 +1,5 @@
+typedef struct Figure { int tag; struct {
+  char* color[-1];
+} head; union {
+  struct whatever s00; } tail;
+} Figure;

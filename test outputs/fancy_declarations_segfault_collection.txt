@@ -1,0 +1,64 @@
+Declaration(tokens = 2, name = Empty)
+  Struct(tokens = 6, name = Empty) 
+    WORD[segfault_collection.c:1:9] data = struct
+    WORD[segfault_collection.c:1:16] data = Empty
+    CHAR[segfault_collection.c:1:22] data = {
+    CHAR[segfault_collection.c:1:23] data = }
+    CHAR[segfault_collection.c:1:24] data = <
+    CHAR[segfault_collection.c:1:25] data = >
+  WORD[segfault_collection.c:1:27] data = Empty
+  CHAR[segfault_collection.c:1:32] data = ;
+
+Declaration(tokens = 2, name = Figure)
+  Struct(tokens = 7, name = Figure) 
+    WORD[segfault_collection.c:3:9] data = struct
+    WORD[segfault_collection.c:3:16] data = Figure
+    CHAR[segfault_collection.c:3:23] data = {
+    Declaration(tokens = 8, name = color)
+      WORD[segfault_collection.c:4:3] data = char
+      CHAR[segfault_collection.c:4:7] data = *
+      WORD[segfault_collection.c:4:9] data = color
+      CHAR[segfault_collection.c:4:14] data = [
+      CHAR[segfault_collection.c:4:15] data = -
+      NUMBER[segfault_collection.c:4:16] data = 1
+      CHAR[segfault_collection.c:4:17] data = ]
+      CHAR[segfault_collection.c:4:18] data = ;
+    CHAR[segfault_collection.c:5:1] data = }
+    CHAR[segfault_collection.c:5:3] data = <
+    CHAR[segfault_collection.c:5:4] data = :
+    CHAR[segfault_collection.c:5:5] data = >
+  WORD[segfault_collection.c:5:7] data = Figure
+  CHAR[segfault_collection.c:5:13] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 7, name = WeekDay) 
+    WORD[segfault_collection.c:7:1] data = struct
+    WORD[segfault_collection.c:7:8] data = WeekDay
+    CHAR[segfault_collection.c:7:16] data = {
+    Declaration(tokens = 3, name = week_number)
+      WORD[segfault_collection.c:7:17] data = int
+      WORD[segfault_collection.c:7:21] data = week_number
+      CHAR[segfault_collection.c:7:32] data = ;
+    CHAR[segfault_collection.c:7:33] data = }
+    CHAR[segfault_collection.c:8:1] data = <
+    Declaration(tokens = 16, name = void)
+      WORD[segfault_collection.c:8:2] data = Monday
+      CHAR[segfault_collection.c:8:8] data = ,
+      WORD[segfault_collection.c:8:10] data = Tuesday
+      CHAR[segfault_collection.c:8:17] data = ,
+      WORD[segfault_collection.c:8:19] data = Wednesday
+      CHAR[segfault_collection.c:8:28] data = ,
+      WORD[segfault_collection.c:8:30] data = Thursday
+      CHAR[segfault_collection.c:8:38] data = ,
+      WORD[segfault_collection.c:8:40] data = Friday
+      CHAR[segfault_collection.c:8:46] data = ,
+      WORD[segfault_collection.c:8:48] data = Saturday
+      CHAR[segfault_collection.c:8:56] data = ,
+      WORD[segfault_collection.c:8:58] data = Sunday
+      CHAR[segfault_collection.c:8:64] data = :
+      WORD[segfault_collection.c:8:66] data = void
+      CHAR[segfault_collection.c:8:70] data = ;
+    CHAR[segfault_collection.c:8:71] data = >
+    WORD[segfault_collection.c:9:1] data = const
+  CHAR[segfault_collection.c:9:6] data = ;
+

@@ -1,0 +1,9 @@
+typedef struct Empty {}<> Empty;
+
+typedef struct Figure {
+  char* color[-1];
+} <:> Figure;
+
+struct WeekDay {int week_number;}
+<Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday: void;>
+const;

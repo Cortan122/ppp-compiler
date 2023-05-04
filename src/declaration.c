@@ -154,6 +154,7 @@ void declaration_emit_fancy_struct(Struct* s, Emitter* emitter) {
       }
       token_emit_cstr(" } tail;", emitter);
 
+      if(token_eq_char(&s->tokens[s->tokens_subtypes_pos], ':')) s->tokens_subtypes_pos++;
       token_emit_as(s->tokens[s->tokens_subtypes_pos], "}", emitter);
       i = s->tokens_subtypes_pos;
     }
@@ -164,7 +165,7 @@ void declaration_emit_struct(Struct* s, Emitter* emitter) {
   if(emitter == NULL) return;
 
   if(emitter->convert_structs) {
-    if(s->subtypes) {
+    if(s->subtypes || (s->tokens_subtypes_pos && s->tokens_members_pos)) {
       declaration_emit_fancy_struct(s, emitter);
       return;
     } else if(s->parameter) {

@@ -53,6 +53,12 @@ static void parse_declaration_list_until(Parser* p, Token** tok_dest, Declaratio
 }
 
 static bool is_typename(Parser* p, const char* word, bool* has_used_typedef) {
+  if(word == NULL) {
+    Token eof = {0};
+    token_print_error(&eof, LOGLEVEL_ERROR, "expected typename but found NULL%s", "");
+    exit(1);
+  }
+
   if(strcmp(word, "void") == 0) return true;
   if(strcmp(word, "char") == 0) return true;
   if(strcmp(word, "short") == 0) return true;
@@ -511,6 +517,19 @@ bool parser_parse_struct_subtypes(Parser* p, Struct* res, bool force_parameter) 
   parser_transfer_token(p, &res->tokens);
   res->tokens_subtypes_pos = arrlen(res->tokens);
 
+  tok = parser_peek_token(p);
+  if(token_eq_char(&tok, ':')) {
+    parser_transfer_token(p, &res->tokens);
+    tok = parser_peek_token(p);
+    if(token_eq_char(&tok, '>')) {
+      parser_transfer_token(p, &res->tokens);
+      return true;
+    } else {
+      token_print_error(&tok, LOGLEVEL_ERROR, "expected '>' but found '%s'", tok.data);
+      return false;
+    }
+  }
+
   if(res->tokens_members_pos && !force_parameter) {
     parse_declaration_list_until(p, &res->tokens, &res->subtypes, '>');
   } else {
@@ -536,8 +555,7 @@ bool parser_parse_struct(Parser* p, Struct* res) {
 
     tok = parser_peek_token(p);
     if(token_eq_char(&tok, '+') && val) {
-      parser_parse_type_extention(p, val);
-      return false;
+      return parser_parse_type_extention(p, val);
     } else if(!token_eq_char(&tok, '{')) {
       goto no_body;
     }
@@ -564,6 +582,10 @@ bool parser_parse_type(Parser* p, Struct* res) {
   }
 
   Token tok = parser_peek_token(p);
+  if(tok.kind != TOKEN_WORD) {
+    token_print_error(&tok, LOGLEVEL_ERROR, "expected typename but found '%s'", tok.data);
+    return false;
+  }
   if(!is_typename(p, tok.data, NULL)) {
     return false;
   }
@@ -861,6 +883,11 @@ bool parser_parse_type_extention(Parser* p, Struct* base) {
   parse_declaration_list_until(p, &tmp_storage, &base->subtypes, '>');
   preemit_subtypes(p, base, old_subtypes_count);
 
+  tok = parser_peek_token(p);
+  if(!token_eq_char(&tok, ';')) {
+    token_print_error(&tok, LOGLEVEL_WARNING, "expected ';', but found '%s'", tok.data);
+  }
+
   result = true;
 defer:;
   free_tmp_storage(tmp_storage, result ? NULL : p->default_emitter);
@@ -996,6 +1023,8 @@ bool parser_parse_line(Parser* p) {
     Declaration d = parser_parse_declaration(p);
     arrpush(p->top_level, d);
     declaration_emit(&d, p->decl_emitter);
+  } else if(token_eq_char(&tok, ';')) {
+    parser_transfer_token(p, NULL);
   } else {
     Function* func = calloc(1, sizeof(Function));
     if(!parser_parse_function(p, func)) {

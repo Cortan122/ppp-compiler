@@ -1,0 +1,9 @@
+typedef struct Empty { int tag; struct {} head; union { } tail;} Empty;
+
+typedef struct Figure { int tag; struct {
+  char* color[-1];
+} head; union { } tail;} Figure;
+
+struct WeekDay { int tag; struct { int week_number;} head; union {
+ Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday: void s00; } tail;}
+const;

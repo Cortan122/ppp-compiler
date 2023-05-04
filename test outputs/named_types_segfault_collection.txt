@@ -1,0 +1,5 @@
+struct Empty;
+struct Figure;
+struct WeekDay;
+typedef struct Empty Empty;
+typedef struct Figure Figure;

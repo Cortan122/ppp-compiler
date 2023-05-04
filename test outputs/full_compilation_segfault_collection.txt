@@ -1,0 +1,19 @@
+# 1 "test inputs/segfault_collection.c"
+typedef struct Empty { int tag; struct {} head; union { } tail;} Empty;
+
+typedef
+                   // comment 2
+# 3 "test inputs/segfault_collection.c"
+        struct Figure { int tag; struct {
+  char* color[-1];
+} head; union { } tail;} Figure;
+
+struct WeekDay { int tag; struct { int week_number;} head; union {
+ Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday: void s00; } tail;}
+const;
+
+int some_more_tokens = 1;
+void* calloc(unsigned long nmemb, unsigned long size);
+int __attribute__((weak)) __ppp__tag_counter_Empty = 0;
+int __attribute__((weak)) __ppp__tag_counter_Figure = 0;
+int __attribute__((weak)) __ppp__tag_counter_WeekDay = 0;

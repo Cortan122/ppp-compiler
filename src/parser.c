@@ -26,6 +26,7 @@ static void skip_bracket_block(Parser* p, Token** res, char end, char end2, int 
     Token tok = parser_peek_token(p);
     if(tok.kind == TOKEN_EOF) {
       token_print_error(&tok, LOGLEVEL_ERROR, "expected '%.1s' but found EOF", &end);
+      p->has_seen_error = true;
       exit(1);
     } else if(tok.kind == TOKEN_CHAR) {
       char val = *tok.data;
@@ -56,6 +57,7 @@ static bool is_typename(Parser* p, const char* word, bool* has_used_typedef) {
   if(word == NULL) {
     Token eof = {0};
     token_print_error(&eof, LOGLEVEL_ERROR, "expected typename but found NULL%s", "");
+    p->has_seen_error = true;
     exit(1);
   }
 
@@ -496,12 +498,14 @@ void parser_parse_struct_parameter(Parser* p, Struct* res) {
 
   if(!parser_parse_type(p, res->parameter)) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected type name, but found '%s'", tok.data);
+    p->has_seen_error = true;
     exit(1);
   }
 
   tok = parser_peek_token(p);
   if(!token_eq_char(&tok, '>')) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected '>', but found '%s'", tok.data);
+    p->has_seen_error = true;
     exit(1);
   }
 
@@ -526,6 +530,7 @@ bool parser_parse_struct_subtypes(Parser* p, Struct* res, bool force_parameter) 
       return true;
     } else {
       token_print_error(&tok, LOGLEVEL_ERROR, "expected '>' but found '%s'", tok.data);
+      p->has_seen_error = true;
       return false;
     }
   }
@@ -561,6 +566,7 @@ bool parser_parse_struct(Parser* p, Struct* res) {
     }
   } else if(!token_eq_char(&tok, '{')) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected '{' but found '%s'", tok.data);
+    p->has_seen_error = true;
     exit(1);
   }
   parser_transfer_token(p, &res->tokens);
@@ -584,6 +590,7 @@ bool parser_parse_type(Parser* p, Struct* res) {
   Token tok = parser_peek_token(p);
   if(tok.kind != TOKEN_WORD) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected typename but found '%s'", tok.data);
+    p->has_seen_error = true;
     return false;
   }
   if(!is_typename(p, tok.data, NULL)) {
@@ -611,6 +618,7 @@ Declaration parser_force_declaration(Parser* p) {
 
   if(!parser_parse_type(p, res.type)) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected type name, but found '%s'", tok.data);
+    p->has_seen_error = true;
     exit(1);
   }
 
@@ -621,6 +629,7 @@ Declaration parser_force_declaration(Parser* p) {
   } else {
     // TODO: headers have optional names
     token_print_error(&tok, LOGLEVEL_ERROR, "expected parameter name, but found '%s'", tok.data);
+    p->has_seen_error = true;
     exit(1);
   }
 
@@ -730,6 +739,7 @@ bool parser_parse_function_call(Parser* p) {
     return false;
   } else if(!token_eq_char(&tok, '<')) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected '<' or '(', but found '%s'", tok.data);
+    p->has_seen_error = true;
     return false;
   }
 
@@ -740,6 +750,7 @@ bool parser_parse_function_call(Parser* p) {
   tok = parser_peek_token(p);
   if(!token_eq_char(&tok, '(')) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected function arguments, but found '%s'", tok.data);
+    p->has_seen_error = true;
     free_tmp_storage(prams, NULL);
     return false;
   }
@@ -783,6 +794,7 @@ bool parser_parse_initializer(Parser* p, Function* func, Struct* type) {
   tok = parser_peek_token(p);
   if(!token_eq_char(&tok, '>')) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected '>', but found '%s'", tok.data);
+    p->has_seen_error = true;
     return true;
   }
 
@@ -807,6 +819,7 @@ bool parser_parse_local_variable(Parser* p, Function* func) {
     parser_transfer_token(p, NULL);
   } else {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected variable name, but found '%s'", tok.data);
+    p->has_seen_error = true;
     goto defer;
   }
 
@@ -843,6 +856,7 @@ void parser_inside_function(Parser* p, Function* func) {
     if(tok.kind == TOKEN_EOF) {
       token_print_error(&tok, LOGLEVEL_ERROR, "expected end of function code but found EOF%s", "");
       token_print_error(&func->decl.tokens[0], LOGLEVEL_INFO, "in function '%s'", func->decl.name);
+      p->has_seen_error = true;
       exit(1);
     } else if(tok.kind == TOKEN_CHAR) {
       switch(*tok.data) {
@@ -875,6 +889,7 @@ bool parser_parse_type_extention(Parser* p, Struct* base) {
   Token tok = parser_peek_token(p);
   if(!token_eq_char(&tok, '<')) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected '<', but found '%s'", tok.data);
+    p->has_seen_error = true;
     goto defer;
   }
   parser_transfer_token(p, &tmp_storage);
@@ -932,6 +947,7 @@ bool parser_parse_function(Parser* p, Function* func) {
         parser_transfer_token(p, &func->decl.tokens);
       } else {
         token_print_error(&tok, LOGLEVEL_ERROR, "expected ',' or '>', but found '%s'", tok.data);
+        p->has_seen_error = true;
         exit(1);
       }
     }
@@ -965,6 +981,7 @@ bool parser_parse_function(Parser* p, Function* func) {
       func->base = val;
     } else {
       token_print_error(&tok, LOGLEVEL_ERROR, "parametric function defined before its header%s", "");
+      p->has_seen_error = true;
     }
   }
 

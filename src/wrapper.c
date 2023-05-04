@@ -62,7 +62,7 @@ void wait_pid(Pid pid) {
   }
 }
 
-void run_parser(FILE* input_file, FILE* output_file, const char* input_filename) {
+bool run_parser(FILE* input_file, FILE* output_file, const char* input_filename) {
   Emitter em = {.file = output_file, .convert_structs = true, .add_line_directives = true};
   Parser parser = {.allow_fancy_structs = true, .go_deeper = true, .use_constructors = true, .preemit_structs = true};
   parser_set_emitter(&parser, &em);
@@ -77,13 +77,14 @@ void run_parser(FILE* input_file, FILE* output_file, const char* input_filename)
   parser_delete(&parser);
 
   fclose(output_file);
+  return parser.has_seen_error;
 }
 
-void setup_pipes(char* input_filename) {
+void setup_pipes(char* input_filename, char** options) {
   Pipe cpp_pipe = make_pipe();
   Pipe cc_pipe = make_pipe();
   Pid cpp = exec_file_with_pipe("gcc", (char*[]){"gcc", "-E", input_filename, NULL}, cpp_pipe, false, true);
-  Pid cc = exec_file_with_pipe("gcc", (char*[]){"gcc", "-Wno-incompatible-pointer-types", "-x", "c", "-", NULL}, cc_pipe, true, false);
+  Pid cc = exec_file_with_pipe("gcc", options, cc_pipe, true, false);
   FILE* input_file = fdopen(cpp_pipe.read, "r");
   FILE* output_file = fdopen(cc_pipe.write, "w");
 
@@ -93,12 +94,44 @@ void setup_pipes(char* input_filename) {
   wait_pid(cc);
 }
 
+char* parse_argv(int argc, char** argv, char*** options) {
+  char* res = NULL;
+  for(int i = 1; i < argc; i++) {
+    if(strcmp(argv[i], "--") == 0) {
+      res = argv[++i];
+    } else if(argv[i][0] == '-') {
+      arrpush(*options, argv[i]);
+    } else if(res == NULL) {
+      res = argv[i];
+    } else {
+      fprintf(stderr, "ppp-wrapper: way too many input files...\n");
+      exit(1);
+    }
+  }
+
+  if(res == NULL) {
+    fprintf(stderr, "ppp-wrapper: no input file found...\n");
+    exit(1);
+  }
+  return res;
+}
+
 int main(int argc, char** argv) {
   if(argc < 2) {
-    fprintf(stderr, "ppp-wrapper: no input file provided\n");
+    fprintf(stderr, "ppp-wrapper: [options...] file.c\n");
     exit(1);
   }
 
-  setup_pipes(argv[1]);
+  char** options = NULL;
+  arrpush(options, "gcc");
+  arrpush(options, "-Wno-incompatible-pointer-types");
+  char* file = parse_argv(argc, argv, &options);
+  arrpush(options, "-x");
+  arrpush(options, "c");
+  arrpush(options, "-");
+  arrpush(options, NULL);
+
+  setup_pipes(file, options);
+  arrfree(options);
   return 0;
 }

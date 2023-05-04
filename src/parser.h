@@ -10,6 +10,7 @@ typedef struct Parser {
   NamedType* typedefs;
   NamedType* structs;
   Function** funcs;
+  bool has_seen_error;
 
   bool allow_fancy_structs;
   bool go_deeper;

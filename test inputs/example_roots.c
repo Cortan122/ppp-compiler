@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <math.h>
+
+typedef struct OneRoot {
+  double x;
+} OneRoot;
+
+typedef struct TwoRoots {
+  double x1;
+  double x2;
+} TwoRoots;
+
+typedef struct NoRoot {
+  char* msg;
+} NoRoot;
+
+typedef struct Root {} <
+  struct OneRoot;
+  struct TwoRoots;
+  struct NoRoot;
+> Root;
+
+void Print<Root* root>() = 0;
+
+void Print<Root<OneRoot>* root>() {
+  printf("x = %.2f\n", root->!x);
+}
+
+void Print<Root<TwoRoots>* root>() {
+  printf("x1 = %.2f\n", root->!x1);
+  printf("x2 = %.2f\n", root->!x2);
+}
+
+void Print<Root<NoRoot>* root>() {
+  printf("error: %s\n", root->!msg);
+}
+
+void EvalOneRoot(double a, double b, Root* root) {
+  Root<OneRoot> res;
+  res!x = (-b) / (2 * a);
+  Root* resptr = &res;
+  *root = *resptr;
+}
+
+void EvalTwoRoots(double a, double b, double d, Root* root) {
+  Root<TwoRoots> res;
+  res!x1 = (-b - d) / (2 * a);
+  res!x2 = (-b + d) / (2 * a);
+  Root* resptr = &res;
+  *root = *resptr;
+}
+
+void EvalNoRoot(Root* root) {
+  Root<NoRoot> res;
+  res!msg = "No roots found!";
+  Root* resptr = &res;
+  *root = *resptr;
+}
+
+void SolveQuadratic(double a, double b, double c, Root* root) {
+  double d = b*b - 4*a*c;
+  if(d == 0) {
+    EvalOneRoot(a, b, root);
+  } else if(d > 0) {
+    EvalTwoRoots(a, b, d, root);
+  } else {
+    EvalNoRoot(root);
+  }
+}
+
+int main() {
+  double a,b,c;
+  Root root;
+  printf("Input a, b, and c:\n");
+  scanf("%lf%lf%lf", &a, &b, &c);
+  SolveQuadratic(a, b, c, &root);
+  Print<&root>();
+  return 0;
+}

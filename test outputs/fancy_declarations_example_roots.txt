@@ -1,0 +1,70 @@
+Declaration(tokens = 2, name = OneRoot)
+  Struct(tokens = 4, name = OneRoot) 
+    WORD[example_roots.c:4:9] data = struct
+    WORD[example_roots.c:4:16] data = OneRoot
+    CHAR[example_roots.c:4:24] data = {
+    Declaration(tokens = 3, name = x)
+      WORD[example_roots.c:5:3] data = double
+      WORD[example_roots.c:5:10] data = x
+      CHAR[example_roots.c:5:11] data = ;
+    CHAR[example_roots.c:6:1] data = }
+  WORD[example_roots.c:6:3] data = OneRoot
+  CHAR[example_roots.c:6:10] data = ;
+
+Declaration(tokens = 2, name = TwoRoots)
+  Struct(tokens = 4, name = TwoRoots) 
+    WORD[example_roots.c:8:9] data = struct
+    WORD[example_roots.c:8:16] data = TwoRoots
+    CHAR[example_roots.c:8:25] data = {
+    Declaration(tokens = 3, name = x1)
+      WORD[example_roots.c:9:3] data = double
+      WORD[example_roots.c:9:10] data = x1
+      CHAR[example_roots.c:9:12] data = ;
+    Declaration(tokens = 3, name = x2)
+      WORD[example_roots.c:10:3] data = double
+      WORD[example_roots.c:10:10] data = x2
+      CHAR[example_roots.c:10:12] data = ;
+    CHAR[example_roots.c:11:1] data = }
+  WORD[example_roots.c:11:3] data = TwoRoots
+  CHAR[example_roots.c:11:11] data = ;
+
+Declaration(tokens = 2, name = NoRoot)
+  Struct(tokens = 4, name = NoRoot) 
+    WORD[example_roots.c:13:9] data = struct
+    WORD[example_roots.c:13:16] data = NoRoot
+    CHAR[example_roots.c:13:23] data = {
+    Declaration(tokens = 4, name = msg)
+      WORD[example_roots.c:14:3] data = char
+      CHAR[example_roots.c:14:7] data = *
+      WORD[example_roots.c:14:9] data = msg
+      CHAR[example_roots.c:14:12] data = ;
+    CHAR[example_roots.c:15:1] data = }
+  WORD[example_roots.c:15:3] data = NoRoot
+  CHAR[example_roots.c:15:9] data = ;
+
+Declaration(tokens = 2, name = Root)
+  Struct(tokens = 6, name = Root) 
+    WORD[example_roots.c:17:9] data = struct
+    WORD[example_roots.c:17:16] data = Root
+    CHAR[example_roots.c:17:21] data = {
+    CHAR[example_roots.c:17:22] data = }
+    CHAR[example_roots.c:17:24] data = <
+    Declaration(tokens = 1, name = (null))
+      Struct(tokens = 2, name = OneRoot) 
+        WORD[example_roots.c:18:3] data = struct
+        WORD[example_roots.c:18:10] data = OneRoot
+      CHAR[example_roots.c:18:17] data = ;
+    Declaration(tokens = 1, name = (null))
+      Struct(tokens = 2, name = TwoRoots) 
+        WORD[example_roots.c:19:3] data = struct
+        WORD[example_roots.c:19:10] data = TwoRoots
+      CHAR[example_roots.c:19:18] data = ;
+    Declaration(tokens = 1, name = (null))
+      Struct(tokens = 2, name = NoRoot) 
+        WORD[example_roots.c:20:3] data = struct
+        WORD[example_roots.c:20:10] data = NoRoot
+      CHAR[example_roots.c:20:16] data = ;
+    CHAR[example_roots.c:21:1] data = >
+  WORD[example_roots.c:21:3] data = Root
+  CHAR[example_roots.c:21:7] data = ;
+

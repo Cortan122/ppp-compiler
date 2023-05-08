@@ -1,0 +1,4 @@
+struct OneRoot;
+struct TwoRoots;
+struct NoRoot;
+struct Root;

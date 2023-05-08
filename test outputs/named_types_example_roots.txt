@@ -1,0 +1,7 @@
+struct OneRoot;
+struct TwoRoots;
+struct NoRoot;
+struct Root;
+typedef struct Root OneRoot;
+typedef struct TwoRoots TwoRoots;
+typedef struct NoRoot NoRoot;

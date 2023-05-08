@@ -1,0 +1,13 @@
+struct OneRoot;
+struct TwoRoots;
+struct NoRoot;
+struct Root;
+void EvalOneRoot(double a, double b, struct Root* root);
+
+void EvalTwoRoots(double a, double b, double d, struct Root* root);
+
+void EvalNoRoot(struct Root* root);
+
+void SolveQuadratic(double a, double b, double c, struct Root* root);
+
+int main();

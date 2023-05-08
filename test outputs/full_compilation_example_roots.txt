@@ -1,0 +1,129 @@
+# 1 "test inputs/example_roots.c"
+#include <stdio.h>
+#include <math.h>
+
+typedef struct OneRoot {
+  double x;
+} OneRoot;
+
+typedef struct TwoRoots {
+  double x1;
+  double x2;
+} TwoRoots;
+
+typedef struct NoRoot {
+  char* msg;
+} NoRoot;
+
+typedef struct Root { int tag; struct {} head; union {
+  struct OneRoot s00;
+  struct TwoRoots s01;
+  struct NoRoot s02; } tail;
+} Root;
+# 17 "test inputs/example_roots.c"
+struct __ppp__Root_OneRoot{ int tag; struct {} head; 
+# 18 "test inputs/example_roots.c"
+struct OneRoot tail; };int __attribute__((weak)) __ppp__tag_value_Root_OneRoot;
+
+# 17 "test inputs/example_roots.c"
+struct __ppp__Root_TwoRoots{ int tag; struct {} head; 
+# 19 "test inputs/example_roots.c"
+struct TwoRoots tail; };int __attribute__((weak)) __ppp__tag_value_Root_TwoRoots;
+
+# 17 "test inputs/example_roots.c"
+struct __ppp__Root_NoRoot{ int tag; struct {} head; 
+# 20 "test inputs/example_roots.c"
+struct NoRoot tail; };int __attribute__((weak)) __ppp__tag_value_Root_NoRoot;
+extern int __ppp__tag_counter_Root;
+typedef
+# 23 "test inputs/example_roots.c"
+void(*__ppp__pointer_Print_Root)(Root* root);__ppp__pointer_Print_Root* __ppp__table_Print_Root = (void*)0;int __ppp__table_count_Print_Root = 0;
+# 23 "test inputs/example_roots.c"
+void Print(Root* root  ){return __ppp__table_Print_Root[root->tag](root);}
+
+void __ppp__Print_Root_OneRoot(struct __ppp__Root_OneRoot* root  ) {
+  printf("x = %.2f\x0a", root->tail. x);
+}
+void __attribute__((weak, constructor(103))) _constructor__ppp__Print_Root_OneRoot() {
+  __ppp__table_Print_Root[__ppp__tag_value_Root_OneRoot] = &__ppp__Print_Root_OneRoot;
+}
+
+# 29 "test inputs/example_roots.c"
+void __ppp__Print_Root_TwoRoots(struct __ppp__Root_TwoRoots* root  ) {
+  printf("x1 = %.2f\x0a", root->tail. x1);
+  printf("x2 = %.2f\x0a", root->tail. x2);
+}
+void __attribute__((weak, constructor(103))) _constructor__ppp__Print_Root_TwoRoots() {
+  __ppp__table_Print_Root[__ppp__tag_value_Root_TwoRoots] = &__ppp__Print_Root_TwoRoots;
+}
+
+# 34 "test inputs/example_roots.c"
+void __ppp__Print_Root_NoRoot(struct __ppp__Root_NoRoot* root  ) {
+  printf("error: %s\x0a", root->tail. msg);
+}
+void __attribute__((weak, constructor(103))) _constructor__ppp__Print_Root_NoRoot() {
+  __ppp__table_Print_Root[__ppp__tag_value_Root_NoRoot] = &__ppp__Print_Root_NoRoot;
+}
+
+# 38 "test inputs/example_roots.c"
+void EvalOneRoot(double a, double b, Root* root) {
+  struct __ppp__Root_OneRoot res= {.tag = __ppp__tag_value_Root_OneRoot};
+  res.tail. x= (-b) / (2 * a);
+  Root* resptr = &res;
+  *root = *resptr;
+}
+
+void EvalTwoRoots(double a, double b, double d, Root* root) {
+  struct __ppp__Root_TwoRoots res= {.tag = __ppp__tag_value_Root_TwoRoots};
+  res.tail. x1= (-b - d) / (2 * a);
+  res.tail. x2= (-b + d) / (2 * a);
+  Root* resptr = &res;
+  *root = *resptr;
+}
+
+void EvalNoRoot(Root* root) {
+  struct __ppp__Root_NoRoot res= {.tag = __ppp__tag_value_Root_NoRoot};
+  res.tail. msg= "No roots found!";
+  Root* resptr = &res;
+  *root = *resptr;
+}
+
+void SolveQuadratic(double a, double b, double c, Root* root) {
+  double d = b*b - 4*a*c;
+  if(d == 0) {
+    EvalOneRoot(a, b, root);
+  } else if(d > 0) {
+    EvalTwoRoots(a, b, d, root);
+  } else {
+    EvalNoRoot(root);
+  }
+}
+
+int main() {
+  double a,b,c;
+  Root root;
+  printf("Input a, b, and c:\x0a");
+  scanf("%lf%lf%lf", &a, &b, &c);
+  SolveQuadratic(a, b, c, &root);
+  Print       (&root  );
+  return 0;
+}
+void* calloc(unsigned long nmemb, unsigned long size);
+int __attribute__((weak)) __ppp__tag_counter_Root = 0;
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Root_OneRoot() {
+  __ppp__tag_value_Root_OneRoot = __ppp__tag_counter_Root++;
+}
+
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Root_TwoRoots() {
+  __ppp__tag_value_Root_TwoRoots = __ppp__tag_counter_Root++;
+}
+
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_Root_NoRoot() {
+  __ppp__tag_value_Root_NoRoot = __ppp__tag_counter_Root++;
+}
+
+void __attribute__((weak, constructor(102))) _constructor__ppp__table_Print_Root() {
+  int size = __ppp__tag_counter_Root;
+  __ppp__table_Print_Root = calloc(size, sizeof(void*));
+}
+

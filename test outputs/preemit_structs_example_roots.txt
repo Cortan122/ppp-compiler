@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <math.h>
+
+typedef struct OneRoot {
+  double x;
+} OneRoot;
+
+typedef struct TwoRoots {
+  double x1;
+  double x2;
+} TwoRoots;
+
+typedef struct NoRoot {
+  char* msg;
+} NoRoot;
+
+typedef struct Root { int tag; struct {} head; union {
+  struct OneRoot s00;
+  struct TwoRoots s01;
+  struct NoRoot s02; } tail;
+} Root;struct __ppp__Root_OneRoot{ int tag; struct {} head;  struct OneRoot tail; };extern int __ppp__tag_value_Root_OneRoot;
+struct __ppp__Root_TwoRoots{ int tag; struct {} head;  struct TwoRoots tail; };extern int __ppp__tag_value_Root_TwoRoots;
+struct __ppp__Root_NoRoot{ int tag; struct {} head;  struct NoRoot tail; };extern int __ppp__tag_value_Root_NoRoot;
+extern int __ppp__tag_counter_Root;
+typedef void(*__ppp__pointer_Print_Root)(Root* root);extern __ppp__pointer_Print_Root* __ppp__table_Print_Root;extern int __ppp__table_count_Print_Root; void Print(Root* root  ){return __ppp__table_Print_Root[root->tag](root);}
+
+void __ppp__Print_Root_OneRoot(struct __ppp__Root_OneRoot* root  ) {
+  printf("x = %.2f\x0a", root->!x);
+}
+
+void __ppp__Print_Root_TwoRoots(struct __ppp__Root_TwoRoots* root  ) {
+  printf("x1 = %.2f\x0a", root->!x1);
+  printf("x2 = %.2f\x0a", root->!x2);
+}
+
+void __ppp__Print_Root_NoRoot(struct __ppp__Root_NoRoot* root  ) {
+  printf("error: %s\x0a", root->!msg);
+}
+
+void EvalOneRoot(double a, double b, Root* root) {
+  Root<OneRoot> res;
+  res!x = (-b) / (2 * a);
+  Root* resptr = &res;
+  *root = *resptr;
+}
+
+void EvalTwoRoots(double a, double b, double d, Root* root) {
+  Root<TwoRoots> res;
+  res!x1 = (-b - d) / (2 * a);
+  res!x2 = (-b + d) / (2 * a);
+  Root* resptr = &res;
+  *root = *resptr;
+}
+
+void EvalNoRoot(Root* root) {
+  Root<NoRoot> res;
+  res!msg = "No roots found!";
+  Root* resptr = &res;
+  *root = *resptr;
+}
+
+void SolveQuadratic(double a, double b, double c, Root* root) {
+  double d = b*b - 4*a*c;
+  if(d == 0) {
+    EvalOneRoot(a, b, root);
+  } else if(d > 0) {
+    EvalTwoRoots(a, b, d, root);
+  } else {
+    EvalNoRoot(root);
+  }
+}
+
+int main() {
+  double a,b,c;
+  Root root;
+  printf("Input a, b, and c:\x0a");
+  scanf("%lf%lf%lf", &a, &b, &c);
+  SolveQuadratic(a, b, c, &root);
+  Print<&root>();
+  return 0;
+}

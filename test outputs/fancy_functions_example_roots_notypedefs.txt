@@ -1,0 +1,153 @@
+Function(is_header = 1, prams = 1)
+  Declaration(tokens = 9, name = Print)
+    WORD[example_roots_notypedefs.c:23:1] data = void
+    WORD[example_roots_notypedefs.c:23:6] data = Print
+    CHAR[example_roots_notypedefs.c:23:11] data = <
+    CHAR[example_roots_notypedefs.c:23:29] data = >
+    CHAR[example_roots_notypedefs.c:23:30] data = (
+    CHAR[example_roots_notypedefs.c:23:31] data = )
+    CHAR[example_roots_notypedefs.c:23:33] data = =
+    NUMBER[example_roots_notypedefs.c:23:35] data = 0
+    CHAR[example_roots_notypedefs.c:23:36] data = ;
+  Declaration(tokens = 1, name = root)
+    Struct(tokens = 3, name = Root) 
+      WORD[example_roots_notypedefs.c:23:12] data = struct
+      WORD[example_roots_notypedefs.c:23:19] data = Root
+      CHAR[example_roots_notypedefs.c:23:23] data = *
+    WORD[example_roots_notypedefs.c:23:25] data = root
+
+Function(is_header = 0, prams = 1)
+  Declaration(tokens = 6, name = Print)
+    WORD[example_roots_notypedefs.c:25:1] data = void
+    WORD[example_roots_notypedefs.c:25:6] data = Print
+    CHAR[example_roots_notypedefs.c:25:11] data = <
+    CHAR[example_roots_notypedefs.c:25:45] data = >
+    CHAR[example_roots_notypedefs.c:25:46] data = (
+    CHAR[example_roots_notypedefs.c:25:47] data = )
+  Declaration(tokens = 1, name = root)
+    Struct(tokens = 5, name = Root) 
+      WORD[example_roots_notypedefs.c:25:12] data = struct
+      WORD[example_roots_notypedefs.c:25:19] data = Root
+      CHAR[example_roots_notypedefs.c:25:23] data = <
+      Struct(tokens = 2, name = OneRoot) 
+        WORD[example_roots_notypedefs.c:25:24] data = struct
+        WORD[example_roots_notypedefs.c:25:31] data = OneRoot
+      CHAR[example_roots_notypedefs.c:25:38] data = >
+      CHAR[example_roots_notypedefs.c:25:39] data = *
+    WORD[example_roots_notypedefs.c:25:41] data = root
+
+Function(is_header = 0, prams = 1)
+  Declaration(tokens = 6, name = Print)
+    WORD[example_roots_notypedefs.c:29:1] data = void
+    WORD[example_roots_notypedefs.c:29:6] data = Print
+    CHAR[example_roots_notypedefs.c:29:11] data = <
+    CHAR[example_roots_notypedefs.c:29:46] data = >
+    CHAR[example_roots_notypedefs.c:29:47] data = (
+    CHAR[example_roots_notypedefs.c:29:48] data = )
+  Declaration(tokens = 1, name = root)
+    Struct(tokens = 5, name = Root) 
+      WORD[example_roots_notypedefs.c:29:12] data = struct
+      WORD[example_roots_notypedefs.c:29:19] data = Root
+      CHAR[example_roots_notypedefs.c:29:23] data = <
+      Struct(tokens = 2, name = TwoRoots) 
+        WORD[example_roots_notypedefs.c:29:24] data = struct
+        WORD[example_roots_notypedefs.c:29:31] data = TwoRoots
+      CHAR[example_roots_notypedefs.c:29:39] data = >
+      CHAR[example_roots_notypedefs.c:29:40] data = *
+    WORD[example_roots_notypedefs.c:29:42] data = root
+
+Function(is_header = 0, prams = 1)
+  Declaration(tokens = 6, name = Print)
+    WORD[example_roots_notypedefs.c:34:1] data = void
+    WORD[example_roots_notypedefs.c:34:6] data = Print
+    CHAR[example_roots_notypedefs.c:34:11] data = <
+    CHAR[example_roots_notypedefs.c:34:44] data = >
+    CHAR[example_roots_notypedefs.c:34:45] data = (
+    CHAR[example_roots_notypedefs.c:34:46] data = )
+  Declaration(tokens = 1, name = root)
+    Struct(tokens = 5, name = Root) 
+      WORD[example_roots_notypedefs.c:34:12] data = struct
+      WORD[example_roots_notypedefs.c:34:19] data = Root
+      CHAR[example_roots_notypedefs.c:34:23] data = <
+      Struct(tokens = 2, name = NoRoot) 
+        WORD[example_roots_notypedefs.c:34:24] data = struct
+        WORD[example_roots_notypedefs.c:34:31] data = NoRoot
+      CHAR[example_roots_notypedefs.c:34:37] data = >
+      CHAR[example_roots_notypedefs.c:34:38] data = *
+    WORD[example_roots_notypedefs.c:34:40] data = root
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 14, name = EvalOneRoot)
+    WORD[example_roots_notypedefs.c:38:1] data = void
+    WORD[example_roots_notypedefs.c:38:6] data = EvalOneRoot
+    CHAR[example_roots_notypedefs.c:38:17] data = (
+    WORD[example_roots_notypedefs.c:38:18] data = double
+    WORD[example_roots_notypedefs.c:38:25] data = a
+    CHAR[example_roots_notypedefs.c:38:26] data = ,
+    WORD[example_roots_notypedefs.c:38:28] data = double
+    WORD[example_roots_notypedefs.c:38:35] data = b
+    CHAR[example_roots_notypedefs.c:38:36] data = ,
+    WORD[example_roots_notypedefs.c:38:38] data = struct
+    WORD[example_roots_notypedefs.c:38:45] data = Root
+    CHAR[example_roots_notypedefs.c:38:49] data = *
+    WORD[example_roots_notypedefs.c:38:51] data = root
+    CHAR[example_roots_notypedefs.c:38:55] data = )
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 17, name = EvalTwoRoots)
+    WORD[example_roots_notypedefs.c:45:1] data = void
+    WORD[example_roots_notypedefs.c:45:6] data = EvalTwoRoots
+    CHAR[example_roots_notypedefs.c:45:18] data = (
+    WORD[example_roots_notypedefs.c:45:19] data = double
+    WORD[example_roots_notypedefs.c:45:26] data = a
+    CHAR[example_roots_notypedefs.c:45:27] data = ,
+    WORD[example_roots_notypedefs.c:45:29] data = double
+    WORD[example_roots_notypedefs.c:45:36] data = b
+    CHAR[example_roots_notypedefs.c:45:37] data = ,
+    WORD[example_roots_notypedefs.c:45:39] data = double
+    WORD[example_roots_notypedefs.c:45:46] data = d
+    CHAR[example_roots_notypedefs.c:45:47] data = ,
+    WORD[example_roots_notypedefs.c:45:49] data = struct
+    WORD[example_roots_notypedefs.c:45:56] data = Root
+    CHAR[example_roots_notypedefs.c:45:60] data = *
+    WORD[example_roots_notypedefs.c:45:62] data = root
+    CHAR[example_roots_notypedefs.c:45:66] data = )
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 8, name = EvalNoRoot)
+    WORD[example_roots_notypedefs.c:53:1] data = void
+    WORD[example_roots_notypedefs.c:53:6] data = EvalNoRoot
+    CHAR[example_roots_notypedefs.c:53:16] data = (
+    WORD[example_roots_notypedefs.c:53:17] data = struct
+    WORD[example_roots_notypedefs.c:53:24] data = Root
+    CHAR[example_roots_notypedefs.c:53:28] data = *
+    WORD[example_roots_notypedefs.c:53:30] data = root
+    CHAR[example_roots_notypedefs.c:53:34] data = )
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 17, name = SolveQuadratic)
+    WORD[example_roots_notypedefs.c:60:1] data = void
+    WORD[example_roots_notypedefs.c:60:6] data = SolveQuadratic
+    CHAR[example_roots_notypedefs.c:60:20] data = (
+    WORD[example_roots_notypedefs.c:60:21] data = double
+    WORD[example_roots_notypedefs.c:60:28] data = a
+    CHAR[example_roots_notypedefs.c:60:29] data = ,
+    WORD[example_roots_notypedefs.c:60:31] data = double
+    WORD[example_roots_notypedefs.c:60:38] data = b
+    CHAR[example_roots_notypedefs.c:60:39] data = ,
+    WORD[example_roots_notypedefs.c:60:41] data = double
+    WORD[example_roots_notypedefs.c:60:48] data = c
+    CHAR[example_roots_notypedefs.c:60:49] data = ,
+    WORD[example_roots_notypedefs.c:60:51] data = struct
+    WORD[example_roots_notypedefs.c:60:58] data = Root
+    CHAR[example_roots_notypedefs.c:60:62] data = *
+    WORD[example_roots_notypedefs.c:60:64] data = root
+    CHAR[example_roots_notypedefs.c:60:68] data = )
+
+Function(is_header = 0, prams = 0)
+  Declaration(tokens = 4, name = main)
+    WORD[example_roots_notypedefs.c:71:1] data = int
+    WORD[example_roots_notypedefs.c:71:5] data = main
+    CHAR[example_roots_notypedefs.c:71:9] data = (
+    CHAR[example_roots_notypedefs.c:71:10] data = )
+

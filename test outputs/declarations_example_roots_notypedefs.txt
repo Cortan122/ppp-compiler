@@ -1,0 +1,64 @@
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = OneRoot) 
+    WORD[example_roots_notypedefs.c:4:1] data = struct
+    WORD[example_roots_notypedefs.c:4:8] data = OneRoot
+    CHAR[example_roots_notypedefs.c:4:16] data = {
+    Declaration(tokens = 3, name = x)
+      WORD[example_roots_notypedefs.c:5:3] data = double
+      WORD[example_roots_notypedefs.c:5:10] data = x
+      CHAR[example_roots_notypedefs.c:5:11] data = ;
+    CHAR[example_roots_notypedefs.c:6:1] data = }
+  CHAR[example_roots_notypedefs.c:6:2] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = TwoRoots) 
+    WORD[example_roots_notypedefs.c:8:1] data = struct
+    WORD[example_roots_notypedefs.c:8:8] data = TwoRoots
+    CHAR[example_roots_notypedefs.c:8:17] data = {
+    Declaration(tokens = 3, name = x1)
+      WORD[example_roots_notypedefs.c:9:3] data = double
+      WORD[example_roots_notypedefs.c:9:10] data = x1
+      CHAR[example_roots_notypedefs.c:9:12] data = ;
+    Declaration(tokens = 3, name = x2)
+      WORD[example_roots_notypedefs.c:10:3] data = double
+      WORD[example_roots_notypedefs.c:10:10] data = x2
+      CHAR[example_roots_notypedefs.c:10:12] data = ;
+    CHAR[example_roots_notypedefs.c:11:1] data = }
+  CHAR[example_roots_notypedefs.c:11:2] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 4, name = NoRoot) 
+    WORD[example_roots_notypedefs.c:13:1] data = struct
+    WORD[example_roots_notypedefs.c:13:8] data = NoRoot
+    CHAR[example_roots_notypedefs.c:13:15] data = {
+    Declaration(tokens = 4, name = msg)
+      WORD[example_roots_notypedefs.c:14:3] data = char
+      CHAR[example_roots_notypedefs.c:14:7] data = *
+      WORD[example_roots_notypedefs.c:14:9] data = msg
+      CHAR[example_roots_notypedefs.c:14:12] data = ;
+    CHAR[example_roots_notypedefs.c:15:1] data = }
+  CHAR[example_roots_notypedefs.c:15:2] data = ;
+
+Declaration(tokens = 4, name = OneRoot)
+  Struct(tokens = 4, name = Root) 
+    WORD[example_roots_notypedefs.c:17:1] data = struct
+    WORD[example_roots_notypedefs.c:17:8] data = Root
+    CHAR[example_roots_notypedefs.c:17:13] data = {
+    CHAR[example_roots_notypedefs.c:17:14] data = }
+  CHAR[example_roots_notypedefs.c:17:16] data = <
+  WORD[example_roots_notypedefs.c:18:3] data = struct
+  WORD[example_roots_notypedefs.c:18:10] data = OneRoot
+  CHAR[example_roots_notypedefs.c:18:17] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = TwoRoots) 
+    WORD[example_roots_notypedefs.c:19:3] data = struct
+    WORD[example_roots_notypedefs.c:19:10] data = TwoRoots
+  CHAR[example_roots_notypedefs.c:19:18] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = NoRoot) 
+    WORD[example_roots_notypedefs.c:20:3] data = struct
+    WORD[example_roots_notypedefs.c:20:10] data = NoRoot
+  CHAR[example_roots_notypedefs.c:20:16] data = ;
+

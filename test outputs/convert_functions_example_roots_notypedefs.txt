@@ -1,0 +1,21 @@
+struct OneRoot;
+struct TwoRoots;
+struct NoRoot;
+struct Root;
+void Print(struct Root* root  ) = 0;
+
+void __ppp__Print_Root_OneRoot(struct __ppp__Root_OneRoot * root  );
+
+void __ppp__Print_Root_TwoRoots(struct __ppp__Root_TwoRoots * root  );
+
+void __ppp__Print_Root_NoRoot(struct __ppp__Root_NoRoot * root  );
+
+void EvalOneRoot(double a, double b, struct Root* root);
+
+void EvalTwoRoots(double a, double b, double d, struct Root* root);
+
+void EvalNoRoot(struct Root* root);
+
+void SolveQuadratic(double a, double b, double c, struct Root* root);
+
+int main();

@@ -869,6 +869,8 @@ void parser_inside_function(Parser* p, Function* func) {
         parser_parse_function_call(p);
       } else if(shget(p->typedefs, tok.data)) {
         parser_parse_local_variable(p, func);
+      } else if(token_eq_keyword(&tok, "struct")) {
+        parser_parse_local_variable(p, func);
       } else if((var = get_scope_variable(func, tok.data))) {
         parser_parse_variable(p, var);
       }

@@ -1,0 +1,25 @@
+struct OneRoot;
+struct TwoRoots;
+struct NoRoot;
+struct Root;
+typedef struct OneRoot OneRoot;
+typedef struct TwoRoots TwoRoots;
+typedef struct NoRoot NoRoot;
+typedef struct Root Root;
+void Print<Root* root>() = 0;
+
+void Print<Root<OneRoot>* root>();
+
+void Print<Root<TwoRoots>* root>();
+
+void Print<Root<NoRoot>* root>();
+
+void EvalOneRoot(double a, double b, Root* root);
+
+void EvalTwoRoots(double a, double b, double d, Root* root);
+
+void EvalNoRoot(Root* root);
+
+void SolveQuadratic(double a, double b, double c, Root* root);
+
+int main();

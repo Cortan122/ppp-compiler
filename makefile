@@ -6,6 +6,11 @@ MAKEFLAGS += -j4
 WARNINGS=-Wall -Wextra -Werror=vla
 CFLAGS=-Og -g $(WARNINGS) -I.
 
+ifdef USE_ASAN
+CFLAGS += -fsanitize=address
+LDFLAGS += -fsanitize=address
+endif
+
 OBJDIR=build
 SRC=$(wildcard src/*.c)
 HEADERS=$(wildcard src/*.h)

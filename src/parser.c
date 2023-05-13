@@ -1008,7 +1008,7 @@ bool parser_parse_function(Parser* p, Function* func) {
     skip_bracket_block(p, &func->decl.tokens, ';', '\0', 0);
   } else {
     // there is a lot of __attribute__ and __asm__
-    // this is fine 🔥
+    // this is fine 0_0
     func->is_header = false;
   }
 

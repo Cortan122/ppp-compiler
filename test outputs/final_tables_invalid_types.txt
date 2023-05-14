@@ -1,0 +1,21 @@
+typedef struct;
+typedef struct foo;
+typedef struct bar baz;
+typedef {int f;} struct quux;
+
+typedef struct fnord { int tag; struct {} head; union { 122 s00; } tail;} fum;
+typedef struct shme { int tag; struct {} head; union { zot s00; } tail;} foobar;
+typedef struct fred { int tag; struct {} head; union { int wibble s00; } tail;} derp;
+typedef struct baz { int tag; struct {} head; union { int s00; } tail;} fnord;
+typedef struct fum { int tag; struct {} head; union { 122 fred s00; } tail;} shme;
+
+struct;
+struct foo1;
+struct bar1 baz1;
+{int f;} struct quux1;
+
+struct fnord1 { int tag; struct {} head; union { 122 s00; } tail;} fum1;
+struct shme1 { int tag; struct {} head; union { zot s00; } tail;} foobar1;
+struct fred1 { int tag; struct {} head; union { int wibble s00; } tail;} derp1;
+struct baz1 { int tag; struct {} head; union { int s00; } tail;} fnord1;
+struct fum1 { int tag; struct {} head; union { 122 fred1 s00; } tail;} shme1;

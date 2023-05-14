@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
   FILE* output2 = argc > 3 ? fopen(argv[3], "w") : stderr;
 
   Emitter em1 = {.file = output1, .convert_structs = true, .add_line_directives = true};
-  Emitter em2 = {.file = output2};
+  Emitter em2 = {.file = output2, .delete_repeted_empty_lines = true};
   Parser parser = {.allow_fancy_structs = true, .go_deeper = true, .use_constructors = true, .preemit_structs = true};
   parser_set_emitter(&parser, &em1);
 

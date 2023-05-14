@@ -420,6 +420,7 @@ static void emit_struct_counter_name(Parser* p, Struct* s) {
 
 static void try_emit_parameterized_struct(Parser* p, Struct* res) {
   generate_converted_struct_name(res);
+  if(res->converted_name == NULL) return;
 
   if(p->defined_specialized_structs == NULL) {
     sh_new_arena(p->defined_specialized_structs);
@@ -566,8 +567,11 @@ bool parser_parse_struct(Parser* p, Struct* res) {
     }
   } else if(!token_eq_char(&tok, '{')) {
     token_print_error(&tok, LOGLEVEL_ERROR, "expected '{' but found '%s'", tok.data);
+    token_print_error(res->tokens, LOGLEVEL_INFO, "this struct has no name or body%s", "");
+    free_tmp_storage(res->tokens, p->default_emitter);
+    res->tokens = NULL;
     p->has_seen_error = true;
-    exit(1);
+    return false;
   }
   parser_transfer_token(p, &res->tokens);
   res->tokens_members_pos = arrlen(res->tokens);

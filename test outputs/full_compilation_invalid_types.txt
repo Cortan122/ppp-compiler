@@ -1,0 +1,47 @@
+# 1 "test inputs/invalid_types.c"
+typedef struct;
+typedef struct foo;
+typedef struct bar baz;
+typedef {int f;} struct quux;
+
+typedef struct fnord { int tag; struct {} head; union { 122 s00; } tail;} fum;extern int __ppp__tag_counter_fnord;
+typedef struct shme { int tag; struct {} head; union { zot s00; } tail;} foobar;extern int __ppp__tag_counter_shme;
+typedef struct fred { int tag; struct {} head; union { int wibble s00; } tail;} derp;struct __ppp__fred_primitive{ int tag; struct {} head; 
+# 8 "test inputs/invalid_types.c"
+int tail; };int __attribute__((weak)) __ppp__tag_value_fred_primitive;
+extern int __ppp__tag_counter_fred;
+typedef struct baz { int tag; struct {} head; union { int s00; } tail;} fnord;struct __ppp__baz_primitive{ int tag; struct {} head; 
+# 9 "test inputs/invalid_types.c"
+int tail; };int __attribute__((weak)) __ppp__tag_value_baz_primitive;
+extern int __ppp__tag_counter_baz;
+typedef struct fum { int tag; struct {} head; union { 122 fred s00; } tail;} shme;extern int __ppp__tag_counter_fum;
+
+struct;
+struct foo1;
+struct bar1 baz1;
+{int f;} struct quux1;
+
+struct fnord1 { int tag; struct {} head; union { 122 s00; } tail;} fum1;
+struct shme1 { int tag; struct {} head; union { zot s00; } tail;} foobar1;
+struct fred1 { int tag; struct {} head; union { int wibble s00; } tail;} derp1;
+struct baz1 { int tag; struct {} head; union { int s00; } tail;} fnord1;
+struct fum1 { int tag; struct {} head; union { 122 fred1 s00; } tail;} shme1;
+void* calloc(unsigned long nmemb, unsigned long size);
+int __attribute__((weak)) __ppp__tag_counter_fnord = 0;
+int __attribute__((weak)) __ppp__tag_counter_shme = 0;
+int __attribute__((weak)) __ppp__tag_counter_fred = 0;
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_fred_primitive() {
+  __ppp__tag_value_fred_primitive = __ppp__tag_counter_fred++;
+}
+
+int __attribute__((weak)) __ppp__tag_counter_baz = 0;
+void __attribute__((weak, constructor(101))) _constructor__ppp__tag_value_baz_primitive() {
+  __ppp__tag_value_baz_primitive = __ppp__tag_counter_baz++;
+}
+
+int __attribute__((weak)) __ppp__tag_counter_fum = 0;
+int __attribute__((weak)) __ppp__tag_counter_fnord1 = 0;
+int __attribute__((weak)) __ppp__tag_counter_shme1 = 0;
+int __attribute__((weak)) __ppp__tag_counter_fred1 = 0;
+int __attribute__((weak)) __ppp__tag_counter_baz1 = 0;
+int __attribute__((weak)) __ppp__tag_counter_fum1 = 0;

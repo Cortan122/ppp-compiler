@@ -1,0 +1,21 @@
+typedef       ;
+typedef struct foo;
+typedef struct bar baz;
+typedef {int f;} struct quux;
+
+typedef struct fnord {}<122;
+typedef struct shme {}<zot;
+typedef struct fred {}<int wibble;
+typedef struct baz {}<int;
+typedef struct fum {}<122 fred;
+
+;
+struct foo1;
+struct bar1 baz1;
+struct quux1;
+
+struct fnord1 {}<122;
+struct shme1 {}<zot;
+struct fred1 {}<int wibble;
+struct baz1 {}<int;
+struct fum1 {}<122 fred1;

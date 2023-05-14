@@ -1,0 +1,33 @@
+# 1 "test inputs/invalid_types.c"
+typedef struct;
+typedef struct foo;
+typedef struct bar baz;
+typedef {int f;} struct quux;
+
+typedef struct fnord { int tag; struct {} head; union { 122 s00; } tail;} fum;
+typedef struct shme { int tag; struct {} head; union { zot s00; } tail;} foobar;
+typedef struct fred { int tag; struct {} head; union { int wibble s00; } tail;} derp;
+typedef struct baz { int tag; struct {} head; union { int s00; } tail;} fnord;
+typedef struct fum { int tag; struct {} head; union { 122 fred s00; } tail;} shme;
+
+struct;
+struct foo1;
+struct bar1 baz1;
+{int f;} struct quux1;
+
+struct fnord1 { int tag; struct {} head; union { 122 s00; } tail;} fum1;
+struct shme1 { int tag; struct {} head; union { zot s00; } tail;} foobar1;
+struct fred1 { int tag; struct {} head; union { int wibble s00; } tail;} derp1;
+struct baz1 { int tag; struct {} head; union { int s00; } tail;} fnord1;
+struct fum1 { int tag; struct {} head; union { 122 fred1 s00; } tail;} shme1;
+void* calloc(unsigned long nmemb, unsigned long size);
+int __attribute__((weak)) __ppp__tag_counter_fnord = 0;
+int __attribute__((weak)) __ppp__tag_counter_shme = 0;
+int __attribute__((weak)) __ppp__tag_counter_fred = 0;
+int __attribute__((weak)) __ppp__tag_counter_baz = 0;
+int __attribute__((weak)) __ppp__tag_counter_fum = 0;
+int __attribute__((weak)) __ppp__tag_counter_fnord1 = 0;
+int __attribute__((weak)) __ppp__tag_counter_shme1 = 0;
+int __attribute__((weak)) __ppp__tag_counter_fred1 = 0;
+int __attribute__((weak)) __ppp__tag_counter_baz1 = 0;
+int __attribute__((weak)) __ppp__tag_counter_fum1 = 0;

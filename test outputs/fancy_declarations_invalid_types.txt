@@ -1,0 +1,192 @@
+Declaration(tokens = 1, name = (null))
+  CHAR[invalid_types.c:1:15] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = foo) 
+    WORD[invalid_types.c:2:9] data = struct
+    WORD[invalid_types.c:2:16] data = foo
+  CHAR[invalid_types.c:2:19] data = ;
+
+Declaration(tokens = 2, name = baz)
+  Struct(tokens = 2, name = bar) 
+    WORD[invalid_types.c:3:9] data = struct
+    WORD[invalid_types.c:3:16] data = bar
+  WORD[invalid_types.c:3:20] data = baz
+  CHAR[invalid_types.c:3:23] data = ;
+
+Declaration(tokens = 8, name = quux)
+  CHAR[invalid_types.c:4:9] data = {
+  WORD[invalid_types.c:4:10] data = int
+  WORD[invalid_types.c:4:14] data = f
+  CHAR[invalid_types.c:4:15] data = ;
+  CHAR[invalid_types.c:4:16] data = }
+  WORD[invalid_types.c:4:18] data = struct
+  WORD[invalid_types.c:4:25] data = quux
+  CHAR[invalid_types.c:4:29] data = ;
+
+Declaration(tokens = 2, name = fum)
+  Struct(tokens = 6, name = fnord) 
+    WORD[invalid_types.c:6:9] data = struct
+    WORD[invalid_types.c:6:16] data = fnord
+    CHAR[invalid_types.c:6:22] data = {
+    CHAR[invalid_types.c:6:23] data = }
+    CHAR[invalid_types.c:6:24] data = <
+    Declaration(tokens = 2, name = (null))
+      NUMBER[invalid_types.c:6:25] data = 122
+      CHAR[invalid_types.c:6:28] data = ;
+    CHAR[invalid_types.c:6:29] data = >
+  WORD[invalid_types.c:6:31] data = fum
+  CHAR[invalid_types.c:6:34] data = ;
+
+Declaration(tokens = 2, name = foobar)
+  Struct(tokens = 6, name = shme) 
+    WORD[invalid_types.c:7:9] data = struct
+    WORD[invalid_types.c:7:16] data = shme
+    CHAR[invalid_types.c:7:21] data = {
+    CHAR[invalid_types.c:7:22] data = }
+    CHAR[invalid_types.c:7:23] data = <
+    Declaration(tokens = 2, name = zot)
+      WORD[invalid_types.c:7:24] data = zot
+      CHAR[invalid_types.c:7:27] data = ;
+    CHAR[invalid_types.c:7:28] data = >
+  WORD[invalid_types.c:7:30] data = foobar
+  CHAR[invalid_types.c:7:36] data = ;
+
+Declaration(tokens = 2, name = derp)
+  Struct(tokens = 6, name = fred) 
+    WORD[invalid_types.c:8:9] data = struct
+    WORD[invalid_types.c:8:16] data = fred
+    CHAR[invalid_types.c:8:21] data = {
+    CHAR[invalid_types.c:8:22] data = }
+    CHAR[invalid_types.c:8:23] data = <
+    Declaration(tokens = 3, name = wibble)
+      WORD[invalid_types.c:8:24] data = int
+      WORD[invalid_types.c:8:28] data = wibble
+      CHAR[invalid_types.c:8:34] data = ;
+    CHAR[invalid_types.c:8:35] data = >
+  WORD[invalid_types.c:8:37] data = derp
+  CHAR[invalid_types.c:8:41] data = ;
+
+Declaration(tokens = 2, name = fnord)
+  Struct(tokens = 6, name = baz) 
+    WORD[invalid_types.c:9:9] data = struct
+    WORD[invalid_types.c:9:16] data = baz
+    CHAR[invalid_types.c:9:20] data = {
+    CHAR[invalid_types.c:9:21] data = }
+    CHAR[invalid_types.c:9:22] data = <
+    Declaration(tokens = 2, name = (null))
+      WORD[invalid_types.c:9:23] data = int
+      CHAR[invalid_types.c:9:26] data = ;
+    CHAR[invalid_types.c:9:27] data = >
+  WORD[invalid_types.c:9:29] data = fnord
+  CHAR[invalid_types.c:9:34] data = ;
+
+Declaration(tokens = 2, name = shme)
+  Struct(tokens = 6, name = fum) 
+    WORD[invalid_types.c:10:9] data = struct
+    WORD[invalid_types.c:10:16] data = fum
+    CHAR[invalid_types.c:10:20] data = {
+    CHAR[invalid_types.c:10:21] data = }
+    CHAR[invalid_types.c:10:22] data = <
+    Declaration(tokens = 3, name = fred)
+      NUMBER[invalid_types.c:10:23] data = 122
+      WORD[invalid_types.c:10:27] data = fred
+      CHAR[invalid_types.c:10:31] data = ;
+    CHAR[invalid_types.c:10:32] data = >
+  WORD[invalid_types.c:10:34] data = shme
+  CHAR[invalid_types.c:10:38] data = ;
+
+Declaration(tokens = 1, name = (null))
+  CHAR[invalid_types.c:12:7] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = foo1) 
+    WORD[invalid_types.c:13:1] data = struct
+    WORD[invalid_types.c:13:8] data = foo1
+  CHAR[invalid_types.c:13:12] data = ;
+
+Declaration(tokens = 2, name = baz1)
+  Struct(tokens = 2, name = bar1) 
+    WORD[invalid_types.c:14:1] data = struct
+    WORD[invalid_types.c:14:8] data = bar1
+  WORD[invalid_types.c:14:13] data = baz1
+  CHAR[invalid_types.c:14:17] data = ;
+
+Declaration(tokens = 1, name = (null))
+  Struct(tokens = 2, name = quux1) 
+    WORD[invalid_types.c:15:10] data = struct
+    WORD[invalid_types.c:15:17] data = quux1
+  CHAR[invalid_types.c:15:22] data = ;
+
+Declaration(tokens = 2, name = fum1)
+  Struct(tokens = 6, name = fnord1) 
+    WORD[invalid_types.c:17:1] data = struct
+    WORD[invalid_types.c:17:8] data = fnord1
+    CHAR[invalid_types.c:17:15] data = {
+    CHAR[invalid_types.c:17:16] data = }
+    CHAR[invalid_types.c:17:17] data = <
+    Declaration(tokens = 2, name = (null))
+      NUMBER[invalid_types.c:17:18] data = 122
+      CHAR[invalid_types.c:17:21] data = ;
+    CHAR[invalid_types.c:17:22] data = >
+  WORD[invalid_types.c:17:24] data = fum1
+  CHAR[invalid_types.c:17:28] data = ;
+
+Declaration(tokens = 2, name = foobar1)
+  Struct(tokens = 6, name = shme1) 
+    WORD[invalid_types.c:18:1] data = struct
+    WORD[invalid_types.c:18:8] data = shme1
+    CHAR[invalid_types.c:18:14] data = {
+    CHAR[invalid_types.c:18:15] data = }
+    CHAR[invalid_types.c:18:16] data = <
+    Declaration(tokens = 2, name = zot)
+      WORD[invalid_types.c:18:17] data = zot
+      CHAR[invalid_types.c:18:20] data = ;
+    CHAR[invalid_types.c:18:21] data = >
+  WORD[invalid_types.c:18:23] data = foobar1
+  CHAR[invalid_types.c:18:30] data = ;
+
+Declaration(tokens = 2, name = derp1)
+  Struct(tokens = 6, name = fred1) 
+    WORD[invalid_types.c:19:1] data = struct
+    WORD[invalid_types.c:19:8] data = fred1
+    CHAR[invalid_types.c:19:14] data = {
+    CHAR[invalid_types.c:19:15] data = }
+    CHAR[invalid_types.c:19:16] data = <
+    Declaration(tokens = 3, name = wibble)
+      WORD[invalid_types.c:19:17] data = int
+      WORD[invalid_types.c:19:21] data = wibble
+      CHAR[invalid_types.c:19:27] data = ;
+    CHAR[invalid_types.c:19:28] data = >
+  WORD[invalid_types.c:19:30] data = derp1
+  CHAR[invalid_types.c:19:35] data = ;
+
+Declaration(tokens = 2, name = fnord1)
+  Struct(tokens = 6, name = baz1) 
+    WORD[invalid_types.c:20:1] data = struct
+    WORD[invalid_types.c:20:8] data = baz1
+    CHAR[invalid_types.c:20:13] data = {
+    CHAR[invalid_types.c:20:14] data = }
+    CHAR[invalid_types.c:20:15] data = <
+    Declaration(tokens = 2, name = (null))
+      WORD[invalid_types.c:20:16] data = int
+      CHAR[invalid_types.c:20:19] data = ;
+    CHAR[invalid_types.c:20:20] data = >
+  WORD[invalid_types.c:20:22] data = fnord1
+  CHAR[invalid_types.c:20:28] data = ;
+
+Declaration(tokens = 2, name = shme1)
+  Struct(tokens = 6, name = fum1) 
+    WORD[invalid_types.c:21:1] data = struct
+    WORD[invalid_types.c:21:8] data = fum1
+    CHAR[invalid_types.c:21:13] data = {
+    CHAR[invalid_types.c:21:14] data = }
+    CHAR[invalid_types.c:21:15] data = <
+    Declaration(tokens = 3, name = fred1)
+      NUMBER[invalid_types.c:21:16] data = 122
+      WORD[invalid_types.c:21:20] data = fred1
+      CHAR[invalid_types.c:21:25] data = ;
+    CHAR[invalid_types.c:21:26] data = >
+  WORD[invalid_types.c:21:28] data = shme1
+  CHAR[invalid_types.c:21:33] data = ;
+

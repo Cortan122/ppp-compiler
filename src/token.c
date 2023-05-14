@@ -58,6 +58,8 @@ void token_print_error(Token* tok, LogLevel level, const char* msg, const char* 
   fprintf(stderr, "%s%s: " RESET_COLOR, color, LogLevel_names[level]);
   fprintf(stderr, msg, printf_arg);
   fprintf(stderr, "\n");
+
+  // *((int*)0) = 0;
 }
 
 static bool is_sticky_token(TokenKind kind) {

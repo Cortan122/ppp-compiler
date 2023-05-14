@@ -331,6 +331,7 @@ bool run_testcase(const char* input_file, TestCase tc, bool rewrite, bool loop) 
       if(endsWith(input_file, "cpp_output.c")) return false;
       if(endsWith(input_file, "cpp_output_2.c")) return false;
     }
+    if(endsWith(input_file, "invalid_types.c")) return false;
 
     if(tc.loop_check && !loop) {
       return run_testcase(correct_output, tc, false, true);

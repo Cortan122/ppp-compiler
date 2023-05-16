@@ -116,8 +116,12 @@ static char* get_struct_name(Struct* s, bool use_converted_name) {
   } else if(s->aliased_to) {
     return get_struct_name(s->aliased_to, use_converted_name);
   } else {
-    token_print_error(&s->tokens[0], LOGLEVEL_INFO, "mangaling primitive names is not implemented yet%s", "");
-    return "primitive";
+    static bool has_printed_mangling_err = false;
+    if(!has_printed_mangling_err) {
+      token_print_error(&s->tokens[0], LOGLEVEL_INFO, "mangling primitive names is not implemented yet%s", "");
+      has_printed_mangling_err = true;
+    }
+    return s->is_primitive ? "primitive" : "unnamedstruct";
   }
 }
 
@@ -428,7 +432,10 @@ static void try_emit_parameterized_struct(Parser* p, Struct* res) {
 
   if(shget(p->defined_specialized_structs, res->converted_name) == NULL) {
     Struct* base = shget(p->structs, get_struct_name(res, false));
-    if(check_valid_subtype(base, res)) {
+    if(base == NULL) {
+      token_print_error(res->tokens, LOGLEVEL_ERROR, "no base found for parametrized struct '%s'", res->converted_name);
+      p->has_seen_error = true;
+    } else if(check_valid_subtype(base, res)) {
       arrpush(base->tag_names, res->tag_value_name);
       declaration_emit_parameter_struct(res, p->extra_emitter, base, p->use_constructors);
     }
